@@ -1,0 +1,551 @@
+{
+ "generated": "2026-07-14 10:40 UTC",
+ "totals": {
+  "live": 22,
+  "alert": 45,
+  "roles": 72
+ },
+ "categories": [
+  {
+   "name": "commissioning",
+   "sites": [
+    {
+     "name": "Channel 4 (4Jobs)",
+     "url": "https://careers.channel4.com/4jobs",
+     "strategy": "html",
+     "roles": [
+      "4Sales more about 4Sales",
+      "Acquisitions more about Acquisitions",
+      "Commissioning more about Commissioning",
+      "Content Communications more about Content Communications",
+      "Distribution and Platform Partnerships more about Distribution and Platform Partnerships",
+      "Non-Executive Directors vacancies more about Non-Executive Directors vacancies",
+      "Talent Schemes"
+     ]
+    },
+    {
+     "name": "BBC Careers — commissioning search",
+     "url": "https://careers.bbc.co.uk/search/?q=commissioning",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Sky (talent community — also carries awards/comms roles)",
+     "url": "https://sky.talent-community.com",
+     "strategy": "html",
+     "roles": [
+      "Customer and Sales",
+      "Join Talent Community"
+     ]
+    },
+    {
+     "name": "UKTV",
+     "url": "https://uktv.co.uk/careers",
+     "strategy": "html",
+     "roles": [
+      "UKTV and BBC Entertainment join forces on first joint comedy entertainment co-commission"
+     ]
+    },
+    {
+     "name": "Paramount UK / Channel 5",
+     "url": "https://careers.paramount.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Warner Bros. Discovery UK",
+     "url": "https://careers.wbd.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Disney / Disney+ EMEA",
+     "url": "https://www.disneycareers.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Apple TV+ (London search)",
+     "url": "https://jobs.apple.com/en-gb/search?location=london-LONC",
+     "strategy": "html",
+     "roles": [
+      "Sales and Refunds"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "development",
+   "sites": [
+    {
+     "name": "BBC Careers — development search",
+     "url": "https://careers.bbc.co.uk/search/?q=development",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Amazon MGM Studios (UK)",
+     "url": "https://www.amazon.jobs/en-gb/search?base_query=creative+executive&loc_query=London",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "All3Media group (covers Studio Lambert, Lion, Raw, Optomen + ~40 labels)",
+     "url": "https://www.all3media.com/careers",
+     "strategy": "html",
+     "roles": [
+      "Distribution"
+     ]
+    },
+    {
+     "name": "Banijay UK group (covers Dragonfly, Zeppotron, Tiger Aspect + labels)",
+     "url": "https://www.banijayuk.com/careers",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "KEO Films",
+     "url": "https://keofilms.com",
+     "strategy": "html",
+     "roles": [
+      "BAFTA TV Awards 2017 – Exodus: Our Journey to Europe wins Factual Series 15.05.17",
+      "International Emmy Awards 2017 – Exodus: Our Journey to Europe wins Best Documentary 22.11.17",
+      "Rise of the Warrior Apes hat-trick at the Wildscreen Panda Awards 2018 22.10.18",
+      "Royal Television Society, West of England Awards 2018 – Rise of the Warrior Apes wins Natural History category. 12.03.18",
+      "Televisual Bulldog Awards 2017 – Winners 29.06.17",
+      "The Cook Who Changed Our Lives won Best Programme at the Fortnum & Mason Food And Drink Awards 2017 15.05.17"
+     ]
+    },
+    {
+     "name": "Expectation",
+     "url": "https://expectationtv.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Love Productions",
+     "url": "https://loveproductions.co.uk",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "72 Films",
+     "url": "https://www.72films.co.uk",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Sister",
+     "url": "https://sisterglobal.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Bad Wolf",
+     "url": "https://www.bad-wolf.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Left Bank Pictures",
+     "url": "https://www.leftbankpictures.co.uk",
+     "strategy": "html",
+     "roles": [
+      "LBP Partnerships"
+     ]
+    },
+    {
+     "name": "Studio Lambert (direct — busiest All3 label)",
+     "url": "https://www.studiolambert.com",
+     "strategy": "alert",
+     "roles": []
+    }
+   ]
+  },
+  {
+   "name": "acquisitions",
+   "sites": [
+    {
+     "name": "ITV Careers",
+     "url": "https://careers.itv.com/jobs",
+     "strategy": "html",
+     "roles": [
+      "Commissioning",
+      "Talent Community"
+     ]
+    },
+    {
+     "name": "Netflix UK",
+     "url": "https://jobs.netflix.com/search?location=London",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Prime Video content (via Amazon jobs)",
+     "url": "https://www.amazon.jobs/en-gb/search?base_query=content+acquisition&loc_query=London",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "MUBI",
+     "url": "https://mubi.com/en/jobs",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Studiocanal UK",
+     "url": "https://www.studiocanal.com/careers",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Lionsgate UK",
+     "url": "https://careers.lionsgate.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Altitude",
+     "url": "https://altitude.film",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Dogwoof",
+     "url": "https://dogwoof.com",
+     "strategy": "html",
+     "roles": [
+      "Dogwoof Sales"
+     ]
+    },
+    {
+     "name": "BFI",
+     "url": "https://www.bfi.org.uk/jobs",
+     "strategy": "alert",
+     "roles": []
+    }
+   ]
+  },
+  {
+   "name": "international_sales",
+   "sites": [
+    {
+     "name": "Cineflix Rights",
+     "url": "https://cineflix.com/careers/",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Fremantle",
+     "url": "https://jobsearch.createyourowncareer.com/FREMANTLE/go/Fremantle_all_jobs/5381701/",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "BBC Careers — sales/distribution search",
+     "url": "https://careers.bbc.co.uk/search/?q=sales",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Passion Distribution",
+     "url": "https://passiondistribution.com",
+     "strategy": "html",
+     "roles": [
+      "Passion Distribution Announces First International Commission For Breakout Format Virgin Island 24 February 2026",
+      "Passion Distribution Announces Second International Commission for Breakout Format Virgin Island 02 July 2026",
+      "Passion Distribution Presents A Market-Aligned Slate At London Screenings Week 02 March 2026",
+      "Passion Distribution Sounds the Siren on New Blue Light Content Sales 11 June 2026",
+      "Passion Distribution Unveils A Diverse And Compelling Slate For Mipcom 2025 01 October 2025",
+      "sales@passiondistribution.com"
+     ]
+    },
+    {
+     "name": "Hat Trick International",
+     "url": "https://www.hattrick.co.uk",
+     "strategy": "html",
+     "roles": [
+      "Distribution"
+     ]
+    },
+    {
+     "name": "Keshet International",
+     "url": "https://keshetinternational.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Abacus Media Rights",
+     "url": "https://abacusmediarights.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "TVF International",
+     "url": "https://tvf.co.uk",
+     "strategy": "html",
+     "roles": [
+      "Communications"
+     ]
+    },
+    {
+     "name": "DCD Rights",
+     "url": "https://www.dcdrights.com",
+     "strategy": "html",
+     "roles": [
+      "Acquisition",
+      "DCD Rights to distribute Australian drama Fortitude Valley starring award-winning actor Rupert Everett",
+      "New Zealand Screen Awards wins for My Life Is Murder and Happiness",
+      "Thou Shalt Not Steal and Happiness nominated for C21 International Drama and Rose d’Or Awards"
+     ]
+    },
+    {
+     "name": "Sony Pictures Television",
+     "url": "https://www.sonypicturesjobs.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "NBCUniversal International",
+     "url": "https://www.nbcunicareers.com",
+     "strategy": "alert",
+     "roles": []
+    }
+   ]
+  },
+  {
+   "name": "platform_partnerships",
+   "sites": [
+    {
+     "name": "TikTok (LinkedIn is blocked — use TikTok's own board)",
+     "url": "https://lifeattiktok.com/search?location=London",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Spotify",
+     "url": "https://www.lifeatspotify.com/jobs?l=london",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Google / YouTube partnerships",
+     "url": "https://www.google.com/about/careers/applications/jobs/results?location=London",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Meta media partnerships",
+     "url": "https://www.metacareers.com/jobs",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Snap",
+     "url": "https://careers.snap.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Roku Europe",
+     "url": "https://www.weareroku.com/jobs",
+     "strategy": "alert",
+     "roles": []
+    }
+   ]
+  },
+  {
+   "name": "awards_publicity",
+   "sites": [
+    {
+     "name": "Premier PR",
+     "url": "https://premiercomms.com/careers",
+     "strategy": "html",
+     "roles": [
+      "ACCOUNT EXECUTIVE - BRANDS/MUSIC",
+      "ACCOUNT MANAGER - Partnerships",
+      "Account Executive – Partnerships",
+      "Account Manager – EMEA Partnerships - Gaming",
+      "PUBLICIST/ACCOUNT MANAGER - FILM AWARDS",
+      "SENIOR ACCOUNT EXECUTIVE - CONSUMER ENTERTAINMENT: BRANDS & MUSIC"
+     ]
+    },
+    {
+     "name": "DDA",
+     "url": "https://ddapr.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Organic Publicity",
+     "url": "https://organic-publicity.com/careers",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Freuds",
+     "url": "https://www.freuds.com",
+     "strategy": "html",
+     "roles": [
+      "Corporate Communications",
+      "Financial Communications + IR",
+      "Global Health + Development",
+      "Partnerships",
+      "Talent + Influencers"
+     ]
+    },
+    {
+     "name": "BAFTA",
+     "url": "https://www.bafta.org/about/careers",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Royal Television Society",
+     "url": "https://rts.org.uk",
+     "strategy": "html",
+     "roles": [
+      "Craft & Design Awards",
+      "Nations and Regions Awards",
+      "Other Awards",
+      "Programme Awards",
+      "RTS Student Television Awards 2026 Image",
+      "RTS Student Television Awards 2026 | Highlights",
+      "Student Television Awards",
+      "Television Journalism Awards"
+     ]
+    },
+    {
+     "name": "Edinburgh TV Festival",
+     "url": "https://www.thetvfestival.com",
+     "strategy": "html",
+     "roles": [
+      "Career Development",
+      "Edinburgh TV Awards",
+      "New Talent",
+      "Shortlists for the Annual TV Awards Revealed"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "talent_management",
+   "sites": [
+    {
+     "name": "PMA vacancies board (most big agencies post here; ads expire after 30 days)",
+     "url": "https://thepma.com/view-vacancies/",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "YMU Group",
+     "url": "https://www.ymugroup.com/careers",
+     "strategy": "html",
+     "roles": [
+      "London Assistant Talent Manager Find out more Find out more",
+      "London Talent Manager Find out more Find out more"
+     ]
+    },
+    {
+     "name": "Avalon (group page — also covers their distribution + production arms)",
+     "url": "https://avalonuk.com/careers",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Curtis Brown",
+     "url": "https://www.curtisbrown.co.uk/vacancies",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "United Agents",
+     "url": "https://www.unitedagents.co.uk",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Off The Kerb",
+     "url": "https://www.offthekerb.co.uk",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "InterTalent",
+     "url": "https://intertalentgroup.com",
+     "strategy": "html",
+     "roles": [
+      "Brand Partnerships"
+     ]
+    },
+    {
+     "name": "Insanity Group",
+     "url": "https://insanitygroup.com",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "Gleam Futures",
+     "url": "https://gleamfutures.com",
+     "strategy": "alert",
+     "roles": []
+    }
+   ]
+  },
+  {
+   "name": "trade_press",
+   "sites": [
+    {
+     "name": "Broadcast job board",
+     "url": "https://www.broadcastnow.co.uk/broadcastjobscom/1101514.bio",
+     "strategy": "alert",
+     "roles": []
+    },
+    {
+     "name": "C21Media jobs",
+     "url": "https://www.c21media.net/jobs",
+     "strategy": "html",
+     "roles": [
+      "Autentic set to soar with Albatross acquisition",
+      "Channel 4 orders new formats, recommissions Savage Sundays for Channel 4.0",
+      "Content India 10 – 12 March 2027 Content India is a partnership between C21Media and Dish TV.",
+      "Content London 2026 30 November – 3 December 2026 The world’s leading development marketplace and conference.",
+      "France Télévisions commissions first int’l version of Talpa’s The Winner Takes it All",
+      "Pedersen exiting All3Media Int’l following Banijay merger, Payne to lead distribution",
+      "Rakuten TV, Sony Pictures Entertainment partnership brings 20 FAST channels to Europe",
+      "Shaun Alperin takes acquisitions VP role at Peacock after leaving Prime Video Canada",
+      "Upcoming Magazines See below for details of upcoming editorial content and all deadlines.",
+      "Viaplay Content Distribution"
+     ]
+    },
+    {
+     "name": "PMC (Deadline / Variety / THR London)",
+     "url": "https://pmc.com/careers",
+     "strategy": "alert",
+     "roles": []
+    }
+   ]
+  },
+  {
+   "name": "industry_boards",
+   "sites": [
+    {
+     "name": "Grapevine Jobs (indie dev/production roles surface here first)",
+     "url": "https://www.grapevinejobs.co.uk/jobs-in-media-broadcast-tv-video-post-production",
+     "strategy": "html",
+     "roles": [
+      "Executive jobs"
+     ]
+    },
+    {
+     "name": "The Talent Manager",
+     "url": "https://www.thetalentmanager.com/jobs",
+     "strategy": "html",
+     "roles": [
+      "The Talent Manager"
+     ]
+    }
+   ]
+  }
+ ]
+}
