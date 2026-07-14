@@ -1,0 +1,44 @@
+name: Daily jobs sweep
+
+on:
+  schedule:
+    - cron: "30 6 * * 1-5"   # 06:30 UTC weekdays = 07:30 UK in summer
+  workflow_dispatch: {}        # manual "Run workflow" button for testing
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run sweep
+        run: python check_jobs.py
+
+      - name: Raise issue if new roles found
+        if: ${{ hashFiles('new_jobs.md') != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "New TV roles — $(date +%d\ %b\ %Y)" \
+            --body-file new_jobs.md
+          rm new_jobs.md
+
+      - name: Commit updated state
+        run: |
+          git config user.name "jobs-watch"
+          git config user.email "actions@users.noreply.github.com"
+          git add seen.json
+          git commit -m "Update seen roles $(date +%F)" || echo "No changes"
+          git push
