@@ -47,6 +47,7 @@
   ul.roles a { color: var(--ink); text-decoration: none; font-weight: 500; }
   ul.roles a:hover { color: var(--accent); text-decoration: underline; }
   .loc { color: var(--loc); font-size: .8rem; margin-left: .4rem; white-space: nowrap; }
+  .emp { color: var(--ink); font-size: .8rem; margin-left: .4rem; opacity: .7; font-weight: 600; }
   .empty { color: var(--muted); font-size: .82rem; margin: .4rem 0 0; }
   .nofeed { margin-top: 2.25rem; }
   .nofeed h2 { font-size: 1.05rem; margin: 0 0 .3rem; }
@@ -97,8 +98,11 @@ function render(d) {
       const rows = (s.jobs && s.jobs.length)
         ? `<ul class="roles">${s.jobs.map(j => {
             const loc = j.location ? `<span class="loc">${esc(j.location)}</span>` : "";
+            // show employer when it differs from the bucket (aggregator sources)
+            const emp = (j.employer && j.employer !== s.name)
+              ? `<span class="emp">${esc(j.employer)}</span>` : "";
             const t = esc(j.title);
-            return `<li>${j.url ? `<a href="${esc(j.url)}" target="_blank" rel="noopener">${t}</a>` : t}${loc}</li>`;
+            return `<li>${j.url ? `<a href="${esc(j.url)}" target="_blank" rel="noopener">${t}</a>` : t}${emp}${loc}</li>`;
           }).join("")}</ul>`
         : `<p class="empty">No matching roles open right now.</p>`;
       return `<div class="site"><div class="site-head"><span class="name">${esc(s.name)}</span>` +

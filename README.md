@@ -20,7 +20,22 @@ Roles are then filtered:
 - **INCLUDE / EXCLUDE** (top of `check_jobs.py`) keep relevant TV/creative roles
   and drop software/finance/etc. — now applied to real job titles.
 - a **UK/London location gate** drops the non-UK roles that global feeds
-  (Sky, WBD, NBCUniversal…) return.
+  (Netflix, NBCUniversal, aggregators…) return. Sources marked `uk_scoped: true`
+  (country-facet Workday, UK-native ATSes) skip this gate, since they're already
+  UK-only and their office locations (Leavesden, Knutsford…) aren't London.
+- **cross-source dedup** on `(employer, title)` so a role carried by both an
+  aggregator and a direct ATS feed is listed once (the direct feed wins).
+
+### Aggregator APIs (broaden coverage)
+
+`adzuna` and `careerjet` are keyword job-search APIs that surface target roles
+across the whole market — including indies with no ATS of their own. Each takes
+a `queries` list (TV/creative phrases) and returns the real employer per job.
+- **Adzuna** needs a free key: create one at developer.adzuna.com, then add repo
+  secrets `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` (Settings → Secrets → Actions).
+  Until they're set it skips gracefully (logged, non-fatal).
+- **Careerjet** needs a partner `affid` (env `CAREERJET_AFFID`) — its keyless
+  legacy endpoint is being retired, so without a valid affid it returns nothing.
 
 State lives in `seen.json`: a cumulative set of job keys (for new-role
 detection) plus the current live snapshot (for the dashboard).
@@ -45,9 +60,9 @@ no_feed:
 ```
 
 Platforms: `workday`, `smartrecruiters`, `netflix`, `amazon`, `oracle`,
-`bamboohr`, `html`, `grapevine`, `headless`, plus generic `greenhouse` /
-`lever` / `ashby` for future additions. Add an employer by dropping in an entry
-with the right `platform` + `params`; no code change needed.
+`bamboohr`, `html`, `grapevine`, `adzuna`, `careerjet`, `headless`, plus generic
+`greenhouse` / `lever` / `ashby` for future additions. Add an employer by
+dropping in an entry with the right `platform` + `params`; no code change needed.
 
 ### Headless browser (`headless`)
 

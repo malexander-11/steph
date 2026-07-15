@@ -26,14 +26,17 @@ REPORT_PATH = ROOT / "new_jobs.md"
 # (e.g. dropping the software/finance roles that dominate broadcaster boards).
 INCLUDE = re.compile(
     r"(commission|acquisition|development|distribut|sales|partnership"
-    r"|publicit|communications|awards|talent|creative executive"
-    r"|editor|producer|researcher|exec)",
+    r"|publicit|communications|awards|talent|creative"
+    r"|editor|producer|researcher|exec"
+    # broader TV/editorial vocabulary so genuinely-relevant roles aren't dropped:
+    r"|content|unscripted|scripted|factual|entertainment|drama|comedy"
+    r"|documentary|\bformat|brand|marketing|head of|director of)",
     re.I,
 )
 EXCLUDE = re.compile(
     r"(software|engineer|\bdevops\b|data scientist|finance|accountant"
     r"|legal counsel|cyber|security|apprentice|internship|\bintern\b"
-    r"|customer service|cleaner|chef|barista"
+    r"|customer service|cleaner|chef|barista|moderator"
     # non-TV noise from diversified conglomerates (theme parks, games studios):
     r"|construction|\bresort\b|roadway|\brail\b|property development"
     r"|external development|gameplay)",
@@ -67,9 +70,21 @@ def job_key(job: dict) -> str:
     return job.get("url") or f"{job.get('employer')}|{job.get('title')}"
 
 
+# Aggregators pull the same role many other sources also carry, so they run
+# LAST and their duplicates are dropped in favour of the direct-ATS entry.
+AGGREGATOR_PLATFORMS = {"careerjet", "adzuna", "grapevine"}
+
+
+def norm(text: str) -> str:
+    """Loose key for cross-source dedup: lowercase alphanumerics only."""
+    return re.sub(r"[^a-z0-9]", "", (text or "").lower())
+
+
 def load_sources():
-    """Yield (category, name, platform, params) for every active source."""
+    """Yield (category, name, platform, params, uk_scoped) for every active
+    source, with aggregator platforms ordered last (for dedup precedence)."""
     data = yaml.safe_load((ROOT / "watchlist.yaml").read_text())
+    rows = []
     for section, entries in data.items():
         if section in SKIP_SECTIONS:
             continue
@@ -78,7 +93,10 @@ def load_sources():
                 continue
             params = dict(entry.get("params") or {})
             params["employer"] = entry["name"]
-            yield section, entry["name"], entry["platform"], params
+            rows.append((section, entry["name"], entry["platform"], params,
+                         bool(entry.get("uk_scoped", False))))
+    rows.sort(key=lambda r: r[2] in AGGREGATOR_PLATFORMS)
+    return rows
 
 
 def main() -> int:
@@ -87,24 +105,30 @@ def main() -> int:
     seen_keys = set(state.get("seen_keys", []))
 
     current, new_items, errors = {}, [], []
-    for category, name, platform, params in load_sources():
+    global_seen = set()  # (employer, title) across all sources — first wins
+    for category, name, platform, params, uk_scoped in load_sources():
         try:
             jobs = adapters.fetch(platform, params)
         except Exception as exc:  # keep sweeping even if one source fails
             errors.append(f"{name}: {type(exc).__name__}: {exc}")
             continue
 
-        kept, dedup = [], set()
+        kept = []
         for job in jobs:
             if not job.get("title") or not relevant(job["title"]):
                 continue
-            if not in_uk(job.get("location", "")):
+            # uk_scoped sources (country-facet Workday, UK-native ATS) are
+            # already UK-only; the location gate only applies to global feeds.
+            if not uk_scoped and not in_uk(job.get("location", "")):
                 continue
-            display_key = (job["title"].lower(), job.get("location", "").lower())
-            if display_key not in dedup:
-                dedup.add(display_key)
-                kept.append({"title": job["title"], "url": job.get("url", ""),
-                             "location": job.get("location", "")})
+            employer = job.get("employer", name)
+            gkey = (norm(employer), norm(job["title"]))
+            if gkey in global_seen:
+                continue
+            global_seen.add(gkey)
+            kept.append({"title": job["title"], "url": job.get("url", ""),
+                         "location": job.get("location", ""),
+                         "employer": employer})
             key = job_key(job)
             if key not in seen_keys:
                 new_items.append((category, name, job["title"],

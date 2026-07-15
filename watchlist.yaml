@@ -19,15 +19,34 @@
 # the Grapevine aggregator. Set a native email alert for any you want directly.
 
 commissioning:
+  # Workday: filter by UK country/location facet (not searchText="London"), which
+  # captures UK sites whose text lacks "London" (Leavesden, Uxbridge, Iver Heath)
+  # and drops cross-border noise. uk_scoped => skip the location gate downstream.
   - name: Sky
     platform: workday
-    params: {tenant: sky, site: sky_careers, wd: 3}
-  - name: Disney / Disney+ EMEA
+    uk_scoped: true
+    params:
+      tenant: sky
+      site: sky_careers
+      wd: 3
+      applied_facets: {locationCountry: ["29247e57dbaf46fb855b224e03170bc7"]}
+  - name: Disney / Disney+ EMEA   # city-id union (no country facet); pulls in ILM London + Pinewood
     platform: workday
-    params: {tenant: disney, site: disneycareer, wd: 5}
+    uk_scoped: true
+    params:
+      tenant: disney
+      site: disneycareer
+      wd: 5
+      applied_facets:
+        locations: ["4f84d9e8a09701011a5fb8d739280000", "4f84d9e8a09701011a71a5bf87a70000"]
   - name: Warner Bros. Discovery
     platform: workday
-    params: {tenant: warnerbros, site: global, wd: 5}
+    uk_scoped: true
+    params:
+      tenant: warnerbros
+      site: global
+      wd: 5
+      applied_facets: {locationCountry: ["29247e57dbaf46fb855b224e03170bc7"]}
 
 development:
   - name: Amazon MGM Studios (UK)
@@ -70,7 +89,25 @@ talent_management:
 aggregators:
   - name: Grapevine Jobs (UK media — indies + broadcasters)
     platform: grapevine
-    params: {pages: 3}
+    params: {records: 100}
+  # Keyword job-search APIs — surface target roles across the whole market,
+  # including indies with no ATS. Adzuna needs free keys (GitHub secrets
+  # ADZUNA_APP_ID / ADZUNA_APP_KEY) and skips gracefully until they're set.
+  # Careerjet needs a partner affid (env CAREERJET_AFFID). Queries reuse the
+  # watch's vocabulary; results are still filtered by INCLUDE/EXCLUDE + UK gate.
+  - name: Adzuna (UK job search)
+    platform: adzuna
+    params:
+      queries: ["television commissioning", "content acquisitions",
+                "development producer television", "tv distribution sales",
+                "head of unscripted", "factual entertainment commissioner",
+                "television publicist communications", "talent agent television"]
+  - name: Careerjet (UK job search)
+    platform: careerjet
+    params:
+      queries: ["television commissioning", "content acquisitions",
+                "development producer television", "tv distribution sales",
+                "head of unscripted", "television publicist"]
 
 # ------------------------------------------------------------------------- #
 # No machine-readable feed — covered via the Grapevine aggregator above, or

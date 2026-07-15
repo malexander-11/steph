@@ -51,19 +51,28 @@ def _clean(text):
 # JSON-API adapters
 # --------------------------------------------------------------------------- #
 
-def fetch_workday(employer, tenant, site, wd, host=None, search="London", **_):
+def fetch_workday(employer, tenant, site, wd, host=None, search="London",
+                  applied_facets=None, **_):
     """Workday CXS API. Covers Sky, Disney, WBD, Sony, Banijay (EndemolShine).
 
     POST {tenant}.wd{wd}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs
     Pages on offset (limit 20). externalPath builds the public apply URL.
+
+    When applied_facets is given (e.g. a UK locationCountry UUID, or a union of
+    UK location ids), it is sent as Workday's `appliedFacets` and searchText is
+    cleared — this returns the full UK set (incl. sites whose text lacks
+    "London") and drops cross-border false positives, which a plain
+    searchText="London" both misses and over-admits.
     """
     base = host or f"https://{tenant}.wd{wd}.myworkdayjobs.com"
     api = f"{base}/wday/cxs/{tenant}/{site}/jobs"
     apply_root = f"{base}/{site}"
+    facets = applied_facets or {}
+    search_text = "" if facets else (search or "")
     jobs, offset, total = [], 0, None
     for _page in range(MAX_PAGES):
-        payload = {"appliedFacets": {}, "limit": 20, "offset": offset,
-                   "searchText": search or ""}
+        payload = {"appliedFacets": facets, "limit": 20, "offset": offset,
+                   "searchText": search_text}
         data = _post(api, payload).json()
         if total is None:
             total = data.get("total", 0)
@@ -258,6 +267,80 @@ def fetch_ashby(employer, org, **_):
 
 
 # --------------------------------------------------------------------------- #
+# Aggregator adapters — multi-employer job boards queried by keyword. Each
+# returns the *real* employer per job, so one entry surfaces roles across the
+# whole market (including indies with no ATS of their own). Titles are still
+# filtered by check_jobs' INCLUDE/EXCLUDE + UK gate.
+# --------------------------------------------------------------------------- #
+
+def fetch_careerjet(employer="Careerjet", queries=None, location="london", **_):
+    """Careerjet public API. No API key — needs a Referer header and an affid
+    (free from partners.careerjet.com; read from env CAREERJET_AFFID, with a
+    placeholder fallback). Runs each keyword phrase and dedups by URL.
+    """
+    api = "http://public.api.careerjet.net/search"
+    affid = os.environ.get("CAREERJET_AFFID", "213e213hd12344")
+    ua = HEADERS["User-Agent"]
+    headers = dict(HEADERS)
+    headers["Referer"] = "https://github.com/malexander-11/steph"
+    jobs, seen = [], set()
+    for q in (queries or []):
+        params = {"locale_code": "en_GB", "keywords": q, "location": location,
+                  "pagesize": 50, "affid": affid, "user_ip": "8.8.8.8",
+                  "user_agent": ua}
+        try:
+            data = requests.get(api, params=params, headers=headers,
+                                timeout=TIMEOUT).json()
+        except Exception:
+            continue
+        for j in data.get("jobs", []):
+            url = j.get("url")
+            if not url or url in seen:
+                continue
+            seen.add(url)
+            jobs.append({
+                "title": _clean(j.get("title")),
+                "url": url,
+                "location": _clean(j.get("locations")),
+                "employer": _clean(j.get("company")) or employer,
+            })
+    return jobs
+
+
+def fetch_adzuna(employer="Adzuna", queries=None, where="london",
+                 results_per_page=50, **_):
+    """Adzuna job search API. Keyed via env ADZUNA_APP_ID / ADZUNA_APP_KEY (free
+    self-signup, stored as GitHub secrets). Runs each keyword phrase and dedups
+    by URL. Raises if the keys are absent so check_jobs logs it per-source and
+    keeps sweeping.
+    """
+    app_id = os.environ.get("ADZUNA_APP_ID")
+    app_key = os.environ.get("ADZUNA_APP_KEY")
+    if not (app_id and app_key):
+        raise RuntimeError("ADZUNA_APP_ID / ADZUNA_APP_KEY not set")
+    api = "https://api.adzuna.com/v1/api/jobs/gb/search/1"
+    jobs, seen = [], set()
+    for q in (queries or []):
+        params = {"app_id": app_id, "app_key": app_key, "what": q,
+                  "where": where, "results_per_page": results_per_page,
+                  "content-type": "application/json"}
+        data = _get(api, params=params).json()
+        for j in data.get("results", []):
+            url = j.get("redirect_url")
+            if not url or url in seen:
+                continue
+            seen.add(url)
+            jobs.append({
+                "title": _clean(j.get("title")),
+                "url": url,
+                "location": _clean((j.get("location") or {}).get("display_name")),
+                "employer": _clean((j.get("company") or {}).get("display_name"))
+                or employer,
+            })
+    return jobs
+
+
+# --------------------------------------------------------------------------- #
 # HTML / JSON-LD adapters (genuinely server-rendered sources only)
 # --------------------------------------------------------------------------- #
 
@@ -265,37 +348,33 @@ _GRAPEVINE_HREF = re.compile(
     r'href="(/(?:executive_)?mediajobs/(\d+),([^"]+?)\.html)"', re.I)
 
 
-def fetch_grapevine(employer, pages=3, **_):
-    """Grapevine Jobs — the UK media aggregator. Server-rendered, so the initial
-    HTML carries every listing. Each href is self-describing:
-    /(executive_)?mediajobs/{id},{Title_Words}_{Employer}.html
-    We parse title + employer straight out of the slug. This is the backbone that
-    covers indie prodcos + broadcasters that have no feed of their own.
+def fetch_grapevine(employer, records=100, **_):
+    """Grapevine Jobs — the UK media aggregator. Server-rendered, so the HTML
+    carries every listing. Each href is self-describing:
+    /(executive_)?mediajobs/{id},{Title_Words}_{Employer}.html — we parse title +
+    employer straight out of the slug. The full live pool is ~49 roles, so one
+    request for `records` (default 100) captures everything; this avoids the
+    page-3 session-reset shell the old page loop hit. Backbone for indie prodcos
+    + broadcasters with no feed of their own.
     """
     base = "https://www.grapevinejobs.co.uk"
-    listing = f"{base}/jobseeker/mediajobs.aspx"
+    url = (f"{base}/jobseeker/jobseeker_jobs.aspx"
+           f"?page=1&screen=1&number_of_records={records}")
+    html = _get(url).text
     seen_ids, jobs = set(), []
-    for page in range(1, min(pages, MAX_PAGES) + 1):
-        url = listing if page == 1 else f"{listing}?page={page}&number_of_records=25"
-        html = _get(url).text
-        found_this_page = False
-        for href, jid, slug in _GRAPEVINE_HREF.findall(html):
-            if jid in seen_ids:
-                continue
-            seen_ids.add(jid)
-            found_this_page = True
-            words = slug.replace("_", " ").strip()
-            # Slug is "Title Words Employer"; employer is the tail but we can't
-            # split reliably, so surface the whole slug as the title (it reads as
-            # "Role — Employer") and keep the aggregator as the employer bucket.
-            jobs.append({
-                "title": words,
-                "url": urljoin(base, href),
-                "location": "",
-                "employer": employer,
-            })
-        if not found_this_page:
-            break
+    for href, jid, slug in _GRAPEVINE_HREF.findall(html):
+        if jid in seen_ids:
+            continue
+        seen_ids.add(jid)
+        words = slug.replace("_", " ").strip()
+        # Slug is "Title Words Employer" — surface the whole slug as the title
+        # (reads as "Role — Employer"); keep the aggregator as the employer bucket.
+        jobs.append({
+            "title": words,
+            "url": urljoin(base, href),
+            "location": "",
+            "employer": employer,
+        })
     return jobs
 
 
@@ -484,6 +563,8 @@ ADAPTERS = {
     "greenhouse": fetch_greenhouse,
     "lever": fetch_lever,
     "ashby": fetch_ashby,
+    "careerjet": fetch_careerjet,
+    "adzuna": fetch_adzuna,
     "grapevine": fetch_grapevine,
     "jsonld": fetch_jsonld,
     "html": fetch_html,
