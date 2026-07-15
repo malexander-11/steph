@@ -317,7 +317,9 @@ def fetch_adzuna(employer="Adzuna", queries=None, where="london",
     app_id = os.environ.get("ADZUNA_APP_ID")
     app_key = os.environ.get("ADZUNA_APP_KEY")
     if not (app_id and app_key):
-        raise RuntimeError("ADZUNA_APP_ID / ADZUNA_APP_KEY not set")
+        # Optional, not-yet-configured source: skip quietly (no daily error).
+        # A wrong/expired key still surfaces as an HTTP error from _get below.
+        return []
     api = "https://api.adzuna.com/v1/api/jobs/gb/search/1"
     jobs, seen = [], set()
     for q in (queries or []):

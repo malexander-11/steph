@@ -1,8 +1,8 @@
 {
- "generated": "2026-07-15 12:33 UTC",
+ "generated": "2026-07-15 12:35 UTC",
  "totals": {
   "roles": 48,
-  "employers": 14,
+  "employers": 15,
   "sources": 6
  },
  "categories": [
@@ -384,6 +384,10 @@
      ]
     },
     {
+     "name": "Adzuna (UK job search)",
+     "jobs": []
+    },
+    {
      "name": "Careerjet (UK job search)",
      "jobs": []
     }
@@ -504,7 +508,5 @@
    "reason": "member-gated ajax feed"
   }
  ],
- "errors": [
-  "Adzuna (UK job search): RuntimeError: ADZUNA_APP_ID / ADZUNA_APP_KEY not set"
- ]
+ "errors": []
 }

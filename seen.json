@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-15 12:33 UTC",
+ "generated": "2026-07-15 12:35 UTC",
  "seen_keys": [
   "https://cineflix.com/careers/creative-technologist/",
   "https://cineflix.com/careers/head-of-production/",
@@ -372,10 +372,9 @@
      "employer": "Grapevine Jobs (UK media — indies + broadcasters)"
     }
    ],
+   "Adzuna (UK job search)": [],
    "Careerjet (UK job search)": []
   }
  },
- "errors": [
-  "Adzuna (UK job search): RuntimeError: ADZUNA_APP_ID / ADZUNA_APP_KEY not set"
- ]
+ "errors": []
 }
