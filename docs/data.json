@@ -1,8 +1,8 @@
 {
- "generated": "2026-07-15 10:56 UTC",
+ "generated": "2026-07-15 11:17 UTC",
  "totals": {
   "roles": 32,
-  "employers": 13,
+  "employers": 15,
   "sources": 6
  },
  "categories": [
@@ -58,6 +58,10 @@
        "location": "Leavesden South Way"
       }
      ]
+    },
+    {
+     "name": "Apple TV+ (London)",
+     "jobs": []
     },
     {
      "name": "Sky",
@@ -177,6 +181,10 @@
      ]
     },
     {
+     "name": "Fremantle",
+     "jobs": []
+    },
+    {
      "name": "Sony Pictures Television",
      "jobs": []
     }
@@ -271,14 +279,6 @@
    "reason": "SuccessFactors (viacomcbsi) — no public JSON API"
   },
   {
-   "name": "Apple TV+",
-   "reason": "jobs.apple.com API is CSRF-gated — needs a browser session"
-  },
-  {
-   "name": "Fremantle",
-   "reason": "SuccessFactors, JS-rendered — use their email alert"
-  },
-  {
    "name": "All3Media",
    "reason": "no ATS; group roles surface on LinkedIn/Grapevine"
   },
@@ -364,7 +364,7 @@
   },
   {
    "name": "The Talent Manager",
-   "reason": "JS + login-gated — needs a browser session"
+   "reason": "login-gated even when rendered — needs credentials, not just a browser"
   },
   {
    "name": "PMA vacancies board",
