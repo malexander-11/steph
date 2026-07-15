@@ -1,7 +1,7 @@
 {
- "generated": "2026-07-15 10:50 UTC",
+ "generated": "2026-07-15 10:56 UTC",
  "totals": {
-  "roles": 36,
+  "roles": 32,
   "employers": 13,
   "sources": 6
  },
@@ -37,11 +37,6 @@
     {
      "name": "Warner Bros. Discovery",
      "jobs": [
-      {
-       "title": "External Development Manager",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-Rocksteady-Studios-Limited/External-Development-Manager_R000105605",
-       "location": "London Rocksteady Studios Limited"
-      },
       {
        "title": "Senior Analyst, Business Development, CNNIC",
        "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-160-Old-Street/Senior-Analyst--Business-Development--CNNIC_R000106090-1",
@@ -174,21 +169,6 @@
     {
      "name": "NBCUniversal",
      "jobs": [
-      {
-       "title": "Property Development Construction Director",
-       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000136751099",
-       "location": "Bedford, GB"
-      },
-      {
-       "title": "Project Director - Rail, Roadways and Resort Development",
-       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000136748146",
-       "location": "Bedford, GB"
-      },
-      {
-       "title": "Senior Project Manager - Property Development",
-       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000136749790",
-       "location": "Bedford, GB"
-      },
       {
        "title": "Digital Video Producer – Hayu, Bravo and E!",
        "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000136200609",

@@ -33,7 +33,10 @@ INCLUDE = re.compile(
 EXCLUDE = re.compile(
     r"(software|engineer|\bdevops\b|data scientist|finance|accountant"
     r"|legal counsel|cyber|security|apprentice|internship|\bintern\b"
-    r"|customer service|cleaner|chef|barista)",
+    r"|customer service|cleaner|chef|barista"
+    # non-TV noise from diversified conglomerates (theme parks, games studios):
+    r"|construction|\bresort\b|roadway|\brail\b|property development"
+    r"|external development|gameplay)",
     re.I,
 )
 # UK/London filter for the big conglomerate feeds (which are global). A job is
