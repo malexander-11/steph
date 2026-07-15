@@ -28,12 +28,6 @@ commissioning:
   - name: Warner Bros. Discovery
     platform: workday
     params: {tenant: warnerbros, site: global, wd: 5}
-  - name: Apple TV+ (London)
-    platform: headless   # jobs.apple.com renders results client-side (API is CSRF-gated)
-    params:
-      url: "https://jobs.apple.com/en-gb/search?location=london-LONC"
-      selector: 'a[href*="/details/"]'
-      wait_ms: 6000
 
 development:
   - name: Amazon MGM Studios (UK)
@@ -61,12 +55,6 @@ international_sales:
   - name: NBCUniversal
     platform: smartrecruiters
     params: {company: NBCUniversal3}
-  - name: Fremantle
-    platform: headless   # SuccessFactors board, JS-rendered
-    params:
-      url: "https://jobsearch.createyourowncareer.com/FREMANTLE/go/Fremantle_all_jobs/5381701/"
-      selector: 'a[href*="/job/"]'
-      wait_ms: 6000
   - name: Cineflix
     platform: html
     params:
@@ -92,6 +80,8 @@ no_feed:
   - {name: BBC, reason: "SuccessFactors search is JS-rendered — no server-side job list"}
   - {name: Channel 4, reason: "Salesforce fRecruit board is JS-rendered"}
   - {name: Paramount / Channel 5, reason: "SuccessFactors (viacomcbsi) — no public JSON API"}
+  - {name: Apple TV+, reason: "jobs.apple.com serves no job results to datacenter IPs (headless returns only nav chrome)"}
+  - {name: Fremantle, reason: "SuccessFactors board serves a nav-only shell to headless/datacenter access"}
   - {name: All3Media, reason: "no ATS; group roles surface on LinkedIn/Grapevine"}
   - {name: KEO Films, reason: "no careers page; hires via direct contact"}
   - {name: Expectation, reason: "no machine-readable careers page"}

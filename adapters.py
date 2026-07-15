@@ -448,8 +448,10 @@ def fetch_headless(employer, url, wait_for=None, wait_ms=4000, selector=None,
                             "employer": employer,
                         })
             elif selector:
-                rows = page.eval_on_selector_all(selector, """els => els.map(e => ({
-                    text: e.textContent.trim(),
+                # Locator.evaluate_all pierces open shadow DOM (unlike a raw
+                # document.querySelectorAll), so web-component boards work too.
+                rows = page.locator(selector).evaluate_all("""els => els.map(e => ({
+                    text: (e.textContent || '').trim(),
                     href: e.getAttribute('href') || e.href || ''
                 }))""")
                 seen = set()

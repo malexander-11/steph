@@ -51,15 +51,22 @@ with the right `platform` + `params`; no code change needed.
 
 ### Headless browser (`headless`)
 
-Some boards render jobs only via JavaScript or gate their JSON API behind a
-CSRF token (Apple, Fremantle). The `headless` platform drives real Chromium via
-Playwright to render the page, then extracts jobs either from a CSS `selector`
-(each matched `<a>` is a job) or from `application/ld+json` JobPosting blocks
-(`jsonld: true`). Params: `url`, `selector` (or `jsonld`), optional `wait_for`
-selector, `wait_ms`, `title_from_slug`. The workflow installs Chromium with
+Some boards render jobs only via JavaScript. The `headless` platform drives
+real Chromium via Playwright to render the page, then extracts jobs either from
+a CSS `selector` (each matched `<a>` is a job; the locator engine pierces open
+shadow DOM) or from `application/ld+json` JobPosting blocks (`jsonld: true`).
+Params: `url`, `selector` (or `jsonld`), optional `wait_for` selector,
+`wait_ms`, `title_from_slug`. The workflow installs Chromium with
 `playwright install --with-deps chromium`; the browser honours `HTTPS_PROXY`
 when set (a no-op on GitHub Actions). If Playwright or the browser is missing,
 that source is skipped and logged — the rest of the sweep is unaffected.
+
+The adapter is verified end-to-end but currently has **no live target**: the
+obvious candidates (Apple, Fremantle) turned out to serve no job data to a
+datacenter IP — Apple returns only page chrome and Fremantle a nav-only shell
+(confirmed against the real sites from GitHub Actions), so they sit in
+`no_feed`. The capability is wired and ready for any JS board that *does* render
+its listings to an automated browser; add a `platform: headless` entry to use it.
 
 ### `no_feed` — employers with no machine-readable vacancies
 
