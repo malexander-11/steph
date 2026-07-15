@@ -14,6 +14,7 @@ failure per-site and keep sweeping.
 """
 
 import json
+import os
 import re
 from urllib.parse import urljoin, quote_plus
 
@@ -371,8 +372,108 @@ def fetch_html(employer, url, selector, base=None, title_from_slug=False, **_):
     return jobs
 
 
+def _chromium_executable():
+    """Prefer the pre-installed browser (PLAYWRIGHT_BROWSERS_PATH); fall back to
+    Playwright's default resolution."""
+    import glob
+    root = os.environ.get("PLAYWRIGHT_BROWSERS_PATH", "")
+    if root:
+        found = sorted(glob.glob(f"{root}/chromium-*/chrome-linux/chrome"))
+        if found:
+            return found[-1]
+    return None
+
+
+def fetch_headless(employer, url, wait_for=None, wait_ms=4000, selector=None,
+                   link_attr="href", title_from_slug=False, jsonld=False,
+                   location_selector=None, **_):
+    """Render a JS/CSRF-gated board in headless Chromium and extract real jobs.
+
+    Covers sites with no JSON API and no server-rendered HTML (Apple, Fremantle,
+    The Talent Manager). Two extraction modes:
+      * jsonld=True   -> read application/ld+json JobPosting blocks from the
+                         rendered DOM.
+      * selector=CSS  -> each matched <a> is a job; title from its text (or from
+                         the URL slug when title_from_slug is set).
+
+    The browser honours HTTPS_PROXY when present (a no-op in GitHub Actions,
+    which has no proxy) and tolerates the proxy's re-signed TLS certs. Raises a
+    clear error if Playwright or the browser is unavailable, so check_jobs.py
+    records it per-source and keeps sweeping.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        raise RuntimeError("playwright not installed (pip install playwright)") from exc
+
+    proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
+    launch = {"headless": True, "args": ["--no-sandbox", "--disable-dev-shm-usage"]}
+    exe = _chromium_executable()
+    if exe:
+        launch["executable_path"] = exe
+    if proxy:
+        launch["proxy"] = {"server": proxy, "bypass": "localhost,127.0.0.1"}
+
+    jobs = []
+    with sync_playwright() as p:
+        browser = p.chromium.launch(**launch)
+        page = browser.new_context(ignore_https_errors=True,
+                                    user_agent=HEADERS["User-Agent"]).new_page()
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=45000)
+            if wait_for:
+                page.wait_for_selector(wait_for, timeout=20000)
+            page.wait_for_timeout(wait_ms)
+
+            if jsonld:
+                blocks = page.eval_on_selector_all(
+                    'script[type="application/ld+json"]',
+                    "els => els.map(e => e.textContent)")
+                for raw in blocks:
+                    try:
+                        obj = json.loads(raw or "{}")
+                    except (ValueError, TypeError):
+                        continue
+                    for node in obj if isinstance(obj, list) else [obj]:
+                        if not isinstance(node, dict) or node.get("@type") != "JobPosting":
+                            continue
+                        loc = node.get("jobLocation") or {}
+                        if isinstance(loc, list):
+                            loc = loc[0] if loc else {}
+                        addr = (loc.get("address") or {}) if isinstance(loc, dict) else {}
+                        jobs.append({
+                            "title": _clean(node.get("title")),
+                            "url": node.get("url") or url,
+                            "location": _clean(addr.get("addressLocality")),
+                            "employer": employer,
+                        })
+            elif selector:
+                rows = page.eval_on_selector_all(selector, """els => els.map(e => ({
+                    text: e.textContent.trim(),
+                    href: e.getAttribute('href') || e.href || ''
+                }))""")
+                seen = set()
+                for r in rows:
+                    href = r.get("href") or ""
+                    full = urljoin(url, href) if href else url
+                    if title_from_slug and href:
+                        slug = full.rstrip("/").rsplit("/", 1)[-1]
+                        title = _clean(slug.replace("-", " ")).title()
+                    else:
+                        title = _clean(r.get("text"))
+                    if not title or full in seen:
+                        continue
+                    seen.add(full)
+                    jobs.append({"title": title, "url": full, "location": "",
+                                 "employer": employer})
+        finally:
+            browser.close()
+    return jobs
+
+
 ADAPTERS = {
     "workday": fetch_workday,
+    "headless": fetch_headless,
     "smartrecruiters": fetch_smartrecruiters,
     "netflix": fetch_netflix,
     "amazon": fetch_amazon,

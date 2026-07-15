@@ -45,9 +45,21 @@ no_feed:
 ```
 
 Platforms: `workday`, `smartrecruiters`, `netflix`, `amazon`, `oracle`,
-`bamboohr`, `html`, `grapevine`, plus generic `greenhouse` / `lever` / `ashby`
-for future additions. Add an employer by dropping in an entry with the right
-`platform` + `params`; no code change needed.
+`bamboohr`, `html`, `grapevine`, `headless`, plus generic `greenhouse` /
+`lever` / `ashby` for future additions. Add an employer by dropping in an entry
+with the right `platform` + `params`; no code change needed.
+
+### Headless browser (`headless`)
+
+Some boards render jobs only via JavaScript or gate their JSON API behind a
+CSRF token (Apple, Fremantle). The `headless` platform drives real Chromium via
+Playwright to render the page, then extracts jobs either from a CSS `selector`
+(each matched `<a>` is a job) or from `application/ld+json` JobPosting blocks
+(`jsonld: true`). Params: `url`, `selector` (or `jsonld`), optional `wait_for`
+selector, `wait_ms`, `title_from_slug`. The workflow installs Chromium with
+`playwright install --with-deps chromium`; the browser honours `HTTPS_PROXY`
+when set (a no-op on GitHub Actions). If Playwright or the browser is missing,
+that source is skipped and logged — the rest of the sweep is unaffected.
 
 ### `no_feed` — employers with no machine-readable vacancies
 
