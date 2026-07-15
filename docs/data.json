@@ -1,8 +1,8 @@
 {
- "generated": "2026-07-15 11:17 UTC",
+ "generated": "2026-07-15 11:29 UTC",
  "totals": {
   "roles": 32,
-  "employers": 15,
+  "employers": 13,
   "sources": 6
  },
  "categories": [
@@ -58,10 +58,6 @@
        "location": "Leavesden South Way"
       }
      ]
-    },
-    {
-     "name": "Apple TV+ (London)",
-     "jobs": []
     },
     {
      "name": "Sky",
@@ -181,10 +177,6 @@
      ]
     },
     {
-     "name": "Fremantle",
-     "jobs": []
-    },
-    {
      "name": "Sony Pictures Television",
      "jobs": []
     }
@@ -277,6 +269,14 @@
   {
    "name": "Paramount / Channel 5",
    "reason": "SuccessFactors (viacomcbsi) — no public JSON API"
+  },
+  {
+   "name": "Apple TV+",
+   "reason": "jobs.apple.com serves no job results to datacenter IPs (headless returns only nav chrome)"
+  },
+  {
+   "name": "Fremantle",
+   "reason": "SuccessFactors board serves a nav-only shell to headless/datacenter access"
   },
   {
    "name": "All3Media",
