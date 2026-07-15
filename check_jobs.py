@@ -1,21 +1,29 @@
 #!/usr/bin/env python3
-"""Daily jobs sweep: fetch each watchlist page, extract job-looking links,
-diff against seen.json, and write new_jobs.md if anything new appeared."""
+"""Daily jobs sweep: pull REAL vacancies from each employer's ATS via the
+platform adapters in adapters.py, filter to relevant TV/creative roles, diff
+against the previous run, and write new_jobs.md when genuinely new roles appear.
 
+State (seen.json) holds both a cumulative set of job keys (for new-role
+detection) and the current live snapshot (for the dashboard), so the site always
+shows open roles rather than a growing history.
+"""
+
+import datetime
 import json
 import pathlib
 import re
 import sys
-from urllib.parse import urljoin
 
-import requests
 import yaml
-from bs4 import BeautifulSoup
+
+import adapters
 
 ROOT = pathlib.Path(__file__).parent
 SEEN_PATH = ROOT / "seen.json"
 REPORT_PATH = ROOT / "new_jobs.md"
 
+# Keep only relevant roles. These filter REAL job titles from the ATS feeds
+# (e.g. dropping the software/finance roles that dominate broadcaster boards).
 INCLUDE = re.compile(
     r"(commission|acquisition|development|distribut|sales|partnership"
     r"|publicit|communications|awards|talent|creative executive"
@@ -28,75 +36,111 @@ EXCLUDE = re.compile(
     r"|customer service|cleaner|chef|barista)",
     re.I,
 )
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) jobs-watch/1.0 (personal job-alert script; low volume, one visit per day)"
-}
+# UK/London filter for the big conglomerate feeds (which are global). A job is
+# kept if it has no location string (aggregator/HTML sources) or the location
+# reads as UK. This is a location gate, separate from the INCLUDE/EXCLUDE role
+# keywords — it drops Prague/Chicago/Shanghai roles from Sky/WBD/etc.
+UK_LOC = re.compile(
+    r"(united kingdom|\blondon\b|\buk\b|\bgb\b|england|scotland|wales"
+    r"|northern ireland|manchester|salford|leeds|bristol|glasgow|cardiff"
+    r"|birmingham|brentwood|leavesden|yorkshire|\bkent\b|surrey|hampshire)",
+    re.I,
+)
+
+# Sections of the watchlist that carry fetchable job sources.
+SKIP_SECTIONS = {"no_feed"}
 
 
-def load_watchlist():
-    with open(ROOT / "watchlist.yaml") as f:
-        data = yaml.safe_load(f)
-    for category, sites in data.items():
-        for site in sites or []:
-            if site.get("strategy", "html") == "html":
-                yield category, site["name"], site["url"]
+def relevant(title: str) -> bool:
+    return bool(INCLUDE.search(title) and not EXCLUDE.search(title))
 
 
-def extract_jobs(base_url: str, html: str):
-    """Return {title: url} for links that look like job postings."""
-    soup = BeautifulSoup(html, "html.parser")
-    jobs = {}
-    for a in soup.find_all("a", href=True):
-        title = " ".join(a.get_text(" ", strip=True).split())
-        if not (10 <= len(title) <= 120):
+def in_uk(location: str) -> bool:
+    return not location or bool(UK_LOC.search(location))
+
+
+def job_key(job: dict) -> str:
+    """Stable identity for a job: its apply URL, or employer|title as a fallback."""
+    return job.get("url") or f"{job.get('employer')}|{job.get('title')}"
+
+
+def load_sources():
+    """Yield (category, name, platform, params) for every active source."""
+    data = yaml.safe_load((ROOT / "watchlist.yaml").read_text())
+    for section, entries in data.items():
+        if section in SKIP_SECTIONS:
             continue
-        if not INCLUDE.search(title) or EXCLUDE.search(title):
-            continue
-        jobs[title] = urljoin(base_url, a["href"])
-    return jobs
+        for entry in entries or []:
+            if "platform" not in entry:
+                continue
+            params = dict(entry.get("params") or {})
+            params["employer"] = entry["name"]
+            yield section, entry["name"], entry["platform"], params
 
 
 def main() -> int:
-    seen = json.loads(SEEN_PATH.read_text()) if SEEN_PATH.exists() else {}
+    state = json.loads(SEEN_PATH.read_text()) if SEEN_PATH.exists() else {}
     first_run = not SEEN_PATH.exists()
-    new_items, errors = [], []
+    seen_keys = set(state.get("seen_keys", []))
 
-    for category, name, url in load_watchlist():
+    current, new_items, errors = {}, [], []
+    for category, name, platform, params in load_sources():
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=30)
-            resp.raise_for_status()
-            jobs = extract_jobs(url, resp.text)
-            if not jobs:
-                errors.append(f"{name}: fetched OK but parsed 0 job links "
-                              f"(likely JS-rendered — consider strategy: alert)")
-            site_seen = set(seen.get(name, []))
-            for title, link in jobs.items():
-                if title not in site_seen:
-                    new_items.append((category, name, title, link))
-            seen[name] = sorted(site_seen | set(jobs))
-        except Exception as exc:  # keep sweeping even if one site fails
-            errors.append(f"{name}: {exc}")
+            jobs = adapters.fetch(platform, params)
+        except Exception as exc:  # keep sweeping even if one source fails
+            errors.append(f"{name}: {type(exc).__name__}: {exc}")
+            continue
 
-    SEEN_PATH.write_text(json.dumps(seen, indent=1, sort_keys=True))
+        kept, dedup = [], set()
+        for job in jobs:
+            if not job.get("title") or not relevant(job["title"]):
+                continue
+            if not in_uk(job.get("location", "")):
+                continue
+            display_key = (job["title"].lower(), job.get("location", "").lower())
+            if display_key not in dedup:
+                dedup.add(display_key)
+                kept.append({"title": job["title"], "url": job.get("url", ""),
+                             "location": job.get("location", "")})
+            key = job_key(job)
+            if key not in seen_keys:
+                new_items.append((category, name, job["title"],
+                                  job.get("location", ""), job.get("url", "")))
+            seen_keys.add(key)
+
+        current.setdefault(category, {})[name] = kept
+
+    state = {
+        "generated": datetime.datetime.now(datetime.timezone.utc)
+        .strftime("%Y-%m-%d %H:%M UTC"),
+        "seen_keys": sorted(seen_keys),
+        "current": current,
+        "errors": errors,
+    }
+    SEEN_PATH.write_text(json.dumps(state, indent=1, ensure_ascii=False))
+
+    total = sum(len(js) for cat in current.values() for js in cat.values())
+    sources = sum(len(cat) for cat in current.values())
 
     if first_run:
-        print(f"First run: baseline stored ({sum(len(v) for v in seen.values())} "
-              f"roles across {len(seen)} sites). Diffs start tomorrow.")
+        print(f"First run: baseline stored ({total} live roles across {sources} "
+              f"sources). Diffs start tomorrow.")
         if errors:
-            print("\nSites needing attention:\n- " + "\n- ".join(errors))
+            print("\nSources that errored:\n- " + "\n- ".join(errors))
         return 0
 
     if new_items:
         lines = ["## New roles spotted\n"]
-        current = None
-        for category, name, title, link in sorted(new_items):
-            if category != current:
+        cur = None
+        for category, name, title, location, url in sorted(new_items):
+            if category != cur:
                 lines.append(f"\n### {category.replace('_', ' ').title()}\n")
-                current = category
-            lines.append(f"- **{title}** — {name} — {link}")
+                cur = category
+            loc = f" — _{location}_" if location else ""
+            link = f" — {url}" if url else ""
+            lines.append(f"- **{title}** — {name}{loc}{link}")
         if errors:
-            lines.append("\n---\n_Sites that errored (check URLs):_ "
-                         + "; ".join(errors))
+            lines.append("\n---\n_Sources that errored:_ " + "; ".join(errors))
         REPORT_PATH.write_text("\n".join(lines))
         print(f"{len(new_items)} new role(s) found — report written.")
     else:

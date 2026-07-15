@@ -3,18 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>jobs-watch — TV roles dashboard</title>
+<title>jobs-watch — live TV roles</title>
 <style>
   :root {
     --bg: #f7f7f8; --card: #ffffff; --ink: #1a1a1f; --muted: #6b6b76;
-    --line: #e6e6ea; --accent: #d6336c; --live: #2f9e44; --alert: #e8a317;
-    --chip: #f1f1f4;
+    --line: #e6e6ea; --accent: #d6336c; --chip: #f1f1f4; --loc: #4c6ef5;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #16161a; --card: #1f1f25; --ink: #ececf0; --muted: #9a9aa6;
-      --line: #2c2c34; --accent: #f06595; --live: #51cf66; --alert: #ffd43b;
-      --chip: #2a2a32;
+      --line: #2c2c34; --accent: #f06595; --chip: #2a2a32; --loc: #91a7ff;
     }
   }
   * { box-sizing: border-box; }
@@ -22,47 +20,44 @@
     margin: 0; background: var(--bg); color: var(--ink);
     font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
-  header {
-    padding: 2rem 1.25rem 1.25rem; max-width: 960px; margin: 0 auto;
-  }
+  header, main, footer { max-width: 980px; margin: 0 auto; padding: 0 1.25rem; }
+  header { padding-top: 2rem; }
   h1 { margin: 0 0 .25rem; font-size: 1.6rem; letter-spacing: -.02em; }
   h1 .dot { color: var(--accent); }
   .sub { color: var(--muted); margin: 0; font-size: .95rem; }
-  .stats { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0 0; }
+  .stats { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0 .5rem; }
   .stat {
     background: var(--card); border: 1px solid var(--line); border-radius: 10px;
     padding: .5rem .8rem; font-size: .85rem;
   }
   .stat b { font-size: 1.15rem; display: block; letter-spacing: -.02em; }
-  main { max-width: 960px; margin: 0 auto; padding: 0 1.25rem 3rem; }
   .cat { margin-top: 1.75rem; }
   .cat > h2 {
     font-size: 1.05rem; text-transform: capitalize; margin: 0 0 .6rem;
     padding-bottom: .35rem; border-bottom: 1px solid var(--line);
   }
-  .site {
-    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
-    padding: .85rem 1rem; margin-bottom: .6rem;
-  }
+  .site { background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: .85rem 1rem; margin-bottom: .6rem; }
   .site-head { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
-  .site-head a { color: var(--ink); text-decoration: none; font-weight: 600; }
-  .site-head a:hover { color: var(--accent); text-decoration: underline; }
-  .badge {
-    font-size: .68rem; text-transform: uppercase; letter-spacing: .04em;
-    padding: .1rem .45rem; border-radius: 999px; font-weight: 700;
-  }
-  .badge.html { background: color-mix(in srgb, var(--live) 18%, transparent); color: var(--live); }
-  .badge.alert { background: color-mix(in srgb, var(--alert) 20%, transparent); color: var(--alert); }
+  .site-head .name { font-weight: 600; }
   .count { color: var(--muted); font-size: .8rem; margin-left: auto; }
-  ul.roles { list-style: none; margin: .6rem 0 0; padding: 0;
-    display: flex; flex-wrap: wrap; gap: .35rem; }
-  ul.roles li {
-    background: var(--chip); border-radius: 8px; padding: .2rem .55rem;
-    font-size: .82rem; color: var(--ink);
-  }
-  .note { color: var(--muted); font-size: .82rem; margin: .5rem 0 0; }
-  footer { max-width: 960px; margin: 0 auto; padding: 0 1.25rem 3rem;
-    color: var(--muted); font-size: .8rem; }
+  ul.roles { list-style: none; margin: .55rem 0 0; padding: 0; }
+  ul.roles li { padding: .3rem 0; border-top: 1px solid var(--line); }
+  ul.roles li:first-child { border-top: 0; }
+  ul.roles a { color: var(--ink); text-decoration: none; font-weight: 500; }
+  ul.roles a:hover { color: var(--accent); text-decoration: underline; }
+  .loc { color: var(--loc); font-size: .8rem; margin-left: .4rem; white-space: nowrap; }
+  .empty { color: var(--muted); font-size: .82rem; margin: .4rem 0 0; }
+  .nofeed { margin-top: 2.25rem; }
+  .nofeed h2 { font-size: 1.05rem; margin: 0 0 .3rem; }
+  .nofeed p.lead { color: var(--muted); font-size: .85rem; margin: 0 0 .6rem; }
+  .nofeed ul { list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .3rem; }
+  .nofeed li { background: var(--card); border: 1px solid var(--line);
+    border-radius: 8px; padding: .4rem .6rem; font-size: .82rem; }
+  .nofeed .n { font-weight: 600; }
+  .nofeed .r { color: var(--muted); }
+  footer { padding: 1rem 1.25rem 3rem; color: var(--muted); font-size: .8rem; }
   footer a { color: var(--accent); }
   .err { color: var(--accent); }
 </style>
@@ -70,15 +65,15 @@
 <body>
 <header>
   <h1>jobs<span class="dot">·</span>watch</h1>
-  <p class="sub">A daily sweep of TV-industry careers pages. Live sites are scraped each weekday; alert sites need a native email signup.</p>
+  <p class="sub">Live TV-industry vacancies, pulled each weekday straight from each employer's applicant-tracking system. Only genuinely new roles trigger an email.</p>
   <div class="stats" id="stats"></div>
 </header>
-<main id="app"><p class="note">Loading…</p></main>
+<main id="app"><p class="empty">Loading…</p></main>
 <footer id="foot"></footer>
 
 <script>
 const CAP = s => s.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
-const esc = s => s.replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+const esc = s => (s || "").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
 
 fetch("./data.json")
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
@@ -92,32 +87,39 @@ fetch("./data.json")
 function render(d) {
   const t = d.totals;
   document.getElementById("stats").innerHTML = [
-    [`${t.roles}`, "roles tracked"],
-    [`${t.live}`, "live sites"],
-    [`${t.alert}`, "alert sites"],
+    [t.roles, "live roles"],
+    [t.employers, "employers"],
+    [t.sources, "categories"],
   ].map(([n, l]) => `<div class="stat"><b>${n}</b>${l}</div>`).join("");
 
-  document.getElementById("app").innerHTML = d.categories.map(cat => {
+  const cats = d.categories.map(cat => {
     const sites = cat.sites.map(s => {
-      const cls = s.strategy === "html" ? "html" : "alert";
-      const label = s.strategy === "html" ? "live" : "alert";
-      const roles = (s.roles && s.roles.length)
-        ? `<ul class="roles">${s.roles.map(r => `<li>${esc(r)}</li>`).join("")}</ul>`
-        : (s.strategy === "html"
-            ? `<p class="note">No matching roles right now.</p>`
-            : `<p class="note">JS-rendered or blocked — set a native email alert.</p>`);
-      const count = s.strategy === "html"
-        ? `<span class="count">${(s.roles || []).length} role(s)</span>` : "";
-      return `<div class="site"><div class="site-head">` +
-        `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` +
-        `<span class="badge ${cls}">${label}</span>${count}</div>${roles}</div>`;
+      const rows = (s.jobs && s.jobs.length)
+        ? `<ul class="roles">${s.jobs.map(j => {
+            const loc = j.location ? `<span class="loc">${esc(j.location)}</span>` : "";
+            const t = esc(j.title);
+            return `<li>${j.url ? `<a href="${esc(j.url)}" target="_blank" rel="noopener">${t}</a>` : t}${loc}</li>`;
+          }).join("")}</ul>`
+        : `<p class="empty">No matching roles open right now.</p>`;
+      return `<div class="site"><div class="site-head"><span class="name">${esc(s.name)}</span>` +
+        `<span class="count">${(s.jobs || []).length}</span></div>${rows}</div>`;
     }).join("");
     return `<section class="cat"><h2>${esc(CAP(cat.name))}</h2>${sites}</section>`;
   }).join("");
 
+  const nofeed = (d.no_feed && d.no_feed.length) ? `
+    <section class="nofeed">
+      <h2>No machine-readable feed</h2>
+      <p class="lead">These employers publish no scrapable vacancy feed (JS/login-gated ATS, email-only, or LinkedIn). Their London roles typically surface via the Grapevine aggregator above; set a native email alert for any you want directly.</p>
+      <ul>${d.no_feed.map(n => `<li><span class="n">${esc(n.name)}</span> — <span class="r">${esc(n.reason)}</span></li>`).join("")}</ul>
+    </section>` : "";
+
+  document.getElementById("app").innerHTML = cats + nofeed;
+
+  const errs = (d.errors && d.errors.length)
+    ? ` · <span class="err">${d.errors.length} source(s) errored this run</span>` : "";
   document.getElementById("foot").innerHTML =
-    `Baseline generated ${esc(d.generated)}. New roles arrive by email via GitHub issues; ` +
-    `this page mirrors the current baseline. ` +
+    `Updated ${esc(d.generated)}. New roles are emailed via GitHub issues; this page shows all currently-open matches.${errs} ` +
     `<a href="https://github.com/malexander-11/steph" target="_blank" rel="noopener">Source</a>.`;
 }
 </script>

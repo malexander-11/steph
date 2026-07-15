@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Generate docs/data.json for the GitHub Pages dashboard from watchlist.yaml
-and seen.json. Run after check_jobs.py so the page reflects the latest baseline.
-No new dependencies — reuses pyyaml, already required by the sweep."""
+"""Generate docs/data.json for the GitHub Pages dashboard from the live snapshot
+in seen.json plus the no_feed reference list in watchlist.yaml. Run after
+check_jobs.py. No new dependencies (reuses pyyaml)."""
 
-import datetime
 import json
 import pathlib
 
@@ -14,40 +13,42 @@ DOCS = ROOT / "docs"
 
 
 def main() -> int:
+    state = json.loads((ROOT / "seen.json").read_text())
     watchlist = yaml.safe_load((ROOT / "watchlist.yaml").read_text())
-    seen_path = ROOT / "seen.json"
-    seen = json.loads(seen_path.read_text()) if seen_path.exists() else {}
 
-    categories, live, alert, total_roles = [], 0, 0, 0
-    for category, sites in watchlist.items():
-        entries = []
-        for site in sites or []:
-            strategy = site.get("strategy", "html")
-            roles = seen.get(site["name"], []) if strategy == "html" else []
-            if strategy == "html":
-                live += 1
-                total_roles += len(roles)
-            else:
-                alert += 1
-            entries.append({
-                "name": site["name"],
-                "url": site["url"],
-                "strategy": strategy,
-                "roles": roles,
-            })
-        categories.append({"name": category, "sites": entries})
+    current = state.get("current", {})
+    categories, total_roles, employers = [], 0, 0
+    for category, emps in current.items():
+        sites = []
+        for name, jobs in emps.items():
+            total_roles += len(jobs)
+            employers += 1
+            sites.append({"name": name, "jobs": jobs})
+        # Show employers with roles first, then the empty ones.
+        sites.sort(key=lambda s: (len(s["jobs"]) == 0, s["name"].lower()))
+        categories.append({"name": category, "sites": sites})
+
+    no_feed = [
+        {"name": e["name"], "reason": e.get("reason", "")}
+        for e in (watchlist.get("no_feed") or [])
+    ]
 
     data = {
-        "generated": datetime.datetime.now(datetime.timezone.utc)
-        .strftime("%Y-%m-%d %H:%M UTC"),
-        "totals": {"live": live, "alert": alert, "roles": total_roles},
+        "generated": state.get("generated", ""),
+        "totals": {
+            "roles": total_roles,
+            "employers": employers,
+            "sources": len(current),
+        },
         "categories": categories,
+        "no_feed": no_feed,
+        "errors": state.get("errors", []),
     }
 
     DOCS.mkdir(exist_ok=True)
     (DOCS / "data.json").write_text(json.dumps(data, indent=1, ensure_ascii=False))
-    print(f"Wrote docs/data.json — {live} live sites, {alert} alert sites, "
-          f"{total_roles} roles.")
+    print(f"Wrote docs/data.json — {total_roles} live roles across "
+          f"{employers} employers; {len(no_feed)} no-feed entries.")
     return 0
 
 
