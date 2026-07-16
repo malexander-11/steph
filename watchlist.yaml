@@ -91,17 +91,28 @@ aggregators:
     platform: grapevine
     params: {records: 100}
   # Keyword job-search APIs — surface target roles across the whole market,
-  # including indies with no ATS. Adzuna needs free keys (GitHub secrets
-  # ADZUNA_APP_ID / ADZUNA_APP_KEY) and skips gracefully until they're set.
-  # Careerjet needs a partner affid (env CAREERJET_AFFID). Queries reuse the
-  # watch's vocabulary; results are still filtered by INCLUDE/EXCLUDE + UK gate.
+  # including indies with no ATS. Each needs a free key (GitHub secrets), and
+  # skips gracefully until set: Adzuna (ADZUNA_APP_ID / ADZUNA_APP_KEY), Reed
+  # (REED_API_KEY). Careerjet needs a partner affid (CAREERJET_AFFID). Results
+  # are still filtered by INCLUDE/EXCLUDE + UK gate.
   - name: Adzuna (UK job search)
     platform: adzuna
     params:
+      pages: 3
       queries: ["television commissioning", "content acquisitions",
                 "development producer television", "tv distribution sales",
                 "head of unscripted", "factual entertainment commissioner",
-                "television publicist communications", "talent agent television"]
+                "television publicist communications", "talent agent television",
+                "media distribution", "streaming partnerships",
+                "tv drama development", "entertainment commissioning",
+                "press officer television"]
+  - name: Reed (UK job search)
+    platform: reed
+    params:
+      queries: ["television commissioning", "content acquisitions",
+                "development producer television", "tv distribution sales",
+                "head of unscripted", "entertainment commissioning",
+                "television publicist", "media partnerships"]
   - name: Careerjet (UK job search)
     platform: careerjet
     params:

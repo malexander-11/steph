@@ -307,37 +307,84 @@ def fetch_careerjet(employer="Careerjet", queries=None, location="london", **_):
     return jobs
 
 
+def _salary_str(low, high):
+    """Human salary from numeric min/max (e.g. '£45k–£60k'), or '' if unknown."""
+    def k(v):
+        try:
+            v = float(v)
+        except (TypeError, ValueError):
+            return None
+        return f"£{v/1000:.0f}k" if v >= 1000 else f"£{v:.0f}"
+    lo, hi = k(low), k(high)
+    if lo and hi and lo != hi:
+        return f"{lo}–{hi}"
+    return lo or hi or ""
+
+
 def fetch_adzuna(employer="Adzuna", queries=None, where="london",
-                 results_per_page=50, **_):
+                 results_per_page=50, pages=3, **_):
     """Adzuna job search API. Keyed via env ADZUNA_APP_ID / ADZUNA_APP_KEY (free
-    self-signup, stored as GitHub secrets). Runs each keyword phrase and dedups
-    by URL. Raises if the keys are absent so check_jobs logs it per-source and
-    keeps sweeping.
+    self-signup, stored as GitHub secrets). Runs each keyword phrase across
+    `pages` pages (most-recent first) and dedups by URL. Skips quietly when the
+    keys are absent so the sweep stays green until they're configured.
     """
     app_id = os.environ.get("ADZUNA_APP_ID")
     app_key = os.environ.get("ADZUNA_APP_KEY")
     if not (app_id and app_key):
-        # Optional, not-yet-configured source: skip quietly (no daily error).
-        # A wrong/expired key still surfaces as an HTTP error from _get below.
         return []
-    api = "https://api.adzuna.com/v1/api/jobs/gb/search/1"
     jobs, seen = [], set()
     for q in (queries or []):
-        params = {"app_id": app_id, "app_key": app_key, "what": q,
-                  "where": where, "results_per_page": results_per_page,
-                  "content-type": "application/json"}
-        data = _get(api, params=params).json()
+        for page in range(1, min(pages, MAX_PAGES) + 1):
+            api = f"https://api.adzuna.com/v1/api/jobs/gb/search/{page}"
+            params = {"app_id": app_id, "app_key": app_key, "what": q,
+                      "where": where, "results_per_page": results_per_page,
+                      "sort_by": "date", "content-type": "application/json"}
+            batch = _get(api, params=params).json().get("results", [])
+            if not batch:
+                break
+            for j in batch:
+                url = j.get("redirect_url")
+                if not url or url in seen:
+                    continue
+                seen.add(url)
+                jobs.append({
+                    "title": _clean(j.get("title")),
+                    "url": url,
+                    "location": _clean((j.get("location") or {}).get("display_name")),
+                    "employer": _clean((j.get("company") or {}).get("display_name"))
+                    or employer,
+                    "salary": _salary_str(j.get("salary_min"), j.get("salary_max")),
+                })
+    return jobs
+
+
+def fetch_reed(employer="Reed", queries=None, location="london",
+               distance=10, **_):
+    """Reed.co.uk job search API. Keyed via env REED_API_KEY (free self-signup;
+    HTTP Basic auth with the key as username, blank password). Runs each keyword
+    phrase and dedups by URL. Skips quietly when the key is absent.
+    """
+    key = os.environ.get("REED_API_KEY")
+    if not key:
+        return []
+    api = "https://www.reed.co.uk/api/1.0/search"
+    jobs, seen = [], set()
+    for q in (queries or []):
+        params = {"keywords": q, "locationName": location,
+                  "distanceFromLocation": distance, "resultsToTake": 100}
+        data = requests.get(api, params=params, headers=HEADERS,
+                            timeout=TIMEOUT, auth=(key, "")).json()
         for j in data.get("results", []):
-            url = j.get("redirect_url")
+            url = j.get("jobUrl")
             if not url or url in seen:
                 continue
             seen.add(url)
             jobs.append({
-                "title": _clean(j.get("title")),
+                "title": _clean(j.get("jobTitle")),
                 "url": url,
-                "location": _clean((j.get("location") or {}).get("display_name")),
-                "employer": _clean((j.get("company") or {}).get("display_name"))
-                or employer,
+                "location": _clean(j.get("locationName")),
+                "employer": _clean(j.get("employerName")) or employer,
+                "salary": _salary_str(j.get("minimumSalary"), j.get("maximumSalary")),
             })
     return jobs
 
@@ -346,36 +393,58 @@ def fetch_adzuna(employer="Adzuna", queries=None, where="london",
 # HTML / JSON-LD adapters (genuinely server-rendered sources only)
 # --------------------------------------------------------------------------- #
 
-_GRAPEVINE_HREF = re.compile(
-    r'href="(/(?:executive_)?mediajobs/(\d+),([^"]+?)\.html)"', re.I)
+_GRAPEVINE_SLUG = re.compile(r"/(?:executive_)?mediajobs/(\d+),(.+?)\.html", re.I)
 
 
-def fetch_grapevine(employer, records=100, **_):
-    """Grapevine Jobs — the UK media aggregator. Server-rendered, so the HTML
-    carries every listing. Each href is self-describing:
-    /(executive_)?mediajobs/{id},{Title_Words}_{Employer}.html — we parse title +
-    employer straight out of the slug. The full live pool is ~49 roles, so one
-    request for `records` (default 100) captures everything; this avoids the
-    page-3 session-reset shell the old page loop hit. Backbone for indie prodcos
-    + broadcasters with no feed of their own.
+def _grapevine_employer(slug, title):
+    """Derive the employer from a Grapevine slug given the card's clean title.
+    The slug is '{Title_Words}_{Employer_Words}' with no delimiter, so we drop
+    the leading run of slug words that appear in the title; the remainder is the
+    employer (dropping the trailing '_FJ' featured marker)."""
+    slug_words = [w for w in slug.replace("_", " ").split() if w]
+    title_set = set(re.sub(r"[^a-z0-9 ]", " ", (title or "").lower()).split())
+    i = 0
+    while i < len(slug_words) and slug_words[i].lower() in title_set:
+        i += 1
+    tail = [w for w in slug_words[i:] if w.upper() != "FJ"]
+    return " ".join(tail).strip()
+
+
+def fetch_grapevine(employer="Grapevine", records=100, **_):
+    """Grapevine Jobs — the UK media aggregator. Server-rendered: one request for
+    `records` (default 100) captures the whole ~49-role pool and avoids the
+    page-3 session-reset shell. Parses each job CARD for a clean title, location
+    and salary, and derives the real employer from the slug — so listings read
+    properly and cross-source dedup can merge them with direct ATS feeds.
+    Backbone for indie prodcos + broadcasters with no feed of their own.
     """
     base = "https://www.grapevinejobs.co.uk"
     url = (f"{base}/jobseeker/jobseeker_jobs.aspx"
            f"?page=1&screen=1&number_of_records={records}")
-    html = _get(url).text
-    seen_ids, jobs = set(), []
-    for href, jid, slug in _GRAPEVINE_HREF.findall(html):
-        if jid in seen_ids:
+    soup = BeautifulSoup(_get(url).text, "html.parser")
+    # Title (in the card wrapper) and location/salary/link (in the sibling
+    # footer) each appear once per job in DOM order, so we zip the parallel lists.
+    titles = soup.select(".new-job-card-inner-job-title")
+    links = soup.select("a.new-job-card-footer-details[href]")
+    locs = soup.select(".new-job-card-footer-location")
+    sals = soup.select(".new-job-card-footer-salary")
+    jobs, seen = [], set()
+    for i, link in enumerate(links):
+        m = _GRAPEVINE_SLUG.search(link["href"])
+        if not m or m.group(1) in seen:
             continue
-        seen_ids.add(jid)
-        words = slug.replace("_", " ").strip()
-        # Slug is "Title Words Employer" — surface the whole slug as the title
-        # (reads as "Role — Employer"); keep the aggregator as the employer bucket.
+        seen.add(m.group(1))
+        title = _clean(titles[i].get_text(" ", strip=True)) if i < len(titles) else ""
+        loc = _clean(locs[i].get_text(" ", strip=True)) if i < len(locs) else ""
+        sal_el = sals[i] if i < len(sals) else None
+        salary = "" if (not sal_el or "hidden" in (sal_el.get("class") or [])) \
+            else _clean(sal_el.get_text(" ", strip=True))
         jobs.append({
-            "title": words,
-            "url": urljoin(base, href),
-            "location": "",
-            "employer": employer,
+            "title": title,
+            "url": urljoin(base, link["href"]),
+            "location": loc,
+            "employer": _grapevine_employer(m.group(2), title) or employer,
+            "salary": salary,
         })
     return jobs
 
@@ -567,6 +636,7 @@ ADAPTERS = {
     "ashby": fetch_ashby,
     "careerjet": fetch_careerjet,
     "adzuna": fetch_adzuna,
+    "reed": fetch_reed,
     "grapevine": fetch_grapevine,
     "jsonld": fetch_jsonld,
     "html": fetch_html,

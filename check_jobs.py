@@ -39,7 +39,10 @@ EXCLUDE = re.compile(
     r"|customer service|cleaner|chef|barista|moderator"
     # non-TV noise from diversified conglomerates (theme parks, games studios):
     r"|construction|\bresort\b|roadway|\brail\b|property development"
-    r"|external development|gameplay)",
+    r"|external development|gameplay"
+    # back-office / finance / retail noise that keyword INCLUDE lets slip:
+    r"|audit|statutory|ledger|royalty|payroll|treasury|\btax\b|procurement"
+    r"|actuar|bookkeep|stylist|warehouse|\bdriver\b)",
     re.I,
 )
 # UK/London filter for the big conglomerate feeds (which are global). A job is
@@ -72,7 +75,7 @@ def job_key(job: dict) -> str:
 
 # Aggregators pull the same role many other sources also carry, so they run
 # LAST and their duplicates are dropped in favour of the direct-ATS entry.
-AGGREGATOR_PLATFORMS = {"careerjet", "adzuna", "grapevine"}
+AGGREGATOR_PLATFORMS = {"careerjet", "adzuna", "reed", "grapevine"}
 
 
 def norm(text: str) -> str:
@@ -128,7 +131,7 @@ def main() -> int:
             global_seen.add(gkey)
             kept.append({"title": job["title"], "url": job.get("url", ""),
                          "location": job.get("location", ""),
-                         "employer": employer})
+                         "employer": employer, "salary": job.get("salary", "")})
             key = job_key(job)
             if key not in seen_keys:
                 new_items.append((category, name, job["title"],

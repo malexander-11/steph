@@ -28,14 +28,19 @@ Roles are then filtered:
 
 ### Aggregator APIs (broaden coverage)
 
-`adzuna` and `careerjet` are keyword job-search APIs that surface target roles
-across the whole market — including indies with no ATS of their own. Each takes
-a `queries` list (TV/creative phrases) and returns the real employer per job.
-- **Adzuna** needs a free key: create one at developer.adzuna.com, then add repo
-  secrets `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` (Settings → Secrets → Actions).
-  Until they're set it skips gracefully (logged, non-fatal).
-- **Careerjet** needs a partner `affid` (env `CAREERJET_AFFID`) — its keyless
-  legacy endpoint is being retired, so without a valid affid it returns nothing.
+`adzuna`, `reed` and `careerjet` are keyword job-search APIs that surface target
+roles across the whole market — including indies with no ATS of their own. Each
+takes a `queries` list (TV/creative phrases) and returns the real employer +
+salary per job. All skip gracefully until their key is set, so the sweep stays
+green meanwhile.
+- **Adzuna** — free key at developer.adzuna.com → repo secrets `ADZUNA_APP_ID`
+  and `ADZUNA_APP_KEY` (Settings → Secrets and variables → Actions). Pages 3 deep
+  per query, most-recent first.
+- **Reed** — free key at reed.co.uk/developers → secret `REED_API_KEY`.
+- **Careerjet** — needs a partner `affid` (`CAREERJET_AFFID`); its keyless legacy
+  endpoint was retired, so without a valid affid it returns nothing.
+
+Salary (where a source provides it) shows as a tag on the dashboard.
 
 State lives in `seen.json`: a cumulative set of job keys (for new-role
 detection) plus the current live snapshot (for the dashboard).
