@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-16 13:14 UTC",
+ "generated": "2026-07-16 13:16 UTC",
  "seen_keys": [
   "https://apply.workable.com/futureplc/j/07CAC04A62",
   "https://apply.workable.com/futureplc/j/0879920AC9",
@@ -989,11 +989,12 @@
      "salary": ""
     }
    ],
-   "Screen Alliance Wales": [],
    "Adzuna (UK job search)": [],
    "Reed (UK job search)": [],
    "Careerjet (UK job search)": []
   }
  },
- "errors": []
+ "errors": [
+  "Screen Alliance Wales: HTTPError: 403 Client Error: Forbidden for url: https://www.screenalliancewales.com/vacancies/"
+ ]
 }
