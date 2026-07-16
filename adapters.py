@@ -24,6 +24,10 @@ from bs4 import BeautifulSoup
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) jobs-watch/1.0 (personal job-alert script; low volume, one visit per day)"
 }
+# Some boards (Guardian/Madgex) 403 the honest jobs-watch UA — use a plain
+# browser UA for those.
+BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 TIMEOUT = 30
 # Politeness / safety cap: never page a single source forever.
 MAX_PAGES = 15
@@ -389,6 +393,137 @@ def fetch_reed(employer="Reed", queries=None, location="london",
     return jobs
 
 
+def fetch_rss(employer="RSS", feeds=None, **_):
+    """Generic RSS/Atom job feed. Covers Guardian Jobs (Media, Marketing & PR),
+    whose Madgex feeds 403 the jobs-watch UA — so we send a browser UA. Item
+    <title> is 'EMPLOYER: Job Title'; <description> carries salary (first line)
+    and location (last line). `feeds` is a list of feed URLs. Dedups by url.
+    """
+    import xml.etree.ElementTree as ET
+    headers = {"User-Agent": BROWSER_UA}
+    jobs, seen = [], set()
+    for feed in (feeds or []):
+        xml = requests.get(feed, headers=headers, timeout=TIMEOUT).text
+        try:
+            root = ET.fromstring(xml)
+        except ET.ParseError:
+            continue
+        for item in root.iter("item"):
+            title_raw = _clean((item.findtext("title") or ""))
+            link = (item.findtext("link") or "").split("?")[0].strip()
+            if not title_raw or not link or link in seen:
+                continue
+            seen.add(link)
+            emp, _, title = title_raw.partition(":")
+            title = _clean(title) or title_raw
+            employer_name = _clean(emp) if title != title_raw else employer
+            desc_lines = [ln.strip() for ln in re.sub(r"<[^>]+>", "\n",
+                          item.findtext("description") or "").split("\n")
+                          if ln.strip()]
+            salary = desc_lines[0].strip(": ") if desc_lines and "£" in desc_lines[0] else ""
+            location = desc_lines[-1] if desc_lines else ""
+            jobs.append({"title": title, "url": link, "location": _clean(location),
+                         "employer": employer_name, "salary": _clean(salary)})
+    return jobs
+
+
+def fetch_recruitee(employer, company, country="GB", **_):
+    """Recruitee ATS. Covers Framestore, Insanity Group. Filters to `country`."""
+    api = f"https://{company}.recruitee.com/api/offers/"
+    data = _get(api).json()
+    jobs = []
+    for o in data.get("offers", []):
+        if country and (o.get("country_code") or "").upper() != country.upper():
+            continue
+        jobs.append({
+            "title": _clean(o.get("title")),
+            "url": o.get("careers_url") or f"https://{company}.recruitee.com/o/{o.get('slug')}",
+            "location": _clean(o.get("city")),
+            "employer": employer,
+            "salary": "",
+        })
+    return jobs
+
+
+def fetch_pinpoint(employer, company, country="UK", **_):
+    """Pinpoint ATS (public postings.json). Covers DAZN. Location strings are
+    prefixed 'UK - City', so we gate on that prefix."""
+    api = f"https://{company}.pinpointhq.com/postings.json"
+    data = _get(api).json()
+    jobs = []
+    for p in data.get("data", []):
+        loc = _clean((p.get("location") or {}).get("name"))
+        if country and not loc.upper().startswith(country.upper()):
+            continue
+        jobs.append({
+            "title": _clean(p.get("title")),
+            "url": p.get("url"),
+            "location": loc,
+            "employer": employer,
+            "salary": "",
+        })
+    return jobs
+
+
+def fetch_workable(employer, account, country="United Kingdom", **_):
+    """Workable ATS (public v3 API). Covers Future plc. Pages on meta.nextPage;
+    filters to `country`."""
+    api = f"https://apply.workable.com/api/v3/accounts/{account}/jobs"
+    jobs, token = [], None
+    for _page in range(MAX_PAGES):
+        payload = {"token": token} if token else {}
+        data = _post(api, payload).json()
+        for j in data.get("results", []):
+            loc = j.get("location") or {}
+            if country and _clean(loc.get("country")).lower() != country.lower():
+                continue
+            code = j.get("shortcode")
+            jobs.append({
+                "title": _clean(j.get("title")),
+                "url": f"https://apply.workable.com/{account}/j/{code}" if code
+                else f"https://apply.workable.com/{account}",
+                "location": _clean(loc.get("city")),
+                "employer": employer,
+                "salary": "",
+            })
+        token = data.get("nextPage")
+        if not token:
+            break
+    return jobs
+
+
+_SITEMAP_ITEM = re.compile(
+    r"<url>\s*<loc>([^<]+)</loc>(?:\s*<lastmod>([^<]+)</lastmod>)?", re.I | re.S)
+
+
+def fetch_sitemap(employer, url, path="/job/", days=45, base=None, **_):
+    """Scrape an XML sitemap for recent job URLs, deriving the title from the
+    slug. Covers Creative Access (opportunities.creativeaccess.org.uk). Keeps
+    <loc>s containing `path` whose <lastmod> is within `days` (undated kept)."""
+    import datetime
+    cutoff = (datetime.datetime.now(datetime.timezone.utc)
+              - datetime.timedelta(days=days))
+    xml = _get(url).text
+    jobs, seen = [], set()
+    for loc, lastmod in _SITEMAP_ITEM.findall(xml):
+        loc = loc.strip()
+        if path not in loc or loc in seen:
+            continue
+        if lastmod:
+            try:
+                if datetime.datetime.fromisoformat(lastmod.strip()) < cutoff:
+                    continue
+            except ValueError:
+                pass
+        seen.add(loc)
+        slug = loc.rstrip("/").rsplit("/", 1)[-1]
+        slug = re.sub(r"-\d+$", "", slug)  # drop trailing numeric id
+        title = _clean(slug.replace("-", " ")).title()
+        jobs.append({"title": title, "url": urljoin(base or url, loc),
+                     "location": "", "employer": employer, "salary": ""})
+    return jobs
+
+
 # --------------------------------------------------------------------------- #
 # HTML / JSON-LD adapters (genuinely server-rendered sources only)
 # --------------------------------------------------------------------------- #
@@ -493,32 +628,40 @@ def fetch_jsonld(employer, list_url, link_re, base=None, **_):
     return jobs
 
 
-def fetch_html(employer, url, selector, base=None, title_from_slug=False, **_):
+def fetch_html(employer, url, selector, base=None, title_from_slug=False,
+               location_selector=None, pages=1, **_):
     """Bespoke server-rendered scrape for boards that render job links in the
-    initial HTML but have no JSON API. Covers Cineflix.
-    `selector` is a CSS selector matching each job's <a>. When the anchor text
-    bleeds into the job description, set title_from_slug to derive a clean title
-    from the URL's last path segment instead.
+    initial HTML but have no JSON API. Covers Cineflix, ProductionBase, Screen
+    Alliance Wales. `selector` matches each job's <a>; title_from_slug derives a
+    clean title from the URL slug. `pages` follows path-pagination (url, url/2 …
+    url/N). `location_selector` reads a parallel per-job location list (zipped by
+    index, as job cards render title and location in separate sibling elements).
     """
     base = base or url
-    html = _get(url).text
-    soup = BeautifulSoup(html, "html.parser")
     jobs, seen = [], set()
-    for a in soup.select(selector):
-        href = a.get("href")
-        if not href:
-            continue
-        full = urljoin(base, href)
-        if title_from_slug:
-            slug = full.rstrip("/").rsplit("/", 1)[-1]
-            title = _clean(slug.replace("-", " ")).title()
-        else:
-            title = _clean(a.get_text(" ", strip=True))
-        if not title or full in seen:
-            continue
-        seen.add(full)
-        jobs.append({"title": title, "url": full, "location": "",
-                     "employer": employer})
+    for page in range(1, min(pages, MAX_PAGES) + 1):
+        page_url = url if page == 1 else f"{url.rstrip('/')}/{page}"
+        soup = BeautifulSoup(_get(page_url).text, "html.parser")
+        anchors = soup.select(selector)
+        if not anchors:
+            break
+        locs = soup.select(location_selector) if location_selector else []
+        for i, a in enumerate(anchors):
+            href = a.get("href")
+            if not href:
+                continue
+            full = urljoin(base, href)
+            if title_from_slug:
+                slug = full.rstrip("/").rsplit("/", 1)[-1]
+                title = _clean(slug.replace("-", " ")).title()
+            else:
+                title = _clean(a.get_text(" ", strip=True))
+            if not title or full in seen:
+                continue
+            seen.add(full)
+            location = _clean(locs[i].get_text(" ", strip=True)) if i < len(locs) else ""
+            jobs.append({"title": title, "url": full, "location": location,
+                         "employer": employer, "salary": ""})
     return jobs
 
 
@@ -637,6 +780,11 @@ ADAPTERS = {
     "careerjet": fetch_careerjet,
     "adzuna": fetch_adzuna,
     "reed": fetch_reed,
+    "rss": fetch_rss,
+    "recruitee": fetch_recruitee,
+    "pinpoint": fetch_pinpoint,
+    "workable": fetch_workable,
+    "sitemap": fetch_sitemap,
     "grapevine": fetch_grapevine,
     "jsonld": fetch_jsonld,
     "html": fetch_html,

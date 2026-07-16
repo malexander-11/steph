@@ -55,6 +55,17 @@ UK_LOC = re.compile(
     r"|birmingham|brentwood|leavesden|yorkshire|\bkent\b|surrey|hampshire)",
     re.I,
 )
+# Explicit non-UK signals — drop these even from uk_scoped sources, which catch
+# the occasional foreign role a "GB" feed still leaks (Guardian → Ontario;
+# ProductionBase → Dublin; Recruitee/Workable → overseas offices).
+NON_UK = re.compile(
+    r"(canada|ontario|toronto|united states|\bu\.?s\.?a\.?\b|australia|sydney"
+    r"|melbourne|\bdublin\b|republic of ireland|new york|los angeles"
+    r"|\bcalifornia\b|\bflorida\b|singapore|germany|munich|berlin|amsterdam"
+    r"|netherlands|prague|madrid|\bparis\b|mumbai|\bindia\b|brazil|\bmiami\b"
+    r"|chicago|shanghai|hong kong|dubai|tokyo|\bjapan\b|seoul)",
+    re.I,
+)
 
 # Sections of the watchlist that carry fetchable job sources.
 SKIP_SECTIONS = {"no_feed"}
@@ -73,9 +84,10 @@ def job_key(job: dict) -> str:
     return job.get("url") or f"{job.get('employer')}|{job.get('title')}"
 
 
-# Aggregators pull the same role many other sources also carry, so they run
-# LAST and their duplicates are dropped in favour of the direct-ATS entry.
-AGGREGATOR_PLATFORMS = {"careerjet", "adzuna", "reed", "grapevine"}
+# The `aggregators` watchlist section holds board scrapers that carry roles many
+# direct-employer feeds also list, so they run LAST and their duplicates are
+# dropped in favour of the direct-ATS entry.
+AGGREGATOR_SECTION = "aggregators"
 
 
 def norm(text: str) -> str:
@@ -85,7 +97,7 @@ def norm(text: str) -> str:
 
 def load_sources():
     """Yield (category, name, platform, params, uk_scoped) for every active
-    source, with aggregator platforms ordered last (for dedup precedence)."""
+    source, with the aggregators section ordered last (for dedup precedence)."""
     data = yaml.safe_load((ROOT / "watchlist.yaml").read_text())
     rows = []
     for section, entries in data.items():
@@ -98,7 +110,7 @@ def load_sources():
             params["employer"] = entry["name"]
             rows.append((section, entry["name"], entry["platform"], params,
                          bool(entry.get("uk_scoped", False))))
-    rows.sort(key=lambda r: r[2] in AGGREGATOR_PLATFORMS)
+    rows.sort(key=lambda r: r[0] == AGGREGATOR_SECTION)
     return rows
 
 
@@ -120,12 +132,20 @@ def main() -> int:
         for job in jobs:
             if not job.get("title") or not relevant(job["title"]):
                 continue
+            loc = job.get("location", "")
+            # Explicit foreign locations are dropped even from uk_scoped sources.
+            if loc and NON_UK.search(loc):
+                continue
             # uk_scoped sources (country-facet Workday, UK-native ATS) are
-            # already UK-only; the location gate only applies to global feeds.
-            if not uk_scoped and not in_uk(job.get("location", "")):
+            # already UK-only; the UK allowlist only applies to global feeds.
+            if not uk_scoped and not in_uk(loc):
                 continue
             employer = job.get("employer", name)
-            gkey = (norm(employer), norm(job["title"]))
+            # Dedup across sources on (employer, title). When the employer is
+            # blank (e.g. ProductionBase hides it), many distinct roles share a
+            # title, so fall back to the URL to avoid collapsing them.
+            gkey = ((norm(employer), norm(job["title"])) if norm(employer)
+                    else ("", job.get("url", "")))
             if gkey in global_seen:
                 continue
             global_seen.add(gkey)

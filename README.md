@@ -65,9 +65,24 @@ no_feed:
 ```
 
 Platforms: `workday`, `smartrecruiters`, `netflix`, `amazon`, `oracle`,
-`bamboohr`, `html`, `grapevine`, `adzuna`, `careerjet`, `headless`, plus generic
-`greenhouse` / `lever` / `ashby` for future additions. Add an employer by
-dropping in an entry with the right `platform` + `params`; no code change needed.
+`bamboohr`, `recruitee`, `pinpoint`, `workable`, `html`, `grapevine`, `rss`,
+`sitemap`, `adzuna`, `reed`, `careerjet`, `headless`, plus generic `greenhouse` /
+`lever` / `ashby`. Add an employer by dropping in an entry with the right
+`platform` + `params`; no code change needed.
+
+Server-rendered / feed sources added by scraping harder than a curl-only pass:
+- `rss` — RSS/Atom feeds (Guardian Jobs Media + Marketing/PR). Uses a browser
+  User-Agent (`BROWSER_UA`) since Madgex 403s the default UA.
+- `recruitee` / `pinpoint` / `workable` — ATS JSON APIs (Insanity, Framestore /
+  DAZN / Future plc), UK-gated in-adapter.
+- `sitemap` — recent `/job/` URLs from an XML sitemap, title from slug
+  (Creative Access).
+- `html` gained `pages` (path-pagination `/N`) and `location_selector`
+  (ProductionBase, ~220 film/TV roles; Screen Alliance Wales).
+
+Some high-value boards (Mandy, ScreenSkills, Campaign/PRWeek, Broadcast) sit
+behind Imperva/Cloudflare that blocks datacenter IPs, so they can't be scraped
+from GitHub Actions — a residential proxy would be required.
 
 ### Headless browser (`headless`)
 

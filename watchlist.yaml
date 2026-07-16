@@ -47,6 +47,10 @@ commissioning:
       site: global
       wd: 5
       applied_facets: {locationCountry: ["29247e57dbaf46fb855b224e03170bc7"]}
+  - name: DAZN
+    platform: pinpoint
+    uk_scoped: true   # adapter gates on the "UK - …" location prefix
+    params: {company: dazn}
 
 development:
   - name: Amazon MGM Studios (UK)
@@ -55,6 +59,10 @@ development:
   - name: Banijay UK (Endemol Shine)
     platform: workday
     params: {tenant: endemolshine, site: EndemolShine_UK_Jobs, wd: 3}
+  - name: Framestore
+    platform: recruitee
+    uk_scoped: true   # adapter gates on country_code == GB
+    params: {company: framestore}
 
 acquisitions:
   - name: Netflix UK
@@ -80,16 +88,53 @@ international_sales:
       url: "https://cineflix.com/work-with-us/"
       selector: 'a[href*="/careers/"]'
       title_from_slug: true
+  - name: Getty Images
+    platform: lever
+    params: {company: gettyimages}
 
 talent_management:
   - name: United Agents
     platform: bamboohr
     params: {subdomain: unitedagents}
+  - name: Insanity Group
+    platform: recruitee
+    uk_scoped: true
+    params: {company: insanitygroup}
+
+trade_press:
+  - name: Future plc
+    platform: workable
+    uk_scoped: true   # adapter gates on country == United Kingdom
+    params: {account: futureplc}
 
 aggregators:
   - name: Grapevine Jobs (UK media — indies + broadcasters)
     platform: grapevine
     params: {records: 100}
+  # Server-rendered / feed-based UK media boards (no key needed).
+  - name: Guardian Jobs — Media
+    platform: rss
+    uk_scoped: true
+    params: {feeds: ["https://jobs.theguardian.com/jobsrss/?Sector=6496805&countrycode=GB"]}
+  - name: ProductionBase (film & TV)
+    platform: html
+    uk_scoped: true   # UK-only board; employer hidden when logged out
+    params:
+      url: "https://www.productionbase.co.uk/film-tv-jobs"
+      selector: 'a[id$="uxJobTitleLink"]'
+      location_selector: "span.location-logout"
+      pages: 6
+  - name: Creative Access
+    platform: sitemap
+    uk_scoped: true
+    params: {url: "https://opportunities.creativeaccess.org.uk/sitemap.xml"}
+  - name: Screen Alliance Wales
+    platform: html
+    uk_scoped: true
+    params:
+      url: "https://www.screenalliancewales.com/vacancies/"
+      selector: 'a[href*="/vacancies/"]'
+      title_from_slug: true
   # Keyword job-search APIs — surface target roles across the whole market,
   # including indies with no ATS. Each needs a free key (GitHub secrets), and
   # skips gracefully until set: Adzuna (ADZUNA_APP_ID / ADZUNA_APP_KEY), Reed
