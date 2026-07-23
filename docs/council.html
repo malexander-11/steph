@@ -295,6 +295,151 @@
     background: var(--primary-soft); color: var(--primary); }
   .safe-strip b { font-size: .92rem; } .safe-strip p { margin: 3px 0 0; font-size: .86rem; color: var(--muted); }
 
+  /* ---- account button in topbar ---- */
+  .acct-btn { padding: 5px 13px 5px 6px; gap: 8px; }
+  .acct-ava { width: 24px; height: 24px; border-radius: 999px; background: var(--primary); color: var(--primary-ink);
+    display: grid; place-items: center; font-size: .66rem; font-weight: 700; letter-spacing: .02em; }
+
+  /* ---- account / personal hub ---- */
+  .wrap-dash { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .dash { padding: 24px 0 64px; }
+  .dash-head { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+  .dash-ava { width: 60px; height: 60px; flex: none; border-radius: 18px; color: var(--primary-ink);
+    background: linear-gradient(155deg, var(--primary), color-mix(in srgb, var(--primary) 62%, #0c241b));
+    display: grid; place-items: center; font-family: var(--serif); font-size: 1.4rem; font-weight: 600; box-shadow: var(--shadow); }
+  .dash-hi { flex: 1 1 240px; }
+  .dash-hi h2 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; margin: 0; letter-spacing: -.01em; line-height: 1.1; }
+  .dash-hi .sub { color: var(--muted); font-size: .92rem; margin-top: 3px; }
+  .verified { display: inline-flex; align-items: center; gap: 5px; font-size: .7rem; font-weight: 700; color: var(--primary);
+    background: var(--primary-soft); border-radius: 999px; padding: 3px 9px; letter-spacing: .02em; }
+  .dash-signout { margin-left: auto; }
+
+  .dash-meta { display: flex; flex-wrap: wrap; gap: 10px 26px; margin: 16px 0 26px; padding: 14px 18px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); }
+  .dash-meta .k { color: var(--faint); text-transform: uppercase; letter-spacing: .06em; font-size: .66rem; display: block; margin-bottom: 2px; }
+  .dash-meta .v { font-weight: 600; font-size: .9rem; }
+  .dash-meta .v.mono { font-family: var(--mono); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+
+  .dash h3.sec { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; margin: 0 0 12px; }
+
+  /* stat cards */
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)); gap: 14px; margin-bottom: 30px; }
+  .stat { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 15px 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 5px;
+    transition: border-color .15s, transform .12s; }
+  button.stat { cursor: pointer; }
+  button.stat:hover { border-color: var(--primary); transform: translateY(-2px); }
+  .stat .s-top { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .78rem; }
+  .stat .s-ic { width: 26px; height: 26px; border-radius: 8px; background: var(--primary-soft); color: var(--primary);
+    display: grid; place-items: center; flex: none; }
+  .stat.warn .s-ic { background: color-mix(in srgb, var(--amber) 16%, transparent); color: var(--amber); }
+  .stat .s-big { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; line-height: 1.12; }
+  .stat .s-sub { color: var(--faint); font-size: .78rem; }
+
+  /* two-col dashboard grid */
+  .dash-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  @media (min-width: 780px) { .dash-grid { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+  .dash-col { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden; }
+  .panel-head { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .panel-head h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin: 0; }
+  .panel-head .p-ic { width: 30px; height: 30px; border-radius: 9px; background: var(--primary-soft); color: var(--primary);
+    display: grid; place-items: center; flex: none; }
+  .panel-head .count { margin-left: auto; font-size: .72rem; color: var(--muted); background: var(--surface-2);
+    border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; }
+  .panel-body { padding: 4px 18px 14px; }
+  .panel-foot { padding: 12px 18px; border-top: 1px solid var(--line); background: var(--surface-2); }
+
+  .link-btn { background: transparent; border: 0; color: var(--link); font-size: .87rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px; padding: 0; }
+  .link-btn:hover { text-decoration: underline; }
+  .link-btn svg { transition: transform .15s; }
+  .link-btn:hover svg { transform: translateX(2px); }
+
+  /* status pills */
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: .71rem; font-weight: 700; border-radius: 999px;
+    padding: 3px 10px; letter-spacing: .01em; white-space: nowrap; }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+  .pill.open  { color: var(--amber); background: color-mix(in srgb, var(--amber) 15%, transparent); }
+  .pill.prog  { color: var(--link);  background: var(--primary-soft); }
+  .pill.sched { color: #2f7fb0; background: color-mix(in srgb, #2f7fb0 15%, transparent); }
+  .pill.done  { color: #2f9e5b; background: color-mix(in srgb, #2f9e5b 15%, transparent); }
+  :root[data-theme="dark"] .pill.sched { color: #7cc3ec; }
+  @media (prefers-color-scheme: dark) { .pill.sched { color: #7cc3ec; } }
+
+  /* request rows */
+  .req { border-bottom: 1px solid var(--line); }
+  .req:last-child { border-bottom: 0; }
+  .req-sum { width: 100%; text-align: left; background: transparent; border: 0; padding: 13px 2px;
+    display: flex; align-items: center; gap: 12px; }
+  .req-sum:hover .req-title { color: var(--link); }
+  .req-main { flex: 1; min-width: 0; }
+  .req-title { display: block; font-size: .94rem; font-weight: 600; }
+  .req-ref { display: block; font-family: var(--mono); font-size: .75rem; color: var(--faint); margin-top: 3px; }
+  .req-right { display: flex; align-items: center; gap: 10px; flex: none; }
+  .req-chev { color: var(--faint); transition: transform .2s; flex: none; }
+  .req.open .req-chev { transform: rotate(90deg); }
+  .req-detail { display: none; padding: 2px 2px 16px; }
+  .req.open .req-detail { display: block; }
+  .req-detail > p { margin: 0 0 10px; font-size: .87rem; color: var(--muted); }
+  .req-timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .req-timeline li { display: flex; gap: 11px; font-size: .85rem; align-items: flex-start; }
+  .req-timeline .t-dot { width: 9px; height: 9px; border-radius: 999px; background: var(--primary); flex: none; margin-top: 5px; }
+  .req-timeline .t-dot.muted { background: var(--line-strong); }
+  .req-timeline .t-txt b { font-weight: 600; }
+  .req-timeline time { display: block; color: var(--faint); font-family: var(--mono); font-size: .72rem; margin-top: 1px; }
+
+  /* collection schedule */
+  .coll { display: flex; align-items: center; gap: 12px; padding: 11px 2px; border-bottom: 1px solid var(--line); }
+  .coll:last-child { border-bottom: 0; }
+  .coll .dot { width: 13px; height: 13px; border-radius: 4px; flex: none; }
+  .coll .dot.green { background: #4a9a3f; } .coll .dot.blue { background: #3f7cae; } .coll .dot.grey { background: #8a8f88; }
+  .coll .c-name { flex: 1; font-size: .91rem; font-weight: 600; }
+  .coll .c-date { font-size: .85rem; color: var(--muted); text-align: right; }
+  .coll .c-date b { color: var(--ink); }
+
+  /* key-value rows */
+  .kv { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: .89rem; }
+  .kv:last-of-type { border-bottom: 0; }
+  .kv .kv-k { color: var(--muted); } .kv .kv-v { font-weight: 600; text-align: right; }
+  .kv .kv-v.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .bal-strip { display: flex; align-items: baseline; gap: 10px; padding: 2px 0 10px; }
+  .bal-strip .bal { font-family: var(--serif); font-size: 1.65rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .bal-strip .bal-sub { color: var(--muted); font-size: .83rem; }
+  .bar { height: 8px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); overflow: hidden; margin-bottom: 4px; }
+  .bar > i { display: block; height: 100%; background: var(--primary); }
+  .bar-cap { font-size: .78rem; color: var(--faint); margin: 0 0 10px; }
+
+  /* messages */
+  .msg-item { display: flex; gap: 12px; padding: 12px 2px; border-bottom: 1px solid var(--line); }
+  .msg-item:last-child { border-bottom: 0; }
+  .msg-item .m-ic { width: 30px; height: 30px; border-radius: 9px; background: var(--surface-2); border: 1px solid var(--line);
+    display: grid; place-items: center; flex: none; color: var(--muted); }
+  .msg-item.unread .m-ic { background: var(--primary-soft); border-color: transparent; color: var(--primary); }
+  .msg-item .m-main { min-width: 0; flex: 1; }
+  .msg-item .m-title { font-size: .91rem; font-weight: 600; display: flex; align-items: center; gap: 7px; }
+  .msg-item .m-title .u-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--primary); flex: none; }
+  .msg-item .m-body { font-size: .84rem; color: var(--muted); margin-top: 2px; }
+  .msg-item time { font-size: .72rem; color: var(--faint); font-family: var(--mono); flex: none; }
+
+  /* area / councillor */
+  .councillor { display: flex; gap: 12px; align-items: center; padding: 2px 0 14px; }
+  .councillor .c-ava { width: 44px; height: 44px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line);
+    display: grid; place-items: center; font-weight: 700; color: var(--muted); flex: none; font-size: .86rem; }
+  .councillor .c-name2 { font-weight: 600; font-size: .94rem; } .councillor .c-role { font-size: .81rem; color: var(--muted); }
+
+  /* quick actions */
+  .qa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 12px; }
+  .qa { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px;
+    display: flex; flex-direction: column; gap: 9px; transition: border-color .15s, transform .12s, box-shadow .15s; }
+  .qa:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .qa .qa-ic { width: 34px; height: 34px; border-radius: 10px; background: var(--primary-soft); color: var(--primary);
+    display: grid; place-items: center; }
+  .qa.urgent .qa-ic { background: color-mix(in srgb, var(--urgent) 14%, transparent); color: var(--urgent); }
+  .qa .qa-t { font-size: .89rem; font-weight: 600; } .qa .qa-s { font-size: .77rem; color: var(--faint); }
+
   /* toast */
   .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%) translateY(20px);
     background: var(--ink); color: var(--ground); padding: 11px 18px; border-radius: 999px; font-size: .9rem;
@@ -307,6 +452,9 @@
     .chips { flex-direction: column; } .chip { max-width: none; }
     h1.hero { font-size: 2.05rem; }
     .phone-alt { flex-direction: column; }
+    .acct-label { display: none; }
+    .acct-btn { padding: 5px; }
+    .dash-signout { margin-left: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
     .view.active { animation: none; }
@@ -331,6 +479,10 @@
     <button class="ghost-btn" id="startOver" style="display:none">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
       Start over
+    </button>
+    <button class="ghost-btn acct-btn" id="acctBtn" aria-label="Open my account">
+      <span class="acct-ava" aria-hidden="true">RW</span>
+      <span class="acct-label">My account</span>
     </button>
     <button class="icon-btn" id="themeToggle" aria-label="Switch light or dark theme" title="Switch theme">
       <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -544,12 +696,269 @@
   </section>
 </main>
 
+<!-- ============ ACCOUNT / PERSONAL HUB ============ -->
+<div class="wrap-dash">
+  <section class="view" id="view-account">
+    <div class="dash">
+      <p class="eyebrow">My Meadowvale</p>
+
+      <div class="dash-head">
+        <span class="dash-ava" aria-hidden="true">RW</span>
+        <div class="dash-hi">
+          <h2 id="acctGreeting">Welcome back, Rowan</h2>
+          <div class="sub">Meadowvale resident account &middot; <span class="verified"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Verified</span></div>
+        </div>
+        <button class="ghost-btn dash-signout" id="signOut">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          Sign out
+        </button>
+      </div>
+
+      <div class="dash-meta">
+        <div><span class="k">Account holder</span><span class="v">Rowan Whitfield</span></div>
+        <div><span class="k">Address</span><span class="v">14 Alder Rise, Meadowvale MV3&nbsp;8QT</span></div>
+        <div><span class="k">Council tax account</span><span class="v mono">6041 220 987</span></div>
+        <div><span class="k">Ward</span><span class="v">Alderfield</span></div>
+        <div><span class="k">Member since</span><span class="v">March 2019</span></div>
+      </div>
+
+      <!-- at-a-glance -->
+      <div class="stat-row">
+        <button class="stat" data-goto="chat">
+          <span class="s-top"><span class="s-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></span> Next green bin</span>
+          <span class="s-big">Wed 22 July</span>
+          <span class="s-sub">Out by 7am &middot; garden waste</span>
+        </button>
+        <button class="stat warn" data-goto="ctax">
+          <span class="s-top"><span class="s-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span> Council tax</span>
+          <span class="s-big">&pound;1,094.40</span>
+          <span class="s-sub">Remaining &middot; next &pound;182.40 on 1 Aug</span>
+        </button>
+        <button class="stat" data-goto="requests">
+          <span class="s-top"><span class="s-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span> Open requests</span>
+          <span class="s-big">2 in progress</span>
+          <span class="s-sub">5 in your history</span>
+        </button>
+        <button class="stat" data-goto="messages">
+          <span class="s-top"><span class="s-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg></span> Messages</span>
+          <span class="s-big">1 unread</span>
+          <span class="s-sub">From Meadowvale Council</span>
+        </button>
+      </div>
+
+      <div class="dash-grid">
+        <!-- ---------- main column ---------- -->
+        <div class="dash-col">
+          <!-- my requests -->
+          <div class="panel" id="requests">
+            <div class="panel-head">
+              <span class="p-ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></span>
+              <h3>My requests &amp; queries</h3>
+              <span class="count">5 total</span>
+            </div>
+            <div class="panel-body" id="reqList">
+              <div class="req">
+                <button class="req-sum" type="button">
+                  <span class="req-main"><span class="req-title">Change of address &mdash; council tax</span><span class="req-ref">CT-2026-04821 &middot; raised today</span></span>
+                  <span class="req-right"><span class="pill prog">In progress</span><span class="req-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></span>
+                </button>
+                <div class="req-detail">
+                  <p>Moving to 14 Alder Rise from 1 August. We&rsquo;ll recalculate your bill and refund any overpayment on the old property.</p>
+                  <ul class="req-timeline">
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Request received</b><time>Today, 09:14</time></span></li>
+                    <li><span class="t-dot"></span><span class="t-txt"><b>With a billing adviser</b> &mdash; review within 5 working days<time>Today, 09:15</time></span></li>
+                    <li><span class="t-dot muted"></span><span class="t-txt">Revised bill issued<time>Expected by 30 Jul</time></span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="req">
+                <button class="req-sum" type="button">
+                  <span class="req-main"><span class="req-title">Missed green bin collection</span><span class="req-ref">MB-5521 &middot; 21 Jul</span></span>
+                  <span class="req-right"><span class="pill sched">Scheduled</span><span class="req-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></span>
+                </button>
+                <div class="req-detail">
+                  <p>Your bin was reported out by 7am. A crew has been booked to return.</p>
+                  <ul class="req-timeline">
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Missed collection logged</b><time>21 Jul, 11:02</time></span></li>
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Return crew booked</b> &mdash; leave your bin out<time>Due by 24 Jul</time></span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="req">
+                <button class="req-sum" type="button">
+                  <span class="req-main"><span class="req-title">Pothole reported &mdash; Alder Rise</span><span class="req-ref">HW-2026-3390 &middot; 12 Jul</span></span>
+                  <span class="req-right"><span class="pill prog">In progress</span><span class="req-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></span>
+                </button>
+                <div class="req-detail">
+                  <p>Reported outside no. 20. Highways has inspected and scheduled a repair.</p>
+                  <ul class="req-timeline">
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Reported</b><time>12 Jul</time></span></li>
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Inspected &mdash; repair approved</b><time>16 Jul</time></span></li>
+                    <li><span class="t-dot muted"></span><span class="t-txt">Repair works<time>Scheduled 4&ndash;8 Aug</time></span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="req">
+                <button class="req-sum" type="button">
+                  <span class="req-main"><span class="req-title">Emergency housing support</span><span class="req-ref">HL-2026-0177 &middot; 18 Jul</span></span>
+                  <span class="req-right"><span class="pill done">Resolved</span><span class="req-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></span>
+                </button>
+                <div class="req-detail">
+                  <p>You called the housing emergency line. The duty team arranged same-night accommodation and a follow-up appointment.</p>
+                  <ul class="req-timeline">
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Call handled by duty team</b><time>18 Jul, 22:40</time></span></li>
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Emergency accommodation arranged</b><time>18 Jul, 23:20</time></span></li>
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Housing options appointment</b> &mdash; completed<time>19 Jul, 10:00</time></span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="req">
+                <button class="req-sum" type="button">
+                  <span class="req-main"><span class="req-title">Garden waste subscription renewal</span><span class="req-ref">GW-2025-8842 &middot; 3 Mar</span></span>
+                  <span class="req-right"><span class="pill done">Resolved</span><span class="req-chev" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span></span>
+                </button>
+                <div class="req-detail">
+                  <p>Annual garden waste subscription (&pound;48) renewed. Runs to 2 March 2026.</p>
+                  <ul class="req-timeline">
+                    <li><span class="t-dot"></span><span class="t-txt"><b>Payment received &mdash; &pound;48.00</b><time>3 Mar</time></span></li>
+                    <li><span class="t-dot"></span><span class="t-txt"><b>New bin sticker posted</b><time>7 Mar</time></span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-foot">
+              <button class="link-btn" data-goto="home">Raise a new request <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- messages -->
+          <div class="panel" id="messages">
+            <div class="panel-head">
+              <span class="p-ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg></span>
+              <h3>Messages from the council</h3>
+              <span class="count">1 unread</span>
+            </div>
+            <div class="panel-body">
+              <div class="msg-item unread">
+                <span class="m-ic" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+                <div class="m-main">
+                  <div class="m-title"><span class="u-dot" aria-hidden="true"></span> Confirm your details for the electoral register</div>
+                  <div class="m-body">Our annual canvass is open. Please check the household details we hold are correct by 10 August.</div>
+                </div>
+                <time>21 Jul</time>
+              </div>
+              <div class="msg-item">
+                <span class="m-ic" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
+                <div class="m-main">
+                  <div class="m-title">Roadworks on Meadow Lane, 28&ndash;30 July</div>
+                  <div class="m-body">Bin collections in your area may be a day later that week. We&rsquo;ll update your schedule automatically.</div>
+                </div>
+                <time>19 Jul</time>
+              </div>
+              <div class="msg-item">
+                <span class="m-ic" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div class="m-main">
+                  <div class="m-title">July council tax payment received</div>
+                  <div class="m-body">We&rsquo;ve received your Direct Debit of &pound;182.40. Thank you.</div>
+                </div>
+                <time>1 Jul</time>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------- side column ---------- -->
+        <div class="dash-col">
+          <!-- bin collections -->
+          <div class="panel">
+            <div class="panel-head">
+              <span class="p-ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></span>
+              <h3>Bin collections</h3>
+            </div>
+            <div class="panel-body">
+              <div class="coll"><span class="dot green"></span><span class="c-name">Green (garden)</span><span class="c-date"><b>Wed 22 Jul</b><br>then fortnightly</span></div>
+              <div class="coll"><span class="dot blue"></span><span class="c-name">Recycling</span><span class="c-date"><b>Tue 28 Jul</b><br>fortnightly</span></div>
+              <div class="coll"><span class="dot grey"></span><span class="c-name">General waste</span><span class="c-date"><b>Tue 4 Aug</b><br>fortnightly</span></div>
+            </div>
+            <div class="panel-foot" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+              <span style="font-size:.8rem;color:var(--muted)">Garden subscription &middot; &pound;48/yr, renews 2 Mar</span>
+              <button class="link-btn" data-goto="chat">Ask about bins <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- council tax -->
+          <div class="panel" id="ctax">
+            <div class="panel-head">
+              <span class="p-ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+              <h3>Council tax</h3>
+              <span class="count">Band C</span>
+            </div>
+            <div class="panel-body">
+              <div class="bal-strip"><span class="bal">&pound;1,094.40</span><span class="bal-sub">remaining this year</span></div>
+              <div class="bar" aria-hidden="true"><i style="width:40%"></i></div>
+              <p class="bar-cap">&pound;729.60 paid of &pound;1,824.00 &middot; 4 of 10 instalments</p>
+              <div class="kv"><span class="kv-k">Annual charge</span><span class="kv-v mono">&pound;1,824.00</span></div>
+              <div class="kv"><span class="kv-k">Monthly instalment</span><span class="kv-v mono">&pound;182.40</span></div>
+              <div class="kv"><span class="kv-k">Next payment</span><span class="kv-v">1 Aug 2026</span></div>
+              <div class="kv"><span class="kv-k">Paying by</span><span class="kv-v">Direct Debit</span></div>
+            </div>
+            <div class="panel-foot" style="display:flex;gap:16px;flex-wrap:wrap">
+              <button class="link-btn" id="viewBill">View latest bill</button>
+              <button class="link-btn" data-goto="form">Tell us you&rsquo;re moving <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- my area -->
+          <div class="panel">
+            <div class="panel-head">
+              <span class="p-ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <h3>My area</h3>
+            </div>
+            <div class="panel-body">
+              <div class="councillor">
+                <span class="c-ava" aria-hidden="true">PN</span>
+                <div><div class="c-name2">Cllr Priya Nair</div><div class="c-role">Your councillor &middot; Alderfield ward</div></div>
+              </div>
+              <div class="kv"><span class="kv-k">Surgery</span><span class="kv-v">1st Sat &middot; Alder Rise Hall</span></div>
+              <div class="kv"><span class="kv-k">Polling station</span><span class="kv-v">Alder Rise Community Hall</span></div>
+              <div class="kv"><span class="kv-k">Bank holiday change</span><span class="kv-v">Collections +1 day, wk 25 Aug</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- quick actions -->
+      <h3 class="sec" style="margin-top:30px">Do something now</h3>
+      <div class="qa-grid">
+        <button class="qa" data-goto="home">
+          <span class="qa-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg></span>
+          <span class="qa-t">Ask a question</span><span class="qa-s">Anything, in your words</span>
+        </button>
+        <button class="qa" data-goto="chat">
+          <span class="qa-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></span>
+          <span class="qa-t">Report a missed bin</span><span class="qa-s">We&rsquo;ll send a crew back</span>
+        </button>
+        <button class="qa" data-goto="form">
+          <span class="qa-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6M6 10v9h12v-9M10 19v-5h4v5"/></svg></span>
+          <span class="qa-t">Tell us you&rsquo;re moving</span><span class="qa-s">Update council tax</span>
+        </button>
+        <button class="qa urgent" data-goto="phone">
+          <span class="qa-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+          <span class="qa-t">Urgent housing help</span><span class="qa-s">24/7 duty team</span>
+        </button>
+      </div>
+
+      <p class="disclaimer" style="margin-top:26px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Prototype &mdash; Rowan Whitfield and all account details here are fictional. Nothing is real or stored.</p>
+    </div>
+  </section>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
 (function () {
   var root = document.documentElement;
-  var views = { home: 'view-home', chat: 'view-chat', form: 'view-form', phone: 'view-phone' };
+  var views = { home: 'view-home', chat: 'view-chat', form: 'view-form', phone: 'view-phone', account: 'view-account' };
 
   /* ---------- theme ---------- */
   var stored = null;
@@ -576,16 +985,49 @@
 
   /* ---------- view switching ---------- */
   var startOver = document.getElementById('startOver');
+  var acctBtn = document.getElementById('acctBtn');
   function show(name) {
     Object.keys(views).forEach(function (k) {
       document.getElementById(views[k]).classList.toggle('active', k === name);
     });
     startOver.style.display = name === 'home' ? 'none' : 'inline-flex';
+    acctBtn.style.display = name === 'account' ? 'none' : 'inline-flex';
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
   function home() { show('home'); document.getElementById('askInput').value = ''; autosize(); }
   startOver.addEventListener('click', home);
   document.getElementById('brandHome').addEventListener('click', function (e) { e.preventDefault(); home(); });
+
+  /* ---------- account / personal hub ---------- */
+  function openAccount() {
+    var h = new Date().getHours();
+    var part = h < 12 ? 'Good morning' : (h < 18 ? 'Good afternoon' : 'Good evening');
+    document.getElementById('acctGreeting').textContent = part + ', Rowan';
+    show('account');
+  }
+  acctBtn.addEventListener('click', openAccount);
+  document.getElementById('signOut').addEventListener('click', function () { toast('Signed out of your account'); setTimeout(home, 500); });
+  document.getElementById('viewBill').addEventListener('click', function () { toast('Opening your latest council tax bill (PDF)'); });
+
+  // expandable request rows
+  document.getElementById('reqList').addEventListener('click', function (e) {
+    var sum = e.target.closest('.req-sum'); if (!sum) return;
+    sum.parentElement.classList.toggle('open');
+  });
+
+  // cross-links from the hub back into the concierge
+  document.querySelector('#view-account').addEventListener('click', function (e) {
+    var el = e.target.closest('[data-goto]'); if (!el) return;
+    var dest = el.getAttribute('data-goto');
+    if (dest === 'home') home();
+    else if (dest === 'chat') { openChat('When is my green bin being collected?'); show('chat'); }
+    else if (dest === 'form') show('form');
+    else if (dest === 'phone') { show('phone'); startConnecting(); }
+    else { // in-page section (requests / messages / ctax) — scroll to it
+      var target = document.getElementById(dest);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 
   /* ---------- router ---------- */
   function route(qRaw) {
