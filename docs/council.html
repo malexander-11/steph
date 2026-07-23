@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meadowvale Borough Council — How can we help?</title>
+<meta name="description" content="A council concierge homepage prototype that routes your question to a chatbot, a form, or an urgent phone line. Concept, not a live service.">
+<meta name="theme-color" content="#1f4d3a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1f18" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%9B%EF%B8%8F%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<style>
+  /* ---- reset (self-sufficient regardless of host wrapper) ---- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  input, textarea, select { font: inherit; color: inherit; }
+
+  /* ---- tokens ---- */
+  :root {
+    --ground: #f4f2ec;      /* warm paper, faint green bias */
+    --surface: #ffffff;
+    --surface-2: #faf8f2;
+    --ink: #191f1b;         /* near-black, green bias */
+    --muted: #5a655e;
+    --faint: #8b968e;
+    --line: #e2ded2;
+    --line-strong: #cdc8b8;
+    --primary: #1f5c46;     /* civic pine */
+    --primary-ink: #ffffff;
+    --primary-soft: #e7efe9;
+    --link: #17604a;
+    --amber: #b07d16;
+    --urgent: #b23a2e;      /* held warm red */
+    --focus: #1f5c46;
+    --shadow: 0 1px 2px rgba(20,35,28,.06), 0 8px 30px rgba(20,35,28,.07);
+    --radius: 16px;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #10201a; --surface: #182a22; --surface-2: #14241d;
+      --ink: #edf2ec; --muted: #a4b4aa; --faint: #758a7e;
+      --line: #26382f; --line-strong: #33493d;
+      --primary: #5cbf8f; --primary-ink: #06231a; --primary-soft: #1a3329;
+      --link: #7fd0a4; --amber: #e0b357; --urgent: #ef8271;
+      --focus: #5cbf8f;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.34);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #f4f2ec; --surface: #ffffff; --surface-2: #faf8f2;
+    --ink: #191f1b; --muted: #5a655e; --faint: #8b968e;
+    --line: #e2ded2; --line-strong: #cdc8b8;
+    --primary: #1f5c46; --primary-ink: #ffffff; --primary-soft: #e7efe9;
+    --link: #17604a; --amber: #b07d16; --urgent: #b23a2e; --focus: #1f5c46;
+    --shadow: 0 1px 2px rgba(20,35,28,.06), 0 8px 30px rgba(20,35,28,.07);
+  }
+  :root[data-theme="dark"] {
+    --ground: #10201a; --surface: #182a22; --surface-2: #14241d;
+    --ink: #edf2ec; --muted: #a4b4aa; --faint: #758a7e;
+    --line: #26382f; --line-strong: #33493d;
+    --primary: #5cbf8f; --primary-ink: #06231a; --primary-soft: #1a3329;
+    --link: #7fd0a4; --amber: #e0b357; --urgent: #ef8271; --focus: #5cbf8f;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.34);
+  }
+
+  body {
+    background: var(--ground); color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55; -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--link); }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+
+  /* ---- top bar ---- */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--ground) 86%, transparent);
+    backdrop-filter: saturate(1.1) blur(8px);
+    border-bottom: 1px solid transparent;
+  }
+  .topbar.scrolled { border-bottom-color: var(--line); }
+  .topbar-inner { max-width: 720px; margin: 0 auto; padding: 12px 20px;
+    display: flex; align-items: center; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .crest { width: 30px; height: 30px; flex: none; }
+  .brand-name { font-family: var(--serif); font-weight: 600; font-size: 1.02rem; letter-spacing: .01em; line-height: 1.05; }
+  .brand-name small { display: block; font-family: var(--sans); font-weight: 500;
+    font-size: .64rem; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .topbar-spacer { flex: 1; }
+  .ghost-btn {
+    background: transparent; border: 1px solid var(--line-strong); color: var(--muted);
+    padding: 7px 12px; border-radius: 999px; font-size: .85rem; display: inline-flex;
+    align-items: center; gap: 6px; transition: border-color .15s, color .15s;
+  }
+  .ghost-btn:hover { color: var(--ink); border-color: var(--ink); }
+  .icon-btn { background: transparent; border: 1px solid var(--line-strong); color: var(--muted);
+    width: 38px; height: 38px; border-radius: 999px; display: inline-grid; place-items: center; }
+  .icon-btn:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* ---- views ---- */
+  .view { display: none; }
+  .view.active { display: block; animation: rise .34s cubic-bezier(.2,.7,.3,1); }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* ---- home ---- */
+  .home { min-height: calc(100vh - 62px); display: flex; flex-direction: column;
+    justify-content: center; padding: 48px 0 40px; }
+  .prototype-pill {
+    align-self: center; display: inline-flex; align-items: center; gap: 7px;
+    font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+    background: var(--surface); border: 1px solid var(--line); padding: 5px 12px; border-radius: 999px;
+    margin-bottom: 26px;
+  }
+  .prototype-pill b { color: var(--primary); font-weight: 700; }
+  .home-crest { width: 52px; height: 52px; margin: 0 auto 18px; display: block; }
+  h1.hero { font-family: var(--serif); font-weight: 600; text-align: center;
+    font-size: clamp(2.1rem, 6vw, 3rem); line-height: 1.04; letter-spacing: -.015em;
+    text-wrap: balance; margin: 0 0 12px; }
+  .hero-sub { text-align: center; color: var(--muted); font-size: 1.05rem;
+    max-width: 34ch; margin: 0 auto 30px; text-wrap: balance; }
+
+  .ask { position: relative; }
+  .ask-field {
+    display: flex; align-items: flex-end; gap: 8px;
+    background: var(--surface); border: 1.5px solid var(--line-strong);
+    border-radius: 22px; padding: 10px 10px 10px 18px; box-shadow: var(--shadow);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .ask-field:focus-within { border-color: var(--primary);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 16%, transparent); }
+  .ask-input {
+    flex: 1; border: 0; background: transparent; resize: none; outline: none;
+    font-size: 1.06rem; line-height: 1.45; padding: 7px 0; max-height: 140px; min-height: 26px;
+  }
+  .ask-input::placeholder { color: var(--faint); }
+  .send-btn {
+    flex: none; width: 42px; height: 42px; border-radius: 999px; border: 0;
+    background: var(--primary); color: var(--primary-ink); display: grid; place-items: center;
+    transition: transform .12s, filter .15s;
+  }
+  .send-btn:hover { filter: brightness(1.06); }
+  .send-btn:active { transform: scale(.94); }
+  .ask-hint { text-align: center; color: var(--faint); font-size: .8rem; margin: 12px 0 0; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
+  .chip {
+    text-align: left; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 12px 14px; max-width: 220px; flex: 1 1 200px;
+    display: flex; gap: 10px; align-items: flex-start; transition: border-color .15s, transform .12s, box-shadow .15s;
+  }
+  .chip:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .chip-ico { flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+    background: var(--primary-soft); color: var(--primary); }
+  .chip-ico.urgent { background: color-mix(in srgb, var(--urgent) 15%, transparent); color: var(--urgent); }
+  .chip-txt { font-size: .9rem; line-height: 1.3; }
+  .chip-txt span { display: block; color: var(--faint); font-size: .74rem; margin-top: 3px; text-transform: uppercase; letter-spacing: .05em; }
+
+  .home-foot { text-align: center; color: var(--faint); font-size: .82rem; margin-top: 40px; }
+  .home-foot a { color: var(--muted); }
+
+  /* ---- routed view shell ---- */
+  .stage { padding: 26px 0 60px; }
+  .eyebrow { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--primary);
+    font-weight: 700; margin: 0 0 6px; }
+  .stage h2 { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; letter-spacing: -.01em;
+    margin: 0 0 6px; text-wrap: balance; }
+  .stage .lede { color: var(--muted); margin: 0 0 22px; }
+
+  /* ---- chat ---- */
+  .chat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden; }
+  .chat-head { display: flex; align-items: center; gap: 11px; padding: 14px 16px; border-bottom: 1px solid var(--line);
+    background: var(--surface-2); }
+  .bot-avatar { width: 34px; height: 34px; border-radius: 10px; background: var(--primary); color: var(--primary-ink);
+    display: grid; place-items: center; flex: none; }
+  .chat-head b { font-size: .95rem; }
+  .chat-head .status { font-size: .76rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .dot-live { width: 7px; height: 7px; border-radius: 999px; background: #2f9e5b; box-shadow: 0 0 0 3px color-mix(in srgb,#2f9e5b 25%, transparent); }
+  .chat-body { padding: 18px 16px; display: flex; flex-direction: column; gap: 14px; min-height: 200px; }
+  .msg { display: flex; gap: 10px; max-width: 88%; }
+  .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+  .msg .who { flex: none; width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; font-size: .72rem; }
+  .msg.bot .who { background: var(--primary-soft); color: var(--primary); }
+  .msg.user .who { background: var(--line); color: var(--muted); }
+  .bubble { padding: 11px 14px; border-radius: 14px; font-size: .96rem; line-height: 1.5; }
+  .msg.bot .bubble { background: var(--surface-2); border: 1px solid var(--line); border-top-left-radius: 5px; }
+  .msg.user .bubble { background: var(--primary); color: var(--primary-ink); border-top-right-radius: 5px; }
+  .bubble strong { font-weight: 700; }
+  .bubble .callout { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: var(--surface);
+    border: 1px solid var(--line); display: flex; gap: 10px; align-items: center; }
+  .bubble .callout .big { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; }
+  .typing { display: inline-flex; gap: 4px; align-items: center; padding: 14px; }
+  .typing i { width: 7px; height: 7px; border-radius: 999px; background: var(--faint); display: block;
+    animation: blink 1.2s infinite ease-in-out; }
+  .typing i:nth-child(2){ animation-delay: .18s; } .typing i:nth-child(3){ animation-delay: .36s; }
+  @keyframes blink { 0%,80%,100%{ opacity:.25; transform: translateY(0);} 40%{ opacity:1; transform: translateY(-3px);} }
+  .quick { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 14px; }
+  .quick button { background: var(--surface); border: 1px solid var(--line-strong); color: var(--link);
+    border-radius: 999px; padding: 8px 13px; font-size: .84rem; display: inline-flex; gap: 7px; align-items: center;
+    transition: border-color .15s, background .15s; }
+  .quick button:hover { border-color: var(--primary); background: var(--primary-soft); }
+  .chat-input { display: flex; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--line); background: var(--surface-2); }
+  .chat-input input { flex: 1; border: 1.5px solid var(--line-strong); background: var(--surface);
+    border-radius: 999px; padding: 10px 16px; outline: none; }
+  .chat-input input:focus { border-color: var(--primary); }
+  .chat-input button { flex: none; width: 42px; height: 42px; border-radius: 999px; border: 0;
+    background: var(--primary); color: var(--primary-ink); display: grid; place-items: center; }
+  .disclaimer { font-size: .78rem; color: var(--faint); margin: 14px 2px 0; display: flex; gap: 7px; align-items: flex-start; }
+
+  /* ---- form ---- */
+  form.ctform { display: flex; flex-direction: column; gap: 18px; }
+  fieldset { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 0;
+    background: var(--surface); box-shadow: var(--shadow); }
+  legend { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; padding: 0 8px; margin-left: -4px; }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+  .field:first-of-type { margin-top: 12px; }
+  .field label { font-size: .9rem; font-weight: 600; }
+  .field .help { font-size: .8rem; color: var(--muted); margin-top: -2px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  input[type=text], input[type=email], input[type=date], select {
+    border: 1.5px solid var(--line-strong); background: var(--surface); border-radius: 10px;
+    padding: 11px 13px; outline: none; width: 100%; transition: border-color .15s;
+  }
+  input:focus, select:focus { border-color: var(--primary); }
+  input[aria-invalid="true"] { border-color: var(--urgent); background: color-mix(in srgb, var(--urgent) 6%, var(--surface)); }
+  .err { color: var(--urgent); font-size: .82rem; font-weight: 600; display: none; }
+  .field.invalid .err { display: block; }
+  .checks { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .check { display: flex; gap: 10px; align-items: center; font-size: .95rem; }
+  .check input { width: 20px; height: 20px; accent-color: var(--primary); flex: none; }
+  .form-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--primary); color: var(--primary-ink); border: 0; border-radius: 12px;
+    padding: 13px 22px; font-size: 1rem; font-weight: 600; box-shadow: var(--shadow);
+    transition: filter .15s, transform .1s; }
+  .btn-primary:hover { filter: brightness(1.06); } .btn-primary:active { transform: translateY(1px); }
+  .btn-text { background: transparent; border: 0; color: var(--muted); text-decoration: underline; padding: 8px; }
+
+  .confirm { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 30px 24px; text-align: center; }
+  .tick { width: 58px; height: 58px; border-radius: 999px; background: var(--primary-soft); color: var(--primary);
+    display: grid; place-items: center; margin: 0 auto 16px; }
+  .confirm h3 { font-family: var(--serif); font-size: 1.5rem; margin: 0 0 8px; }
+  .ref { font-family: var(--mono); font-size: 1.15rem; letter-spacing: .04em; background: var(--surface-2);
+    border: 1px dashed var(--line-strong); border-radius: 10px; padding: 10px 16px; display: inline-block; margin: 8px 0 18px; }
+  .next-list { text-align: left; max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .next-list li { list-style: none; display: flex; gap: 12px; }
+  .next-list .n { flex: none; width: 26px; height: 26px; border-radius: 999px; background: var(--primary); color: var(--primary-ink);
+    font-size: .82rem; font-weight: 700; display: grid; place-items: center; font-family: var(--mono); }
+
+  /* ---- phone / emergency (tonal shift: deep held ground) ---- */
+  .phone-shell { border-radius: 24px; overflow: hidden; box-shadow: var(--shadow);
+    background: radial-gradient(120% 90% at 50% -10%, #1b4a3a 0%, #123528 46%, #0c241b 100%);
+    color: #eafaf1; border: 1px solid #1c4536; }
+  :root[data-theme="light"] .phone-shell { border-color: #0c241b; }
+  .phone-inner { padding: 34px 24px 28px; text-align: center; position: relative; }
+  .phone-eyebrow { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: #7fe0ac; font-weight: 700; }
+  .phone-title { font-family: var(--serif); font-size: 1.6rem; margin: 8px 0 4px; color: #fff; }
+  .phone-reassure { color: #bfe6d0; max-width: 30ch; margin: 6px auto 0; font-size: .98rem; text-wrap: balance; }
+  .ring-wrap { position: relative; width: 132px; height: 132px; margin: 26px auto 20px; display: grid; place-items: center; }
+  .ring { position: absolute; inset: 0; border-radius: 999px; border: 2px solid rgba(127,224,172,.5); }
+  .ring.r2 { animation: pulse 2.6s infinite ease-out; }
+  .ring.r3 { animation: pulse 2.6s infinite ease-out; animation-delay: 1.3s; }
+  @keyframes pulse { 0% { transform: scale(.62); opacity: .9; } 100% { transform: scale(1.15); opacity: 0; } }
+  .avatar-big { width: 84px; height: 84px; border-radius: 999px; background: linear-gradient(160deg,#2f8f5f,#1f6a49);
+    display: grid; place-items: center; color: #fff; box-shadow: 0 8px 30px rgba(0,0,0,.35); z-index: 1; }
+  .connecting { font-size: .82rem; color: #9fd8b6; letter-spacing: .04em; }
+  .phone-number { font-family: var(--mono); font-size: 1.9rem; letter-spacing: .02em; color: #fff; margin: 10px 0 2px; font-variant-numeric: tabular-nums; }
+  .open247 { font-size: .82rem; color: #bfe6d0; margin-bottom: 22px; display: inline-flex; gap: 7px; align-items: center; }
+  .call-controls { display: flex; justify-content: center; gap: 16px; margin: 4px 0 20px; }
+  .cc { display: flex; flex-direction: column; align-items: center; gap: 7px; color: #cdeede; font-size: .72rem; }
+  .cc button { width: 54px; height: 54px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.08); color: #eafaf1; display: grid; place-items: center; transition: background .15s; }
+  .cc button:hover { background: rgba(255,255,255,.16); }
+  .cc button.active { background: #eafaf1; color: #123528; }
+  .cc button.end { background: var(--urgent); border-color: transparent; }
+  .call-now { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+    background: #eafaf1; color: #0c241b; border: 0; border-radius: 14px; padding: 15px; font-size: 1.08rem;
+    font-weight: 700; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.3); transition: transform .1s, filter .15s; }
+  .call-now:hover { filter: brightness(.97); } .call-now:active { transform: translateY(1px); }
+  .phone-alt { display: flex; gap: 10px; margin-top: 12px; }
+  .phone-alt button { flex: 1; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16);
+    color: #eafaf1; border-radius: 12px; padding: 12px; font-size: .9rem; }
+  .phone-alt button:hover { background: rgba(255,255,255,.12); }
+  .safe-strip { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start; box-shadow: var(--shadow); }
+  .safe-strip .s-ico { flex: none; width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center;
+    background: var(--primary-soft); color: var(--primary); }
+  .safe-strip b { font-size: .92rem; } .safe-strip p { margin: 3px 0 0; font-size: .86rem; color: var(--muted); }
+
+  /* toast */
+  .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%) translateY(20px);
+    background: var(--ink); color: var(--ground); padding: 11px 18px; border-radius: 999px; font-size: .9rem;
+    box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 60;
+    display: flex; gap: 8px; align-items: center; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 480px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .chips { flex-direction: column; } .chip { max-width: none; }
+    h1.hero { font-size: 2.05rem; }
+    .phone-alt { flex-direction: column; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .view.active { animation: none; }
+    .typing i, .ring.r2, .ring.r3 { animation: none; }
+    * { scroll-behavior: auto; }
+  }
+</style>
+
+<div class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#" id="brandHome" aria-label="Meadowvale Borough Council — home">
+      <span class="crest" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30">
+          <path d="M16 2c5 2 9 2.6 11 3v9.5C27 23 21.5 28 16 30 10.5 28 5 23 5 14.5V5c2-.4 6-1 11-3Z" fill="var(--primary)"/>
+          <path d="M16 8c-2.4 2.2-3.4 4.8-3.4 7.2 0 .9.2 1.8.6 2.6.9-2 2.2-3.4 3.8-4.6-1 1.6-1.7 3.4-1.9 5.6l1.8.2c.3-3.3 1.9-6.4 4.4-8.6C19.9 9.8 18 8.6 16 8Z" fill="#eafaf1"/>
+          <path d="M9 22c3 1.5 11 1.5 14 0" stroke="#eafaf1" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".65"/>
+        </svg>
+      </span>
+      <span class="brand-name">Meadowvale<small>Borough Council</small></span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <button class="ghost-btn" id="startOver" style="display:none">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+      Start over
+    </button>
+    <button class="icon-btn" id="themeToggle" aria-label="Switch light or dark theme" title="Switch theme">
+      <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</div>
+
+<main class="wrap">
+  <!-- ============ HOME ============ -->
+  <section class="view active" id="view-home">
+    <div class="home">
+      <span class="prototype-pill"><b>Prototype</b> · a concept, not a live service</span>
+      <span class="home-crest" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="52" height="52">
+          <path d="M16 2c5 2 9 2.6 11 3v9.5C27 23 21.5 28 16 30 10.5 28 5 23 5 14.5V5c2-.4 6-1 11-3Z" fill="var(--primary)"/>
+          <path d="M16 8c-2.4 2.2-3.4 4.8-3.4 7.2 0 .9.2 1.8.6 2.6.9-2 2.2-3.4 3.8-4.6-1 1.6-1.7 3.4-1.9 5.6l1.8.2c.3-3.3 1.9-6.4 4.4-8.6C19.9 9.8 18 8.6 16 8Z" fill="#eafaf1"/>
+          <path d="M9 22c3 1.5 11 1.5 14 0" stroke="#eafaf1" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".65"/>
+        </svg>
+      </span>
+      <h1 class="hero">How can we help?</h1>
+      <p class="hero-sub">Tell us what you need in your own words. We&rsquo;ll take you straight to the right place.</p>
+
+      <form class="ask" id="askForm" autocomplete="off">
+        <div class="ask-field">
+          <textarea class="ask-input" id="askInput" rows="1" placeholder="Ask about bins, council tax, housing&hellip;" aria-label="What do you need help with?"></textarea>
+          <button class="send-btn" type="submit" aria-label="Ask">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <p class="ask-hint">Press <kbd>Enter</kbd> to send &middot; try one of these</p>
+      </form>
+
+      <div class="chips" role="list">
+        <button class="chip" role="listitem" data-q="When is my green bin being collected?">
+          <span class="chip-ico" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
+          </span>
+          <span class="chip-txt">When is my green bin being collected?<span>Bins &amp; recycling</span></span>
+        </button>
+        <button class="chip" role="listitem" data-q="Change my address for council tax">
+          <span class="chip-ico" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6M6 10v9h12v-9M10 19v-5h4v5"/></svg>
+          </span>
+          <span class="chip-txt">Change my address for council tax<span>Council tax</span></span>
+        </button>
+        <button class="chip" role="listitem" data-q="I've been locked out of my home and I'm now homeless">
+          <span class="chip-ico urgent" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3l9-16Z"/><path d="M12 10v4M12 17h.01"/></svg>
+          </span>
+          <span class="chip-txt">I&rsquo;ve been locked out and I&rsquo;m now homeless<span>Urgent housing</span></span>
+        </button>
+      </div>
+
+      <p class="home-foot">In a life-threatening emergency always call <a href="tel:999">999</a>. &middot; Meadowvale Borough Council (fictional)</p>
+    </div>
+  </section>
+
+  <!-- ============ CHAT (green bin) ============ -->
+  <section class="view" id="view-chat">
+    <div class="stage">
+      <p class="eyebrow">Bins &amp; recycling</p>
+      <h2>Ask about your bins</h2>
+      <p class="lede">Tell the assistant your postcode and it&rsquo;ll find your collection days.</p>
+
+      <div class="chat">
+        <div class="chat-head">
+          <span class="bot-avatar" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 14h.01M15 14h.01"/></svg>
+          </span>
+          <div>
+            <b>Meadowvale Assistant</b>
+            <div class="status"><span class="dot-live"></span> Connected to bin collection service</div>
+          </div>
+        </div>
+        <div class="chat-body" id="chatBody" aria-live="polite"></div>
+        <div class="quick" id="chatQuick" style="display:none">
+          <button data-act="ics"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg> Add to calendar</button>
+          <button data-act="missed"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Report a missed bin</button>
+          <button data-act="address"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Check another address</button>
+        </div>
+        <form class="chat-input" id="chatForm">
+          <input id="chatMore" placeholder="Ask a follow-up&hellip; e.g. what can I put in it?" aria-label="Ask a follow-up">
+          <button type="submit" aria-label="Send"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+      </div>
+      <p class="disclaimer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> Answers come from your council&rsquo;s collection data. Always check the label on your bin for local rules.</p>
+    </div>
+  </section>
+
+  <!-- ============ FORM (council tax address) ============ -->
+  <section class="view" id="view-form">
+    <div class="stage">
+      <p class="eyebrow">Council tax</p>
+      <h2>Tell us you&rsquo;re moving</h2>
+      <p class="lede">Update the address on your council tax account. It takes about 3 minutes &mdash; you don&rsquo;t need to phone us.</p>
+
+      <form class="ctform" id="ctForm" novalidate>
+        <fieldset>
+          <legend>Your details</legend>
+          <div class="grid-2">
+            <div class="field"><label for="f-name">Full name</label>
+              <input type="text" id="f-name" name="name" required><span class="err">Enter your full name</span></div>
+            <div class="field"><label for="f-acct">Council tax account number</label>
+              <input type="text" id="f-acct" name="acct" inputmode="numeric" placeholder="e.g. 6041 220 987" required>
+              <span class="help">8&ndash;10 digits, on your bill top-right</span><span class="err">Enter your account number</span></div>
+          </div>
+          <div class="field"><label for="f-email">Email for confirmation</label>
+            <input type="email" id="f-email" name="email" placeholder="you@example.com" required>
+            <span class="err">Enter a valid email address</span></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Where you&rsquo;re moving from</legend>
+          <div class="field"><label for="f-from">Current address</label>
+            <input type="text" id="f-from" name="from" placeholder="House number and street, postcode" required>
+            <span class="err">Enter your current address</span></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Where you&rsquo;re moving to</legend>
+          <div class="field"><label for="f-to">New address</label>
+            <input type="text" id="f-to" name="to" placeholder="House number and street, postcode" required>
+            <span class="err">Enter your new address</span></div>
+          <div class="grid-2">
+            <div class="field"><label for="f-date">Move-in date</label>
+              <input type="date" id="f-date" name="date" required><span class="err">Choose a valid move-in date</span></div>
+            <div class="field"><label for="f-council">Is the new home in Meadowvale?</label>
+              <select id="f-council" name="council"><option value="yes">Yes, in Meadowvale</option><option value="no">No, another council</option></select></div>
+          </div>
+          <div class="checks" role="group" aria-label="Who is moving">
+            <span class="field" style="margin-top:6px"><label>Who is moving? (optional)</label></span>
+            <label class="check"><input type="checkbox" name="who" value="me"> Me</label>
+            <label class="check"><input type="checkbox" name="who" value="partner"> Partner / joint account holder</label>
+            <label class="check"><input type="checkbox" name="who" value="dependants"> Children or other dependants</label>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Submit change of address</button>
+          <button type="button" class="btn-text" id="formCancel">Cancel</button>
+        </div>
+        <p class="disclaimer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> This is a prototype &mdash; nothing you type is sent or stored anywhere.</p>
+      </form>
+
+      <div class="confirm" id="ctConfirm" style="display:none">
+        <span class="tick" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <h3>Your address change is in</h3>
+        <p style="color:var(--muted);margin:0 0 4px">We&rsquo;ll email confirmation to <b id="confEmail">you</b>.</p>
+        <div class="ref" id="confRef">CT-2026-00000</div>
+        <ul class="next-list">
+          <li><span class="n">1</span><div><b>We check your account</b><br><span style="color:var(--muted);font-size:.9rem">An adviser reviews the change within 5 working days.</span></div></li>
+          <li><span class="n">2</span><div><b>Your bill is recalculated</b><br><span style="color:var(--muted);font-size:.9rem">You&rsquo;ll get a revised bill for the new property, and any refund due on the old one.</span></div></li>
+          <li><span class="n">3</span><div><b>Nothing more to do</b><br><span style="color:var(--muted);font-size:.9rem">Keep your reference in case you need to call us.</span></div></li>
+        </ul>
+        <div style="margin-top:22px"><button class="btn-primary" id="confDone">Back to start</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PHONE (urgent housing) ============ -->
+  <section class="view" id="view-phone">
+    <div class="stage">
+      <p class="eyebrow" style="color:var(--urgent)">Urgent housing help</p>
+      <h2>Let&rsquo;s get you somewhere safe</h2>
+      <p class="lede">If you have nowhere to stay tonight, we can help right now. Our homelessness duty team will talk it through with you.</p>
+
+      <div class="phone-shell">
+        <div class="phone-inner">
+          <p class="phone-eyebrow">Housing Emergency Line</p>
+          <p class="phone-title">Duty homelessness team</p>
+          <p class="phone-reassure">You will not be left without somewhere safe to stay. We&rsquo;ll sort the next few hours together.</p>
+
+          <div class="ring-wrap" aria-hidden="true">
+            <span class="ring r2"></span><span class="ring r3"></span>
+            <span class="avatar-big"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+          </div>
+          <p class="connecting" id="connecting">Ready to connect you&hellip;</p>
+          <p class="phone-number">0800 731 0999</p>
+          <span class="open247"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Open 24 hours, every day &middot; free to call</span>
+
+          <a class="call-now" href="tel:08007310999" id="callNow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>
+            Call now &mdash; free
+          </a>
+
+          <div class="call-controls" role="group" aria-label="Call controls">
+            <span class="cc"><button id="ccMute" aria-pressed="false" aria-label="Mute">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z"/><path d="M19 10a7 7 0 0 1-14 0M12 19v3"/></svg></button>Mute</span>
+            <span class="cc"><button id="ccSpk" aria-pressed="false" aria-label="Speaker">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/></svg></button>Speaker</span>
+            <span class="cc"><button class="end" id="ccEnd" aria-label="End call">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5c6-4 14-4 20 0v3l-4 1-.5-2.5c-3.4-1.4-7.6-1.4-11 0L6 13.5 2 12.5v-3Z"/></svg></button>End</span>
+          </div>
+
+          <div class="phone-alt">
+            <button id="altText"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/></svg> Text us instead</button>
+            <button id="altNext"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg> What happens next</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="safe-strip" id="nextInfo" style="display:none">
+        <span class="s-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6M6 10v9h12v-9"/></svg></span>
+        <div>
+          <b>What happens when you call</b>
+          <p>An officer takes a few details, checks whether we have a duty to house you tonight, and arranges emergency accommodation if you need it. Bring ID if you have it &mdash; but don&rsquo;t worry if you don&rsquo;t.</p>
+        </div>
+      </div>
+      <p class="disclaimer" style="justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><path d="M12 3l9 16H3l9-16Z"/><path d="M12 10v4M12 17h.01"/></svg> If you&rsquo;re in immediate danger, call <a href="tel:999">999</a>. This is a prototype; the number is fictional.</p>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var views = { home: 'view-home', chat: 'view-chat', form: 'view-form', phone: 'view-phone' };
+
+  /* ---------- theme ---------- */
+  var stored = null;
+  try { stored = localStorage.getItem('mbc-theme'); } catch (e) {}
+  if (stored) root.setAttribute('data-theme', stored);
+  function currentDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  document.getElementById('themeToggle').addEventListener('click', function () {
+    var next = currentDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('mbc-theme', next); } catch (e) {}
+  });
+
+  /* ---------- toast ---------- */
+  var toastEl = document.getElementById('toast'), toastT;
+  function toast(msg) {
+    toastEl.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' + msg;
+    toastEl.classList.add('show'); clearTimeout(toastT);
+    toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
+  }
+
+  /* ---------- view switching ---------- */
+  var startOver = document.getElementById('startOver');
+  function show(name) {
+    Object.keys(views).forEach(function (k) {
+      document.getElementById(views[k]).classList.toggle('active', k === name);
+    });
+    startOver.style.display = name === 'home' ? 'none' : 'inline-flex';
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+  function home() { show('home'); document.getElementById('askInput').value = ''; autosize(); }
+  startOver.addEventListener('click', home);
+  document.getElementById('brandHome').addEventListener('click', function (e) { e.preventDefault(); home(); });
+
+  /* ---------- router ---------- */
+  function route(qRaw) {
+    var q = (qRaw || '').toLowerCase();
+    var m = function (list) { return list.some(function (w) { return q.indexOf(w) > -1; }); };
+    if (m(['lock', 'homeless', 'evict', 'nowhere', 'rough sleep', 'sleeping rough', 'nowhere to', 'kicked out', 'nowhere to go', 'shelter tonight', 'emergency housing', 'no home'])) return 'phone';
+    if (m(['bin', 'collection', 'collect', 'recycl', 'rubbish', 'waste', 'garden']))  return 'chat';
+    if (m(['address', 'council tax', 'moving', 'move home', 'moved', 'change my address', 'relocat', 'new house'])) return 'form';
+    return null;
+  }
+  function submitQuery(q) {
+    var dest = route(q);
+    if (dest === 'chat') { openChat(q); show('chat'); }
+    else if (dest === 'form') { show('form'); }
+    else if (dest === 'phone') { show('phone'); startConnecting(); }
+    else { // fallback: gentle nudge, stay home
+      toast('Try &ldquo;green bin&rdquo;, &ldquo;council tax address&rdquo; or &ldquo;homeless&rdquo;');
+    }
+  }
+
+  /* ---------- home input ---------- */
+  var askInput = document.getElementById('askInput');
+  function autosize() { askInput.style.height = 'auto'; askInput.style.height = Math.min(askInput.scrollHeight, 140) + 'px'; }
+  askInput.addEventListener('input', autosize);
+  askInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); document.getElementById('askForm').requestSubmit(); }
+  });
+  document.getElementById('askForm').addEventListener('submit', function (e) {
+    e.preventDefault(); var v = askInput.value.trim(); if (v) submitQuery(v);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (c) {
+    c.addEventListener('click', function () { var q = c.getAttribute('data-q'); askInput.value = q; submitQuery(q); });
+  });
+
+  /* ---------- chat (green bin) ---------- */
+  var chatBody = document.getElementById('chatBody');
+  var chatQuick = document.getElementById('chatQuick');
+  var chatMore = document.getElementById('chatMore');
+  var NEXT_DATE = 'Wednesday 22 July';
+  var awaitingAddress = false;
+  function bubble(kind, html) {
+    var wrap = document.createElement('div'); wrap.className = 'msg ' + kind;
+    var who = document.createElement('span'); who.className = 'who'; who.setAttribute('aria-hidden', 'true');
+    who.innerHTML = kind === 'user' ? 'You'
+      : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 14h.01M15 14h.01"/></svg>';
+    var b = document.createElement('div'); b.className = 'bubble'; b.innerHTML = html;
+    wrap.appendChild(who); wrap.appendChild(b); chatBody.appendChild(wrap);
+    chatBody.scrollTop = chatBody.scrollHeight; return wrap;
+  }
+  function typing() {
+    var wrap = document.createElement('div'); wrap.className = 'msg bot';
+    wrap.innerHTML = '<span class="who" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 14h.01M15 14h.01"/></svg></span><div class="bubble"><span class="typing"><i></i><i></i><i></i></span></div>';
+    chatBody.appendChild(wrap); chatBody.scrollTop = chatBody.scrollHeight; return wrap;
+  }
+  function botSay(html, delay, after) {
+    var t = typing();
+    setTimeout(function () { t.remove(); bubble('bot', html); if (after) after(); }, delay || 900);
+  }
+  var BIN_CALLOUT = '<div class="callout"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><div><div style="font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Next collection</div><div class="big">' + NEXT_DATE + '</div></div></div>';
+  function askAddress() {
+    awaitingAddress = true;
+    chatMore.placeholder = 'Enter your postcode, e.g. MV3 8QT';
+  }
+  function binAnswer(addr) {
+    var pc = (addr.match(/[A-Za-z]{1,2}\d[A-Za-z\d]?\s*\d[A-Za-z]{2}/) || [])[0];
+    var where = pc ? ('postcode <strong>' + escapeHtml(pc.toUpperCase().replace(/\s+/, ' ')) + '</strong>') : 'that address';
+    return 'Thanks. For ' + where + ', your <strong>green (garden) bin</strong> is collected <strong>fortnightly on Wednesdays</strong> (round&nbsp;MV3).' +
+      BIN_CALLOUT + 'Put it out by <strong>7am</strong>, then every other Wednesday after that.';
+  }
+  function openChat(q) {
+    chatBody.innerHTML = ''; chatQuick.style.display = 'none';
+    bubble('user', escapeHtml(q || 'When is my green bin being collected?'));
+    askAddress();
+    botSay('Happy to help &mdash; I just need to know where you are. What&rsquo;s your <strong>postcode or address</strong>?', 800);
+  }
+  document.getElementById('chatForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = chatMore.value.trim(); if (!v) return;
+    chatMore.value = ''; bubble('user', escapeHtml(v));
+    if (awaitingAddress) {
+      awaitingAddress = false;
+      chatMore.placeholder = 'Ask a follow-up… e.g. what can I put in it?';
+      botSay(binAnswer(v), 1000, function () { chatQuick.style.display = 'flex'; });
+      return;
+    }
+    var lv = v.toLowerCase(), reply;
+    if (lv.indexOf('what') > -1 && (lv.indexOf('put') > -1 || lv.indexOf('in it') > -1 || lv.indexOf('accept') > -1))
+      reply = '<strong>Yes to:</strong> grass cuttings, leaves, hedge and plant trimmings, small branches, weeds and flowers.<br><strong>No to:</strong> soil, food waste, plastic bags or pots. Loose in the bin, please &mdash; no bin liners.';
+    else if (lv.indexOf('miss') > -1) reply = 'Sorry we missed it. If your bin was out by 7am, you can report it and we&rsquo;ll return within 2 working days &mdash; tap <strong>Report a missed bin</strong> above.';
+    else if (lv.indexOf('cost') > -1 || lv.indexOf('pay') > -1 || lv.indexOf('price') > -1 || lv.indexOf('subscri') > -1) reply = 'Garden waste collection is a subscription of <strong>&pound;48 a year</strong>. Your current subscription runs to next March &mdash; you&rsquo;re all set.';
+    else if (lv.indexOf('bin day') > -1 || lv.indexOf('when') > -1 || lv.indexOf('next') > -1) reply = 'Your next green bin day is <strong>' + NEXT_DATE + '</strong>. Want it in your calendar? Tap <strong>Add to calendar</strong> above.';
+    else reply = 'For garden waste your next collection is <strong>' + NEXT_DATE + '</strong>. You can also ask about what goes in the bin, missed collections, or the yearly cost.';
+    botSay(reply, 850);
+  });
+  chatQuick.addEventListener('click', function (e) {
+    var btn = e.target.closest('button'); if (!btn) return;
+    var act = btn.getAttribute('data-act');
+    if (act === 'ics') downloadIcs();
+    else if (act === 'missed') { bubble('user', 'Report a missed bin'); botSay('Thanks &mdash; I&rsquo;ve logged a missed collection for your address (ref <strong>MB-5521</strong>). A crew will return within 2 working days. No need to do anything else.', 850); }
+    else if (act === 'address') { bubble('user', 'Check another address'); chatQuick.style.display = 'none'; askAddress(); botSay('Sure &mdash; what&rsquo;s the postcode? I&rsquo;ll look up its collection days.', 700, function () { chatMore.focus(); }); }
+  });
+  function downloadIcs() {
+    var ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Meadowvale//Bins//EN','BEGIN:VEVENT',
+      'UID:greenbin-' + Date.now() + '@meadowvale','DTSTART;VALUE=DATE:20260722','SUMMARY:Green (garden) bin collection',
+      'DESCRIPTION:Put your green bin out by 7am. Fortnightly on Wednesdays.','RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=WE',
+      'BEGIN:VALARM','TRIGGER:-PT12H','ACTION:DISPLAY','DESCRIPTION:Green bin out tonight','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+    var blob = new Blob([ics], { type: 'text/calendar' }), url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url; a.download = 'green-bin-collection.ics'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    toast('Calendar reminder downloaded');
+  }
+
+  /* ---------- form ---------- */
+  var ctForm = document.getElementById('ctForm');
+  function setInvalid(input, bad) {
+    var field = input.closest('.field'); if (!field) return;
+    field.classList.toggle('invalid', bad); input.setAttribute('aria-invalid', bad ? 'true' : 'false');
+  }
+  ctForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true, firstBad = null;
+    var reqs = ['f-name', 'f-acct', 'f-email', 'f-from', 'f-to', 'f-date'];
+    reqs.forEach(function (id) {
+      var el = document.getElementById(id), v = el.value.trim(), bad = !v;
+      if (id === 'f-email' && v) bad = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      if (id === 'f-date' && v) { var d = new Date(v); bad = isNaN(d.getTime()); }
+      setInvalid(el, bad); if (bad) { ok = false; if (!firstBad) firstBad = el; }
+    });
+    if (!ok) { firstBad.focus(); return; }
+    var ref = 'CT-2026-' + String(Math.floor(1000 + Math.random() * 89999)).padStart(5, '0');
+    document.getElementById('confRef').textContent = ref;
+    document.getElementById('confEmail').textContent = document.getElementById('f-email').value.trim();
+    ctForm.style.display = 'none';
+    document.getElementById('ctConfirm').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  });
+  ['f-name','f-acct','f-email','f-from','f-to','f-date'].forEach(function (id) {
+    var el = document.getElementById(id);
+    el.addEventListener('input', function () { if (el.closest('.field').classList.contains('invalid')) setInvalid(el, false); });
+  });
+  document.getElementById('formCancel').addEventListener('click', home);
+  document.getElementById('confDone').addEventListener('click', function () {
+    ctForm.reset(); ctForm.style.display = 'flex';
+    document.getElementById('ctConfirm').style.display = 'none';
+    Array.prototype.forEach.call(ctForm.querySelectorAll('.field'), function (f) { f.classList.remove('invalid'); });
+    home();
+  });
+
+  /* ---------- phone ---------- */
+  function startConnecting() {
+    var el = document.getElementById('connecting');
+    var steps = ['Ready to connect you…', 'Finding an available officer…', 'An officer is ready for your call'];
+    var i = 0; el.textContent = steps[0];
+    var iv = setInterval(function () {
+      i++; if (i >= steps.length) { clearInterval(iv); return; } el.textContent = steps[i];
+    }, 1700);
+  }
+  document.getElementById('ccMute').addEventListener('click', function () {
+    var on = this.classList.toggle('active'); this.setAttribute('aria-pressed', on); toast(on ? 'Microphone muted' : 'Microphone on');
+  });
+  document.getElementById('ccSpk').addEventListener('click', function () {
+    var on = this.classList.toggle('active'); this.setAttribute('aria-pressed', on); toast(on ? 'Speaker on' : 'Speaker off');
+  });
+  document.getElementById('ccEnd').addEventListener('click', function () { toast('Call ended'); setTimeout(home, 500); });
+  document.getElementById('altText').addEventListener('click', function () { toast('Text &ldquo;HOUSING&rdquo; to 60123 &mdash; we reply within minutes'); });
+  document.getElementById('altNext').addEventListener('click', function () {
+    var info = document.getElementById('nextInfo');
+    info.style.display = info.style.display === 'none' ? 'flex' : 'none';
+    if (info.style.display === 'flex') info.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  document.getElementById('callNow').addEventListener('click', function () { toast('Dialling the 24/7 housing team…'); });
+
+  /* ---------- misc ---------- */
+  function escapeHtml(s) { return (s || '').replace(/[&<>"]/g, function (c) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' })[c]; }); }
+  var tb = document.getElementById('topbar');
+  window.addEventListener('scroll', function () { tb.classList.toggle('scrolled', window.scrollY > 4); }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
