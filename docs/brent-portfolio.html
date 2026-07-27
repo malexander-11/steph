@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service maturity portfolio — many services, all at different stages</title>
+<meta name="description" content="An illustrative model of a London borough's service estate: ~100 services spread across eight rungs of maturity, plus the services that should never be self-service.">
+<meta name="theme-color" content="#0b0c0c">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0c0c'/%3E%3Crect x='6' y='18' width='4' height='8' fill='%2386b6ef'/%3E%3Crect x='12' y='13' width='4' height='13' fill='%233987e5'/%3E%3Crect x='18' y='9' width='4' height='17' fill='%231c5cab'/%3E%3Crect x='24' y='6' width='4' height='20' fill='%23ffffff'/%3E%3C/svg%3E">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: #f8f8f8; color: #0b0c0c;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+  }
+  @media (max-width: 40em) { body { font-size: 16px; } }
+  a { color: #1d70b8; } a:hover { color: #003078; } a:visited { color: #4c2c92; }
+  :focus-visible { outline: 3px solid #ffdd00; outline-offset: 0; box-shadow: 0 0 0 5px #0b0c0c; }
+  button { font: inherit; cursor: pointer; }
+  h1, h2, h3 { line-height: 1.15; margin: 0 0 .4em; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  .skip { position: absolute; left: -9999px; background: #ffdd00; padding: 10px 15px; z-index: 100; }
+  .skip:focus { left: 0; }
+  .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  /* ---- chrome ---- */
+  .masthead { background: #0b0c0c; color: #fff; border-bottom: 8px solid #1c5cab; }
+  .masthead .wrap { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+  .mark { width: 32px; height: 32px; flex: none; display: flex; align-items: flex-end; gap: 2px; }
+  .mark i { display: block; width: 6px; background: #86b6ef; }
+  .mark i:nth-child(2){ background:#3987e5; } .mark i:nth-child(3){ background:#1c5cab; } .mark i:nth-child(4){ background:#fff; }
+  .masthead b { font-size: 1.05rem; }
+  .masthead .sub { display: block; font-size: .66rem; color: #b1b4b6; letter-spacing: .05em; text-transform: uppercase; }
+
+  .disclaimer { background: #fff4e5; border-bottom: 3px solid #b56c17; }
+  .disclaimer .wrap { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; }
+  .disclaimer .ic { flex: none; width: 22px; height: 22px; border-radius: 50%; background: #b56c17; color: #fff;
+    display: grid; place-items: center; font-weight: 700; font-size: .8rem; margin-top: 1px; }
+  .disclaimer p { margin: 0; font-size: .84rem; }
+  .disclaimer b { font-weight: 700; }
+
+  main { padding: 26px 0 60px; }
+  section { margin-bottom: 46px; }
+  .eyebrow { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #52514e; margin: 0 0 8px; }
+  h1 { font-size: 2rem; letter-spacing: -.02em; max-width: 22ch; }
+  @media (max-width: 40em) { h1 { font-size: 1.5rem; } }
+  h2 { font-size: 1.3rem; letter-spacing: -.01em; }
+  .lede { font-size: 1.02rem; color: #383f43; max-width: 62ch; }
+  .note { font-size: .85rem; color: #52514e; max-width: 70ch; }
+
+  /* ---- stat tiles ---- */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 24px 0 0; }
+  .stat { background: #fff; border: 1px solid #e1e0d9; padding: 16px; }
+  .stat .v { font-size: 2rem; font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+  .stat .k { font-size: .84rem; color: #52514e; margin-top: 7px; }
+  .stat.accent { border-left: 5px solid #1c5cab; }
+  .stat.flag { border-left: 5px solid #d03b3b; }
+
+  /* ---- ladder explainer ---- */
+  .bands { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .bandcard { background: #fff; border: 1px solid #e1e0d9; border-top: 5px solid var(--bc); padding: 14px; }
+  .bandcard h3 { font-size: .95rem; margin: 0 0 3px; }
+  .bandcard .bid { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #52514e; }
+  .rung { display: flex; gap: 9px; padding: 8px 0; border-top: 1px solid #f0efec; font-size: .84rem; }
+  .rung:first-of-type { border-top: 0; padding-top: 10px; }
+  .rung .n { flex: none; width: 21px; height: 21px; border-radius: 3px; background: var(--bc); color: #fff;
+    display: grid; place-items: center; font-size: .72rem; font-weight: 700; }
+  .rung.pale .n { color: #0b0c0c; }
+  .rung b { display: block; font-weight: 700; }
+  .rung span { color: #52514e; font-size: .8rem; }
+  .bandcard.esc { border-top-color: #3d3d3a; background: #f4f4f2; }
+  .esc-badge { display: inline-flex; align-items: center; gap: 6px; font-size: .68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; color: #3d3d3a; }
+
+  /* ---- filter row (one row, above everything it scopes) ---- */
+  .filters { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; background: #fff;
+    border: 1px solid #e1e0d9; padding: 13px 15px; margin-bottom: 18px; }
+  .filters label { display: block; font-size: .78rem; font-weight: 700; margin-bottom: 4px; }
+  .filters select { font: inherit; font-size: .9rem; padding: 7px 9px; border: 2px solid #0b0c0c; background: #fff; max-width: 100%; }
+  .tgl { border: 2px solid #b1b4b6; background: #fff; padding: 7px 12px; font-size: .85rem; }
+  .tgl[aria-pressed="true"] { border-color: #1c5cab; background: #eaf1fb; color: #16467f; font-weight: 700; }
+  .filters .spacer { flex: 1; }
+  .fcount { font-size: .82rem; color: #52514e; }
+
+  /* ---- the board ---- */
+  .boardwrap { overflow-x: auto; padding-bottom: 6px; }
+  .board { display: grid; grid-template-columns: repeat(8, minmax(148px, 1fr)); gap: 10px; min-width: 1000px; }
+  .bandhdr { display: grid; grid-template-columns: repeat(8, minmax(148px, 1fr)); gap: 10px; min-width: 1000px; margin-bottom: 8px; }
+  .bh { background: var(--bc); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; padding: 5px 9px; }
+  .bh.pale { color: #0b0c0c; }
+  .col { background: #fff; border: 1px solid #e1e0d9; border-top: 3px solid var(--bc); padding: 9px; min-height: 130px; }
+  .colhead { font-size: .78rem; margin-bottom: 9px; }
+  .colhead b { display: block; font-weight: 700; }
+  .colhead .c { color: #52514e; font-size: .74rem; font-variant-numeric: tabular-nums; }
+  .chip { display: block; width: 100%; text-align: left; background: #fbfbfa; border: 1px solid #e1e0d9;
+    border-left: 4px solid var(--bc); padding: 7px 8px; margin-bottom: 6px; font-size: .78rem; line-height: 1.28; }
+  .chip:hover { background: #eaf1fb; border-color: #1c5cab; }
+  .chip .nm { display: block; font-weight: 600; }
+  .chip .dm { display: block; color: #52514e; font-size: .72rem; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .chip[aria-expanded="true"] { background: #eaf1fb; border-color: #1c5cab; box-shadow: inset 0 0 0 1px #1c5cab; }
+  .morebtn { width: 100%; background: #f4f4f2; border: 1px dashed #b1b4b6; color: #16467f; font-size: .76rem;
+    font-weight: 700; padding: 6px 4px; margin-top: 2px; }
+  .morebtn:hover { background: #eaf1fb; border-color: #1c5cab; }
+
+  /* escalation lane — deliberately off the ramp */
+  .esclane { margin-top: 18px; background: #f4f4f2; border: 1px solid #d5d5d1; border-left: 6px solid #3d3d3a; padding: 14px 15px; }
+  .esclane h3 { font-size: 1rem; margin: 0 0 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .esclane .why { font-size: .85rem; color: #383f43; margin: 0 0 12px; max-width: 78ch; }
+  .escgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 8px; }
+  .echip { text-align: left; background: #fff; border: 1px solid #cfcfca; border-left: 4px solid #3d3d3a;
+    border-radius: 0 12px 12px 0; padding: 8px 10px; font-size: .79rem; line-height: 1.3; }
+  .echip:hover { border-color: #3d3d3a; background: #fafaf8; }
+  .echip .nm { display: block; font-weight: 600; }
+  .echip .st { display: inline-flex; align-items: center; gap: 5px; font-size: .71rem; font-weight: 700; margin-top: 4px; }
+  .echip .st.ok { color: #24632a; } .echip .st.no { color: #a8302f; }
+  .echip[aria-expanded="true"] { box-shadow: inset 0 0 0 1px #3d3d3a; background: #fafaf8; }
+
+  /* detail panel */
+  .detail { margin-top: 16px; background: #fff; border: 2px solid #1c5cab; padding: 16px; }
+  .detail.esc { border-color: #3d3d3a; }
+  .detail[hidden] { display: none; }
+  .detail h3 { font-size: 1.1rem; margin: 0 0 4px; }
+  .detail .meta { font-size: .82rem; color: #52514e; margin: 0 0 12px; }
+  .detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 7px 16px; margin: 0 0 12px; font-size: .88rem; }
+  .detail dt { font-weight: 700; color: #52514e; } .detail dd { margin: 0; }
+  .detail .next { background: #eaf1fb; border-left: 4px solid #1c5cab; padding: 10px 12px; font-size: .88rem; }
+  .detail .next b { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: #16467f; margin-bottom: 3px; }
+  .detail .closeb { background: transparent; border: 0; color: #1d70b8; text-decoration: underline; padding: 6px 0 0; font-size: .84rem; }
+
+  /* ---- bar chart ---- */
+  .bars { background: #fff; border: 1px solid #e1e0d9; padding: 18px 16px; }
+  .barrow { display: grid; grid-template-columns: 168px 1fr 78px; gap: 12px; align-items: center; padding: 5px 0; }
+  @media (max-width: 40em) { .barrow { grid-template-columns: 120px 1fr 62px; gap: 8px; font-size: .84rem; } }
+  .barrow .lb { font-size: .82rem; }
+  .barrow .lb small { display: block; color: #898781; font-size: .7rem; }
+  .track { background: #f4f4f2; height: 20px; position: relative; }
+  .track > i { display: block; height: 100%; background: #2a78d6; border-radius: 0 3px 3px 0; }
+  .barrow.hi .track > i { background: #1c5cab; }
+  .barrow .vl { text-align: right; font-size: .82rem; font-variant-numeric: tabular-nums; }
+  .axis { border-top: 1px solid #c3c2b7; margin-top: 8px; padding-top: 5px; font-size: .72rem; color: #898781;
+    display: grid; grid-template-columns: 168px 1fr 78px; gap: 12px; }
+  @media (max-width: 40em) { .axis { grid-template-columns: 120px 1fr 62px; gap: 8px; } }
+  .axis .sc { display: flex; justify-content: space-between; }
+
+  /* ---- heatmap ---- */
+  .hmwrap { overflow-x: auto; }
+  table.hm { border-collapse: collapse; width: 100%; min-width: 640px; background: #fff; }
+  table.hm th, table.hm td { border: 1px solid #e1e0d9; padding: 7px 9px; font-size: .82rem; text-align: center; }
+  table.hm th[scope="row"] { text-align: left; font-weight: 600; font-size: .8rem; white-space: nowrap; }
+  table.hm thead th { background: #f4f4f2; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
+  table.hm td { font-variant-numeric: tabular-nums; }
+  table.hm td.z { color: #b1b4b6; }
+  .legend { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: #52514e; margin-top: 10px; flex-wrap: wrap; }
+  .legend .sw { display: flex; }
+  .legend .sw i { width: 26px; height: 13px; display: block; }
+
+  /* ---- table view ---- */
+  .tablewrap { overflow-x: auto; }
+  table.data { border-collapse: collapse; width: 100%; min-width: 720px; background: #fff; font-size: .84rem; }
+  table.data th, table.data td { border-bottom: 1px solid #e1e0d9; padding: 8px 10px; text-align: left; vertical-align: top; }
+  table.data thead th { background: #f4f4f2; font-size: .76rem; text-transform: uppercase; letter-spacing: .04em; position: sticky; top: 0; }
+  table.data td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ---- takeaways ---- */
+  .takeaways { display: grid; gap: 14px; }
+  .tk { background: #fff; border: 1px solid #e1e0d9; border-left: 5px solid #1c5cab; padding: 14px 16px; }
+  .tk.warn { border-left-color: #d03b3b; }
+  .tk b { display: block; margin-bottom: 3px; }
+  .tk span { font-size: .9rem; color: #383f43; }
+
+  footer { border-top: 1px solid #d8d8d8; background: #fff; }
+  footer .wrap { padding: 20px 16px; font-size: .8rem; color: #52514e; }
+
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="mark" aria-hidden="true"><i style="height:9px"></i><i style="height:15px"></i><i style="height:22px"></i><i style="height:30px"></i></span>
+    <span><b>Service maturity portfolio</b><span class="sub">Illustrative model &middot; Brent</span></span>
+  </div>
+</header>
+
+<div class="disclaimer">
+  <div class="wrap">
+    <span class="ic" aria-hidden="true">!</span>
+    <p id="disclaimerText"></p>
+  </div>
+</div>
+
+<main id="main">
+  <div class="wrap">
+
+    <section>
+      <p class="eyebrow">The portfolio problem</p>
+      <h1 id="headline">A borough runs a lot of services.</h1>
+      <p class="lede" id="lede"></p>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <section>
+      <h2>The ladder</h2>
+      <p class="note" style="margin-bottom:16px">Eight rungs in four bands. Rungs&nbsp;1, 3 and 5 are the same stages the
+        <a href="front-door.html">front-door walkthrough</a> demonstrates &mdash; one shared vocabulary. The transactional
+        band is deliberately broken into three, because &ldquo;we put it online&rdquo; hides the difference that matters most.</p>
+      <div class="bands" id="bands"></div>
+    </section>
+
+    <section>
+      <h2>Every service, on its rung</h2>
+      <p class="note" style="margin-bottom:16px">Each card is one service. Position is the rung; the number and label say it
+        too, so nothing depends on colour. Select any service to see what would move it up.</p>
+
+      <div class="filters">
+        <div>
+          <label for="areaSel">Service area</label>
+          <select id="areaSel"><option value="">All areas</option></select>
+        </div>
+        <button class="tgl" id="hiTgl" aria-pressed="false">High demand only (25k+)</button>
+        <button class="tgl" id="tblTgl" aria-pressed="false">Show as table</button>
+        <span class="spacer"></span>
+        <span class="fcount" id="fcount"></span>
+      </div>
+
+      <div id="boardView">
+        <div class="boardwrap">
+          <div class="bandhdr" id="bandhdr"></div>
+          <div class="board" id="board"></div>
+        </div>
+
+        <div class="esclane">
+          <h3><span class="esc-badge">&#9873; Separate track</span> Escalate by design</h3>
+          <p class="why" id="escWhy"></p>
+          <div class="escgrid" id="escGrid"></div>
+        </div>
+
+        <div class="detail" id="detail" hidden tabindex="-1" aria-live="polite"></div>
+      </div>
+
+      <div id="tableView" hidden>
+        <div class="tablewrap">
+          <table class="data" id="dataTable">
+            <caption class="vh">Every service with its band, rung, annual contacts and next step</caption>
+            <thead><tr><th scope="col">Service</th><th scope="col">Area</th><th scope="col">Band</th><th scope="col">Rung</th><th scope="col">Annual contacts</th><th scope="col">What would move it up</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Where the demand actually is</h2>
+      <p class="note" style="margin-bottom:16px">Annual contacts by rung. Maturity is not the same as importance &mdash;
+        a rung with few services can carry a lot of volume, and vice versa.</p>
+      <div class="bars" id="bars"></div>
+    </section>
+
+    <section>
+      <h2>Every area is mixed</h2>
+      <p class="note" style="margin-bottom:16px">Services per band, by service area. No directorate is uniformly mature,
+        so &ldquo;digitise Housing&rdquo; is not a plan &mdash; the unit of change is the service, not the department.</p>
+      <div class="hmwrap"><table class="hm" id="heat">
+        <caption class="vh">Count of services by service area and maturity band</caption>
+      </table></div>
+      <div class="legend" id="hmLegend"></div>
+    </section>
+
+    <section>
+      <h2>What this means</h2>
+      <div class="takeaways" id="takeaways"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Illustrative model for discussion &middot; not an official Brent Council product &middot;
+    <a href="brent-portfolio.json" target="_blank" rel="noopener">See the underlying data</a> &middot;
+    <a href="front-door.html">How a service catalogue works</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Ordinal ramp for the four bands (validated: monotone L, single hue, light end 2.11:1 on white).
+  var BAND_COLOUR = { A: '#86b6ef', B: '#3987e5', C: '#1c5cab', D: '#0d366b' };
+  var BAND_PALE = { A: true, B: false, C: false, D: false };   // which need dark text
+  // Sequential ramp for heatmap counts (validated). Zero is left uncoloured — zero should read as nothing.
+  var HEAT = ['#86b6ef', '#5598e7', '#2a78d6', '#1c5cab', '#0d366b'];
+  var HI = 25000;
+
+  var D = null, S = [], LADDER = [], ESC = [], STAGES = {}, BANDS = [];
+  var filterArea = '', hiOnly = false, selected = null;
+  var CAP = 8, expanded = {};   // keep the board scannable; each column can expand
+
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' })[c]; }); }
+  function num(n) { return n.toLocaleString('en-GB'); }
+  function k(n) { return n >= 1000 ? Math.round(n / 1000) + 'k' : String(n); }
+
+  function visible() {
+    return S.filter(function (x) {
+      if (filterArea && x.area !== filterArea) return false;
+      if (hiOnly && x.demand < HI) return false;
+      return true;
+    });
+  }
+
+  /* ---------------- headline ---------------- */
+  function renderHeadline() {
+    var total = S.length;
+    var tot = S.reduce(function (a, x) { return a + x.demand; }, 0);
+    var submit = LADDER.filter(function (x) { return x.stage === 4; });
+    var below = LADDER.filter(function (x) { return x.stage <= 5; });
+    var belowDem = below.reduce(function (a, x) { return a + x.demand; }, 0);
+
+    $('headline').textContent = D.meta.subject + ' runs ' + total + ' services. They are not at the same stage, and they never will be.';
+    $('lede').innerHTML = 'At any given moment every service sits somewhere different on the ladder &mdash; and it moves. ' +
+      'That is why there is no single &ldquo;digital maturity&rdquo; score for a council, and why investment is a portfolio choice: ' +
+      '<b>which services to move up, which rung, and in what order.</b>';
+
+    $('stats').innerHTML =
+      tile(total, 'services modelled, across ' + new Set(S.map(function (x) { return x.area; })).size + ' service areas', 'accent') +
+      tile(submit.length, 'sit at rung 4 &mdash; an online form that is <b>re-keyed by hand</b> at the back. The single biggest cluster.', '') +
+      tile(Math.round(belowDem / tot * 100) + '%', 'of annual contact volume is handled below straight-through', '') +
+      tile(ESC.length, 'escalate by design &mdash; they should <b>never</b> be self-service', 'flag');
+  }
+  function tile(v, k2, cls) {
+    return '<div class="stat ' + cls + '"><div class="v">' + esc(String(v)) + '</div><div class="k">' + k2 + '</div></div>';
+  }
+
+  /* ---------------- ladder explainer ---------------- */
+  function renderBands() {
+    var counts = {};
+    LADDER.forEach(function (x) { counts[x.stage] = (counts[x.stage] || 0) + 1; });
+    var html = BANDS.map(function (b) {
+      var rungs = D.meta.stages.filter(function (st) { return st.band === b.id; }).map(function (st) {
+        return '<div class="rung' + (BAND_PALE[b.id] ? ' pale' : '') + '"><span class="n">' + st.id + '</span>' +
+          '<span><b>' + esc(st.name) + '</b><span>' + esc(st.desc) + '</span>' +
+          '<span style="color:#898781"> &mdash; ' + (counts[st.id] || 0) + ' service' + ((counts[st.id] || 0) === 1 ? '' : 's') + '</span></span></div>';
+      }).join('');
+      return '<div class="bandcard" style="--bc:' + BAND_COLOUR[b.id] + '">' +
+        '<span class="bid">Band ' + b.id + '</span><h3>' + esc(b.name) + '</h3>' + rungs + '</div>';
+    }).join('');
+    var e = D.meta.escalation_track;
+    html += '<div class="bandcard esc"><span class="esc-badge">&#9873; Separate track</span>' +
+      '<h3 style="margin-top:4px">' + esc(e.name) + '</h3>' +
+      '<p style="font-size:.82rem;color:#383f43;margin:6px 0 0">' + esc(e.desc) + '</p>' +
+      '<p style="font-size:.8rem;color:#52514e;margin:8px 0 0"><b>' + ESC.length + ' services</b> &mdash; measured on whether the front door recognises them, not on how far up a ladder they are.</p></div>';
+    $('bands').innerHTML = html;
+    $('escWhy').textContent = e.desc;
+  }
+
+  /* ---------------- the board ---------------- */
+  function renderBoard() {
+    var vis = visible();
+    var visLadder = vis.filter(function (x) { return x.track === 'ladder'; });
+    var visEsc = vis.filter(function (x) { return x.track === 'escalate'; });
+
+    // band header strip, spanning each band's rungs
+    $('bandhdr').innerHTML = BANDS.map(function (b) {
+      var n = b.stages.length;
+      return '<div class="bh' + (BAND_PALE[b.id] ? ' pale' : '') + '" style="--bc:' + BAND_COLOUR[b.id] +
+        ';background:' + BAND_COLOUR[b.id] + ';grid-column:span ' + n + '">' + b.id + ' &middot; ' + esc(b.name) + '</div>';
+    }).join('');
+
+    $('board').innerHTML = D.meta.stages.map(function (st) {
+      var inCol = visLadder.filter(function (x) { return x.stage === st.id; })
+        .sort(function (a, b2) { return b2.demand - a.demand; });
+      var open = !!expanded[st.id];
+      var shown = open ? inCol : inCol.slice(0, CAP);
+      var chips = shown.map(function (x) {
+        return '<button class="chip" data-svc="' + esc(x.name) + '" aria-expanded="false" style="--bc:' + BAND_COLOUR[st.band] + '">' +
+          '<span class="nm">' + esc(x.name) + '</span><span class="dm">' + k(x.demand) + ' a year</span></button>';
+      }).join('');
+      var more = inCol.length > CAP
+        ? '<button class="morebtn" data-more="' + st.id + '" aria-expanded="' + open + '">' +
+          (open ? '&minus; Show fewer' : '+ ' + (inCol.length - CAP) + ' more') + '</button>'
+        : '';
+      return '<div class="col" style="--bc:' + BAND_COLOUR[st.band] + '">' +
+        '<div class="colhead"><b>' + st.id + '. ' + esc(st.name) + '</b>' +
+        '<span class="c">' + inCol.length + ' service' + (inCol.length === 1 ? '' : 's') + '</span></div>' +
+        (chips || '<span style="color:#b1b4b6;font-size:.76rem">None</span>') + more + '</div>';
+    }).join('');
+
+    $('escGrid').innerHTML = visEsc.map(function (x) {
+      var r = x.escalation.recognised;
+      return '<button class="echip" data-svc="' + esc(x.name) + '" aria-expanded="false">' +
+        '<span class="nm">' + esc(x.name) + '</span>' +
+        '<span class="st ' + (r ? 'ok' : 'no') + '">' + (r ? '&#10003; Recognised instantly' : '&#9888; Not recognised') + '</span></button>';
+    }).join('') || '<p style="font-size:.84rem;color:#52514e;margin:0">No escalation services match this filter.</p>';
+
+    $('fcount').textContent = 'Showing ' + vis.length + ' of ' + S.length + ' services';
+    wireChips();
+  }
+
+  function wireChips() {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-svc]'), function (b) {
+      b.addEventListener('click', function () { select(b.getAttribute('data-svc')); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-more]'), function (b) {
+      b.addEventListener('click', function () {
+        var id = b.getAttribute('data-more');
+        expanded[id] = !expanded[id];
+        renderBoard();
+        var again = document.querySelector('[data-more="' + id + '"]');
+        if (again) again.focus();
+      });
+    });
+  }
+
+  function select(name) {
+    var x = S.filter(function (s) { return s.name === name; })[0];
+    if (!x) return;
+    selected = name;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-svc]'), function (b) {
+      b.setAttribute('aria-expanded', String(b.getAttribute('data-svc') === name));
+    });
+    var d = $('detail');
+    if (x.track === 'escalate') {
+      d.className = 'detail esc';
+      d.innerHTML = '<h3>' + esc(x.name) + '</h3>' +
+        '<p class="meta">' + esc(x.area) + ' &middot; escalate by design &middot; ' + num(x.demand) + ' contacts a year</p>' +
+        '<dl><dt>Route</dt><dd>' + esc(x.escalation.route) + '</dd>' +
+        '<dt>Response</dt><dd>' + esc(x.escalation.response) + '</dd>' +
+        '<dt>Recognised?</dt><dd>' + (x.escalation.recognised
+          ? '<b style="color:#24632a">&#10003; Yes</b> &mdash; the front door spots this and hands over with context.'
+          : '<b style="color:#a8302f">&#9888; No</b> &mdash; the resident has to work out who to call. This is the gap worth closing.') + '</dd></dl>' +
+        '<div class="next" style="background:#f4f4f2;border-left-color:#3d3d3a"><b>Why it is not on the ladder</b>' +
+        'Moving this &ldquo;up&rdquo; to self-service would be the wrong outcome. The only improvement that counts is instant recognition and a warm hand-off.</div>' +
+        '<button class="closeb" id="closeDetail">Close</button>';
+    } else {
+      var st = STAGES[x.stage];
+      d.className = 'detail';
+      d.innerHTML = '<h3>' + esc(x.name) + '</h3>' +
+        '<p class="meta">' + esc(x.area) + ' &middot; rung ' + x.stage + ', ' + esc(st.name) + ' &middot; band ' + st.band + '</p>' +
+        '<dl><dt>Annual contacts</dt><dd>' + num(x.demand) + (x.demand >= HI ? ' <span style="color:#16467f;font-weight:700">(high demand)</span>' : '') + '</dd>' +
+        '<dt>What this rung means</dt><dd>' + esc(st.desc) + '</dd>' +
+        '<dt>Last moved</dt><dd>' + esc(x.moved) + ' &middot; demand trend ' + esc(x.trend) + '</dd></dl>' +
+        '<div class="next"><b>What would move it up a rung</b>' + esc(x.next_step) + '</div>' +
+        '<button class="closeb" id="closeDetail">Close</button>';
+    }
+    d.hidden = false;
+    d.focus();
+    var c = $('closeDetail');
+    if (c) c.addEventListener('click', function () {
+      d.hidden = true; selected = null;
+      Array.prototype.forEach.call(document.querySelectorAll('[data-svc]'), function (b) { b.setAttribute('aria-expanded', 'false'); });
+    });
+  }
+
+  /* ---------------- demand by rung ---------------- */
+  function renderBars() {
+    var vis = visible().filter(function (x) { return x.track === 'ladder'; });
+    var dem = {}, cnt = {};
+    vis.forEach(function (x) { dem[x.stage] = (dem[x.stage] || 0) + x.demand; cnt[x.stage] = (cnt[x.stage] || 0) + 1; });
+    var max = Math.max.apply(null, D.meta.stages.map(function (st) { return dem[st.id] || 0; }).concat([1]));
+    var peak = D.meta.stages.reduce(function (a, st) { return (dem[st.id] || 0) > (dem[a.id] || 0) ? st : a; }, D.meta.stages[0]);
+
+    $('bars').innerHTML = D.meta.stages.map(function (st) {
+      var v = dem[st.id] || 0, w = (v / max * 100);
+      return '<div class="barrow' + (st.id === peak.id ? ' hi' : '') + '">' +
+        '<span class="lb">' + st.id + '. ' + esc(st.name) + '<small>' + (cnt[st.id] || 0) + ' service' + ((cnt[st.id] || 0) === 1 ? '' : 's') + '</small></span>' +
+        '<span class="track"><i style="width:' + w.toFixed(1) + '%" title="' + num(v) + ' contacts a year"></i></span>' +
+        '<span class="vl">' + k(v) + '</span></div>';
+    }).join('') +
+      '<div class="axis"><span></span><span class="sc"><span>0</span><span>' + k(max) + ' contacts a year</span></span><span></span></div>';
+  }
+
+  /* ---------------- heatmap ---------------- */
+  function renderHeat() {
+    var vis = visible();
+    var areas = Array.from(new Set(S.map(function (x) { return x.area; }))).sort();
+    var grid = {};
+    areas.forEach(function (a) { grid[a] = { A: 0, B: 0, C: 0, D: 0, E: 0 }; });
+    vis.forEach(function (x) {
+      var key = x.track === 'escalate' ? 'E' : STAGES[x.stage].band;
+      grid[x.area][key]++;
+    });
+    var all = [];
+    areas.forEach(function (a) { ['A','B','C','D'].forEach(function (b) { all.push(grid[a][b]); }); });
+    var mx = Math.max.apply(null, all.concat([1]));
+
+    var head = '<thead><tr><th scope="col">Service area</th>' +
+      BANDS.map(function (b) { return '<th scope="col">' + b.id + ' &middot; ' + esc(b.name) + '</th>'; }).join('') +
+      '<th scope="col">Escalate</th></tr></thead>';
+    var body = '<tbody>' + areas.map(function (a) {
+      var cells = BANDS.map(function (b) {
+        var v = grid[a][b.id];
+        if (!v) return '<td class="z">&mdash;</td>';
+        var idx = Math.min(HEAT.length - 1, Math.floor((v - 1) / mx * HEAT.length));
+        var dark = idx >= 2;
+        return '<td style="background:' + HEAT[idx] + ';color:' + (dark ? '#fff' : '#0b0c0c') + '">' + v + '</td>';
+      }).join('');
+      var ev = grid[a].E;
+      return '<tr><th scope="row">' + esc(a) + '</th>' + cells +
+        '<td style="background:' + (ev ? '#e6e6e2' : '#fff') + '">' + (ev || '<span class="z">&mdash;</span>') + '</td></tr>';
+    }).join('') + '</tbody>';
+    $('heat').innerHTML = head + body;
+
+    $('hmLegend').innerHTML = '<span>Fewer services</span><span class="sw">' +
+      HEAT.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('') +
+      '</span><span>More</span><span style="margin-left:10px">&mdash; counts are printed in every cell, so colour is never the only channel.</span>';
+  }
+
+  /* ---------------- table view ---------------- */
+  function renderTable() {
+    var vis = visible().slice().sort(function (a, b) {
+      if (a.track !== b.track) return a.track === 'escalate' ? 1 : -1;
+      return (b.stage == null ? -1 : b.stage) - (a.stage == null ? -1 : a.stage) || b.demand - a.demand;
+    });
+    $('dataTable').querySelector('tbody').innerHTML = vis.map(function (x) {
+      var band = x.track === 'escalate' ? 'Escalate' : STAGES[x.stage].band + ' · ' + BANDS.filter(function (b) { return b.id === STAGES[x.stage].band; })[0].name;
+      var rung = x.track === 'escalate' ? '—' : x.stage + '. ' + STAGES[x.stage].name;
+      var next = x.track === 'escalate'
+        ? 'Not on the ladder — ' + (x.escalation.recognised ? 'recognised instantly' : 'not recognised; close that gap') + '. Route: ' + x.escalation.route
+        : x.next_step;
+      return '<tr><td>' + esc(x.name) + '</td><td>' + esc(x.area) + '</td><td>' + esc(band) + '</td><td>' + esc(rung) +
+        '</td><td class="num">' + num(x.demand) + '</td><td>' + esc(next) + '</td></tr>';
+    }).join('');
+  }
+
+  /* ---------------- takeaways ---------------- */
+  function renderTakeaways() {
+    var submit = LADDER.filter(function (x) { return x.stage === 4; }).length;
+    var notRec = ESC.filter(function (x) { return !x.escalation.recognised; }).length;
+    $('takeaways').innerHTML =
+      tk('There is no single maturity score.', 'The estate is spread across every rung at once, and each service moves on its own timetable. A board-level "we are at stage 2" is not a fact about anything.') +
+      tk('A form that gets re-keyed is not a transaction.', submit + ' services sit at rung 4: digital at the front, manual at the back. They look done on a project plan and still cost officer time on every single case. Rung 4 → 6 is usually better value than rung 1 → 4.') +
+      tk('Escalation is a design choice, not a low score.', ESC.length + ' services should never be self-service. Counting them as "immature" pushes you to automate exactly the things that need a person. The only target here is instant recognition — and ' + notRec + ' are not recognised today.', true) +
+      tk('You can only draw this picture if you hold a catalogue.', 'Every number here comes from one structured file. Without it, nobody can say how many services exist, what stage each is at, or what moving one would take. <a href="front-door.html">That is the argument the front-door prototype makes</a>.');
+  }
+  function tk(t, s, warn) {
+    return '<div class="tk' + (warn ? ' warn' : '') + '"><b>' + t + '</b><span>' + s + '</span></div>';
+  }
+
+  /* ---------------- render-all + controls ---------------- */
+  function renderAll() { renderBoard(); renderBars(); renderHeat(); renderTable(); }
+
+  function init() {
+    $('disclaimerText').innerHTML = '<b>Illustrative model.</b> ' + esc(D.meta.disclaimer).replace('Illustrative model. ', '');
+    STAGES = {}; D.meta.stages.forEach(function (st) { STAGES[st.id] = st; });
+    BANDS = D.meta.bands;
+    S = D.services;
+    LADDER = S.filter(function (x) { return x.track === 'ladder'; });
+    ESC = S.filter(function (x) { return x.track === 'escalate'; });
+
+    var areas = Array.from(new Set(S.map(function (x) { return x.area; }))).sort();
+    $('areaSel').innerHTML = '<option value="">All areas</option>' +
+      areas.map(function (a) { return '<option value="' + esc(a) + '">' + esc(a) + '</option>'; }).join('');
+
+    renderHeadline(); renderBands(); renderTakeaways(); renderAll();
+
+    $('areaSel').addEventListener('change', function () { filterArea = this.value; renderAll(); });
+    $('hiTgl').addEventListener('click', function () {
+      hiOnly = !hiOnly; this.setAttribute('aria-pressed', String(hiOnly)); renderAll();
+    });
+    $('tblTgl').addEventListener('click', function () {
+      var on = this.getAttribute('aria-pressed') !== 'true';
+      this.setAttribute('aria-pressed', String(on));
+      $('tableView').hidden = !on; $('boardView').hidden = on;
+      this.textContent = on ? 'Show as board' : 'Show as table';
+    });
+  }
+
+  fetch('brent-portfolio.json').then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (data) { D = data; init(); })
+    .catch(function (err) {
+      $('headline').textContent = 'Could not load the data';
+      $('lede').textContent = 'brent-portfolio.json failed to load (' + err.message + '). This page reads its data over HTTP — open it from a web server, not a local file.';
+    });
+})();
+</script>
+</body>
+</html>
