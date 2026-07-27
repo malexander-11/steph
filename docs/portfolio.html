@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Service maturity portfolio — many services, all at different stages</title>
-<meta name="description" content="An illustrative model of a London borough's service estate: ~100 services spread across eight rungs of maturity, plus the services that should never be self-service.">
+<title>Meadowvale Borough Council — service maturity portfolio</title>
+<meta name="description" content="An illustrative model of a fictional London borough's service estate: ~100 services spread across eight rungs of maturity, plus the services that should never be self-service.">
 <meta name="theme-color" content="#0b0c0c">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0c0c'/%3E%3Crect x='6' y='18' width='4' height='8' fill='%2386b6ef'/%3E%3Crect x='12' y='13' width='4' height='13' fill='%233987e5'/%3E%3Crect x='18' y='9' width='4' height='17' fill='%231c5cab'/%3E%3Crect x='24' y='6' width='4' height='20' fill='%23ffffff'/%3E%3C/svg%3E">
@@ -184,7 +184,7 @@
 <header class="masthead">
   <div class="wrap">
     <span class="mark" aria-hidden="true"><i style="height:9px"></i><i style="height:15px"></i><i style="height:22px"></i><i style="height:30px"></i></span>
-    <span><b>Service maturity portfolio</b><span class="sub">Illustrative model &middot; Brent</span></span>
+    <span><b>Meadowvale Borough Council</b><span class="sub">Service maturity portfolio &middot; illustrative model</span></span>
   </div>
 </header>
 
@@ -282,9 +282,15 @@
 
 <footer>
   <div class="wrap">
-    Illustrative model for discussion &middot; not an official Brent Council product &middot;
-    <a href="brent-portfolio.json" target="_blank" rel="noopener">See the underlying data</a> &middot;
-    <a href="front-door.html">How a service catalogue works</a>
+    <b>Meadowvale Borough Council is fictional.</b> Concept artefacts for discussion, not a live service &mdash;
+    every service, rating and volume is invented.
+    <br><br>
+    <b>The set:</b>
+    <a href="council.html">Concierge demo</a> &middot;
+    <a href="front-door.html">How a catalogue works</a> &middot;
+    <a href="front-door-whatsapp.html">The same catalogue on WhatsApp</a> &middot;
+    <span aria-current="page">The whole service estate (you are here)</span> &middot;
+    <a href="portfolio.json" target="_blank" rel="noopener">the underlying data</a>
   </div>
 </footer>
 
@@ -546,7 +552,7 @@
   function renderAll() { renderBoard(); renderBars(); renderHeat(); renderTable(); }
 
   function init() {
-    $('disclaimerText').innerHTML = '<b>Illustrative model.</b> ' + esc(D.meta.disclaimer).replace('Illustrative model. ', '');
+    $('disclaimerText').innerHTML = '<b>Fictional council, invented figures.</b> ' + esc(D.meta.disclaimer).replace('Meadowvale Borough Council is fictional. ', '');
     STAGES = {}; D.meta.stages.forEach(function (st) { STAGES[st.id] = st; });
     BANDS = D.meta.bands;
     S = D.services;
@@ -571,11 +577,11 @@
     });
   }
 
-  fetch('brent-portfolio.json').then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  fetch('portfolio.json').then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (data) { D = data; init(); })
     .catch(function (err) {
       $('headline').textContent = 'Could not load the data';
-      $('lede').textContent = 'brent-portfolio.json failed to load (' + err.message + '). This page reads its data over HTTP — open it from a web server, not a local file.';
+      $('lede').textContent = 'portfolio.json failed to load (' + err.message + '). This page reads its data over HTTP — open it from a web server, not a local file.';
     });
 })();
 </script>

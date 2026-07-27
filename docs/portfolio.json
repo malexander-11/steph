@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Service maturity portfolio",
-    "subject": "Brent",
+    "subject": "Meadowvale",
     "snapshot": "July 2026",
-    "disclaimer": "Illustrative model. The service names are representative of a London borough's service estate; every maturity rating and volume below is a placeholder for discussion, not an assessment of Brent Council's actual services. Not an official Brent Council product.",
+    "disclaimer": "Meadowvale Borough Council is fictional. Every service, maturity rating and contact volume below is invented for discussion. The shape is realistic for a London borough of this size — the numbers are not real and describe no actual council.",
     "bands": [
       { "id": "A", "name": "Informational", "stages": [0, 1] },
       { "id": "B", "name": "Answered", "stages": [2, 3] },
