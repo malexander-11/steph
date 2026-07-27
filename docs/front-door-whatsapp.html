@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meadowvale Council — same catalogue, on WhatsApp</title>
+<meta name="description" content="Channel swap: the same services.json rendered as a messaging interface. Concept prototype, not affiliated with WhatsApp.">
+<meta name="theme-color" content="#008069" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#202c33" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%AC%3C/text%3E%3C/svg%3E">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  :root {
+    --page: #d1d7db; --wall: #efeae2; --head: #008069; --head-ink: #fff; --head-sub: rgba(255,255,255,.85);
+    --in: #fff; --in-ink: #111b21; --out: #d9fdd3; --out-ink: #111b21; --meta: #667781; --tick: #53bdeb;
+    --bar: #f0f2f5; --accent: #027eb5; --send: #00a884; --sys: rgba(255,255,255,.92); --sys-ink: #54656f;
+    --urgent: #d13b30; --line: #e9edef; --shadow: 0 1px .5px rgba(11,20,26,.13);
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page: #111b21; --wall: #0b141a; --head: #202c33; --head-ink: #e9edef; --head-sub: #8696a0;
+      --in: #202c33; --in-ink: #e9edef; --out: #005c4b; --out-ink: #e9edef; --meta: #8696a0;
+      --bar: #202c33; --accent: #53bdeb; --sys: #182229; --sys-ink: #8696a0; --line: #2a3942;
+      --shadow: 0 1px .5px rgba(0,0,0,.3); --urgent: #f1584a;
+    }
+  }
+  body { background: var(--page); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  :focus-visible { outline: 2px solid var(--send); outline-offset: 1px; }
+
+  .app { max-width: 460px; margin: 0 auto; height: 100dvh; display: flex; flex-direction: column; background: var(--wall); box-shadow: 0 0 40px rgba(0,0,0,.16); }
+  .head { flex: none; background: var(--head); color: var(--head-ink); display: flex; align-items: center; gap: 10px; padding: 9px 10px; }
+  .head a.back { color: var(--head-ink); text-decoration: none; display: grid; place-items: center; width: 32px; height: 32px; }
+  .head .ava { width: 38px; height: 38px; border-radius: 999px; background: #fff; color: #008069; display: grid; place-items: center; font-weight: 700; flex: none; }
+  .head .id { flex: 1; min-width: 0; line-height: 1.15; }
+  .head .id b { font-size: 1rem; }
+  .head .id span { display: block; font-size: .74rem; color: var(--head-sub); }
+
+  .thread { flex: 1; overflow-y: auto; padding: 12px 8px 10px; display: flex; flex-direction: column; }
+  .sys { align-self: center; background: var(--sys); color: var(--sys-ink); font-size: .74rem; padding: 5px 12px; border-radius: 8px; margin: 6px auto; max-width: 90%; text-align: center; box-shadow: var(--shadow); }
+  .sys code { font-family: var(--mono); font-size: .92em; }
+  .row { display: flex; margin: 1px 0; }
+  .row.in { justify-content: flex-start; } .row.out { justify-content: flex-end; }
+  .b { position: relative; max-width: 85%; padding: 7px 10px 8px; border-radius: 8px; font-size: .95rem; line-height: 1.4; box-shadow: var(--shadow); overflow-wrap: anywhere; }
+  .in .b { background: var(--in); color: var(--in-ink); border-top-left-radius: 0; }
+  .out .b { background: var(--out); color: var(--out-ink); border-top-right-radius: 0; }
+  .b strong { font-weight: 600; }
+  .b .meta { float: right; margin: 4px -2px -2px 10px; font-size: .66rem; color: var(--meta); }
+  .b .src { display: block; margin-top: 6px; font-size: .74rem; color: var(--meta); border-top: 1px solid var(--line); padding-top: 5px; }
+  .b .tagf { display: inline-block; font-size: .64rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; padding: 2px 7px; border-radius: 3px; margin-bottom: 6px; }
+  .tagf.form { background: #d2e2f1; color: #144e81; } .tagf.phone { background: #f6d7d2; color: #942318; }
+  .tagf.appointment { background: #e3d9f2; color: #4b2e83; } .tagf.info { background: #eeedec; color: #383f43; }
+  .tagf.transaction { background: #cce8d9; color: #005a30; }
+  .cardbtn { display: block; text-align: center; margin-top: 8px; background: transparent; border-top: 1px solid var(--line); color: var(--accent); font-weight: 600; font-size: .9rem; padding: 9px 4px 2px; text-decoration: none; }
+  .b.urgent { border: 2px solid var(--urgent); }
+  .callbtn { display: block; text-align: center; margin-top: 8px; background: var(--urgent); color: #fff; border-radius: 6px; padding: 10px; font-weight: 700; text-decoration: none; }
+  .matched { display: block; margin-top: 6px; font-size: .7rem; color: var(--meta); }
+  .matched code { font-family: var(--mono); }
+
+  .qr-wrap { display: flex; flex-direction: column; gap: 6px; align-self: flex-start; max-width: 84%; margin: 4px 6px 8px; }
+  .qr-lead { align-self: flex-start; font-size: .74rem; color: var(--meta); margin: 2px 8px; }
+  .qr { background: var(--in); color: var(--accent); border: 0; border-radius: 8px; padding: 10px 12px; font-size: .9rem; font-weight: 500; box-shadow: var(--shadow); text-align: left; }
+  .qr small { display: block; color: var(--meta); font-weight: 400; font-size: .72rem; margin-top: 1px; }
+
+  .typing { display: inline-flex; gap: 4px; padding: 3px 2px; }
+  .typing i { width: 7px; height: 7px; border-radius: 999px; background: var(--meta); display: block; animation: bl 1.2s infinite ease-in-out; }
+  .typing i:nth-child(2){ animation-delay: .18s; } .typing i:nth-child(3){ animation-delay: .36s; }
+  @keyframes bl { 0%,80%,100%{ opacity: .3; } 40%{ opacity: 1; } }
+
+  .compose { flex: none; background: var(--bar); padding: 8px; display: flex; gap: 8px; align-items: center; }
+  .compose input { flex: 1; border: 0; background: var(--in); color: var(--in-ink); border-radius: 22px; padding: 11px 16px; outline: none; box-shadow: var(--shadow); }
+  .compose button { width: 46px; height: 46px; border-radius: 999px; background: var(--send); color: #fff; border: 0; display: grid; place-items: center; flex: none; }
+  @media (prefers-reduced-motion: reduce) { .typing i { animation: none; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="head">
+    <a class="back" href="front-door.html" aria-label="Back to the search version">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <span class="ava" aria-hidden="true">M</span>
+    <div class="id"><b>Meadowvale Council</b><span>chatbot &middot; reads services.json</span></div>
+  </header>
+  <div class="thread" id="thread" aria-live="polite" aria-label="Conversation with Meadowvale Council"></div>
+  <form class="compose" id="composer" autocomplete="off">
+    <input id="msg" placeholder="Message" aria-label="Type a message">
+    <button type="submit" aria-label="Send">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
+    </button>
+  </form>
+</div>
+
+<script>
+(function () {
+  var STOP = new Set(['the','a','an','my','is','are','i','to','in','of','for','do','does','how','when','what','can','on','at','me','it','this','your','you','and','with','have','am','be','get','need']);
+  var FULFIL = {
+    self_serve_form:   { label: 'Online form',        tag: 'form',        cta: 'Open the form' },
+    phone:             { label: 'Phone',              tag: 'phone',       cta: 'Call' },
+    appointment:       { label: 'Appointment',        tag: 'appointment', cta: 'Book an appointment' },
+    information_only:  { label: 'Information',         tag: 'info',        cta: 'Read this' },
+    online_transaction:{ label: 'Online transaction', tag: 'transaction', cta: 'Start online' }
+  };
+  var SUGG = [
+    { q: 'how much is garden waste', d: 'a direct answer' },
+    { q: 'what goes in my recycling', d: 'a direct answer' },
+    { q: 'when are my bins collected', d: 'answer withheld — it varies' },
+    { q: 'I have nowhere to sleep tonight', d: 'urgent — straight to a phone' },
+    { q: 'am I eligible for a disabled facilities grant', d: 'declines — depends on you' },
+    { q: 'pay my council tax', d: 'signposts to the transaction' },
+    { q: "my bin wasn't collected", d: 'de-duplicated' },
+    { q: 'renew my passport', d: 'no match — offers a person' }
+  ];
+
+  var DATA = null, META = null, byId = {};
+  var thread = document.getElementById('thread');
+  var msg = document.getElementById('msg');
+
+  function esc(s) { return (s || '').replace(/[&<>"]/g, function (c) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' })[c]; }); }
+  function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
+  function toks(s) { return norm(s).split(' ').filter(function (t) { return t.length >= 2 && !STOP.has(t); }); }
+  function firstUrl(s) { var m = (s || '').match(/https?:\/\/[^\s)]+/); return m ? m[0] : null; }
+  function firstPhone(s) { var m = (s || '').match(/0\d[\d ]{6,}\d/); return m ? m[0] : null; }
+  function telHref(s) { var p = firstPhone(s); return p ? 'tel:' + p.replace(/\s+/g, '') : null; }
+  function stamp() { var d = new Date(), h = d.getHours(), m2 = d.getMinutes(); return (h % 12 || 12) + ':' + (m2 < 10 ? '0' : '') + m2 + (h < 12 ? ' am' : ' pm'); }
+  function scrollDown() { thread.scrollTop = thread.scrollHeight; }
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  /* ---- same matcher as the search page (same data, different renderer) ---- */
+  function scoreService(nq, qtok, svc) {
+    var score = 0, matched = null, nname = norm(svc.name);
+    (svc.aliases || []).forEach(function (al) {
+      var na = norm(al); if (!na) return;
+      if (nq === na) { score += 100; matched = matched || al; }
+      else if (na.indexOf(' ') > -1 && nq.length >= 4 && nq.indexOf(na) > -1) { score += 22; matched = matched || al; }
+      else if (na.indexOf(' ') > -1 && na.length >= 6 && nq.length >= 5 && na.indexOf(nq) > -1) { score += 10; matched = matched || al; }
+    });
+    if (nq === nname) { score += 90; matched = matched || svc.name; }
+    else if (nq.length >= 5 && nname.indexOf(nq) > -1) { score += 12; matched = matched || svc.name; }
+    var aw = new Set(norm((svc.aliases || []).join(' ') + ' ' + svc.name).split(' ').filter(Boolean));
+    var ow = new Set(norm(svc.one_line).split(' ').filter(Boolean));
+    var hits = 0;
+    qtok.forEach(function (t) { if (aw.has(t)) { score += 4; hits++; } else if (ow.has(t)) { score += 1; } });
+    if (!matched && hits > 0) {
+      var best = null, bc = 0;
+      (svc.aliases || []).concat([svc.name]).forEach(function (al) {
+        var s = new Set(norm(al).split(' ')); var c = qtok.filter(function (t) { return s.has(t); }).length;
+        if (c > bc) { bc = c; best = al; }
+      });
+      matched = best;
+    }
+    return { svc: svc, score: score, matched: matched };
+  }
+  function match(query) {
+    var nq = norm(query), qtok = toks(query);
+    if (!nq) return { kind: 'empty' };
+    var scored = DATA.map(function (s) { return scoreService(nq, qtok, s); }).filter(function (r) { return r.score > 0; }).sort(function (a, b) { return b.score - a.score; });
+    if (!scored.length) return { kind: 'none' };
+    if (scored[0].svc.urgent && scored[0].score >= 22) return { kind: 'urgent', top: scored[0] };
+    var present = {}; scored.forEach(function (r) { present[r.svc.id] = r; });
+    var out = [], seen = {};
+    scored.forEach(function (r) {
+      var dt = r.svc.duplicate_of;
+      if (dt) {
+        var canon = byId[dt] || r.svc, cid = canon.id;
+        if (seen[cid]) { seen[cid].dedupWith = seen[cid].dedupWith || r.svc; return; }
+        var e = { svc: canon, score: Math.max(r.score, present[cid] ? present[cid].score : 0), matched: (present[cid] && present[cid].matched) || r.matched, dedupWith: r.svc };
+        seen[cid] = e; out.push(e); return;
+      }
+      if (seen[r.svc.id]) return; seen[r.svc.id] = r; out.push(r);
+    });
+    out.sort(function (a, b) { return b.score - a.score; });
+    var topScore = out[0].score, floor = Math.max(4, topScore * 0.3);
+    out = out.filter(function (r) { return r.score >= floor; });
+    return { kind: 'results', results: out.slice(0, 4) };
+  }
+
+  /* ---- chat rendering ---- */
+  function addRow(side, html) {
+    var row = document.createElement('div'); row.className = 'row ' + side;
+    var b = document.createElement('div'); b.className = 'b' + (side === 'urg' ? ' urgent' : '');
+    if (side === 'urg') row.className = 'row in';
+    b.innerHTML = html; row.appendChild(b); thread.appendChild(row); scrollDown(); return b;
+  }
+  function sys(html) { var d = document.createElement('div'); d.className = 'sys'; d.innerHTML = html; thread.appendChild(d); scrollDown(); }
+  function userSay(t) { addRow('out', esc(t) + '<span class="meta">' + stamp() + '</span>'); }
+  function typing() { var r = document.createElement('div'); r.className = 'row in'; r.innerHTML = '<div class="b"><span class="typing"><i></i><i></i><i></i></span></div>'; thread.appendChild(r); scrollDown(); return r; }
+  async function botHtml(html, side, delay) { var t = typing(); await wait(delay || 700); t.remove(); return addRow(side || 'in', html + (side === 'urg' ? '' : '<span class="meta">' + stamp() + '</span>')); }
+
+  function clearQuick() { Array.prototype.forEach.call(thread.querySelectorAll('.qr-wrap, .qr-lead'), function (n) { n.remove(); }); }
+  function quick(items, lead) {
+    if (lead) { var l = document.createElement('div'); l.className = 'qr-lead'; l.textContent = lead; thread.appendChild(l); }
+    var w = document.createElement('div'); w.className = 'qr-wrap';
+    items.forEach(function (it) {
+      var b = document.createElement('button'); b.className = 'qr'; b.type = 'button';
+      b.innerHTML = esc(it.q) + (it.d ? '<small>' + esc(it.d) + '</small>' : '');
+      b.addEventListener('click', function () { clearQuick(); handle(it.q); });
+      w.appendChild(b);
+    });
+    thread.appendChild(w); scrollDown();
+  }
+
+  function routeButton(svc) {
+    var f = FULFIL[svc.fulfilment], url = firstUrl(svc.fulfilment_detail), tel = telHref(svc.fulfilment_detail);
+    if (svc.fulfilment === 'phone' && tel) return '<a class="callbtn" href="' + esc(tel) + '">' + esc(f.cta) + ' ' + esc(firstPhone(svc.fulfilment_detail)) + '</a>';
+    if (url) return '<a class="cardbtn" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(f.cta) + ' &rarr;</a>';
+    if (tel) return '<a class="callbtn" href="' + esc(tel) + '">' + esc(f.cta) + ' &rarr;</a>';
+    return '';
+  }
+  function serviceBubble(r) {
+    var svc = r.svc, f = FULFIL[svc.fulfilment];
+    var h = '<span class="tagf ' + f.tag + '">' + f.label + '</span><br><strong>' + esc(svc.name) + '</strong><br>' + esc(svc.one_line);
+    if (svc.fulfilment === 'phone') h += '<br><span style="font-size:.86rem">' + esc(svc.fulfilment_detail) + '</span>';
+    h += routeButton(svc);
+    if (r.matched) h += '<span class="matched">Matched on <code>' + esc(r.matched) + '</code></span>';
+    if (r.dedupWith) h += '<span class="src"><strong>Merged a near-duplicate:</strong> &ldquo;' + esc(r.dedupWith.name) + '&rdquo; (' + esc(r.dedupWith.owner) + '). Same service, two entries.</span>';
+    return h;
+  }
+
+  async function handle(text) {
+    userSay(text);
+    var m = match(text);
+    if (m.kind === 'none') {
+      var c = META.contact_centre || {}, tel = c.phone ? 'tel:' + c.phone.replace(/\s+/g, '') : null;
+      await botHtml('I couldn&rsquo;t find that in our service catalogue, so I won&rsquo;t guess. Best to talk to a person:', 'in', 750);
+      await botHtml('<strong>' + esc(c.name || 'Contact Centre') + '</strong><br>' + esc(c.hours || '') + (tel ? '<a class="callbtn" href="' + esc(tel) + '">Call ' + esc(c.phone) + '</a>' : ''), 'in', 700);
+      afterReply(); return;
+    }
+    if (m.kind === 'urgent') {
+      var svc = m.top.svc, tel2 = telHref(svc.fulfilment_detail);
+      await botHtml('This sounds urgent, so I&rsquo;m skipping the menu. If you have nowhere safe tonight, please call our duty team now &mdash; it&rsquo;s free and open 24 hours. 💚', 'in', 750);
+      await botHtml('<span class="tagf phone">Urgent · phone</span><br><strong>' + esc(svc.name) + '</strong><br>' + esc(svc.one_line) + (tel2 ? '<a class="callbtn" href="' + esc(tel2) + '">Call ' + esc(firstPhone(svc.fulfilment_detail)) + '</a>' : ''), 'urg', 700);
+      afterReply(); return;
+    }
+    // results
+    var top = m.results[0];
+    if (top.svc.answer_safe && top.svc.invariant_answer) {
+      await botHtml(esc(top.svc.invariant_answer) + '<span class="src"><strong>Source:</strong> ' + esc(top.svc.source) + '</span>', 'in', 800);
+    } else {
+      if (top.svc.answer_safe === false && /depend|eligib|vary|circumstan/i.test(top.svc.eligibility)) {
+        await botHtml('That one depends on your circumstances, so I can&rsquo;t give a blanket answer. Here&rsquo;s how to get it sorted properly:', 'in', 800);
+      } else {
+        await botHtml('Here&rsquo;s the service for that:', 'in', 700);
+      }
+      await botHtml(serviceBubble(top), 'in', 650);
+    }
+    var more = m.results.slice(1, 3);
+    if (more.length) quick(more.map(function (r) { return { q: r.svc.name, d: FULFIL[r.svc.fulfilment].label }; }), 'Related services');
+    afterReply();
+  }
+
+  function afterReply() { setTimeout(function () { if (!thread.querySelector('.qr-wrap')) quick(SUGG.slice(0, 4), 'Or try:'); }, 400); }
+
+  document.getElementById('composer').addEventListener('submit', function (e) {
+    e.preventDefault(); var v = msg.value.trim(); if (!v) return; msg.value = ''; clearQuick(); handle(v);
+  });
+
+  async function welcome() {
+    sys('Prototype &middot; fictional &middot; nothing sent or stored');
+    sys('Same catalogue (<code>services.json</code>), different renderer &mdash; identical data to the search page.');
+    await botHtml('👋 Hi, this is <strong>Meadowvale Council</strong>. Tell me what you need in your own words, or tap a suggestion. I read the same service catalogue as our website &mdash; no AI, just a lookup.', 'in', 600);
+    quick(SUGG, 'Try one — each shows a different behaviour');
+  }
+
+  fetch('services.json').then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (data) { DATA = data.services; META = data.meta || {}; DATA.forEach(function (s) { byId[s.id] = s; }); welcome(); })
+    .catch(function (err) { sys('Could not load services.json (' + esc(String(err.message)) + '). Open this page from a web server, not a local file.'); });
+})();
+</script>
+</body>
+</html>
