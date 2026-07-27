@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meadowvale Borough Council — find a service</title>
-<meta name="description" content="Concept prototype: a service-catalogue-first front door. One services.json drives search, answers and transactions. No AI, no data stored.">
+<title>Meadowvale Borough Council — how a service catalogue works</title>
+<meta name="description" content="A guided walkthrough: one service catalogue, shown one idea at a time. Concept prototype — no AI, nothing stored.">
 <meta name="theme-color" content="#0b0c0c">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0c0c'/%3E%3Ctext x='16' y='22' font-size='18' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
@@ -12,164 +12,152 @@
   *, *::before, *::after { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0; background: #ffffff; color: #0b0c0c;
+    margin: 0; background: #f8f8f8; color: #0b0c0c;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
     font-size: 18px; line-height: 1.5; -webkit-font-smoothing: antialiased;
   }
   @media (max-width: 40em) { body { font-size: 16px; } }
-  a { color: #1d70b8; }
-  a:hover { color: #003078; }
-  a:visited { color: #4c2c92; }
+  a { color: #1d70b8; } a:hover { color: #003078; } a:visited { color: #4c2c92; }
   :focus-visible { outline: 3px solid #ffdd00; outline-offset: 0; box-shadow: 0 0 0 5px #0b0c0c; }
   button { font: inherit; cursor: pointer; }
   h1, h2, h3 { line-height: 1.15; margin: 0 0 .4em; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 15px; }
-
-  /* skip link */
-  .skip { position: absolute; left: -9999px; top: 0; background: #ffdd00; color: #0b0c0c; padding: 10px 15px; z-index: 100; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  .skip { position: absolute; left: -9999px; background: #ffdd00; padding: 10px 15px; z-index: 100; }
   .skip:focus { left: 0; }
 
-  /* masthead */
-  .masthead { background: #0b0c0c; color: #ffffff; border-bottom: 8px solid #1d70b8; }
-  .masthead .wrap { display: flex; align-items: center; gap: 12px; padding: 12px 15px; }
-  .crest { width: 34px; height: 34px; border: 2px solid #ffffff; display: grid; place-items: center; font-weight: 700; flex: none; }
-  .masthead b { font-size: 1.15rem; font-weight: 700; }
-  .masthead .sub { display: block; font-size: .72rem; font-weight: 400; color: #b1b4b6; letter-spacing: .03em; text-transform: uppercase; }
+  .masthead { background: #0b0c0c; color: #fff; border-bottom: 8px solid #1d70b8; }
+  .masthead .wrap { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+  .crest { width: 32px; height: 32px; border: 2px solid #fff; display: grid; place-items: center; font-weight: 700; flex: none; }
+  .masthead b { font-size: 1.1rem; }
+  .masthead .sub { display: block; font-size: .68rem; color: #b1b4b6; letter-spacing: .04em; text-transform: uppercase; }
 
-  /* phase / prototype banner */
-  .phase { border-bottom: 1px solid #b1b4b6; background: #f3f2f1; }
-  .phase .wrap { display: flex; gap: 12px; align-items: baseline; padding: 8px 15px; flex-wrap: wrap; }
-  .tag { background: #1d70b8; color: #fff; font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; flex: none; }
-  .phase p { margin: 0; font-size: .82rem; color: #0b0c0c; }
+  .phase { background: #f3f2f1; border-bottom: 1px solid #b1b4b6; }
+  .phase .wrap { display: flex; gap: 10px; align-items: baseline; padding: 8px 16px; flex-wrap: wrap; }
+  .tag { background: #1d70b8; color: #fff; font-size: .66rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; flex: none; }
+  .phase p { margin: 0; font-size: .8rem; }
 
-  main { padding: 22px 0 60px; }
-  .lede { font-size: 1.05rem; color: #0b0c0c; max-width: 42ch; }
-  .muted { color: #505a5f; }
+  main { padding: 0 0 60px; }
 
-  .thesis { border-left: 5px solid #0b0c0c; padding: 2px 0 2px 16px; margin: 0 0 26px; max-width: 60ch; }
-  .thesis b { font-weight: 700; }
+  /* progress */
+  .progress { background: #fff; border-bottom: 1px solid #e2e2e2; position: sticky; top: 0; z-index: 10; }
+  .progress .wrap { padding: 10px 16px; }
+  .prow { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: .78rem; color: #505a5f; }
+  .bar { height: 6px; background: #e2e2e2; margin-top: 7px; }
+  .bar > i { display: block; height: 100%; background: #1d70b8; transition: width .25s; }
+  .restart { background: none; border: 0; color: #1d70b8; font-size: .78rem; text-decoration: underline; padding: 2px; }
 
-  /* how-it-works note */
-  .note { background: #f3f2f1; border: 1px solid #b1b4b6; padding: 12px 15px; font-size: .86rem; margin: 0 0 26px; }
-  .note b { font-weight: 700; }
-  .note a { font-weight: 600; }
+  /* step card */
+  .step { background: #fff; border: 1px solid #d8d8d8; padding: 26px 24px 24px; margin: 22px 0 0; }
+  @media (max-width: 40em) { .step { padding: 20px 16px; margin-top: 16px; } }
+  .eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #1d70b8; margin: 0 0 6px; }
+  .step h2 { font-size: 1.6rem; letter-spacing: -.01em; }
+  @media (max-width: 40em) { .step h2 { font-size: 1.35rem; } }
+  .blurb { font-size: 1.02rem; color: #383f43; max-width: 56ch; margin: 0 0 20px; }
 
-  /* stage selector */
-  fieldset { border: 0; margin: 0 0 22px; padding: 0; }
-  legend { font-weight: 700; font-size: 1rem; padding: 0; margin-bottom: 4px; }
-  .legend-help { font-size: .84rem; color: #505a5f; margin: 0 0 12px; }
-  .stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  @media (max-width: 40em) { .stages { grid-template-columns: 1fr; } }
-  .stage-opt { position: relative; border: 2px solid #b1b4b6; background: #fff; padding: 12px 14px; display: block; }
-  .stage-opt:hover { border-color: #0b0c0c; }
-  .stage-opt input { position: absolute; opacity: 0; }
-  .stage-opt.sel { border-color: #1d70b8; background: #eef4fa; box-shadow: inset 0 0 0 2px #1d70b8; }
-  .stage-opt .n { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #505a5f; }
-  .stage-opt.sel .n { color: #1d70b8; }
-  .stage-opt .t { font-weight: 700; display: block; margin: 2px 0 4px; }
-  .stage-opt .legal { font-size: .78rem; color: #505a5f; line-height: 1.35; }
-  .stage-opt input:focus-visible + .n { outline: 3px solid #ffdd00; }
-  .stage-opt:focus-within { outline: 3px solid #ffdd00; outline-offset: 2px; }
+  /* the demo "screen" */
+  .screen { border: 1px solid #b1b4b6; background: #fff; margin: 0 0 16px; }
+  .screen-bar { background: #f3f2f1; border-bottom: 1px solid #d8d8d8; padding: 6px 12px; font-size: .7rem; color: #505a5f; display: flex; align-items: center; gap: 6px; }
+  .screen-bar .dot { width: 8px; height: 8px; border-radius: 50%; background: #c4c4c4; flex: none; }
+  .screen-body { padding: 14px; }
+  .fauxsearch { display: flex; border: 2px solid #0b0c0c; margin-bottom: 14px; }
+  .fauxsearch .q { flex: 1; padding: 9px 12px; font-size: .98rem; min-width: 0; overflow-wrap: anywhere; }
+  .fauxsearch .q .caret { display: inline-block; width: 2px; height: 1em; background: #0b0c0c; vertical-align: -2px; margin-left: 1px; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .fauxsearch .go { background: #0b0c0c; color: #fff; padding: 9px 16px; font-weight: 700; font-size: .9rem; flex: none; }
+  .typed-lab { font-size: .72rem; color: #505a5f; margin: 0 0 5px; }
 
-  /* sign-in state (stage 3) */
-  .signin-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 0 22px; padding: 10px 14px; border: 1px dashed #b1b4b6; background: #fafafa; font-size: .86rem; }
-  .signin-bar[hidden] { display: none; }
-  .idpill { font-weight: 700; }
-  .idpill.out { color: #d4351c; } .idpill.in { color: #00703c; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; background: #00703c; color: #fff; border: 0; border-radius: 0; padding: 10px 16px; font-weight: 700; box-shadow: 0 2px 0 #002d18; text-decoration: none; }
-  .btn:hover { background: #005a30; color: #fff; }
-  .btn.sec { background: #f3f2f1; color: #0b0c0c; box-shadow: 0 2px 0 #929191; }
-  .btn.sec:hover { background: #dbdad9; color: #0b0c0c; }
-
-  /* search */
-  form.search { display: flex; gap: 0; margin: 0 0 14px; max-width: 640px; }
-  label.searchlab { display: block; font-weight: 700; margin-bottom: 6px; }
-  .search input { flex: 1; min-width: 0; font-size: 1.1rem; padding: 12px 14px; border: 2px solid #0b0c0c; border-right: 0; }
-  .search button { background: #0b0c0c; color: #fff; border: 2px solid #0b0c0c; padding: 0 18px; font-weight: 700; }
-  .search button:hover { background: #1d70b8; border-color: #1d70b8; }
-
-  /* chips */
-  .chips-lab { font-size: .82rem; color: #505a5f; margin: 6px 0 8px; }
-  .chips { list-style: none; margin: 0 0 30px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-  .chips li { max-width: 230px; }
-  .chip { text-align: left; background: #fff; border: 1px solid #1d70b8; color: #1d70b8; border-radius: 0; padding: 7px 11px; font-size: .84rem; width: 100%; }
-  .chip:hover { background: #eef4fa; }
-  .chip .demo { display: block; font-size: .68rem; color: #505a5f; margin-top: 2px; text-transform: uppercase; letter-spacing: .04em; }
-
-  /* layout: results + catalogue */
-  .layout { display: grid; grid-template-columns: 1fr; gap: 26px; }
-  @media (min-width: 62em) { .layout { grid-template-columns: 1.55fr 1fr; align-items: start; } }
-
-  #results h2 { font-size: 1.15rem; }
-  .result-meta { font-size: .82rem; color: #505a5f; margin: 0 0 14px; }
-
-  .card { border: 1px solid #b1b4b6; border-left: 5px solid #b1b4b6; padding: 16px; margin: 0 0 14px; background: #fff; }
-  .card h3 { font-size: 1.08rem; margin: 0 0 4px; }
-  .card .one { margin: 0 0 10px; }
-  .card .matched { font-size: .74rem; color: #505a5f; margin: 0 0 8px; }
-  .card .matched code { background: #f3f2f1; padding: 1px 5px; font-size: .9em; }
-  .tagf { display: inline-block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 3px 8px; border-radius: 3px; margin: 0 0 10px; }
+  /* result pieces */
+  .card { border: 1px solid #b1b4b6; border-left: 5px solid #b1b4b6; padding: 14px; background: #fff; }
+  .card h3 { font-size: 1.05rem; margin: 0 0 4px; }
+  .card .one { margin: 0 0 8px; font-size: .95rem; }
+  .card .who { font-size: .82rem; color: #505a5f; margin: 0; }
+  .tagf { display: inline-block; font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 3px 8px; border-radius: 3px; margin-bottom: 8px; }
   .tagf.form { background: #d2e2f1; color: #144e81; }
   .tagf.phone { background: #f6d7d2; color: #942318; }
   .tagf.appointment { background: #e3d9f2; color: #4b2e83; }
   .tagf.info { background: #eeedec; color: #383f43; }
   .tagf.transaction { background: #cce8d9; color: #005a30; }
-  .kv { font-size: .84rem; color: #383f43; margin: 8px 0 0; }
-  .kv .k { font-weight: 700; }
-  details.route { margin-top: 10px; }
-  details.route summary { font-weight: 600; color: #1d70b8; cursor: pointer; }
-  details.route .rbody { padding: 8px 0 2px; }
-  .steps { margin: 8px 0 0; padding-left: 20px; font-size: .86rem; color: #383f43; }
-  .cta-row { margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-
-  /* answer card (stage 2) */
-  .answer { border: 2px solid #00703c; border-left: 8px solid #00703c; padding: 18px; margin: 0 0 18px; background: #f0f7f2; }
-  .answer .lab { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #00703c; }
-  .answer .big { font-size: 1.15rem; font-weight: 700; margin: 4px 0 10px; }
-  .answer .cite { font-size: .8rem; color: #383f43; }
-  .answer .why { font-size: .8rem; color: #505a5f; margin-top: 8px; border-top: 1px solid #bcd9c6; padding-top: 8px; }
-
-  /* degrade annotation (stage 2, answer_safe false) */
-  .degrade { border: 2px dashed #505a5f; padding: 14px 16px; margin: 0 0 18px; background: #fafafa; font-size: .9rem; }
-  .degrade b { font-weight: 700; }
-
-  /* urgent */
-  .urgent { border: 3px solid #d4351c; border-left: 10px solid #d4351c; padding: 18px; margin: 0 0 16px; background: #fef1ef; }
-  .urgent .lab { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #d4351c; }
-  .urgent h3 { font-size: 1.2rem; margin: 4px 0 6px; }
-  .urgent .num { font-size: 1.5rem; font-weight: 700; margin: 10px 0; }
-  .urgent .num a { color: #d4351c; text-decoration: none; }
-  .urgent .why { font-size: .82rem; color: #6f2019; margin-top: 10px; border-top: 1px solid #f0c3bd; padding-top: 8px; }
+  .matched { font-size: .74rem; color: #505a5f; margin: 0 0 8px; }
+  .matched code { background: #f3f2f1; padding: 1px 5px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; background: #00703c; color: #fff; border: 0; padding: 9px 15px; font-weight: 700; font-size: .92rem; box-shadow: 0 2px 0 #002d18; text-decoration: none; margin-top: 10px; }
+  .btn:hover { background: #005a30; color: #fff; }
+  .btn.sec { background: #f3f2f1; color: #0b0c0c; box-shadow: 0 2px 0 #929191; }
+  .btn.sec:hover { background: #dbdad9; color: #0b0c0c; }
   .btn.red { background: #d4351c; box-shadow: 0 2px 0 #55150d; }
   .btn.red:hover { background: #aa2a16; color: #fff; }
 
-  /* blocker (stage 3) */
-  .blocker { border: 2px solid #d4351c; background: #fef7f6; padding: 14px; margin-top: 12px; }
-  .blocker .lab { font-weight: 700; color: #d4351c; display: block; margin-bottom: 4px; }
-  .blocker p { margin: 0 0 10px; font-size: .88rem; }
-  .txn-ok { border: 2px solid #00703c; background: #f0f7f2; padding: 14px; margin-top: 12px; font-size: .9rem; }
-  .txn-ok .lab { font-weight: 700; color: #00703c; }
+  .answer { border: 2px solid #00703c; border-left: 8px solid #00703c; padding: 15px; background: #f0f7f2; margin-bottom: 12px; }
+  .answer .lab { font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #00703c; }
+  .answer .big { font-size: 1.08rem; font-weight: 700; margin: 5px 0 9px; }
+  .answer .cite { font-size: .78rem; color: #383f43; margin: 0; }
 
-  /* no-match person */
-  .person { border: 2px solid #1d70b8; border-left: 8px solid #1d70b8; padding: 18px; margin: 0 0 16px; background: #eef4fa; }
-  .person .lab { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #1d70b8; }
-  .person .num { font-size: 1.2rem; font-weight: 700; margin: 8px 0; }
-  .person .why { font-size: .82rem; color: #505a5f; margin-top: 10px; border-top: 1px solid #cdddf0; padding-top: 8px; }
+  .degrade { border: 2px dashed #505a5f; padding: 14px; background: #fafafa; font-size: .92rem; margin-bottom: 12px; }
+  .degrade .lab { font-weight: 700; display: block; margin-bottom: 4px; }
 
-  /* dedup banner */
-  .dedup { font-size: .82rem; background: #fff7e0; border: 1px solid #d3b869; padding: 8px 12px; margin: 10px 0 0; }
-  .dedup b { font-weight: 700; }
+  .urgent { border: 3px solid #d4351c; border-left: 10px solid #d4351c; padding: 15px; background: #fef1ef; }
+  .urgent .lab { font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #d4351c; }
+  .urgent h3 { font-size: 1.1rem; margin: 5px 0; }
+  .urgent .num { font-size: 1.3rem; font-weight: 700; margin: 8px 0 0; }
+  .urgent .num a { color: #d4351c; }
 
-  /* catalogue panel */
-  aside.catalogue { position: sticky; top: 12px; }
-  aside.catalogue h2 { font-size: 1rem; }
-  .cat-head { font-size: .82rem; color: #505a5f; margin: 0 0 8px; }
-  pre.json { margin: 0; background: #0b0c0c; color: #e9ecef; padding: 14px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .74rem; line-height: 1.5; overflow-x: auto; max-height: 460px; overflow-y: auto; }
-  pre.json .k { color: #7cc0ff; } pre.json .s { color: #a3e4a3; } pre.json .b { color: #f2a15b; } pre.json .n2 { color: #f2a15b; }
-  .cat-links { font-size: .82rem; margin: 10px 0 0; }
+  .blocker { border: 2px solid #d4351c; background: #fef7f6; padding: 14px; }
+  .blocker .lab { font-weight: 700; color: #d4351c; display: block; margin-bottom: 5px; }
+  .blocker p { margin: 0; font-size: .9rem; }
 
-  footer { border-top: 1px solid #b1b4b6; margin-top: 40px; }
-  footer .wrap { padding: 20px 15px; font-size: .82rem; color: #505a5f; }
+  .person { border: 2px solid #1d70b8; border-left: 8px solid #1d70b8; padding: 15px; background: #eef4fa; }
+  .person .lab { font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #1d70b8; }
+  .person .num { font-size: 1.05rem; font-weight: 700; margin: 6px 0 2px; }
+
+  .dedup { font-size: .82rem; background: #fff7e0; border: 1px solid #d3b869; padding: 8px 11px; margin-top: 10px; }
+
+  .mini-lab { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #505a5f; margin: 18px 0 6px; }
+  .mini-lab:first-child { margin-top: 0; }
+
+  /* notice */
+  .notice { border-left: 5px solid #0b0c0c; padding: 2px 0 2px 14px; margin: 0 0 16px; font-size: .95rem; }
+  .notice b { font-weight: 700; }
+  .notice code { background: #f3f2f1; padding: 1px 5px; font-size: .88em; }
+
+  /* data details */
+  details.data { border-top: 1px solid #e2e2e2; padding-top: 12px; }
+  details.data summary { font-size: .86rem; color: #1d70b8; font-weight: 600; cursor: pointer; }
+  pre.json { margin: 10px 0 0; background: #0b0c0c; color: #e9ecef; padding: 12px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .74rem; line-height: 1.5; overflow-x: auto; }
+  pre.json .k { color: #7cc0ff; } pre.json .s { color: #a3e4a3; } pre.json .b { color: #f2a15b; }
+  .data-note { font-size: .78rem; color: #505a5f; margin: 8px 0 0; }
+  .data-note code { background: #f3f2f1; padding: 1px 4px; }
+
+  /* nav */
+  .nav { display: flex; gap: 12px; align-items: center; margin-top: 22px; }
+  .nav .spacer { flex: 1; }
+  .nav button { padding: 11px 20px; font-weight: 700; border: 0; }
+  .nav .next { background: #0b0c0c; color: #fff; box-shadow: 0 2px 0 #4d4d4d; }
+  .nav .next:hover { background: #1d70b8; }
+  .nav .back { background: transparent; color: #1d70b8; text-decoration: underline; padding: 11px 4px; }
+
+  /* cover + summary */
+  .cover h1 { font-size: 2rem; letter-spacing: -.02em; margin-bottom: 10px; }
+  @media (max-width: 40em) { .cover h1 { font-size: 1.6rem; } }
+  .cover .kicker { font-size: 1.05rem; color: #383f43; max-width: 54ch; }
+  .cover ul { margin: 18px 0 0; padding-left: 20px; color: #383f43; font-size: .95rem; }
+  .cover ul li { margin-bottom: 6px; }
+  .sumlist { margin: 0 0 18px; padding: 0; list-style: none; }
+  .sumlist li { border-left: 4px solid #1d70b8; padding: 2px 0 2px 14px; margin-bottom: 14px; }
+  .sumlist b { display: block; }
+  .sumlist span { font-size: .92rem; color: #383f43; }
+
+  /* sandbox */
+  .sand { display: flex; margin: 0 0 12px; }
+  .sand input { flex: 1; min-width: 0; font-size: 1rem; padding: 11px 13px; border: 2px solid #0b0c0c; border-right: 0; }
+  .sand button { background: #0b0c0c; color: #fff; border: 2px solid #0b0c0c; padding: 0 18px; font-weight: 700; }
+  .stagepick { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
+  .stagepick button { border: 2px solid #b1b4b6; background: #fff; padding: 6px 12px; font-size: .82rem; }
+  .stagepick button[aria-pressed="true"] { border-color: #1d70b8; background: #eef4fa; color: #1d70b8; font-weight: 700; }
+  .chips { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: #fff; border: 1px solid #1d70b8; color: #1d70b8; padding: 6px 10px; font-size: .8rem; }
+  .chip:hover { background: #eef4fa; }
+
+  footer { border-top: 1px solid #d8d8d8; margin-top: 30px; background: #fff; }
+  footer .wrap { padding: 18px 16px; font-size: .8rem; color: #505a5f; }
   .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 </style>
 </head>
@@ -179,94 +167,39 @@
 <header class="masthead">
   <div class="wrap">
     <span class="crest" aria-hidden="true">M</span>
-    <span><b>Meadowvale Borough Council</b><span class="sub">Find a service</span></span>
+    <span><b>Meadowvale Borough Council</b><span class="sub">How a service catalogue works</span></span>
   </div>
 </header>
 
 <div class="phase">
   <div class="wrap">
     <span class="tag">Prototype</span>
-    <p>Meadowvale Borough Council is fictional. Nothing you enter is sent or stored.</p>
+    <p>Meadowvale Borough Council is fictional. Nothing you enter is sent or stored. No AI is used &mdash; matching is plain alias lookup in your browser.</p>
+  </div>
+</div>
+
+<div class="progress" id="progress" hidden>
+  <div class="wrap">
+    <div class="prow">
+      <span id="progLabel">Step 1 of 8</span>
+      <button class="restart" id="restart">Start again</button>
+    </div>
+    <div class="bar"><i id="progBar" style="width:0%"></i></div>
   </div>
 </div>
 
 <main id="main">
   <div class="wrap">
-    <p class="thesis"><b>The catalogue is the asset; the interface is disposable.</b> One data file &mdash;
-      <code>services.json</code> &mdash; drives the search below, and could drive an assistant, a voice agent
-      or a third party model later. The panel on the right shows the raw data behind whatever you see.</p>
-
-    <p class="note"><b>No AI is used here.</b> Matching is plain keyword and alias lookup running in your
-      browser &mdash; open <a href="services.json" target="_blank" rel="noopener">services.json</a> to see the
-      data for yourself. Nothing you type leaves this page; there is no backend, database or stored history.</p>
-
-    <fieldset>
-      <legend>Capability stage</legend>
-      <p class="legend-help">The same search box and the same data, at three levels of capability. Each stage
-        changes what the council is doing <em>legally</em>, not just how clever it looks.</p>
-      <div class="stages" role="radiogroup" aria-label="Capability stage">
-        <label class="stage-opt sel" data-stage="1">
-          <input type="radio" name="stage" value="1" checked>
-          <span class="n">Stage 1</span>
-          <span class="t">Search as navigation</span>
-          <span class="legal">Signposting only. Legally we are publishing information &mdash; low risk, shippable now.</span>
-        </label>
-        <label class="stage-opt" data-stage="2">
-          <input type="radio" name="stage" value="2">
-          <span class="n">Stage 2</span>
-          <span class="t">Direct answer</span>
-          <span class="legal">We answer only where the answer can&rsquo;t vary by circumstance &mdash; and cite the source. Where it depends, we stay silent.</span>
-        </label>
-        <label class="stage-opt" data-stage="3">
-          <input type="radio" name="stage" value="3">
-          <span class="n">Stage 3</span>
-          <span class="t">Transaction</span>
-          <span class="legal">We act on your account. Legally we now need verified identity and permission to write to the service&rsquo;s system.</span>
-        </label>
-      </div>
-    </fieldset>
-
-    <div class="signin-bar" id="signinBar" hidden>
-      <span>Stage 3 acts on a resident&rsquo;s account.</span>
-      <span class="idpill out" id="idState">Not signed in</span>
-      <button class="btn sec" id="signinToggle" aria-pressed="false">Sign in with Meadowvale ID</button>
-    </div>
-
-    <form class="search" id="searchForm" role="search">
-      <div style="flex:1">
-        <label class="searchlab" for="q">What do you need help with?</label>
-        <div style="display:flex">
-          <input id="q" name="q" type="text" autocomplete="off" placeholder="e.g. bin day, council tax, homeless" aria-describedby="qhelp">
-          <button type="submit">Search</button>
-        </div>
-      </div>
-    </form>
-    <p id="qhelp" class="vh">Type a question in your own words. Results come from the service catalogue.</p>
-
-    <p class="chips-lab">Try one of these &mdash; each shows a different behaviour:</p>
-    <ul class="chips" id="chips"></ul>
-
-    <div class="layout">
-      <section id="results" aria-live="polite" aria-atomic="false">
-        <h2 class="vh">Results</h2>
-        <div id="resultsInner"></div>
-      </section>
-
-      <aside class="catalogue" aria-label="Catalogue data">
-        <h2>View the catalogue</h2>
-        <p class="cat-head" id="catHead">The structured record behind what you see. This is the reusable asset.</p>
-        <pre class="json" id="catJson" tabindex="0" aria-label="Raw JSON for the current service">Search to see a service&rsquo;s raw data here.</pre>
-        <p class="cat-links"><a href="services.json" target="_blank" rel="noopener">Open the full services.json &rarr;</a>
-          &middot; <a href="front-door-whatsapp.html">Same catalogue on WhatsApp &rarr;</a></p>
-      </aside>
-    </div>
+    <div class="step" id="step" role="region" aria-live="polite"></div>
+    <div class="nav" id="nav"></div>
   </div>
 </main>
 
 <footer>
   <div class="wrap">
     Meadowvale Borough Council (fictional) &middot; Concept artefact for discussion, not a live service &middot;
-    Built as a static demonstration of a service-catalogue-first front door.
+    <a href="services.json" target="_blank" rel="noopener">See the whole catalogue</a> &middot;
+    <a href="front-door-whatsapp.html">Same catalogue on WhatsApp</a>
   </div>
 </footer>
 
@@ -280,35 +213,24 @@
     information_only:  { label: 'Information',         tag: 'info',        cta: 'Read this' },
     online_transaction:{ label: 'Online transaction', tag: 'transaction', cta: 'Start online' }
   };
-  var CHIPS = [
-    { q: 'when are my bins collected', demo: 'Answer withheld — varies', stage: 2 },
-    { q: 'how much is garden waste', demo: 'Direct answer', stage: 2 },
-    { q: 'what goes in my recycling', demo: 'Direct answer (info-only)', stage: 2 },
-    { q: 'I have nowhere to sleep tonight', demo: 'Urgent — bypass to phone', stage: 1 },
-    { q: 'am I eligible for a disabled facilities grant', demo: 'Declines — circumstantial', stage: 2 },
-    { q: 'pay my council tax', demo: 'Transaction — gated', stage: 3 },
-    { q: "my bin wasn't collected", demo: 'De-duplicated', stage: 1 },
-    { q: 'renew my passport', demo: 'No match — offer a person', stage: 1 }
-  ];
 
   var DATA = null, META = null, byId = {};
-  var state = { stage: 1, signedIn: false, query: '' };
+  var idx = 0, sandboxStage = 2;
 
-  var resultsInner = document.getElementById('resultsInner');
-  var catJson = document.getElementById('catJson');
-  var catHead = document.getElementById('catHead');
+  var stepEl = document.getElementById('step');
+  var navEl = document.getElementById('nav');
+  var progEl = document.getElementById('progress');
 
   function esc(s) { return (s || '').replace(/[&<>"]/g, function (c) { return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' })[c]; }); }
   function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
-  function tokens(s) { return norm(s).split(' ').filter(function (t) { return t.length >= 2 && !STOP.has(t); }); }
+  function toks(s) { return norm(s).split(' ').filter(function (t) { return t.length >= 2 && !STOP.has(t); }); }
   function firstUrl(s) { var m = (s || '').match(/https?:\/\/[^\s)]+/); return m ? m[0] : null; }
   function firstPhone(s) { var m = (s || '').match(/0\d[\d ]{6,}\d/); return m ? m[0] : null; }
   function telHref(s) { var p = firstPhone(s); return p ? 'tel:' + p.replace(/\s+/g, '') : null; }
 
-  /* ---------- transparent matcher ---------- */
+  /* ---------------- matcher: plain alias lookup, no model ---------------- */
   function scoreService(nq, qtok, svc) {
-    var score = 0, matched = null;
-    var nname = norm(svc.name);
+    var score = 0, matched = null, nname = norm(svc.name);
     (svc.aliases || []).forEach(function (al) {
       var na = norm(al); if (!na) return;
       if (nq === na) { score += 100; matched = matched || al; }
@@ -317,263 +239,341 @@
     });
     if (nq === nname) { score += 90; matched = matched || svc.name; }
     else if (nq.length >= 5 && nname.indexOf(nq) > -1) { score += 12; matched = matched || svc.name; }
-
-    var aliasWords = new Set(norm((svc.aliases || []).join(' ') + ' ' + svc.name).split(' ').filter(Boolean));
-    var oneWords = new Set(norm(svc.one_line).split(' ').filter(Boolean));
+    var aw = new Set(norm((svc.aliases || []).join(' ') + ' ' + svc.name).split(' ').filter(Boolean));
+    var ow = new Set(norm(svc.one_line).split(' ').filter(Boolean));
     var hits = 0;
-    qtok.forEach(function (t) {
-      if (aliasWords.has(t)) { score += 4; hits++; }
-      else if (oneWords.has(t)) { score += 1; }
-    });
+    qtok.forEach(function (t) { if (aw.has(t)) { score += 4; hits++; } else if (ow.has(t)) { score += 1; } });
     if (!matched && hits > 0) {
-      var best = null, bestC = 0;
+      var best = null, bc = 0;
       (svc.aliases || []).concat([svc.name]).forEach(function (al) {
-        var aw = new Set(norm(al).split(' '));
-        var c = qtok.filter(function (t) { return aw.has(t); }).length;
-        if (c > bestC) { bestC = c; best = al; }
+        var s = new Set(norm(al).split(' ')); var c = qtok.filter(function (t) { return s.has(t); }).length;
+        if (c > bc) { bc = c; best = al; }
       });
       matched = best;
     }
     return { svc: svc, score: score, matched: matched };
   }
-
   function match(query) {
-    var nq = norm(query), qtok = tokens(query);
+    var nq = norm(query), qtok = toks(query);
     if (!nq) return { kind: 'empty' };
     var scored = DATA.map(function (s) { return scoreService(nq, qtok, s); })
                      .filter(function (r) { return r.score > 0; })
                      .sort(function (a, b) { return b.score - a.score; });
     if (!scored.length) return { kind: 'none' };
-
-    // urgent bypass: top hit is an urgent service with a strong (not incidental) match
     if (scored[0].svc.urgent && scored[0].score >= 22) return { kind: 'urgent', top: scored[0] };
-
-    // dedup: fold any duplicate into its canonical target
     var present = {}; scored.forEach(function (r) { present[r.svc.id] = r; });
     var out = [], seen = {};
     scored.forEach(function (r) {
-      var dupTarget = r.svc.duplicate_of;
-      if (dupTarget) {
-        var canonSvc = byId[dupTarget] || r.svc;
-        var canonId = canonSvc.id;
-        if (seen[canonId]) { seen[canonId].dedupWith = seen[canonId].dedupWith || r.svc; return; }
-        var canonScore = Math.max(r.score, present[canonId] ? present[canonId].score : 0);
-        var entry = { svc: canonSvc, score: canonScore, matched: (present[canonId] && present[canonId].matched) || r.matched, dedupWith: r.svc };
-        seen[canonId] = entry; out.push(entry);
-        return;
+      var dt = r.svc.duplicate_of;
+      if (dt) {
+        var canon = byId[dt] || r.svc, cid = canon.id;
+        if (seen[cid]) { seen[cid].dedupWith = seen[cid].dedupWith || r.svc; return; }
+        var e = { svc: canon, score: Math.max(r.score, present[cid] ? present[cid].score : 0), matched: (present[cid] && present[cid].matched) || r.matched, dedupWith: r.svc };
+        seen[cid] = e; out.push(e); return;
       }
-      if (seen[r.svc.id]) { return; }
-      seen[r.svc.id] = r; out.push(r);
+      if (seen[r.svc.id]) return; seen[r.svc.id] = r; out.push(r);
     });
     out.sort(function (a, b) { return b.score - a.score; });
-    // relative floor: when there is a strong top match, drop weak single-word
-    // noise; on a flat field (e.g. "parking") the floor stays at the base of 4.
-    var topScore = out[0].score, floor = Math.max(4, topScore * 0.3);
+    var floor = Math.max(4, out[0].score * 0.3);
     out = out.filter(function (r) { return r.score >= floor; });
-    return { kind: 'results', results: out.slice(0, 6) };
+    return { kind: 'results', results: out };
   }
 
-  /* ---------- catalogue panel ---------- */
-  function highlightJson(obj) {
-    var json = esc(JSON.stringify(obj, null, 2));
-    json = json.replace(/&quot;(\w[\w-]*)&quot;(\s*:)/g, '<span class="k">&quot;$1&quot;</span>$2');
-    json = json.replace(/: (&quot;[^&]*(?:&(?:amp|lt|gt|quot);[^&]*)*&quot;)/g, ': <span class="s">$1</span>');
-    json = json.replace(/: (true|false)/g, ': <span class="b">$1</span>');
-    json = json.replace(/: (\d+)/g, ': <span class="n2">$1</span>');
-    return json;
+  /* ---------------- render pieces ---------------- */
+  function ctaFor(svc, stage, signedIn) {
+    var url = firstUrl(svc.fulfilment_detail), tel = telHref(svc.fulfilment_detail), f = FULFIL[svc.fulfilment];
+    if (svc.fulfilment === 'online_transaction' && stage === 3 && !signedIn) {
+      return '<div class="blocker" style="margin-top:10px"><span class="lab">You need to sign in to do this</span>' +
+        '<p>This writes to the <b>' + esc(svc.owner) + '</b> system, so it needs verified identity (Meadowvale ID / GOV.UK One Login) ' +
+        'and permission to act on the account.</p></div>';
+    }
+    if (svc.fulfilment === 'phone') {
+      return '<p class="who" style="margin-top:8px">' + esc(svc.fulfilment_detail) + '</p>' +
+        (tel ? '<a class="btn red" href="' + esc(tel) + '">Call &rarr;</a>' : '');
+    }
+    if (svc.fulfilment === 'information_only' && !url) {
+      return '<p class="who" style="margin-top:8px">' + esc(svc.fulfilment_detail) + '</p>';
+    }
+    return url ? '<a class="btn' + (svc.fulfilment === 'information_only' ? ' sec' : '') + '" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(f.cta) + ' &rarr;</a>' : '';
   }
-  function showCatalogue(svc, label) {
-    if (!svc) { catJson.textContent = label || 'No single service to show for this result.'; catHead.textContent = 'The structured record behind what you see. This is the reusable asset.'; return; }
-    catHead.innerHTML = 'Raw record for <b>' + esc(svc.name) + '</b> — the interface above is just one reading of this.';
-    catJson.innerHTML = highlightJson(svc);
+  function card(r, stage, signedIn) {
+    var svc = r.svc, f = FULFIL[svc.fulfilment];
+    var h = '<div class="card"><span class="tagf ' + f.tag + '">' + f.label + '</span>';
+    h += '<h3>' + esc(svc.name) + '</h3>';
+    if (r.matched) h += '<p class="matched">Matched on <code>' + esc(r.matched) + '</code></p>';
+    h += '<p class="one">' + esc(svc.one_line) + '</p>';
+    h += '<p class="who"><b>Run by:</b> ' + esc(svc.owner) + '</p>';
+    h += ctaFor(svc, stage, signedIn);
+    if (r.dedupWith) h += '<div class="dedup"><b>2 catalogue entries describe this.</b> &ldquo;' + esc(r.dedupWith.name) + '&rdquo; (' + esc(r.dedupWith.owner) + ') was merged in.</div>';
+    h += '</div>';
+    return h;
   }
-
-  /* ---------- CTA rendering ---------- */
-  function ctaFor(svc) {
-    var f = svc.fulfilment, url = firstUrl(svc.fulfilment_detail), tel = telHref(svc.fulfilment_detail);
-    if (f === 'online_transaction') {
-      if (state.stage === 3) {
-        if (state.signedIn) {
-          return '<div class="txn-ok"><span class="lab">✓ Signed in as a verified resident.</span> ' +
-            'You can complete this transaction. <div class="cta-row"><button class="btn" data-mock="' + esc(svc.id) + '">Start &amp; check status</button></div>' +
-            '<div data-mockout="' + esc(svc.id) + '"></div></div>';
-        }
-        return '<div class="blocker"><span class="lab">You need to sign in to do this</span>' +
-          '<p>This step writes to the <b>' + esc(svc.owner) + '</b> system, so it needs verified identity ' +
-          '(Meadowvale ID / GOV.UK One Login) and permission to act on your account. That constraint &mdash; not the ' +
-          'interface &mdash; is what makes a transaction hard.</p>' +
-          '<button class="btn" id="blockerSignin">Sign in with Meadowvale ID</button></div>';
-      }
-      return '<div class="cta-row"><a class="btn" href="' + esc(url || '#') + '" target="_blank" rel="noopener">Start online &rarr;</a></div>';
-    }
-    if (f === 'phone') {
-      return '<div class="cta-row">' + (tel ? '<a class="btn red" href="' + esc(tel) + '">Call &rarr;</a>' : '') +
-        '<span class="muted" style="font-size:.86rem">' + esc(svc.fulfilment_detail) + '</span></div>';
-    }
-    if (f === 'appointment') {
-      return '<div class="cta-row">' + (url ? '<a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener">Book an appointment &rarr;</a>' : '') +
-        (tel ? '<a href="' + esc(tel) + '">or call ' + esc(firstPhone(svc.fulfilment_detail)) + '</a>' : '') + '</div>';
-    }
-    if (f === 'information_only') {
-      if (url) return '<div class="cta-row"><a class="btn sec" href="' + esc(url) + '" target="_blank" rel="noopener">Read this &rarr;</a></div>';
-      return '<details class="route"><summary>Read this</summary><div class="rbody">' + esc(svc.fulfilment_detail) + '</div></details>';
-    }
-    // self_serve_form
-    return '<div class="cta-row"><a class="btn" href="' + esc(url || '#') + '" target="_blank" rel="noopener">Open the form &rarr;</a></div>';
-  }
-
-  function serviceCard(r) {
-    var svc = r.svc, f = FULFIL[svc.fulfilment] || { label: svc.fulfilment, tag: 'info' };
-    var html = '<div class="card">';
-    html += '<h3>' + esc(svc.name) + '</h3>';
-    html += '<span class="tagf ' + f.tag + '">' + f.label + '</span>';
-    if (r.matched) html += '<p class="matched">Matched on <code>' + esc(r.matched) + '</code> &middot; no AI, just alias lookup</p>';
-    html += '<p class="one">' + esc(svc.one_line) + '</p>';
-    html += '<p class="kv"><span class="k">Who it&rsquo;s for:</span> ' + esc(svc.eligibility) + '</p>';
-    html += '<p class="kv"><span class="k">Run by:</span> ' + esc(svc.owner) + '</p>';
-    html += ctaFor(svc);
-    if (r.dedupWith) {
-      html += '<div class="dedup"><b>2 catalogue entries describe this.</b> A near-duplicate &mdash; &ldquo;' +
-        esc(r.dedupWith.name) + '&rdquo; (owned by ' + esc(r.dedupWith.owner) + ') &mdash; was merged into this one. ' +
-        'The catalogue makes duplicates like this visible so they can be consolidated.</div>';
-    }
-    html += '</div>';
-    return html;
-  }
-
   function answerCard(svc) {
-    return '<div class="answer"><span class="lab">Answer</span>' +
-      '<p class="big">' + esc(svc.invariant_answer) + '</p>' +
-      '<p class="cite"><b>Source:</b> ' + esc(svc.source) + '</p>' +
-      '<p class="why">Shown because this answer is factual and does <b>not</b> vary by your circumstances ' +
-      '(<code>answer_safe: true</code>). That is the only case where Stage 2 answers directly.</p></div>';
+    return '<div class="answer"><span class="lab">Answer</span><p class="big">' + esc(svc.invariant_answer) + '</p>' +
+      '<p class="cite"><b>Source:</b> ' + esc(svc.source) + '</p></div>';
   }
-
-  function degradeNote(svc) {
-    return '<div class="degrade"><b>No direct answer shown.</b> The best match &mdash; &ldquo;' + esc(svc.name) +
-      '&rdquo; &mdash; depends on your circumstances (<code>answer_safe: false</code>), so Stage 2 deliberately ' +
-      'stays silent and signposts you to the service instead of guessing.</div>';
+  function degradeCard(svc) {
+    return '<div class="degrade"><span class="lab">No answer shown &mdash; on purpose</span>' +
+      'The best match is &ldquo;' + esc(svc.name) + '&rdquo;, but that answer depends on your circumstances, so we signpost instead of guessing.</div>';
   }
-
   function urgentCard(svc) {
     var tel = telHref(svc.fulfilment_detail), num = firstPhone(svc.fulfilment_detail);
-    return '<div class="urgent"><span class="lab">Urgent — routed straight to a person</span>' +
-      '<h3>' + esc(svc.name) + '</h3>' +
-      '<p>' + esc(svc.one_line) + '</p>' +
-      '<p class="num">' + (tel ? '<a href="' + esc(tel) + '">' + esc(num) + '</a>' : esc(num || '')) + '</p>' +
-      (tel ? '<div class="cta-row"><a class="btn red" href="' + esc(tel) + '">Call now &mdash; free &rarr;</a></div>' : '') +
-      '<p class="why">This query was recognised as urgent (<code>urgent: true</code>), so we <b>bypassed search entirely</b> ' +
-      'and routed straight to the duty line &mdash; no ranked list, no forms, no answer to interpret.</p></div>';
+    return '<div class="urgent"><span class="lab">Urgent &mdash; search skipped</span><h3>' + esc(svc.name) + '</h3>' +
+      '<p class="one">' + esc(svc.one_line) + '</p>' +
+      '<p class="num">' + (tel ? '<a href="' + esc(tel) + '">' + esc(num) + '</a>' : esc(num || '')) + '</p></div>';
   }
-
   function personCard() {
-    var c = META.contact_centre || {};
-    var tel = c.phone ? 'tel:' + c.phone.replace(/\s+/g, '') : null;
-    return '<div class="person"><span class="lab">We couldn&rsquo;t find that in the catalogue</span>' +
-      '<p>Rather than guess, here&rsquo;s a person who can help.</p>' +
-      '<p class="num">' + esc(c.name || 'Contact Centre') + '</p>' +
-      '<p>' + (tel ? '<a href="' + esc(tel) + '">' + esc(c.phone) + '</a>' : '') + (c.hours ? ' &middot; ' + esc(c.hours) : '') + '</p>' +
-      (c.webchat ? '<div class="cta-row"><a class="btn" href="' + esc(c.webchat) + '" target="_blank" rel="noopener">Start web chat &rarr;</a></div>' : '') +
-      '<p class="why">A real front door would log this as an <b>unmet need</b> &mdash; evidence for what to add to the catalogue next. ' +
-      'It never invents an answer.</p></div>';
+    var c = META.contact_centre || {}, tel = c.phone ? 'tel:' + c.phone.replace(/\s+/g, '') : null;
+    return '<div class="person"><span class="lab">Not in the catalogue</span>' +
+      '<p class="one" style="margin-top:5px">Rather than guess, we offer a person.</p>' +
+      '<p class="num">' + esc(c.name || '') + '</p>' +
+      '<p class="who">' + (tel ? '<a href="' + esc(tel) + '">' + esc(c.phone) + '</a>' : '') + (c.hours ? ' &middot; ' + esc(c.hours) : '') + '</p></div>';
   }
 
-  /* ---------- render ---------- */
-  function render() {
-    var q = state.query;
-    if (!q) { resultsInner.innerHTML = '<p class="muted">Type a question above, or pick an example, to see how the catalogue responds.</p>'; showCatalogue(null); return; }
-    var m = match(q);
-    var html = '', topSvc = null;
-
-    if (m.kind === 'none') { html = personCard(); topSvc = null; showCatalogue(null, 'No catalogue match — routed to a person instead.'); }
-    else if (m.kind === 'urgent') { html = urgentCard(m.top.svc); topSvc = m.top.svc; }
+  // one demo "screen": what the resident typed, and what the front door does with it
+  function demo(query, stage) {
+    var m = match(query), inner = '';
+    if (m.kind === 'none') inner = personCard();
+    else if (m.kind === 'urgent') inner = urgentCard(m.top.svc);
     else if (m.kind === 'results') {
-      var top = m.results[0]; topSvc = top.svc;
-      // Factual answers are cumulative (Stage 2 and 3). The "we stay silent"
-      // annotation is a Stage 2 teaching device; Stage 3 leads with the blocker.
-      if (top.svc.answer_safe && top.svc.invariant_answer) {
-        if (state.stage >= 2) html += answerCard(top.svc);
-      } else if (state.stage === 2) {
-        html += degradeNote(top.svc);
+      var top = m.results[0];
+      if (top.svc.answer_safe && top.svc.invariant_answer) { if (stage >= 2) inner += answerCard(top.svc); }
+      else if (stage === 2) inner += degradeCard(top.svc);
+      inner += card(top, stage, false);
+    }
+    return '<div class="screen">' +
+      '<div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span> meadowvale.gov.uk &mdash; find a service' +
+        (stage ? ' &middot; Stage ' + stage : '') + '</div>' +
+      '<div class="screen-body">' +
+        '<p class="typed-lab">A resident types:</p>' +
+        '<div class="fauxsearch"><span class="q">' + esc(query) + '<span class="caret"></span></span><span class="go">Search</span></div>' +
+        inner +
+      '</div></div>';
+  }
+
+  function jsonBlock(svc, fields) {
+    var o = {};
+    (fields || Object.keys(svc)).forEach(function (f) { if (svc[f] !== undefined) o[f] = svc[f]; });
+    var j = esc(JSON.stringify(o, null, 2));
+    j = j.replace(/&quot;(\w[\w-]*)&quot;(\s*:)/g, '<span class="k">&quot;$1&quot;</span>$2');
+    j = j.replace(/: (&quot;[^&]*(?:&(?:amp|lt|gt|quot);[^&]*)*&quot;)/g, ': <span class="s">$1</span>');
+    j = j.replace(/: (true|false)/g, ': <span class="b">$1</span>');
+    return '<pre class="json">' + j + '</pre>';
+  }
+  function dataDetails(svcId, fields) {
+    var svc = byId[svcId]; if (!svc) return '';
+    return '<details class="data"><summary>See the data behind this</summary>' + jsonBlock(svc, fields) +
+      '<p class="data-note">Straight from <code>services.json</code> &mdash; the same file every channel reads.</p></details>';
+  }
+
+  /* ---------------- the walkthrough ---------------- */
+  var STEPS = [
+    { cover: true, render: function () {
+      return '<div class="cover">' +
+        '<p class="eyebrow">A 2-minute walkthrough</p>' +
+        '<h1>One list of services. Every front door reads it.</h1>' +
+        '<p class="kicker">This prototype makes a single argument: the <b>catalogue is the asset</b>, and the interface on top of it is disposable. ' +
+        'We&rsquo;ll take one idea at a time, with a working demo of each.</p>' +
+        '<ul>' +
+          '<li>What the catalogue is, and why the words residents use matter</li>' +
+          '<li>When we should answer a question &mdash; and when we must not</li>' +
+          '<li>Why <i>doing</i> something is a different problem from answering</li>' +
+          '<li>The same data rendered as a completely different channel</li>' +
+        '</ul></div>';
+    }},
+
+    { eyebrow: 'Step 1 — the words residents use',
+      title: 'Nobody searches in council language',
+      blurb: 'A resident types what they would say out loud. The catalogue stores those phrasings against each service, so finding the right one is a lookup rather than a guess.',
+      render: function () { return demo('bin day', 1); },
+      notice: '<b>&ldquo;bin day&rdquo; is not the name of any service.</b> It is an <code>alias</code> on <i>Find your bin collection day</i>. ' +
+              'Write down the words residents actually use once, in the data, and every channel gets them for free.',
+      data: ['bin-collection-day', ['id', 'name', 'aliases']] },
+
+    { eyebrow: 'Step 2 — stage one',
+      title: 'Most of the value is just pointing people to the right place',
+      blurb: 'The catalogue records how each service is really delivered: a form, a phone line, an appointment, or plain information. That alone is enough to route somebody correctly, without answering anything.',
+      render: function () { return demo('someone dumped rubbish on our street', 1); },
+      notice: 'Legally this is only <b>publishing information</b> &mdash; the lowest-risk thing we can ship, and it already fixes the most common failure: ' +
+              'people not finding the right service. Nothing here is capable of inventing an answer.',
+      data: ['report-fly-tipping', ['name', 'fulfilment', 'fulfilment_detail', 'owner']] },
+
+    { eyebrow: 'Step 3 — stage two',
+      title: 'A few questions can simply be answered',
+      blurb: 'Some answers are identical for everyone who asks. Those are flagged in the catalogue by the service owner, and only those get answered directly — always with the source shown.',
+      render: function () { return demo('how much is garden waste', 2); },
+      notice: '<code>answer_safe: true</code> is a <b>decision recorded in the data by a service owner</b>, not a judgement made at the moment of asking. ' +
+              'That is what makes the answer defensible &mdash; and the citation is what makes it checkable.',
+      data: ['garden-waste-subscription', ['name', 'answer_safe', 'invariant_answer', 'source']] },
+
+    { eyebrow: 'Step 4 — the important half',
+      title: 'Most questions must not be answered at all',
+      blurb: 'Most council answers depend on who is asking. Same search box, same stage — but where the flag is false, the front door deliberately says nothing and routes instead.',
+      render: function () { return demo('when are my bins collected', 2); },
+      notice: '<b>One field in the data flipped the behaviour.</b> Not a prompt and not a model &mdash; a value a service owner set, which an auditor can inspect. ' +
+              'This is the safety mechanism, and it is the reason the catalogue has to come first.',
+      data: ['bin-collection-day', ['name', 'answer_safe', 'eligibility']] },
+
+    { eyebrow: 'Step 5 — stage three',
+      title: 'Doing something is a different problem entirely',
+      blurb: 'Acting on somebody’s account is not a cleverer version of search. It needs verified identity and permission to write to the service’s own system.',
+      render: function () { return demo('pay my council tax', 3); },
+      notice: '<b>The blocker is the finding.</b> The constraint is identity and system access, not the quality of the interface. ' +
+              'A better front end does not move it &mdash; integration and identity work does. Budget for it accordingly.',
+      data: ['council-tax-pay', ['name', 'fulfilment', 'owner']] },
+
+    { eyebrow: 'Step 6 — refusing to guess',
+      title: 'Three moments where it has to step back',
+      blurb: 'A front door that cannot say “I don’t know” is not safe to put in front of residents. There are three distinct cases, and the catalogue handles each differently.',
+      render: function () {
+        return '<p class="mini-lab">1. Urgent &mdash; skip the search entirely</p>' + demo('I have nowhere to sleep tonight', 1) +
+               '<p class="mini-lab">2. It depends on your circumstances &mdash; decline to answer</p>' + demo('am I eligible for a disabled facilities grant', 2) +
+               '<p class="mini-lab">3. Not in the catalogue &mdash; offer a person</p>' + demo('renew my passport', 1);
+      },
+      notice: 'None of these is a failure of the interface. Each is the catalogue being honest about what it holds &mdash; ' +
+              'and the third is <b>evidence of an unmet need</b>, which tells you what to add next.' },
+
+    { eyebrow: 'Step 7 — the channel swap',
+      title: 'Same catalogue, completely different front end',
+      blurb: 'This is the same services.json rendered as a chat interface. No content was copied, rewritten, or maintained twice.',
+      render: function () {
+        var svc = byId['garden-waste-subscription'];
+        return '<div class="screen"><div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span> WhatsApp &mdash; Meadowvale Council</div>' +
+          '<div class="screen-body" style="background:#efeae2">' +
+            '<div style="display:flex;justify-content:flex-end;margin-bottom:8px"><span style="background:#d9fdd3;padding:8px 11px;border-radius:8px;font-size:.92rem">how much is garden waste</span></div>' +
+            '<div style="display:flex"><span style="background:#fff;padding:9px 12px;border-radius:8px;font-size:.92rem;max-width:92%">' + esc(svc.invariant_answer) +
+              '<span style="display:block;margin-top:6px;padding-top:5px;border-top:1px solid #e9edef;font-size:.76rem;color:#667781"><b>Source:</b> ' + esc(svc.source) + '</span></span></div>' +
+          '</div></div>' +
+          '<p style="margin:0 0 16px"><a class="btn sec" href="front-door-whatsapp.html">Open the working WhatsApp version &rarr;</a></p>';
+      },
+      notice: 'Today it is a search box and a chat window. Tomorrow it could be a voice assistant, or somebody else&rsquo;s model answering on our behalf. ' +
+              '<b>Whatever it is, it reads this file</b> &mdash; so work spent on the catalogue is never thrown away.' },
+
+    { eyebrow: 'Step 8 — so what',
+      title: 'What this means for the decision',
+      last: true,
+      render: function () {
+        return '<ul class="sumlist">' +
+          '<li><b>Build the catalogue first.</b><span>It is the only part that survives a change of interface, supplier or technology. ' + DATA.length + ' services are modelled in this prototype.</span></li>' +
+          '<li><b>Ship stage 1 now.</b><span>Signposting is legally just publishing information, and it already fixes the most common failure.</span></li>' +
+          '<li><b>Answer only where the data says it is safe.</b><span>The flag is set by service owners and is auditable. Everything else degrades to signposting.</span></li>' +
+          '<li><b>Treat stage 3 as an identity problem.</b><span>Transactions need verified identity and write access. That is integration work, not interface work.</span></li>' +
+        '</ul>' +
+        '<h3 style="font-size:1.05rem;margin-top:26px">Now try it yourself</h3>' +
+        '<p class="blurb" style="margin-bottom:12px">Ask anything, at any stage. It is the same catalogue you have just walked through.</p>' +
+        '<div class="stagepick" role="group" aria-label="Capability stage">' +
+          '<button type="button" data-stage="1" aria-pressed="false">Stage 1 &mdash; route only</button>' +
+          '<button type="button" data-stage="2" aria-pressed="true">Stage 2 &mdash; answer if safe</button>' +
+          '<button type="button" data-stage="3" aria-pressed="false">Stage 3 &mdash; transact</button>' +
+        '</div>' +
+        '<form class="sand" id="sandForm"><label class="vh" for="sandq">Ask the catalogue</label>' +
+          '<input id="sandq" type="text" autocomplete="off" placeholder="e.g. noisy neighbours, blue badge, missed bin"><button type="submit">Search</button></form>' +
+        '<ul class="chips" id="sandChips"></ul>' +
+        '<div id="sandOut"></div>';
+      },
+      notice: 'Everything you have just seen came out of one file. <a href="services.json" target="_blank" rel="noopener">Open services.json</a> &mdash; ' +
+              'that file, not this page, is what we are actually proposing to build.' }
+  ];
+
+  var SAND_CHIPS = ['noisy neighbours', 'blue badge', 'my bin wasn’t collected', 'when is the tip open', 'threatened with eviction', 'renew my passport'];
+
+  /* ---------------- step plumbing ---------------- */
+  function totalSteps() { return STEPS.length - 1; }
+
+  function renderStep() {
+    var s = STEPS[idx], html = '';
+    if (!s.cover) {
+      html += '<p class="eyebrow">' + s.eyebrow + '</p><h2>' + s.title + '</h2>';
+      if (s.blurb) html += '<p class="blurb">' + s.blurb + '</p>';
+    }
+    html += s.render();
+    if (s.notice) html += '<p class="notice">' + s.notice + '</p>';
+    if (s.data) html += dataDetails(s.data[0], s.data[1]);
+    stepEl.innerHTML = html;
+
+    progEl.hidden = !!s.cover;
+    if (!s.cover) {
+      document.getElementById('progLabel').textContent = 'Step ' + idx + ' of ' + totalSteps();
+      document.getElementById('progBar').style.width = (idx / totalSteps() * 100) + '%';
+    }
+
+    var nav = '';
+    if (s.cover) nav = '<button class="next" id="next">Start the walkthrough &rarr;</button>';
+    else {
+      nav = '<button class="back" id="back">&larr; Back</button><span class="spacer"></span>';
+      nav += idx < STEPS.length - 1 ? '<button class="next" id="next">Next &rarr;</button>'
+                                    : '<a class="btn sec" href="front-door-whatsapp.html" style="margin:0">See the WhatsApp version &rarr;</a>';
+    }
+    navEl.innerHTML = nav;
+    var nb = document.getElementById('next'); if (nb) nb.addEventListener('click', function () { go(idx + 1); });
+    var bb = document.getElementById('back'); if (bb) bb.addEventListener('click', function () { go(idx - 1); });
+
+    if (s.last) wireSandbox();
+
+    var h = stepEl.querySelector('h1, h2');
+    if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+  }
+
+  function go(n) {
+    if (n < 0 || n >= STEPS.length) return;
+    idx = n; renderStep();
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  function wireSandbox() {
+    var out = document.getElementById('sandOut');
+    function run(q) {
+      if (!q) { out.innerHTML = ''; return; }
+      var m = match(q), html = '';
+      if (m.kind === 'none') html = personCard();
+      else if (m.kind === 'urgent') html = urgentCard(m.top.svc);
+      else {
+        var top = m.results[0];
+        if (top.svc.answer_safe && top.svc.invariant_answer) { if (sandboxStage >= 2) html += answerCard(top.svc); }
+        else if (sandboxStage === 2) html += degradeCard(top.svc);
+        html += m.results.slice(0, 3).map(function (r) { return card(r, sandboxStage, false); }).join('');
       }
-      html += '<p class="result-meta">' + m.results.length + ' service' + (m.results.length === 1 ? '' : 's') + ' matched, ranked by the alias/keyword score. Stage ' + state.stage + '.</p>';
-      html += m.results.map(serviceCard).join('');
-    } else { html = '<p class="muted">Type a question to search.</p>'; }
-
-    resultsInner.innerHTML = html;
-    if (topSvc) showCatalogue(topSvc);
-
-    // wire mock transaction + blocker sign-in
-    var mockBtn = resultsInner.querySelector('[data-mock]');
-    if (mockBtn) mockBtn.addEventListener('click', function () {
-      var id = mockBtn.getAttribute('data-mock');
-      var out = resultsInner.querySelector('[data-mockout="' + id + '"]');
-      if (out) out.innerHTML = '<p style="margin:10px 0 0;font-size:.88rem">✓ (Mock) Request lodged against your account. Reference <b>MV-' + (1000 + (id.length * 37) % 8999) + '</b>. No real data was written &mdash; this is a prototype.</p>';
+      out.innerHTML = html;
+    }
+    document.getElementById('sandForm').addEventListener('submit', function (e) {
+      e.preventDefault(); run(document.getElementById('sandq').value.trim());
     });
-    var bsi = document.getElementById('blockerSignin');
-    if (bsi) bsi.addEventListener('click', function () { setSignedIn(true); });
+    Array.prototype.forEach.call(stepEl.querySelectorAll('.stagepick button'), function (b) {
+      b.addEventListener('click', function () {
+        sandboxStage = +b.getAttribute('data-stage');
+        Array.prototype.forEach.call(stepEl.querySelectorAll('.stagepick button'), function (o) {
+          o.setAttribute('aria-pressed', String(o === b));
+        });
+        run(document.getElementById('sandq').value.trim());
+      });
+    });
+    var ul = document.getElementById('sandChips');
+    SAND_CHIPS.forEach(function (q) {
+      var li = document.createElement('li'), b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = q;
+      b.addEventListener('click', function () { document.getElementById('sandq').value = q; run(q); });
+      li.appendChild(b); ul.appendChild(li);
+    });
   }
 
-  /* ---------- controls ---------- */
-  function setStage(n) {
-    state.stage = n;
-    Array.prototype.forEach.call(document.querySelectorAll('.stage-opt'), function (el) {
-      var on = +el.getAttribute('data-stage') === n;
-      el.classList.toggle('sel', on);
-      var input = el.querySelector('input'); if (input) input.checked = on;
+  document.getElementById('restart').addEventListener('click', function () { go(0); });
+  document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'ArrowRight') go(idx + 1);
+    if (e.key === 'ArrowLeft') go(idx - 1);
+  });
+
+  /* ---------------- load ---------------- */
+  fetch('services.json').then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (data) {
+      DATA = data.services; META = data.meta || {};
+      DATA.forEach(function (s) { byId[s.id] = s; });
+      renderStep();
+    })
+    .catch(function (err) {
+      stepEl.innerHTML = '<p style="color:#d4351c"><b>Could not load services.json</b> (' + esc(String(err.message)) + '). ' +
+        'This page reads the catalogue over HTTP &mdash; open it from a web server (e.g. GitHub Pages), not a local file.</p>';
     });
-    document.getElementById('signinBar').hidden = (n !== 3);
-    render();
-  }
-  function setSignedIn(v) {
-    state.signedIn = v;
-    var pill = document.getElementById('idState'), btn = document.getElementById('signinToggle');
-    pill.textContent = v ? 'Signed in (mock)' : 'Not signed in';
-    pill.className = 'idpill ' + (v ? 'in' : 'out');
-    btn.textContent = v ? 'Sign out' : 'Sign in with Meadowvale ID';
-    btn.setAttribute('aria-pressed', String(v));
-    render();
-  }
-
-  Array.prototype.forEach.call(document.querySelectorAll('input[name=stage]'), function (r) {
-    r.addEventListener('change', function () { setStage(+r.value); });
-  });
-  document.getElementById('signinToggle').addEventListener('click', function () { setSignedIn(!state.signedIn); });
-
-  document.getElementById('searchForm').addEventListener('submit', function (e) {
-    e.preventDefault(); state.query = document.getElementById('q').value.trim(); render();
-  });
-
-  // chips
-  var chipsUl = document.getElementById('chips');
-  CHIPS.forEach(function (c) {
-    var li = document.createElement('li');
-    var b = document.createElement('button');
-    b.type = 'button'; b.className = 'chip';
-    b.innerHTML = esc(c.q) + '<span class="demo">' + esc(c.demo) + '</span>';
-    b.addEventListener('click', function () {
-      document.getElementById('q').value = c.q;
-      state.query = c.q;
-      if (c.stage === 3) state.signedIn = false, setSignedIn(false);
-      setStage(c.stage || state.stage); // setStage calls render
-      if (c.stage !== 3) render();
-      document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    li.appendChild(b); chipsUl.appendChild(li);
-  });
-
-  /* ---------- load ---------- */
-  fetch('services.json').then(function (res) {
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    return res.json();
-  }).then(function (data) {
-    DATA = data.services; META = data.meta || {};
-    DATA.forEach(function (s) { byId[s.id] = s; });
-    render();
-  }).catch(function (err) {
-    resultsInner.innerHTML = '<p style="color:#d4351c"><b>Could not load services.json</b> (' + esc(String(err.message)) + '). ' +
-      'This page reads the catalogue over HTTP &mdash; open it from a web server (e.g. GitHub Pages), not a local file.</p>';
-  });
 })();
 </script>
 </body>
