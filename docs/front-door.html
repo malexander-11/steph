@@ -110,6 +110,39 @@
 
   .dedup { font-size: .82rem; background: #fff7e0; border: 1px solid #d3b869; padding: 8px 11px; margin-top: 10px; }
 
+  /* "you'll need" — teeing people up before any hand-off */
+  .need { margin: 10px 0 0; font-size: .84rem; }
+  .need b { font-weight: 700; }
+  .need ul { margin: 5px 0 0; padding-left: 18px; }
+  .need li { margin-bottom: 3px; }
+  .need li.known { color: #505a5f; }
+  .need li.known span { font-size: .78rem; color: #00703c; font-weight: 700; }
+
+  /* stage 3 — sign in and finish in place */
+  .signedin { border: 2px solid #00703c; background: #f0f7f2; padding: 14px; }
+  .signedin .lab { font-weight: 700; color: #00703c; display: block; }
+  .known-box { border: 1px solid #cfe3d6; background: #fff; }
+  .kvr { display: flex; justify-content: space-between; gap: 12px; padding: 8px 11px; border-bottom: 1px solid #eaeaea; font-size: .86rem; }
+  .kvr:last-child { border-bottom: 0; }
+  .kvr span { color: #505a5f; } .kvr b { text-align: right; }
+  .idnote { font-size: .76rem; color: #505a5f; margin: 12px 0 0; border-top: 1px solid #cfe3d6; padding-top: 8px; }
+  .done { border: 2px solid #00703c; background: #fff; padding: 13px; margin-top: 12px; }
+  .done .lab { font-weight: 700; color: #00703c; display: block; margin-bottom: 4px; }
+  .done p { margin: 0; font-size: .9rem; }
+  .done .ref { margin-top: 6px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .84rem; }
+
+  /* parameterised answer — ask one thing */
+  .ask { border: 2px solid #1d70b8; background: #eef4fa; padding: 14px; }
+  .asklab { display: block; font-weight: 700; font-size: .98rem; }
+  .askhint { font-size: .8rem; color: #505a5f; margin: 3px 0 9px; }
+  .askrow { display: flex; gap: 0; }
+  .askrow input { flex: 1; min-width: 0; border: 2px solid #0b0c0c; border-right: 0; padding: 10px 12px; font-size: 1rem; text-transform: uppercase; }
+  .askrow .btn { border-radius: 0; }
+  .asktry { font-size: .8rem; color: #505a5f; margin: 10px 0 0; }
+  .pcchip { background: #fff; border: 1px solid #1d70b8; color: #1d70b8; padding: 3px 8px; font-size: .78rem; margin-right: 4px; }
+  .pcchip:hover { background: #dceaf7; }
+  .whysafe { font-size: .78rem; color: #383f43; margin: 10px 0 0; border-top: 1px solid #cdddf0; padding-top: 8px; }
+
   .mini-lab { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #505a5f; margin: 18px 0 6px; }
   .mini-lab:first-child { margin-top: 0; }
 
@@ -280,12 +313,22 @@
   }
 
   /* ---------------- render pieces ---------------- */
+  // "Tee them up": what to have ready before we hand anyone off.
+  function needList(svc, signedIn) {
+    var need = svc.you_will_need || []; if (!need.length) return '';
+    var known = signedIn ? (svc.known_once_signed_in || []) : [];
+    var items = need.map(function (n) {
+      return known.indexOf(n) > -1
+        ? '<li class="known"><s>' + esc(n) + '</s> <span>we already have this</span></li>'
+        : '<li>' + esc(n) + '</li>';
+    }).join('');
+    return '<div class="need"><b>You&rsquo;ll need:</b><ul>' + items + '</ul></div>';
+  }
+
   function ctaFor(svc, stage, signedIn) {
     var url = firstUrl(svc.fulfilment_detail), tel = telHref(svc.fulfilment_detail), f = FULFIL[svc.fulfilment];
-    if (svc.fulfilment === 'online_transaction' && stage === 3 && !signedIn) {
-      return '<div class="blocker" style="margin-top:10px"><span class="lab">You need to sign in to do this</span>' +
-        '<p>This writes to the <b>' + esc(svc.owner) + '</b> system, so it needs verified identity (Meadowvale ID / GOV.UK One Login) ' +
-        'and permission to act on the account.</p></div>';
+    if (svc.fulfilment === 'online_transaction' && stage === 3) {
+      return signedIn ? signedInPanel(svc) : signInPanel(svc);
     }
     if (svc.fulfilment === 'phone') {
       return '<p class="who" style="margin-top:8px">' + esc(svc.fulfilment_detail) + '</p>' +
@@ -294,7 +337,74 @@
     if (svc.fulfilment === 'information_only' && !url) {
       return '<p class="who" style="margin-top:8px">' + esc(svc.fulfilment_detail) + '</p>';
     }
-    return url ? '<a class="btn' + (svc.fulfilment === 'information_only' ? ' sec' : '') + '" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(f.cta) + ' &rarr;</a>' : '';
+    // routed out — tee them up first so they arrive ready
+    return needList(svc, signedIn) +
+      (url ? '<a class="btn' + (svc.fulfilment === 'information_only' ? ' sec' : '') + '" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(f.cta) + ' &rarr;</a>' : '');
+  }
+
+  /* --- stage 3: sign in and finish here, rather than hand off to a form --- */
+  function signInPanel(svc) {
+    return '<div class="blocker" style="margin-top:10px"><span class="lab">Sign in to do this here</span>' +
+      '<p>This writes to the <b>' + esc(svc.owner) + '</b> system, so it needs verified identity ' +
+      '(Meadowvale ID / GOV.UK One Login) and permission to act on your account.</p>' +
+      needList(svc, false) +
+      '<button class="btn" data-signin="' + esc(svc.id) + '" style="margin-top:12px">Sign in with Meadowvale ID</button></div>';
+  }
+  function signedInPanel(svc) {
+    var r = META.demo_resident || {}, t = svc.transaction || {};
+    var rows = '';
+    if (svc.id === 'council-tax-pay') {
+      rows = '<div class="kvr"><span>Account</span><b>' + esc(r.council_tax_account) + ' &middot; ' + esc(r.band) + '</b></div>' +
+             '<div class="kvr"><span>Balance</span><b>' + esc(r.balance) + '</b></div>' +
+             '<div class="kvr"><span>Next instalment</span><b>' + esc(r.next_instalment) + ' on ' + esc(r.next_instalment_date) + '</b></div>';
+    } else {
+      rows = '<div class="kvr"><span>Address</span><b>' + esc(r.address) + '</b></div>';
+    }
+    return '<div class="signedin" style="margin-top:10px">' +
+      '<span class="lab">&#10003; Signed in as ' + esc(r.name) + '</span>' +
+      '<p class="who" style="margin:4px 0 10px">' + esc(r.address) + '</p>' +
+      '<div class="known-box">' + rows + '</div>' +
+      needList(svc, true) +
+      (t.action ? '<button class="btn" data-do="' + esc(svc.id) + '" style="margin-top:12px">' + esc(t.action) + '</button>' : '') +
+      '<div data-done="' + esc(svc.id) + '"></div>' +
+      '<p class="idnote">Account details come from the identity layer and the ' + esc(svc.owner) + ' system &mdash; not from the catalogue. The front door composes the two.</p>' +
+      '</div>';
+  }
+  function completedPanel(svc) {
+    var t = svc.transaction || {};
+    var ref = (t.ref_prefix || 'MV') + '-2026-' + String(1000 + (svc.id.length * 137) % 8999);
+    return '<div class="done"><span class="lab">&#10003; Done &mdash; no hand-off, no form</span>' +
+      '<p>' + esc(t.confirms || 'Completed.') + '</p>' +
+      '<p class="ref">Reference <b>' + esc(ref) + '</b></p></div>';
+  }
+
+  /* --- parameterised answers: ask one thing, then answer exactly --- */
+  function normPc(s) { return (s || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+  function lookupAnswer(svc, value) {
+    var want = normPc(value), lk = svc.answer_lookup || {}, hit = null;
+    Object.keys(lk).forEach(function (k) { if (normPc(k) === want) hit = { key: k, val: lk[k] }; });
+    return hit;
+  }
+  function askPanel(svc) {
+    var an = svc.answer_needs, examples = Object.keys(svc.answer_lookup || {});
+    return '<div class="ask"><label class="asklab" for="ask-' + esc(svc.id) + '">' + esc(an.question) + '</label>' +
+      '<p class="askhint">' + esc(an.hint) + '</p>' +
+      '<div class="askrow"><input id="ask-' + esc(svc.id) + '" type="text" autocomplete="off" data-askfor="' + esc(svc.id) + '" placeholder="' + esc(an.hint.replace(/^For example, /, '')) + '">' +
+      '<button class="btn" data-asksubmit="' + esc(svc.id) + '" style="margin:0">Check</button></div>' +
+      '<p class="asktry">Try: ' + examples.map(function (e) {
+        return '<button class="pcchip" data-pc="' + esc(e) + '" data-for="' + esc(svc.id) + '">' + esc(e) + '</button>';
+      }).join(' ') + '</p>' +
+      '<p class="whysafe">' + esc(an.why_safe) + '</p></div>';
+  }
+  function paramAnswer(svc, value) {
+    var hit = lookupAnswer(svc, value);
+    if (!hit) return '<div class="degrade"><span class="lab">No match for that ' + esc(svc.answer_needs.input) + '</span>' + esc(svc.answer_needs.not_found) + '</div>';
+    var v = hit.val;
+    var rows = (v.rows || []).map(function (r) { return '<div class="kvr"><span>' + esc(r.label) + '</span><b>' + esc(r.value) + '</b></div>'; }).join('');
+    return '<div class="answer"><span class="lab">Answer for ' + esc(hit.key) + (v.round ? ' &middot; ' + esc(v.round) : '') + '</span>' +
+      '<div class="known-box" style="margin:8px 0 10px">' + rows + '</div>' +
+      (v.still_apply ? '<p class="cite" style="margin-bottom:8px"><b>Note:</b> ' + esc(v.still_apply) + '</p>' : '') +
+      '<p class="cite"><b>Source:</b> ' + esc(svc.source) + '</p></div>';
   }
   function card(r, stage, signedIn) {
     var svc = r.svc, f = FULFIL[svc.fulfilment];
@@ -331,16 +441,26 @@
   }
 
   // one demo "screen": what the resident typed, and what the front door does with it
-  function demo(query, stage) {
+  // opts: { ask: true } render the "one question" panel; { answered: 'MV3 8QT' } render its answer
+  function demo(query, stage, opts) {
+    opts = opts || {};
     var m = match(query), inner = '';
     if (m.kind === 'none') inner = personCard();
     else if (m.kind === 'urgent') inner = urgentCard(m.top.svc);
     else if (m.kind === 'results') {
-      var top = m.results[0];
-      if (top.svc.answer_safe && top.svc.invariant_answer) { if (stage >= 2) inner += answerCard(top.svc); }
-      else if (stage === 2) inner += degradeCard(top.svc);
-      inner += card(top, stage, false);
+      var top = m.results[0], svc = top.svc;
+      if (svc.answer_safe && svc.invariant_answer) { if (stage >= 2) inner += answerCard(svc); }
+      else if (svc.answer_needs && stage >= 2) {
+        inner += opts.answered ? paramAnswer(svc, opts.answered) : askPanel(svc);
+        inner += card(top, stage, !!opts.signedIn);
+        return screenWrap(query, stage, inner);
+      }
+      else if (stage === 2) inner += degradeCard(svc);
+      inner += card(top, stage, !!opts.signedIn);
     }
+    return screenWrap(query, stage, inner);
+  }
+  function screenWrap(query, stage, inner) {
     return '<div class="screen">' +
       '<div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span> meadowvale.gov.uk &mdash; find a service' +
         (stage ? ' &middot; Stage ' + stage : '') + '</div>' +
@@ -406,21 +526,21 @@
               'That is what makes the answer defensible &mdash; and the citation is what makes it checkable.',
       data: ['garden-waste-subscription', ['name', 'answer_safe', 'invariant_answer', 'source']] },
 
-    { eyebrow: 'Step 4 — the important half',
-      title: 'Most questions must not be answered at all',
-      blurb: 'Most council answers depend on who is asking. Same search box, same stage — but where the flag is false, the front door deliberately says nothing and routes instead.',
-      render: function () { return demo('when are my bins collected', 2); },
-      notice: '<b>One field in the data flipped the behaviour.</b> Not a prompt and not a model &mdash; a value a service owner set, which an auditor can inspect. ' +
-              'This is the safety mechanism, and it is the reason the catalogue has to come first.',
-      data: ['bin-collection-day', ['name', 'answer_safe', 'eligibility']] },
+    { eyebrow: 'Step 4 — the middle tier',
+      title: 'Sometimes it just needs one detail',
+      blurb: 'Plenty of answers are exact once you know one thing. Bin day varies by address — so ask for the postcode, then answer properly. Try it: type a postcode or pick one.',
+      render: function () { return demo('bin day', 2); },
+      notice: '<b>A postcode identifies a property, not a person.</b> No sign-in, no account, nothing stored &mdash; and the answer is still exact and citable. ' +
+              'This middle tier is where most of the cheap wins live, and it is the journey residents actually mean when they say &ldquo;just tell me my bin day&rdquo;.',
+      data: ['bin-collection-day', ['name', 'answer_needs', 'answer_lookup']] },
 
     { eyebrow: 'Step 5 — stage three',
-      title: 'Doing something is a different problem entirely',
-      blurb: 'Acting on somebody’s account is not a cleverer version of search. It needs verified identity and permission to write to the service’s own system.',
+      title: 'Once we know who you are, stop signposting and just do it',
+      blurb: 'Handing somebody to a form is the front door giving up at the moment it gets useful — and it makes people re-type what we already hold. Sign in and watch what changes.',
       render: function () { return demo('pay my council tax', 3); },
-      notice: '<b>The blocker is the finding.</b> The constraint is identity and system access, not the quality of the interface. ' +
-              'A better front end does not move it &mdash; integration and identity work does. Budget for it accordingly.',
-      data: ['council-tax-pay', ['name', 'fulfilment', 'owner']] },
+      notice: '<b>Identity is the gate, but it is also the unlock.</b> Past it the front door stops being a signpost and becomes the service: it already knows the account, ' +
+              'so the list of things to have ready shrinks and the job finishes here. The cost is integration and identity work &mdash; not interface work.',
+      data: ['council-tax-pay', ['name', 'you_will_need', 'known_once_signed_in', 'transaction']] },
 
     { eyebrow: 'Step 6 — refusing to guess',
       title: 'Three moments where it has to step back',
@@ -430,7 +550,8 @@
                '<p class="mini-lab">2. It depends on your circumstances &mdash; decline to answer</p>' + demo('am I eligible for a disabled facilities grant', 2) +
                '<p class="mini-lab">3. Not in the catalogue &mdash; offer a person</p>' + demo('renew my passport', 1);
       },
-      notice: 'None of these is a failure of the interface. Each is the catalogue being honest about what it holds &mdash; ' +
+      notice: 'Case 2 is the line drawn in step 4: <b>a postcode we can ask for; your income and your health we should not.</b> ' +
+              'None of these is a failure of the interface &mdash; each is the catalogue being honest about what it holds, ' +
               'and the third is <b>evidence of an unmet need</b>, which tells you what to add next.' },
 
     { eyebrow: 'Step 7 — the channel swap',
@@ -456,8 +577,11 @@
         return '<ul class="sumlist">' +
           '<li><b>Build the catalogue first.</b><span>It is the only part that survives a change of interface, supplier or technology. ' + DATA.length + ' services are modelled in this prototype.</span></li>' +
           '<li><b>Ship stage 1 now.</b><span>Signposting is legally just publishing information, and it already fixes the most common failure.</span></li>' +
-          '<li><b>Answer only where the data says it is safe.</b><span>The flag is set by service owners and is auditable. Everything else degrades to signposting.</span></li>' +
-          '<li><b>Treat stage 3 as an identity problem.</b><span>Transactions need verified identity and write access. That is integration work, not interface work.</span></li>' +
+          '<li><b>There are three tiers of answer, not two.</b><span>Invariant (answer it) &middot; needs one public detail like a postcode (ask, then answer) &middot; depends on your circumstances (never answer). ' +
+            'The middle tier is where most of the cheap wins are, and it needs no identity at all.</span></li>' +
+          '<li><b>Identity is a gate and an unlock.</b><span>Past sign-in the front door stops signposting and completes the job, because it already knows the account. ' +
+            'That is integration and identity work, not interface work.</span></li>' +
+          '<li><b>Where you must hand off, tee people up.</b><span>Show what they need to have ready. The catalogue already carries it.</span></li>' +
         '</ul>' +
         '<h3 style="font-size:1.05rem;margin-top:26px">Now try it yourself</h3>' +
         '<p class="blurb" style="margin-bottom:12px">Ask anything, at any stage. It is the same catalogue you have just walked through.</p>' +
@@ -509,6 +633,7 @@
     var bb = document.getElementById('back'); if (bb) bb.addEventListener('click', function () { go(idx - 1); });
 
     if (s.last) wireSandbox();
+    wireInteractive(stepEl);
 
     var h = stepEl.querySelector('h1, h2');
     if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
@@ -520,6 +645,63 @@
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
+  // Wire the live controls inside any rendered demo: the one-question ask,
+  // the sign-in unlock, and completing a transaction in place.
+  function wireInteractive(scope) {
+    // suggested value chips
+    Array.prototype.forEach.call(scope.querySelectorAll('.pcchip'), function (b) {
+      b.addEventListener('click', function () {
+        var input = scope.querySelector('[data-askfor="' + b.getAttribute('data-for') + '"]');
+        if (input) { input.value = b.getAttribute('data-pc'); resolveAsk(scope, b.getAttribute('data-for')); }
+      });
+    });
+    Array.prototype.forEach.call(scope.querySelectorAll('[data-asksubmit]'), function (b) {
+      b.addEventListener('click', function () { resolveAsk(scope, b.getAttribute('data-asksubmit')); });
+    });
+    Array.prototype.forEach.call(scope.querySelectorAll('[data-askfor]'), function (i) {
+      i.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); resolveAsk(scope, i.getAttribute('data-askfor')); }
+      });
+    });
+    // sign in -> re-render that screen signed in
+    Array.prototype.forEach.call(scope.querySelectorAll('[data-signin]'), function (b) {
+      b.addEventListener('click', function () {
+        var svc = byId[b.getAttribute('data-signin')];
+        var panel = b.closest('.blocker');
+        if (panel && svc) { panel.outerHTML = signedInPanel(svc); wireInteractive(scope); }
+      });
+    });
+    // complete the transaction here
+    Array.prototype.forEach.call(scope.querySelectorAll('[data-do]'), function (b) {
+      b.addEventListener('click', function () {
+        var id = b.getAttribute('data-do'), svc = byId[id];
+        var out = scope.querySelector('[data-done="' + id + '"]');
+        if (out && svc) { out.innerHTML = completedPanel(svc); b.disabled = true; b.style.opacity = '.5'; b.style.cursor = 'default'; }
+      });
+    });
+  }
+  function resolveAsk(scope, id) {
+    var svc = byId[id], input = scope.querySelector('[data-askfor="' + id + '"]');
+    if (!svc || !input) return;
+    var v = input.value.trim(); if (!v) { input.focus(); return; }
+    var panel = input.closest('.ask');
+    if (panel) { panel.outerHTML = paramAnswer(svc, v) + askAgain(svc); wireInteractive(scope); }
+  }
+  function askAgain(svc) {
+    return '<p style="margin:8px 0 12px"><button class="pcchip" data-again="' + esc(svc.id) + '">Try another ' + esc(svc.answer_needs.input) + '</button></p>';
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-again]');
+    if (!b) return;
+    var svc = byId[b.getAttribute('data-again')];
+    var scope = b.closest('#step') || document;
+    var wrapEl = b.parentElement;
+    var ans = wrapEl.previousElementSibling;
+    if (ans) ans.outerHTML = askPanel(svc);
+    wrapEl.remove();
+    wireInteractive(scope);
+  });
+
   function wireSandbox() {
     var out = document.getElementById('sandOut');
     function run(q) {
@@ -530,10 +712,12 @@
       else {
         var top = m.results[0];
         if (top.svc.answer_safe && top.svc.invariant_answer) { if (sandboxStage >= 2) html += answerCard(top.svc); }
+        else if (top.svc.answer_needs && sandboxStage >= 2) html += askPanel(top.svc);
         else if (sandboxStage === 2) html += degradeCard(top.svc);
         html += m.results.slice(0, 3).map(function (r) { return card(r, sandboxStage, false); }).join('');
       }
       out.innerHTML = html;
+      wireInteractive(out);
     }
     document.getElementById('sandForm').addEventListener('submit', function (e) {
       e.preventDefault(); run(document.getElementById('sandq').value.trim());

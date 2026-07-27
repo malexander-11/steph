@@ -3,7 +3,17 @@
     "council": "Meadowvale Borough Council (fictional)",
     "purpose": "Concept catalogue for a service-catalogue-first front door. Not a live service.",
     "matching": "Transparent keyword + alias matching in the browser. No LLM, no network calls.",
-    "contact_centre": { "name": "Meadowvale Contact Centre", "phone": "01000 800 000", "hours": "Mon–Fri 8am–6pm", "webchat": "https://www.meadowvale.gov.uk/contact" }
+    "contact_centre": { "name": "Meadowvale Contact Centre", "phone": "01000 800 000", "hours": "Mon–Fri 8am–6pm", "webchat": "https://www.meadowvale.gov.uk/contact" },
+    "demo_resident": {
+      "note": "Fictional demo account. In a real service this comes from the identity layer and the line-of-business system — NOT from the service catalogue. The front door composes the two.",
+      "name": "Rowan Whitfield",
+      "address": "14 Alder Rise, Meadowvale MV3 8QT",
+      "council_tax_account": "6041 220 987",
+      "band": "Band C",
+      "balance": "£1,094.40",
+      "next_instalment": "£182.40",
+      "next_instalment_date": "1 August 2026"
+    }
   },
   "services": [
     {
@@ -13,6 +23,8 @@
       "one_line": "Make a Council Tax payment or set up a Direct Debit.",
       "eligibility": "Anyone with a Meadowvale Council Tax account.",
       "you_will_need": ["Your Council Tax account number", "A debit card or your bank details"],
+      "known_once_signed_in": ["Your Council Tax account number"],
+      "transaction": { "action": "Pay £182.40", "confirms": "Payment of £182.40 taken. Your next instalment is due 1 September 2026.", "ref_prefix": "PAY" },
       "fulfilment": "online_transaction",
       "fulfilment_detail": "https://www.meadowvale.gov.uk/pay/council-tax",
       "what_happens_next": ["Payment shows on your account within 3 working days", "Direct Debits are taken on the 1st or 15th of the month"],
@@ -159,6 +171,40 @@
       "what_happens_next": ["Your personal collection calendar is shown", "You can add reminders or download it"],
       "owner": "Waste & Street Scene",
       "answer_safe": false,
+      "answer_needs": {
+        "input": "postcode",
+        "question": "What is your postcode?",
+        "hint": "For example, MV3 8QT",
+        "personal_data": false,
+        "why_safe": "A postcode identifies a property, not a person. No account, no sign-in, and we do not store it.",
+        "not_found": "We don't have collection rounds for that postcode — it may be outside Meadowvale."
+      },
+      "answer_lookup": {
+        "MV3 8QT": {
+          "round": "Round MV3",
+          "rows": [
+            { "label": "Green (garden)", "value": "Wednesday 22 July, then fortnightly" },
+            { "label": "Recycling", "value": "Tuesday 28 July, then fortnightly" },
+            { "label": "General waste", "value": "Tuesday 4 August, then fortnightly" }
+          ]
+        },
+        "MV1 2BD": {
+          "round": "Round MV1",
+          "rows": [
+            { "label": "Green (garden)", "value": "Monday 27 July, then fortnightly" },
+            { "label": "Recycling", "value": "Thursday 23 July, then fortnightly" },
+            { "label": "General waste", "value": "Thursday 30 July, then fortnightly" }
+          ]
+        },
+        "MV7 4LN": {
+          "round": "Round MV7",
+          "rows": [
+            { "label": "Green (garden)", "value": "Friday 24 July, then fortnightly" },
+            { "label": "Recycling", "value": "Monday 3 August, then fortnightly" },
+            { "label": "General waste", "value": "Monday 27 July, then fortnightly" }
+          ]
+        }
+      },
       "source": "Meadowvale BC — Bin collections (reviewed Apr 2026)"
     },
     {
@@ -197,6 +243,8 @@
       "one_line": "Pay for fortnightly collection of garden waste from a green bin.",
       "eligibility": "Households that want the optional garden waste service.",
       "you_will_need": ["A debit card", "Your address"],
+      "known_once_signed_in": ["Your address"],
+      "transaction": { "action": "Subscribe — £48 for the year", "confirms": "Subscription started. Your green bin will be delivered within 10 working days.", "ref_prefix": "GW" },
       "fulfilment": "online_transaction",
       "fulfilment_detail": "https://www.meadowvale.gov.uk/bins/garden-waste",
       "what_happens_next": ["Your bin is delivered within 10 working days", "Collections run fortnightly on your normal collection day"],
@@ -242,6 +290,8 @@
       "one_line": "Arrange a paid collection for large items like furniture and appliances.",
       "eligibility": "Households; up to 5 items per booking.",
       "you_will_need": ["A debit card", "A list of items", "Somewhere to leave them for collection"],
+      "known_once_signed_in": ["Somewhere to leave them for collection"],
+      "transaction": { "action": "Book a collection", "confirms": "Collection booked. Leave your items out by 6:30am on the day.", "ref_prefix": "BW" },
       "fulfilment": "online_transaction",
       "fulfilment_detail": "https://www.meadowvale.gov.uk/bins/bulky-waste",
       "what_happens_next": ["Choose a collection date", "Leave items out by 6:30am on the day"],
@@ -261,6 +311,34 @@
       "what_happens_next": ["We check your zone and eligibility", "A virtual permit is issued to your registration"],
       "owner": "Parking Services",
       "answer_safe": false,
+      "answer_needs": {
+        "input": "postcode",
+        "question": "What is your postcode?",
+        "hint": "For example, MV3 8QT",
+        "personal_data": false,
+        "why_safe": "Parking zones are set by street and are published. Telling you your zone needs no account.",
+        "not_found": "That postcode isn't in a controlled parking zone we manage."
+      },
+      "answer_lookup": {
+        "MV3 8QT": {
+          "round": "Zone C",
+          "rows": [
+            { "label": "Your zone", "value": "Zone C (Alderfield)" },
+            { "label": "Resident permits", "value": "Available — £65 a year" },
+            { "label": "Controlled hours", "value": "Mon–Sat, 8am–6:30pm" }
+          ],
+          "still_apply": "You still need to apply — whether you qualify depends on your vehicle and proof of address."
+        },
+        "MV1 2BD": {
+          "round": "Zone A",
+          "rows": [
+            { "label": "Your zone", "value": "Zone A (Town Centre)" },
+            { "label": "Resident permits", "value": "Waiting list — 1 per household" },
+            { "label": "Controlled hours", "value": "Every day, 24 hours" }
+          ],
+          "still_apply": "You still need to apply — whether you qualify depends on your vehicle and proof of address."
+        }
+      },
       "source": "Meadowvale BC — Parking permits (reviewed Mar 2026)"
     },
     {
@@ -270,6 +348,8 @@
       "one_line": "Pay a Penalty Charge Notice (PCN) issued in Meadowvale.",
       "eligibility": "Anyone with a PCN reference.",
       "you_will_need": ["Your PCN number", "Your vehicle registration", "A debit card"],
+      "known_once_signed_in": ["Your vehicle registration"],
+      "transaction": { "action": "Pay the penalty", "confirms": "Payment taken. The case is now closed.", "ref_prefix": "PCN" },
       "fulfilment": "online_transaction",
       "fulfilment_detail": "https://www.meadowvale.gov.uk/parking/pay-pcn",
       "what_happens_next": ["Pay within 14 days for the 50% discount", "Payment closes the case"],

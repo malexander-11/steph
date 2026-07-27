@@ -108,8 +108,8 @@
   };
   var SUGG = [
     { q: 'how much is garden waste', d: 'a direct answer' },
-    { q: 'what goes in my recycling', d: 'a direct answer' },
-    { q: 'when are my bins collected', d: 'answer withheld — it varies' },
+    { q: 'bin day', d: 'asks your postcode, then answers' },
+    { q: 'pay my council tax', d: 'sign in and finish here' },
     { q: 'I have nowhere to sleep tonight', d: 'urgent — straight to a phone' },
     { q: 'am I eligible for a disabled facilities grant', d: 'declines — depends on you' },
     { q: 'pay my council tax', d: 'signposts to the transaction' },
@@ -118,6 +118,8 @@
   ];
 
   var DATA = null, META = null, byId = {};
+  var pendingAsk = null;   // service awaiting a one-detail answer (e.g. postcode)
+  var signedIn = false;
   var thread = document.getElementById('thread');
   var msg = document.getElementById('msg');
 
@@ -216,14 +218,71 @@
     var svc = r.svc, f = FULFIL[svc.fulfilment];
     var h = '<span class="tagf ' + f.tag + '">' + f.label + '</span><br><strong>' + esc(svc.name) + '</strong><br>' + esc(svc.one_line);
     if (svc.fulfilment === 'phone') h += '<br><span style="font-size:.86rem">' + esc(svc.fulfilment_detail) + '</span>';
+    if (svc.fulfilment !== 'information_only') h += needListHtml(svc, false);
     h += routeButton(svc);
     if (r.matched) h += '<span class="matched">Matched on <code>' + esc(r.matched) + '</code></span>';
     if (r.dedupWith) h += '<span class="src"><strong>Merged a near-duplicate:</strong> &ldquo;' + esc(r.dedupWith.name) + '&rdquo; (' + esc(r.dedupWith.owner) + '). Same service, two entries.</span>';
     return h;
   }
 
+  /* --- parameterised answers + in-thread transactions, all from the data --- */
+  function normPc(s) { return (s || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+  function lookupAnswer(svc, value) {
+    var want = normPc(value), lk = svc.answer_lookup || {}, hit = null;
+    Object.keys(lk).forEach(function (k) { if (normPc(k) === want) hit = { key: k, val: lk[k] }; });
+    return hit;
+  }
+  function paramAnswerHtml(svc, value) {
+    var hit = lookupAnswer(svc, value);
+    if (!hit) return esc(svc.answer_needs.not_found);
+    var v = hit.val;
+    var rows = (v.rows || []).map(function (r) { return '<br>&bull; <strong>' + esc(r.label) + ':</strong> ' + esc(r.value); }).join('');
+    return 'For <strong>' + esc(hit.key) + '</strong>' + (v.round ? ' (' + esc(v.round) + ')' : '') + ':' + rows +
+      (v.still_apply ? '<br><br>' + esc(v.still_apply) : '') +
+      '<span class="src"><strong>Source:</strong> ' + esc(svc.source) + '</span>';
+  }
+  function needListHtml(svc, isIn) {
+    var need = svc.you_will_need || []; if (!need.length) return '';
+    var known = isIn ? (svc.known_once_signed_in || []) : [];
+    return '<span class="src"><strong>You&rsquo;ll need:</strong>' + need.map(function (n) {
+      return '<br>' + (known.indexOf(n) > -1 ? '&#10003; <s>' + esc(n) + '</s> (we have this)' : '&bull; ' + esc(n));
+    }).join('') + '</span>';
+  }
+
+  function txnByAction(text) {
+    var hit = null;
+    DATA.forEach(function (s) { if (s.transaction && s.transaction.action === text) hit = s; });
+    return hit;
+  }
+
   async function handle(text) {
     userSay(text);
+
+    // mock sign-in
+    if (/^sign in with meadowvale id$/i.test(text)) {
+      signedIn = true;
+      var rr = META.demo_resident || {};
+      await botHtml('&#10003; Signed in as <strong>' + esc(rr.name) + '</strong>. What would you like to do?', 'in', 700);
+      quick([{ q: 'pay my council tax', d: 'complete it here' }, { q: 'how much is garden waste', d: 'a direct answer' }], 'Try');
+      return;
+    }
+    // completing a transaction in the thread
+    var txnSvc = txnByAction(text);
+    if (txnSvc && signedIn) {
+      var t3 = txnSvc.transaction;
+      var ref = (t3.ref_prefix || 'MV') + '-2026-' + String(1000 + (txnSvc.id.length * 137) % 8999);
+      await botHtml('&#10003; ' + esc(t3.confirms) + '<br><br>Your reference is <strong>' + esc(ref) + '</strong>.' +
+        '<span class="src">Done here in the chat &mdash; no form, no re-typing what we already hold.</span>', 'in', 900);
+      afterReply(); return;
+    }
+
+    // waiting on a single detail (postcode) — answer it from the catalogue
+    if (pendingAsk) {
+      var svc = pendingAsk; pendingAsk = null;
+      await botHtml(paramAnswerHtml(svc, text), 'in', 850);
+      afterReply(); return;
+    }
+
     var m = match(text);
     if (m.kind === 'none') {
       var c = META.contact_centre || {}, tel = c.phone ? 'tel:' + c.phone.replace(/\s+/g, '') : null;
@@ -241,6 +300,28 @@
     var top = m.results[0];
     if (top.svc.answer_safe && top.svc.invariant_answer) {
       await botHtml(esc(top.svc.invariant_answer) + '<span class="src"><strong>Source:</strong> ' + esc(top.svc.source) + '</span>', 'in', 800);
+    } else if (top.svc.answer_needs) {
+      // middle tier: ask one public detail, then answer exactly
+      pendingAsk = top.svc;
+      var an = top.svc.answer_needs;
+      await botHtml('Happy to help &mdash; I just need one thing. <strong>' + esc(an.question) + '</strong><br><span style="font-size:.86rem">' +
+        esc(an.hint) + '</span><span class="src">' + esc(an.why_safe) + '</span>', 'in', 800);
+      quick(Object.keys(top.svc.answer_lookup || {}).map(function (k) { return { q: k, d: 'example postcode' }; }), 'Or tap one');
+      return;
+    } else if (top.svc.fulfilment === 'online_transaction') {
+      // don't hand off to a form — offer to do it here
+      if (!signedIn) {
+        await botHtml('I can do that for you right here &mdash; I just need to check it&rsquo;s you first. Signing in lets me use your account details so you don&rsquo;t have to type them.' +
+          needListHtml(top.svc, false), 'in', 800);
+        quick([{ q: 'Sign in with Meadowvale ID', d: 'verified identity' }], 'To continue');
+        return;
+      }
+      var r = META.demo_resident || {}, t2 = top.svc.transaction || {};
+      await botHtml('You&rsquo;re signed in as <strong>' + esc(r.name) + '</strong> (' + esc(r.address) + ').<br><br>' +
+        'Account <strong>' + esc(r.council_tax_account) + '</strong> &middot; balance <strong>' + esc(r.balance) + '</strong>, next instalment <strong>' +
+        esc(r.next_instalment) + '</strong> on ' + esc(r.next_instalment_date) + '.' + needListHtml(top.svc, true), 'in', 850);
+      quick([{ q: t2.action || 'Continue', d: 'completes here — no form' }], 'Ready when you are');
+      return;
     } else {
       if (top.svc.answer_safe === false && /depend|eligib|vary|circumstan/i.test(top.svc.eligibility)) {
         await botHtml('That one depends on your circumstances, so I can&rsquo;t give a blanket answer. Here&rsquo;s how to get it sorted properly:', 'in', 800);
