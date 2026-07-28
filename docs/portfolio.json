@@ -5,138 +5,1564 @@
     "snapshot": "July 2026",
     "disclaimer": "Meadowvale Borough Council is fictional. Every service, maturity rating and contact volume below is invented for discussion. The shape is realistic for a London borough of this size — the numbers are not real and describe no actual council.",
     "bands": [
-      { "id": "A", "name": "Informational", "stages": [0, 1] },
-      { "id": "B", "name": "Answered", "stages": [2, 3] },
-      { "id": "C", "name": "Transactional", "stages": [4, 5, 6] },
-      { "id": "D", "name": "Proactive", "stages": [7] }
+      {
+        "id": "A",
+        "name": "Informational",
+        "stages": [
+          0,
+          1
+        ]
+      },
+      {
+        "id": "B",
+        "name": "Answered",
+        "stages": [
+          2,
+          3
+        ]
+      },
+      {
+        "id": "C",
+        "name": "Transactional",
+        "stages": [
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "id": "D",
+        "name": "Proactive",
+        "stages": [
+          7
+        ]
+      }
     ],
     "stages": [
-      { "id": 0, "band": "A", "name": "Offline only", "desc": "Phone, post or in person. Nothing online." },
-      { "id": 1, "band": "A", "name": "Signposted", "desc": "Findable and explained online. You are told where to go and what you need." },
-      { "id": 2, "band": "B", "name": "General answer", "desc": "The answer is published and is identical for everyone who asks." },
-      { "id": 3, "band": "B", "name": "Personalised answer", "desc": "One public detail — a postcode — returns an exact answer. No sign-in, no account." },
-      { "id": 4, "band": "C", "name": "Submit", "desc": "An online form, not signed in, re-keyed by hand at the back. Digital front, manual back." },
-      { "id": 5, "band": "C", "name": "Authenticated", "desc": "Signed in and verified. We already know you, fields are pre-filled, it completes." },
-      { "id": 6, "band": "C", "name": "Straight-through", "desc": "Lands in the line-of-business system with no re-keying. Immediate confirmed outcome, trackable." },
-      { "id": 7, "band": "D", "name": "Proactive", "desc": "We act without being asked: entitlement applied automatically, auto-renewal, told before you have to ask." }
+      {
+        "id": 0,
+        "band": "A",
+        "name": "Offline only",
+        "desc": "Phone, post or in person. Nothing online."
+      },
+      {
+        "id": 1,
+        "band": "A",
+        "name": "Signposted",
+        "desc": "Findable and explained online. You are told where to go and what you need."
+      },
+      {
+        "id": 2,
+        "band": "B",
+        "name": "General answer",
+        "desc": "The answer is published and is identical for everyone who asks."
+      },
+      {
+        "id": 3,
+        "band": "B",
+        "name": "Personalised answer",
+        "desc": "One public detail — a postcode — returns an exact answer. No sign-in, no account."
+      },
+      {
+        "id": 4,
+        "band": "C",
+        "name": "Submit",
+        "desc": "An online form, not signed in, re-keyed by hand at the back. Digital front, manual back."
+      },
+      {
+        "id": 5,
+        "band": "C",
+        "name": "Authenticated",
+        "desc": "Signed in and verified. We already know you, fields are pre-filled, it completes."
+      },
+      {
+        "id": 6,
+        "band": "C",
+        "name": "Straight-through",
+        "desc": "Lands in the line-of-business system with no re-keying. Immediate confirmed outcome, trackable."
+      },
+      {
+        "id": 7,
+        "band": "D",
+        "name": "Proactive",
+        "desc": "We act without being asked: entitlement applied automatically, auto-renewal, told before you have to ask."
+      }
     ],
     "escalation_track": {
       "name": "Escalate by design",
       "desc": "Urgent, statutory or safeguarding demand that should never be self-service. These are not a low rung — the goal is not to move them up the ladder. The only maturity question is whether the front door recognises them instantly and hands over to a named team with context.",
       "measure": "recognised"
-    }
+    },
+    "states": [
+      {
+        "id": "mvp",
+        "name": "MVP",
+        "short": "Signpost everything",
+        "desc": "Catalogue the whole estate and make every service findable and explained in one place.",
+        "caption": "MVP raises the floor, not the ceiling. Every service becomes findable, catalogued and honestly described — and almost nothing becomes transactable. This is the cheapest state to reach and the one most councils skip past."
+      },
+      {
+        "id": "mvp_plus",
+        "name": "MVP+",
+        "short": "Answer and collect",
+        "desc": "Add answers where they are safe, and online forms where a request has to be made.",
+        "caption": "Looks like a big step, and is: answers appear, forms replace phone calls. But the forms are still re-keyed by hand at the back, so officer effort per case barely moves. This is the state that feels like transformation and is not."
+      },
+      {
+        "id": "target",
+        "name": "Ambitious target",
+        "short": "Integrate",
+        "desc": "Sign-in, straight-through processing into the line-of-business systems, and proactive services where we can predict need.",
+        "caption": "The expensive state, and the only one that removes officer effort rather than moving it. Note what does not move: information stays information, and eight services stay deliberately off the ladder."
+      }
+    ]
   },
   "services": [
-    { "name": "Pay your Council Tax", "area": "Council Tax & Benefits", "track": "ladder", "stage": 6, "demand": 214000, "trend": "flat", "moved": "2024-04", "next_step": "Proactive: predict arrears risk and offer a payment plan before a reminder is issued." },
-    { "name": "Set up a Direct Debit", "area": "Council Tax & Benefits", "track": "ladder", "stage": 6, "demand": 41000, "trend": "flat", "moved": "2024-04", "next_step": "Offer it automatically at the point of moving in, rather than waiting to be asked." },
-    { "name": "Tell us you're moving home", "area": "Council Tax & Benefits", "track": "ladder", "stage": 5, "demand": 38000, "trend": "up", "moved": "2025-09", "next_step": "Straight-through: write the change into the revenues system without an officer re-keying it." },
-    { "name": "Single person discount", "area": "Council Tax & Benefits", "track": "ladder", "stage": 5, "demand": 19500, "trend": "flat", "moved": "2025-02", "next_step": "Straight-through, with automated review against the electoral register." },
-    { "name": "Council Tax Reduction claim", "area": "Council Tax & Benefits", "track": "ladder", "stage": 4, "demand": 27000, "trend": "up", "moved": "2023-11", "next_step": "Authenticate the claimant so income evidence pre-fills from DWP rather than being uploaded." },
-    { "name": "Housing Benefit change of circumstances", "area": "Council Tax & Benefits", "track": "ladder", "stage": 4, "demand": 22400, "trend": "flat", "moved": "2023-06", "next_step": "Sign-in plus verified identity so the change lands directly on the claim." },
-    { "name": "Check your Council Tax band", "area": "Council Tax & Benefits", "track": "ladder", "stage": 2, "demand": 16800, "trend": "flat", "moved": "2022-08", "next_step": "Personalise: return the band for the specific address rather than explaining the VOA process." },
-    { "name": "Council Tax exemptions (students, probate)", "area": "Council Tax & Benefits", "track": "ladder", "stage": 4, "demand": 9200, "trend": "flat", "moved": "2024-01", "next_step": "Authenticated submission with evidence attached to the account." },
-    { "name": "Request a Council Tax refund", "area": "Council Tax & Benefits", "track": "ladder", "stage": 4, "demand": 7400, "trend": "up", "moved": "2024-07", "next_step": "Detect the credit and offer the refund without the resident asking." },
-    { "name": "Discretionary Housing Payment", "area": "Council Tax & Benefits", "track": "ladder", "stage": 1, "demand": 4100, "trend": "up", "moved": "2021-05", "next_step": "Put the application online at all — it is a PDF emailed to a shared inbox." },
-
-    { "name": "Report a repair (council tenant)", "area": "Housing", "track": "ladder", "stage": 5, "demand": 96000, "trend": "up", "moved": "2025-06", "next_step": "Straight-through into the repairs contractor's scheduling system, with live appointment slots." },
-    { "name": "Pay your rent", "area": "Housing", "track": "ladder", "stage": 6, "demand": 74000, "trend": "flat", "moved": "2024-02", "next_step": "Proactive arrears support triggered before the second missed payment." },
-    { "name": "Check your rent account balance", "area": "Housing", "track": "ladder", "stage": 5, "demand": 51000, "trend": "up", "moved": "2025-06", "next_step": "Push the statement rather than waiting for the tenant to log in." },
-    { "name": "Apply for the housing register", "area": "Housing", "track": "ladder", "stage": 4, "demand": 31000, "trend": "up", "moved": "2023-09", "next_step": "Authenticate so the household's known details pre-fill and evidence is not re-uploaded." },
-    { "name": "Bid for a property (choice-based lettings)", "area": "Housing", "track": "ladder", "stage": 5, "demand": 88000, "trend": "flat", "moved": "2022-11", "next_step": "Straight-through allocation decisions and proactive alerts for matching properties." },
-    { "name": "Check your housing application status", "area": "Housing", "track": "ladder", "stage": 4, "demand": 44000, "trend": "up", "moved": "2023-09", "next_step": "Show real banding and position from the housing system instead of a generic status." },
-    { "name": "Report a communal repair", "area": "Housing", "track": "ladder", "stage": 4, "demand": 18700, "trend": "flat", "moved": "2024-05", "next_step": "Authenticate the block, so location and access notes are already known." },
-    { "name": "Report damp and mould", "area": "Housing", "track": "ladder", "stage": 4, "demand": 14200, "trend": "up", "moved": "2025-01", "next_step": "Straight-through with an automatic inspection booking inside the statutory window." },
-    { "name": "Request a tenancy reference", "area": "Housing", "track": "ladder", "stage": 1, "demand": 3600, "trend": "flat", "moved": "2021-03", "next_step": "Put the request online instead of directing people to phone the housing office." },
-    { "name": "Mutual exchange application", "area": "Housing", "track": "ladder", "stage": 1, "demand": 2900, "trend": "flat", "moved": "2020-10", "next_step": "An online form — currently a downloadable pack posted or emailed back." },
-    { "name": "Leaseholder service charge query", "area": "Housing", "track": "ladder", "stage": 0, "demand": 5300, "trend": "up", "moved": "2019-01", "next_step": "Publish the breakdown online; today it is entirely a phone and letter process." },
-    { "name": "Right to Buy application", "area": "Housing", "track": "ladder", "stage": 1, "demand": 1800, "trend": "flat", "moved": "2021-07", "next_step": "Online submission with document upload." },
-    { "name": "Landlord licensing registration", "area": "Housing", "track": "ladder", "stage": 4, "demand": 6700, "trend": "up", "moved": "2024-03", "next_step": "Authenticated portal so a landlord's portfolio is managed in one place." },
-
-    { "name": "Find your bin collection day", "area": "Waste & Street Scene", "track": "ladder", "stage": 3, "demand": 178000, "trend": "up", "moved": "2025-03", "next_step": "Proactive: notify the night before, and automatically when a round changes." },
-    { "name": "Report a missed collection", "area": "Waste & Street Scene", "track": "ladder", "stage": 6, "demand": 62000, "trend": "flat", "moved": "2024-09", "next_step": "Detect the miss from the round data and re-book it before the resident reports it." },
-    { "name": "Garden waste subscription", "area": "Waste & Street Scene", "track": "ladder", "stage": 7, "demand": 34000, "trend": "flat", "moved": "2025-04", "next_step": "Already proactive — renews automatically with a reminder. Hold and monitor." },
-    { "name": "What goes in which bin", "area": "Waste & Street Scene", "track": "ladder", "stage": 2, "demand": 71000, "trend": "flat", "moved": "2023-02", "next_step": "Personalise by property type — flats and houses have different rules." },
-    { "name": "Book a bulky waste collection", "area": "Waste & Street Scene", "track": "ladder", "stage": 6, "demand": 28500, "trend": "up", "moved": "2024-11", "next_step": "Offer slots proactively during known peaks such as end of tenancy." },
-    { "name": "Report fly-tipping", "area": "Waste & Street Scene", "track": "ladder", "stage": 4, "demand": 41000, "trend": "up", "moved": "2023-08", "next_step": "Straight-through to the street cleansing rota with automatic case closure." },
-    { "name": "Request a new or replacement bin", "area": "Waste & Street Scene", "track": "ladder", "stage": 4, "demand": 19800, "trend": "flat", "moved": "2024-02", "next_step": "Authenticated so the property's existing containers are already known." },
-    { "name": "Recycling centre opening hours", "area": "Waste & Street Scene", "track": "ladder", "stage": 2, "demand": 24000, "trend": "flat", "moved": "2022-05", "next_step": "Show live capacity and expected queue rather than static hours." },
-    { "name": "Report a street cleaning issue", "area": "Waste & Street Scene", "track": "ladder", "stage": 4, "demand": 16400, "trend": "flat", "moved": "2023-08", "next_step": "Straight-through to the cleansing crew's work list." },
-    { "name": "Report graffiti", "area": "Waste & Street Scene", "track": "ladder", "stage": 4, "demand": 8900, "trend": "flat", "moved": "2023-08", "next_step": "Straight-through with photo triage and automatic prioritisation." },
-    { "name": "Commercial waste contract", "area": "Waste & Street Scene", "track": "ladder", "stage": 1, "demand": 3100, "trend": "flat", "moved": "2021-09", "next_step": "Quote and sign up online rather than a call-back from the trade team." },
-
-    { "name": "Pay a parking fine (PCN)", "area": "Parking & Highways", "track": "ladder", "stage": 6, "demand": 132000, "trend": "flat", "moved": "2023-05", "next_step": "Nothing above straight-through here; keep and monitor." },
-    { "name": "Challenge a parking fine", "area": "Parking & Highways", "track": "ladder", "stage": 4, "demand": 38000, "trend": "up", "moved": "2023-05", "next_step": "Authenticate against the PCN so evidence attaches to the case automatically." },
-    { "name": "Apply for a resident parking permit", "area": "Parking & Highways", "track": "ladder", "stage": 5, "demand": 57000, "trend": "flat", "moved": "2024-08", "next_step": "Straight-through issue against the DVLA record, with auto-renewal." },
-    { "name": "Which parking zone am I in", "area": "Parking & Highways", "track": "ladder", "stage": 3, "demand": 29000, "trend": "up", "moved": "2025-03", "next_step": "Bundle the zone answer with a one-click permit application." },
-    { "name": "Buy visitor parking sessions", "area": "Parking & Highways", "track": "ladder", "stage": 5, "demand": 46000, "trend": "up", "moved": "2024-08", "next_step": "Straight-through with instant enforcement-system update." },
-    { "name": "Report a pothole", "area": "Parking & Highways", "track": "ladder", "stage": 4, "demand": 21000, "trend": "up", "moved": "2023-10", "next_step": "Straight-through to the highways inspection queue with location matching." },
-    { "name": "Report a broken street light", "area": "Parking & Highways", "track": "ladder", "stage": 4, "demand": 13500, "trend": "flat", "moved": "2023-10", "next_step": "Straight-through to the lighting contractor; column ID already identifies the asset." },
-    { "name": "Apply for a dropped kerb", "area": "Parking & Highways", "track": "ladder", "stage": 1, "demand": 2400, "trend": "flat", "moved": "2021-06", "next_step": "An online application — currently a form to print, sign and post." },
-    { "name": "Skip and scaffold licence", "area": "Parking & Highways", "track": "ladder", "stage": 4, "demand": 4600, "trend": "flat", "moved": "2024-01", "next_step": "Authenticated trade account with straight-through licence issue." },
-    { "name": "Suspend a parking bay", "area": "Parking & Highways", "track": "ladder", "stage": 1, "demand": 3300, "trend": "flat", "moved": "2020-11", "next_step": "Online booking and payment instead of an email to the parking team." },
-    { "name": "Blue Badge application", "area": "Parking & Highways", "track": "ladder", "stage": 4, "demand": 8800, "trend": "up", "moved": "2024-06", "next_step": "Authenticate and pre-fill from the benefits record where the person qualifies automatically." },
-
-    { "name": "Search a planning application", "area": "Planning & Building Control", "track": "ladder", "stage": 3, "demand": 52000, "trend": "flat", "moved": "2022-09", "next_step": "Alert neighbours proactively rather than relying on them to search." },
-    { "name": "Comment on a planning application", "area": "Planning & Building Control", "track": "ladder", "stage": 4, "demand": 18000, "trend": "up", "moved": "2022-09", "next_step": "Authenticated comments tied to an address, straight into the case file." },
-    { "name": "Submit a planning application", "area": "Planning & Building Control", "track": "ladder", "stage": 4, "demand": 6400, "trend": "flat", "moved": "2023-03", "next_step": "Straight-through validation so applications are not manually checked for completeness." },
-    { "name": "Do I need planning permission", "area": "Planning & Building Control", "track": "ladder", "stage": 2, "demand": 27500, "trend": "up", "moved": "2023-01", "next_step": "Personalise by property — conservation area and Article 4 status change the answer." },
-    { "name": "Building control application", "area": "Planning & Building Control", "track": "ladder", "stage": 4, "demand": 5200, "trend": "flat", "moved": "2023-03", "next_step": "Authenticated agent accounts with straight-through fee calculation." },
-    { "name": "Request a site notice", "area": "Planning & Building Control", "track": "ladder", "stage": 1, "demand": 1100, "trend": "flat", "moved": "2020-04", "next_step": "Online request — currently email only." },
-    { "name": "Conservation area guidance", "area": "Planning & Building Control", "track": "ladder", "stage": 2, "demand": 4900, "trend": "flat", "moved": "2022-02", "next_step": "Personalise by address so residents do not have to read the whole appraisal." },
-    { "name": "Report unauthorised building work", "area": "Planning & Building Control", "track": "ladder", "stage": 4, "demand": 3800, "trend": "up", "moved": "2024-04", "next_step": "Straight-through to the enforcement case system." },
-
-    { "name": "Request an adult social care assessment", "area": "Adult Social Care", "track": "ladder", "stage": 4, "demand": 12600, "trend": "up", "moved": "2024-10", "next_step": "Authenticate so an existing client's record opens rather than a new referral being created." },
-    { "name": "Check what care and support is available", "area": "Adult Social Care", "track": "ladder", "stage": 2, "demand": 21000, "trend": "up", "moved": "2023-07", "next_step": "Personalise by need and postcode rather than listing every option." },
-    { "name": "Apply for a disabled facilities grant", "area": "Adult Social Care", "track": "ladder", "stage": 1, "demand": 4300, "trend": "up", "moved": "2022-01", "next_step": "Online referral with an occupational therapy triage step." },
-    { "name": "Pay for care services", "area": "Adult Social Care", "track": "ladder", "stage": 5, "demand": 9800, "trend": "flat", "moved": "2024-12", "next_step": "Straight-through into the finance system, with statements pushed to the payer." },
-    { "name": "Carer's assessment", "area": "Adult Social Care", "track": "ladder", "stage": 1, "demand": 3400, "trend": "up", "moved": "2022-01", "next_step": "Online self-referral instead of a call to the contact centre." },
-    { "name": "Direct payments query", "area": "Adult Social Care", "track": "ladder", "stage": 0, "demand": 6100, "trend": "flat", "moved": "2019-06", "next_step": "Anything online at all — today this is entirely phone and email with the care team." },
-    { "name": "Find a care home or home care provider", "area": "Adult Social Care", "track": "ladder", "stage": 2, "demand": 8700, "trend": "flat", "moved": "2023-04", "next_step": "Personalise by need, budget and area; show live vacancies." },
-    { "name": "Blue Badge renewal reminder", "area": "Adult Social Care", "track": "ladder", "stage": 7, "demand": 5900, "trend": "flat", "moved": "2025-05", "next_step": "Already proactive — reminder issued before expiry. Extend the pattern to other renewals." },
-
-    { "name": "Apply for a school place", "area": "Children & Families", "track": "ladder", "stage": 5, "demand": 34000, "trend": "flat", "moved": "2023-12", "next_step": "Straight-through allocation with proactive results notification." },
-    { "name": "Free school meals eligibility", "area": "Children & Families", "track": "ladder", "stage": 7, "demand": 11200, "trend": "up", "moved": "2025-07", "next_step": "Already proactive — auto-awarded from the benefits record. Extend to other entitlements." },
-    { "name": "School admission appeal", "area": "Children & Families", "track": "ladder", "stage": 4, "demand": 3900, "trend": "flat", "moved": "2023-12", "next_step": "Authenticated so the original application and outcome are already attached." },
-    { "name": "Apply for free childcare hours", "area": "Children & Families", "track": "ladder", "stage": 4, "demand": 8600, "trend": "up", "moved": "2024-08", "next_step": "Pre-populate eligibility from the benefits and HMRC position." },
-    { "name": "Find a childminder or nursery", "area": "Children & Families", "track": "ladder", "stage": 2, "demand": 12400, "trend": "flat", "moved": "2022-07", "next_step": "Personalise by postcode, age and available hours." },
-    { "name": "Request a SEND assessment", "area": "Children & Families", "track": "ladder", "stage": 4, "demand": 5100, "trend": "up", "moved": "2024-09", "next_step": "Authenticated portal so parents can track the statutory 20-week clock." },
-    { "name": "Check the EHCP process", "area": "Children & Families", "track": "ladder", "stage": 1, "demand": 7300, "trend": "up", "moved": "2022-03", "next_step": "Show this family's actual case position, not a generic process page." },
-    { "name": "Report a school attendance concern", "area": "Children & Families", "track": "ladder", "stage": 4, "demand": 2800, "trend": "flat", "moved": "2024-02", "next_step": "Straight-through to the education welfare case system." },
-    { "name": "Apply for a school travel pass", "area": "Children & Families", "track": "ladder", "stage": 4, "demand": 4400, "trend": "flat", "moved": "2023-10", "next_step": "Auto-award where entitlement is already known from the school place record." },
-
-    { "name": "Apply for a premises licence", "area": "Licensing & Regulatory", "track": "ladder", "stage": 4, "demand": 2600, "trend": "flat", "moved": "2023-11", "next_step": "Authenticated business account with straight-through fee handling." },
-    { "name": "Food business registration", "area": "Licensing & Regulatory", "track": "ladder", "stage": 4, "demand": 1900, "trend": "flat", "moved": "2024-03", "next_step": "Straight-through into the environmental health inspection programme." },
-    { "name": "Check a food hygiene rating", "area": "Licensing & Regulatory", "track": "ladder", "stage": 3, "demand": 14800, "trend": "flat", "moved": "2022-10", "next_step": "Push rating changes to residents who follow a venue." },
-    { "name": "Report a noise nuisance", "area": "Licensing & Regulatory", "track": "ladder", "stage": 4, "demand": 17600, "trend": "up", "moved": "2024-05", "next_step": "Straight-through case creation with a diary the resident can complete online." },
-    { "name": "Report a pest problem", "area": "Licensing & Regulatory", "track": "ladder", "stage": 5, "demand": 9400, "trend": "flat", "moved": "2024-07", "next_step": "Straight-through booking and payment for treatment visits." },
-    { "name": "Taxi and private hire licence", "area": "Licensing & Regulatory", "track": "ladder", "stage": 1, "demand": 3200, "trend": "flat", "moved": "2021-11", "next_step": "Online renewal — currently an in-person appointment with documents." },
-    { "name": "Street trading licence", "area": "Licensing & Regulatory", "track": "ladder", "stage": 0, "demand": 900, "trend": "flat", "moved": "2019-09", "next_step": "Publish the process and get the application online." },
-    { "name": "Report an unlicensed HMO", "area": "Licensing & Regulatory", "track": "ladder", "stage": 4, "demand": 2100, "trend": "up", "moved": "2024-04", "next_step": "Straight-through to housing enforcement with automatic acknowledgement." },
-
-    { "name": "Join the library", "area": "Libraries, Leisure & Community", "track": "ladder", "stage": 5, "demand": 16200, "trend": "flat", "moved": "2023-04", "next_step": "Straight-through membership with an instant digital card." },
-    { "name": "Renew a library book", "area": "Libraries, Leisure & Community", "track": "ladder", "stage": 7, "demand": 42000, "trend": "flat", "moved": "2024-06", "next_step": "Already proactive — auto-renews unless reserved. Hold." },
-    { "name": "Library opening hours", "area": "Libraries, Leisure & Community", "track": "ladder", "stage": 2, "demand": 19000, "trend": "flat", "moved": "2022-04", "next_step": "Personalise to the nearest branch by postcode." },
-    { "name": "Book a leisure centre session", "area": "Libraries, Leisure & Community", "track": "ladder", "stage": 5, "demand": 38000, "trend": "up", "moved": "2024-09", "next_step": "Straight-through into the leisure operator's system with live capacity." },
-    { "name": "Book a room in a community centre", "area": "Libraries, Leisure & Community", "track": "ladder", "stage": 1, "demand": 2700, "trend": "flat", "moved": "2021-02", "next_step": "Online availability and booking rather than an enquiry form." },
-    { "name": "Apply for an allotment", "area": "Libraries, Leisure & Community", "track": "ladder", "stage": 1, "demand": 1400, "trend": "flat", "moved": "2020-08", "next_step": "Online waiting list with a visible position." },
-    { "name": "Park and open space enquiries", "area": "Libraries, Leisure & Community", "track": "ladder", "stage": 2, "demand": 6800, "trend": "flat", "moved": "2022-06", "next_step": "Personalise by park; show live facility status." },
-    { "name": "Report a damaged playground", "area": "Libraries, Leisure & Community", "track": "ladder", "stage": 4, "demand": 3100, "trend": "flat", "moved": "2023-07", "next_step": "Straight-through to the parks inspection rota." },
-
-    { "name": "Register a birth", "area": "Registrars & Elections", "track": "ladder", "stage": 4, "demand": 7800, "trend": "flat", "moved": "2023-02", "next_step": "Straight-through appointment booking linked to the hospital notification." },
-    { "name": "Register a death", "area": "Registrars & Elections", "track": "ladder", "stage": 4, "demand": 4200, "trend": "flat", "moved": "2023-02", "next_step": "Tell Us Once integrated end to end so the family repeats nothing." },
-    { "name": "Order a certificate copy", "area": "Registrars & Elections", "track": "ladder", "stage": 6, "demand": 11600, "trend": "flat", "moved": "2024-05", "next_step": "Nothing above straight-through; hold and monitor." },
-    { "name": "Give notice of marriage", "area": "Registrars & Elections", "track": "ladder", "stage": 4, "demand": 3400, "trend": "flat", "moved": "2023-02", "next_step": "Authenticated booking with identity verified ahead of the appointment." },
-    { "name": "Register to vote", "area": "Registrars & Elections", "track": "ladder", "stage": 3, "demand": 26000, "trend": "up", "moved": "2024-03", "next_step": "Proactive: prompt at the point somebody tells us they have moved in." },
-    { "name": "Find your polling station", "area": "Registrars & Elections", "track": "ladder", "stage": 3, "demand": 31000, "trend": "flat", "moved": "2024-03", "next_step": "Push it to registered electors before polling day." },
-    { "name": "Apply for a postal vote", "area": "Registrars & Elections", "track": "ladder", "stage": 4, "demand": 9100, "trend": "up", "moved": "2024-03", "next_step": "Straight-through into the electoral register with identity checked online." },
-
-    { "name": "Nowhere to sleep tonight", "area": "Housing", "track": "escalate", "stage": null, "demand": 8400, "trend": "up", "moved": "2025-10", "escalation": { "recognised": true, "route": "Housing Options duty line, 24/7", "response": "Immediate — assessed the same day" } },
-    { "name": "Threatened with eviction", "area": "Housing", "track": "escalate", "stage": null, "demand": 6200, "trend": "up", "moved": "2025-10", "escalation": { "recognised": true, "route": "Housing Options duty team", "response": "Appointment within 48 hours" } },
-    { "name": "Emergency repair — no heat, water or security", "area": "Housing", "track": "escalate", "stage": null, "demand": 15800, "trend": "flat", "moved": "2024-11", "escalation": { "recognised": true, "route": "Repairs emergency line, 24/7", "response": "Made safe within 24 hours" } },
-    { "name": "Adult safeguarding concern", "area": "Adult Social Care", "track": "escalate", "stage": null, "demand": 4900, "trend": "up", "moved": "2023-05", "escalation": { "recognised": false, "route": "Adult social care front door", "response": "Same-day triage — but the resident has to find the number" } },
-    { "name": "Child safeguarding concern", "area": "Children & Families", "track": "escalate", "stage": null, "demand": 7100, "trend": "up", "moved": "2023-05", "escalation": { "recognised": false, "route": "Family Front Door / MASH", "response": "Same-day triage — but not recognised from a general search" } },
-    { "name": "Domestic abuse support", "area": "Children & Families", "track": "escalate", "stage": null, "demand": 3600, "trend": "up", "moved": "2025-02", "escalation": { "recognised": true, "route": "Specialist DA service, with a quick-exit page", "response": "Immediate, and never logged in browser history" } },
-    { "name": "Mental health crisis", "area": "Adult Social Care", "track": "escalate", "stage": null, "demand": 2800, "trend": "up", "moved": "2024-08", "escalation": { "recognised": true, "route": "NHS crisis line, handed over directly", "response": "Immediate — the council does not hold this, and says so" } },
-    { "name": "Anti-social behaviour with risk of harm", "area": "Licensing & Regulatory", "track": "escalate", "stage": null, "demand": 5400, "trend": "up", "moved": "2024-08", "escalation": { "recognised": false, "route": "Community safety team", "response": "Sits in a general ASB queue — risk is not triaged at the front door" } }
+    {
+      "name": "Pay your Council Tax",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 214000,
+      "trend": "flat",
+      "moved": "2024-04",
+      "next_step": "Proactive: predict arrears risk and offer a payment plan before a reminder is issued.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 5,
+        "target": 7
+      }
+    },
+    {
+      "name": "Set up a Direct Debit",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 41000,
+      "trend": "flat",
+      "moved": "2024-04",
+      "next_step": "Offer it automatically at the point of moving in, rather than waiting to be asked.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "Tell us you're moving home",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 38000,
+      "trend": "up",
+      "moved": "2025-09",
+      "next_step": "Straight-through: write the change into the revenues system without an officer re-keying it.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Single person discount",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 19500,
+      "trend": "flat",
+      "moved": "2025-02",
+      "next_step": "Straight-through, with automated review against the electoral register.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Council Tax Reduction claim",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 27000,
+      "trend": "up",
+      "moved": "2023-11",
+      "next_step": "Authenticate the claimant so income evidence pre-fills from DWP rather than being uploaded.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "Housing Benefit change of circumstances",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 22400,
+      "trend": "flat",
+      "moved": "2023-06",
+      "next_step": "Sign-in plus verified identity so the change lands directly on the claim.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Check your Council Tax band",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 16800,
+      "trend": "flat",
+      "moved": "2022-08",
+      "next_step": "Personalise: return the band for the specific address rather than explaining the VOA process.",
+      "stages": {
+        "mvp": 2,
+        "mvp_plus": 2,
+        "target": 2
+      }
+    },
+    {
+      "name": "Council Tax exemptions (students, probate)",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 9200,
+      "trend": "flat",
+      "moved": "2024-01",
+      "next_step": "Authenticated submission with evidence attached to the account.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Request a Council Tax refund",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 7400,
+      "trend": "up",
+      "moved": "2024-07",
+      "next_step": "Detect the credit and offer the refund without the resident asking.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "Discretionary Housing Payment",
+      "area": "Council Tax & Benefits",
+      "track": "ladder",
+      "demand": 4100,
+      "trend": "up",
+      "moved": "2021-05",
+      "next_step": "Put the application online at all — it is a PDF emailed to a shared inbox.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Report a repair (council tenant)",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 96000,
+      "trend": "up",
+      "moved": "2025-06",
+      "next_step": "Straight-through into the repairs contractor's scheduling system, with live appointment slots.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Pay your rent",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 74000,
+      "trend": "flat",
+      "moved": "2024-02",
+      "next_step": "Proactive arrears support triggered before the second missed payment.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 5,
+        "target": 7
+      }
+    },
+    {
+      "name": "Check your rent account balance",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 51000,
+      "trend": "up",
+      "moved": "2025-06",
+      "next_step": "Push the statement rather than waiting for the tenant to log in.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Apply for the housing register",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 31000,
+      "trend": "up",
+      "moved": "2023-09",
+      "next_step": "Authenticate so the household's known details pre-fill and evidence is not re-uploaded.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Bid for a property (choice-based lettings)",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 88000,
+      "trend": "flat",
+      "moved": "2022-11",
+      "next_step": "Straight-through allocation decisions and proactive alerts for matching properties.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Check your housing application status",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 44000,
+      "trend": "up",
+      "moved": "2023-09",
+      "next_step": "Show real banding and position from the housing system instead of a generic status.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Report a communal repair",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 18700,
+      "trend": "flat",
+      "moved": "2024-05",
+      "next_step": "Authenticate the block, so location and access notes are already known.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Report damp and mould",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 14200,
+      "trend": "up",
+      "moved": "2025-01",
+      "next_step": "Straight-through with an automatic inspection booking inside the statutory window.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Request a tenancy reference",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 3600,
+      "trend": "flat",
+      "moved": "2021-03",
+      "next_step": "Put the request online instead of directing people to phone the housing office.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Mutual exchange application",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 2900,
+      "trend": "flat",
+      "moved": "2020-10",
+      "next_step": "An online form — currently a downloadable pack posted or emailed back.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Leaseholder service charge query",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 5300,
+      "trend": "up",
+      "moved": "2019-01",
+      "next_step": "Publish the breakdown online; today it is entirely a phone and letter process.",
+      "stages": {
+        "mvp": 0,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Right to Buy application",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 1800,
+      "trend": "flat",
+      "moved": "2021-07",
+      "next_step": "Online submission with document upload.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Landlord licensing registration",
+      "area": "Housing",
+      "track": "ladder",
+      "demand": 6700,
+      "trend": "up",
+      "moved": "2024-03",
+      "next_step": "Authenticated portal so a landlord's portfolio is managed in one place.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Find your bin collection day",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 178000,
+      "trend": "up",
+      "moved": "2025-03",
+      "next_step": "Proactive: notify the night before, and automatically when a round changes.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Report a missed collection",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 62000,
+      "trend": "flat",
+      "moved": "2024-09",
+      "next_step": "Detect the miss from the round data and re-book it before the resident reports it.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Garden waste subscription",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 34000,
+      "trend": "flat",
+      "moved": "2025-04",
+      "next_step": "Already proactive — renews automatically with a reminder. Hold and monitor.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "What goes in which bin",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 71000,
+      "trend": "flat",
+      "moved": "2023-02",
+      "next_step": "Personalise by property type — flats and houses have different rules.",
+      "stages": {
+        "mvp": 2,
+        "mvp_plus": 2,
+        "target": 2
+      }
+    },
+    {
+      "name": "Book a bulky waste collection",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 28500,
+      "trend": "up",
+      "moved": "2024-11",
+      "next_step": "Offer slots proactively during known peaks such as end of tenancy.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Report fly-tipping",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 41000,
+      "trend": "up",
+      "moved": "2023-08",
+      "next_step": "Straight-through to the street cleansing rota with automatic case closure.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Request a new or replacement bin",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 19800,
+      "trend": "flat",
+      "moved": "2024-02",
+      "next_step": "Authenticated so the property's existing containers are already known.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Recycling centre opening hours",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 24000,
+      "trend": "flat",
+      "moved": "2022-05",
+      "next_step": "Show live capacity and expected queue rather than static hours.",
+      "stages": {
+        "mvp": 2,
+        "mvp_plus": 2,
+        "target": 2
+      }
+    },
+    {
+      "name": "Report a street cleaning issue",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 16400,
+      "trend": "flat",
+      "moved": "2023-08",
+      "next_step": "Straight-through to the cleansing crew's work list.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Report graffiti",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 8900,
+      "trend": "flat",
+      "moved": "2023-08",
+      "next_step": "Straight-through with photo triage and automatic prioritisation.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Commercial waste contract",
+      "area": "Waste & Street Scene",
+      "track": "ladder",
+      "demand": 3100,
+      "trend": "flat",
+      "moved": "2021-09",
+      "next_step": "Quote and sign up online rather than a call-back from the trade team.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Pay a parking fine (PCN)",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 132000,
+      "trend": "flat",
+      "moved": "2023-05",
+      "next_step": "Nothing above straight-through here; keep and monitor.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 5,
+        "target": 6
+      }
+    },
+    {
+      "name": "Challenge a parking fine",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 38000,
+      "trend": "up",
+      "moved": "2023-05",
+      "next_step": "Authenticate against the PCN so evidence attaches to the case automatically.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Apply for a resident parking permit",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 57000,
+      "trend": "flat",
+      "moved": "2024-08",
+      "next_step": "Straight-through issue against the DVLA record, with auto-renewal.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "Which parking zone am I in",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 29000,
+      "trend": "up",
+      "moved": "2025-03",
+      "next_step": "Bundle the zone answer with a one-click permit application.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Buy visitor parking sessions",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 46000,
+      "trend": "up",
+      "moved": "2024-08",
+      "next_step": "Straight-through with instant enforcement-system update.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Report a pothole",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 21000,
+      "trend": "up",
+      "moved": "2023-10",
+      "next_step": "Straight-through to the highways inspection queue with location matching.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Report a broken street light",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 13500,
+      "trend": "flat",
+      "moved": "2023-10",
+      "next_step": "Straight-through to the lighting contractor; column ID already identifies the asset.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Apply for a dropped kerb",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 2400,
+      "trend": "flat",
+      "moved": "2021-06",
+      "next_step": "An online application — currently a form to print, sign and post.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Skip and scaffold licence",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 4600,
+      "trend": "flat",
+      "moved": "2024-01",
+      "next_step": "Authenticated trade account with straight-through licence issue.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Suspend a parking bay",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 3300,
+      "trend": "flat",
+      "moved": "2020-11",
+      "next_step": "Online booking and payment instead of an email to the parking team.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Blue Badge application",
+      "area": "Parking & Highways",
+      "track": "ladder",
+      "demand": 8800,
+      "trend": "up",
+      "moved": "2024-06",
+      "next_step": "Authenticate and pre-fill from the benefits record where the person qualifies automatically.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Search a planning application",
+      "area": "Planning & Building Control",
+      "track": "ladder",
+      "demand": 52000,
+      "trend": "flat",
+      "moved": "2022-09",
+      "next_step": "Alert neighbours proactively rather than relying on them to search.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Comment on a planning application",
+      "area": "Planning & Building Control",
+      "track": "ladder",
+      "demand": 18000,
+      "trend": "up",
+      "moved": "2022-09",
+      "next_step": "Authenticated comments tied to an address, straight into the case file.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Submit a planning application",
+      "area": "Planning & Building Control",
+      "track": "ladder",
+      "demand": 6400,
+      "trend": "flat",
+      "moved": "2023-03",
+      "next_step": "Straight-through validation so applications are not manually checked for completeness.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 5
+      },
+      "target_note": "routed via the national Planning Portal"
+    },
+    {
+      "name": "Do I need planning permission",
+      "area": "Planning & Building Control",
+      "track": "ladder",
+      "demand": 27500,
+      "trend": "up",
+      "moved": "2023-01",
+      "next_step": "Personalise by property — conservation area and Article 4 status change the answer.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Building control application",
+      "area": "Planning & Building Control",
+      "track": "ladder",
+      "demand": 5200,
+      "trend": "flat",
+      "moved": "2023-03",
+      "next_step": "Authenticated agent accounts with straight-through fee calculation.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 5
+      },
+      "target_note": "national portal plus a physical inspection regime"
+    },
+    {
+      "name": "Request a site notice",
+      "area": "Planning & Building Control",
+      "track": "ladder",
+      "demand": 1100,
+      "trend": "flat",
+      "moved": "2020-04",
+      "next_step": "Online request — currently email only.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Conservation area guidance",
+      "area": "Planning & Building Control",
+      "track": "ladder",
+      "demand": 4900,
+      "trend": "flat",
+      "moved": "2022-02",
+      "next_step": "Personalise by address so residents do not have to read the whole appraisal.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Report unauthorised building work",
+      "area": "Planning & Building Control",
+      "track": "ladder",
+      "demand": 3800,
+      "trend": "up",
+      "moved": "2024-04",
+      "next_step": "Straight-through to the enforcement case system.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Request an adult social care assessment",
+      "area": "Adult Social Care",
+      "track": "ladder",
+      "demand": 12600,
+      "trend": "up",
+      "moved": "2024-10",
+      "next_step": "Authenticate so an existing client's record opens rather than a new referral being created.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 5
+      },
+      "target_note": "a qualified human assessment is the service"
+    },
+    {
+      "name": "Check what care and support is available",
+      "area": "Adult Social Care",
+      "track": "ladder",
+      "demand": 21000,
+      "trend": "up",
+      "moved": "2023-07",
+      "next_step": "Personalise by need and postcode rather than listing every option.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Apply for a disabled facilities grant",
+      "area": "Adult Social Care",
+      "track": "ladder",
+      "demand": 4300,
+      "trend": "up",
+      "moved": "2022-01",
+      "next_step": "Online referral with an occupational therapy triage step.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Pay for care services",
+      "area": "Adult Social Care",
+      "track": "ladder",
+      "demand": 9800,
+      "trend": "flat",
+      "moved": "2024-12",
+      "next_step": "Straight-through into the finance system, with statements pushed to the payer.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Carer's assessment",
+      "area": "Adult Social Care",
+      "track": "ladder",
+      "demand": 3400,
+      "trend": "up",
+      "moved": "2022-01",
+      "next_step": "Online self-referral instead of a call to the contact centre.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Direct payments query",
+      "area": "Adult Social Care",
+      "track": "ladder",
+      "demand": 6100,
+      "trend": "flat",
+      "moved": "2019-06",
+      "next_step": "Anything online at all — today this is entirely phone and email with the care team.",
+      "stages": {
+        "mvp": 0,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Find a care home or home care provider",
+      "area": "Adult Social Care",
+      "track": "ladder",
+      "demand": 8700,
+      "trend": "flat",
+      "moved": "2023-04",
+      "next_step": "Personalise by need, budget and area; show live vacancies.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Blue Badge renewal reminder",
+      "area": "Adult Social Care",
+      "track": "ladder",
+      "demand": 5900,
+      "trend": "flat",
+      "moved": "2025-05",
+      "next_step": "Already proactive — reminder issued before expiry. Extend the pattern to other renewals.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "Apply for a school place",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 34000,
+      "trend": "flat",
+      "moved": "2023-12",
+      "next_step": "Straight-through allocation with proactive results notification.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Free school meals eligibility",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 11200,
+      "trend": "up",
+      "moved": "2025-07",
+      "next_step": "Already proactive — auto-awarded from the benefits record. Extend to other entitlements.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "School admission appeal",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 3900,
+      "trend": "flat",
+      "moved": "2023-12",
+      "next_step": "Authenticated so the original application and outcome are already attached.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Apply for free childcare hours",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 8600,
+      "trend": "up",
+      "moved": "2024-08",
+      "next_step": "Pre-populate eligibility from the benefits and HMRC position.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Find a childminder or nursery",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 12400,
+      "trend": "flat",
+      "moved": "2022-07",
+      "next_step": "Personalise by postcode, age and available hours.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Request a SEND assessment",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 5100,
+      "trend": "up",
+      "moved": "2024-09",
+      "next_step": "Authenticated portal so parents can track the statutory 20-week clock.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Check the EHCP process",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 7300,
+      "trend": "up",
+      "moved": "2022-03",
+      "next_step": "Show this family's actual case position, not a generic process page.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Report a school attendance concern",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 2800,
+      "trend": "flat",
+      "moved": "2024-02",
+      "next_step": "Straight-through to the education welfare case system.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Apply for a school travel pass",
+      "area": "Children & Families",
+      "track": "ladder",
+      "demand": 4400,
+      "trend": "flat",
+      "moved": "2023-10",
+      "next_step": "Auto-award where entitlement is already known from the school place record.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "Apply for a premises licence",
+      "area": "Licensing & Regulatory",
+      "track": "ladder",
+      "demand": 2600,
+      "trend": "flat",
+      "moved": "2023-11",
+      "next_step": "Authenticated business account with straight-through fee handling.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 5
+      },
+      "target_note": "statutory consultation period before determination"
+    },
+    {
+      "name": "Food business registration",
+      "area": "Licensing & Regulatory",
+      "track": "ladder",
+      "demand": 1900,
+      "trend": "flat",
+      "moved": "2024-03",
+      "next_step": "Straight-through into the environmental health inspection programme.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Check a food hygiene rating",
+      "area": "Licensing & Regulatory",
+      "track": "ladder",
+      "demand": 14800,
+      "trend": "flat",
+      "moved": "2022-10",
+      "next_step": "Push rating changes to residents who follow a venue.",
+      "stages": {
+        "mvp": 2,
+        "mvp_plus": 2,
+        "target": 2
+      }
+    },
+    {
+      "name": "Report a noise nuisance",
+      "area": "Licensing & Regulatory",
+      "track": "ladder",
+      "demand": 17600,
+      "trend": "up",
+      "moved": "2024-05",
+      "next_step": "Straight-through case creation with a diary the resident can complete online.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Report a pest problem",
+      "area": "Licensing & Regulatory",
+      "track": "ladder",
+      "demand": 9400,
+      "trend": "flat",
+      "moved": "2024-07",
+      "next_step": "Straight-through booking and payment for treatment visits.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Taxi and private hire licence",
+      "area": "Licensing & Regulatory",
+      "track": "ladder",
+      "demand": 3200,
+      "trend": "flat",
+      "moved": "2021-11",
+      "next_step": "Online renewal — currently an in-person appointment with documents.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 5
+      },
+      "target_note": "DBS and vehicle inspection sit outside the council system"
+    },
+    {
+      "name": "Street trading licence",
+      "area": "Licensing & Regulatory",
+      "track": "ladder",
+      "demand": 900,
+      "trend": "flat",
+      "moved": "2019-09",
+      "next_step": "Publish the process and get the application online.",
+      "stages": {
+        "mvp": 0,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Report an unlicensed HMO",
+      "area": "Licensing & Regulatory",
+      "track": "ladder",
+      "demand": 2100,
+      "trend": "up",
+      "moved": "2024-04",
+      "next_step": "Straight-through to housing enforcement with automatic acknowledgement.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Join the library",
+      "area": "Libraries, Leisure & Community",
+      "track": "ladder",
+      "demand": 16200,
+      "trend": "flat",
+      "moved": "2023-04",
+      "next_step": "Straight-through membership with an instant digital card.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Renew a library book",
+      "area": "Libraries, Leisure & Community",
+      "track": "ladder",
+      "demand": 42000,
+      "trend": "flat",
+      "moved": "2024-06",
+      "next_step": "Already proactive — auto-renews unless reserved. Hold.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "Library opening hours",
+      "area": "Libraries, Leisure & Community",
+      "track": "ladder",
+      "demand": 19000,
+      "trend": "flat",
+      "moved": "2022-04",
+      "next_step": "Personalise to the nearest branch by postcode.",
+      "stages": {
+        "mvp": 2,
+        "mvp_plus": 2,
+        "target": 2
+      }
+    },
+    {
+      "name": "Book a leisure centre session",
+      "area": "Libraries, Leisure & Community",
+      "track": "ladder",
+      "demand": 38000,
+      "trend": "up",
+      "moved": "2024-09",
+      "next_step": "Straight-through into the leisure operator's system with live capacity.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Book a room in a community centre",
+      "area": "Libraries, Leisure & Community",
+      "track": "ladder",
+      "demand": 2700,
+      "trend": "flat",
+      "moved": "2021-02",
+      "next_step": "Online availability and booking rather than an enquiry form.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Apply for an allotment",
+      "area": "Libraries, Leisure & Community",
+      "track": "ladder",
+      "demand": 1400,
+      "trend": "flat",
+      "moved": "2020-08",
+      "next_step": "Online waiting list with a visible position.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Park and open space enquiries",
+      "area": "Libraries, Leisure & Community",
+      "track": "ladder",
+      "demand": 6800,
+      "trend": "flat",
+      "moved": "2022-06",
+      "next_step": "Personalise by park; show live facility status.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Report a damaged playground",
+      "area": "Libraries, Leisure & Community",
+      "track": "ladder",
+      "demand": 3100,
+      "trend": "flat",
+      "moved": "2023-07",
+      "next_step": "Straight-through to the parks inspection rota.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Register a birth",
+      "area": "Registrars & Elections",
+      "track": "ladder",
+      "demand": 7800,
+      "trend": "flat",
+      "moved": "2023-02",
+      "next_step": "Straight-through appointment booking linked to the hospital notification.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 5
+      },
+      "target_note": "statutory in-person attendance is required"
+    },
+    {
+      "name": "Register a death",
+      "area": "Registrars & Elections",
+      "track": "ladder",
+      "demand": 4200,
+      "trend": "flat",
+      "moved": "2023-02",
+      "next_step": "Tell Us Once integrated end to end so the family repeats nothing.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 5
+      },
+      "target_note": "statutory in-person attendance is required"
+    },
+    {
+      "name": "Order a certificate copy",
+      "area": "Registrars & Elections",
+      "track": "ladder",
+      "demand": 11600,
+      "trend": "flat",
+      "moved": "2024-05",
+      "next_step": "Nothing above straight-through; hold and monitor.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Give notice of marriage",
+      "area": "Registrars & Elections",
+      "track": "ladder",
+      "demand": 3400,
+      "trend": "flat",
+      "moved": "2023-02",
+      "next_step": "Authenticated booking with identity verified ahead of the appointment.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 5
+      },
+      "target_note": "statutory identity check in person"
+    },
+    {
+      "name": "Register to vote",
+      "area": "Registrars & Elections",
+      "track": "ladder",
+      "demand": 26000,
+      "trend": "up",
+      "moved": "2024-03",
+      "next_step": "Proactive: prompt at the point somebody tells us they have moved in.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 7
+      }
+    },
+    {
+      "name": "Find your polling station",
+      "area": "Registrars & Elections",
+      "track": "ladder",
+      "demand": 31000,
+      "trend": "flat",
+      "moved": "2024-03",
+      "next_step": "Push it to registered electors before polling day.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 3,
+        "target": 3
+      }
+    },
+    {
+      "name": "Apply for a postal vote",
+      "area": "Registrars & Elections",
+      "track": "ladder",
+      "demand": 9100,
+      "trend": "up",
+      "moved": "2024-03",
+      "next_step": "Straight-through into the electoral register with identity checked online.",
+      "stages": {
+        "mvp": 1,
+        "mvp_plus": 4,
+        "target": 6
+      }
+    },
+    {
+      "name": "Nowhere to sleep tonight",
+      "area": "Housing",
+      "track": "escalate",
+      "demand": 8400,
+      "trend": "up",
+      "moved": "2025-10",
+      "escalation": {
+        "recognised": {
+          "mvp": true,
+          "mvp_plus": true,
+          "target": true
+        },
+        "route": "Housing Options duty line, 24/7",
+        "response": "Immediate — assessed the same day"
+      }
+    },
+    {
+      "name": "Threatened with eviction",
+      "area": "Housing",
+      "track": "escalate",
+      "demand": 6200,
+      "trend": "up",
+      "moved": "2025-10",
+      "escalation": {
+        "recognised": {
+          "mvp": true,
+          "mvp_plus": true,
+          "target": true
+        },
+        "route": "Housing Options duty team",
+        "response": "Appointment within 48 hours"
+      }
+    },
+    {
+      "name": "Emergency repair — no heat, water or security",
+      "area": "Housing",
+      "track": "escalate",
+      "demand": 15800,
+      "trend": "flat",
+      "moved": "2024-11",
+      "escalation": {
+        "recognised": {
+          "mvp": true,
+          "mvp_plus": true,
+          "target": true
+        },
+        "route": "Repairs emergency line, 24/7",
+        "response": "Made safe within 24 hours"
+      }
+    },
+    {
+      "name": "Adult safeguarding concern",
+      "area": "Adult Social Care",
+      "track": "escalate",
+      "demand": 4900,
+      "trend": "up",
+      "moved": "2023-05",
+      "escalation": {
+        "recognised": {
+          "mvp": false,
+          "mvp_plus": true,
+          "target": true
+        },
+        "route": "Adult social care front door",
+        "response": "Same-day triage — but the resident has to find the number"
+      }
+    },
+    {
+      "name": "Child safeguarding concern",
+      "area": "Children & Families",
+      "track": "escalate",
+      "demand": 7100,
+      "trend": "up",
+      "moved": "2023-05",
+      "escalation": {
+        "recognised": {
+          "mvp": true,
+          "mvp_plus": true,
+          "target": true
+        },
+        "route": "Family Front Door / MASH",
+        "response": "Same-day triage — but not recognised from a general search"
+      }
+    },
+    {
+      "name": "Domestic abuse support",
+      "area": "Children & Families",
+      "track": "escalate",
+      "demand": 3600,
+      "trend": "up",
+      "moved": "2025-02",
+      "escalation": {
+        "recognised": {
+          "mvp": true,
+          "mvp_plus": true,
+          "target": true
+        },
+        "route": "Specialist DA service, with a quick-exit page",
+        "response": "Immediate, and never logged in browser history"
+      }
+    },
+    {
+      "name": "Mental health crisis",
+      "area": "Adult Social Care",
+      "track": "escalate",
+      "demand": 2800,
+      "trend": "up",
+      "moved": "2024-08",
+      "escalation": {
+        "recognised": {
+          "mvp": true,
+          "mvp_plus": true,
+          "target": true
+        },
+        "route": "NHS crisis line, handed over directly",
+        "response": "Immediate — the council does not hold this, and says so"
+      }
+    },
+    {
+      "name": "Anti-social behaviour with risk of harm",
+      "area": "Licensing & Regulatory",
+      "track": "escalate",
+      "demand": 5400,
+      "trend": "up",
+      "moved": "2024-08",
+      "escalation": {
+        "recognised": {
+          "mvp": false,
+          "mvp_plus": false,
+          "target": true
+        },
+        "route": "Community safety team",
+        "response": "Sits in a general ASB queue — risk is not triaged at the front door"
+      }
+    }
   ]
 }

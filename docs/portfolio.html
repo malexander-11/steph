@@ -85,6 +85,23 @@
   .filters .spacer { flex: 1; }
   .fcount { font-size: .82rem; color: #52514e; }
 
+  /* state switcher */
+  .seg { display: flex; flex-wrap: wrap; }
+  .seg button { border: 2px solid #b1b4b6; background: #fff; padding: 7px 13px; font-size: .85rem; margin-left: -2px; }
+  .seg button:first-child { margin-left: 0; }
+  .seg button[aria-checked="true"] { background: #0b0c0c; color: #fff; border-color: #0b0c0c;
+    font-weight: 700; position: relative; z-index: 1; }
+  .statecap { background: #fff; border: 1px solid #e1e0d9; border-left: 5px solid #1c5cab;
+    padding: 13px 16px; margin-bottom: 18px; }
+  .statecap h3 { font-size: .95rem; margin: 0 0 4px; }
+  .statecap p { margin: 0; font-size: .88rem; color: #383f43; max-width: 78ch; }
+  .movement { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 11px; padding-top: 10px; border-top: 1px solid #f0efec; }
+  .movement div { font-size: .82rem; }
+  .movement b { display: block; font-size: 1.05rem; }
+  .movement .up b { color: #16467f; }
+  .movement .warnv b { color: #a8302f; }
+  .movement .goodv b { color: #24632a; }
+
   /* ---- the board ---- */
   .boardwrap { overflow-x: auto; padding-bottom: 6px; }
   .board { display: grid; grid-template-columns: repeat(8, minmax(148px, 1fr)); gap: 10px; min-width: 1000px; }
@@ -165,6 +182,45 @@
   table.data thead th { background: #f4f4f2; font-size: .76rem; text-transform: uppercase; letter-spacing: .04em; position: sticky; top: 0; }
   table.data td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
+  /* ---- channel comparison ---- */
+  .qpick { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .qpick button { border: 2px solid #b1b4b6; background: #fff; padding: 7px 12px; font-size: .84rem; text-align: left; }
+  .qpick button[aria-pressed="true"] { border-color: #1c5cab; background: #eaf1fb; color: #16467f; font-weight: 700; }
+  .qpick button small { display: block; font-weight: 400; color: #52514e; font-size: .72rem; }
+  .chan { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; align-items: start; }
+  .cpanel { background: #fff; border: 1px solid #e1e0d9; display: flex; flex-direction: column; }
+  .cpanel > h3 { font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; margin: 0;
+    padding: 9px 13px; border-bottom: 1px solid #e1e0d9; background: #f4f4f2; }
+  .cbody { padding: 13px; flex: 1; }
+  .capi { font-size: .72rem; color: #52514e; padding: 8px 13px; border-top: 1px solid #f0efec; background: #fbfbfa; }
+  .capi code { background: #f0efec; padding: 1px 4px; }
+  /* website panel */
+  .wq { border: 2px solid #0b0c0c; padding: 7px 10px; font-size: .84rem; margin-bottom: 10px; display: flex; justify-content: space-between; gap: 8px; }
+  .wq span:last-child { background: #0b0c0c; color: #fff; padding: 2px 8px; font-size: .72rem; align-self: center; }
+  .wans { border-left: 4px solid #00703c; background: #f0f7f2; padding: 10px 12px; font-size: .86rem; }
+  .wans b.h { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; color: #00703c; margin-bottom: 3px; }
+  .wsrc { font-size: .72rem; color: #52514e; margin-top: 7px; }
+  .wcard { border: 1px solid #d5d5d1; border-left: 4px solid #1c5cab; padding: 9px 11px; font-size: .82rem; margin-top: 10px; }
+  .wcard b { display: block; }
+  .wcta { display: inline-block; background: #00703c; color: #fff; font-size: .78rem; font-weight: 700; padding: 6px 11px; margin-top: 8px; }
+  /* whatsapp panel */
+  .wa { background: #efeae2; padding: 11px; }
+  .wa .out { background: #d9fdd3; margin: 0 0 7px auto; }
+  .wa .in { background: #fff; margin: 0 0 7px 0; }
+  .wa .b { max-width: 88%; padding: 7px 10px; border-radius: 7px; font-size: .82rem; line-height: 1.35;
+    box-shadow: 0 1px .5px rgba(11,20,26,.13); width: fit-content; }
+  .wa .qr { background: #fff; color: #027eb5; text-align: center; font-size: .78rem; padding: 7px;
+    border-radius: 7px; margin-bottom: 5px; box-shadow: 0 1px .5px rgba(11,20,26,.13); font-weight: 500; }
+  .wa .src { display: block; font-size: .7rem; color: #667781; margin-top: 5px; border-top: 1px solid #e9edef; padding-top: 4px; }
+  /* llm panel */
+  .llm { font-size: .85rem; }
+  .llm .u { background: #f0efec; padding: 8px 11px; margin-bottom: 10px; font-size: .82rem; }
+  .llm .a { line-height: 1.5; }
+  .llm .ground { margin-top: 10px; border: 1px dashed #b1b4b6; background: #fbfbfa; padding: 8px 10px; font-size: .74rem; color: #383f43; }
+  .llm .ground b { display: block; text-transform: uppercase; letter-spacing: .05em; font-size: .66rem; color: #52514e; margin-bottom: 3px; }
+  .llm .refuse { border-left: 4px solid #d03b3b; background: #fef7f6; padding: 9px 11px; }
+  .chankey { margin-top: 16px; border-left: 5px solid #0b0c0c; padding: 4px 0 4px 14px; font-size: .92rem; max-width: 82ch; }
+
   /* ---- takeaways ---- */
   .takeaways { display: grid; gap: 14px; }
   .tk { background: #fff; border: 1px solid #e1e0d9; border-left: 5px solid #1c5cab; padding: 14px 16px; }
@@ -220,6 +276,10 @@
 
       <div class="filters">
         <div>
+          <label id="stateLbl">Programme state</label>
+          <div class="seg" role="radiogroup" aria-labelledby="stateLbl" id="stateSeg"></div>
+        </div>
+        <div>
           <label for="areaSel">Service area</label>
           <select id="areaSel"><option value="">All areas</option></select>
         </div>
@@ -228,6 +288,8 @@
         <span class="spacer"></span>
         <span class="fcount" id="fcount"></span>
       </div>
+
+      <div class="statecap" id="stateCap"></div>
 
       <div id="boardView">
         <div class="boardwrap">
@@ -277,6 +339,16 @@
       <div class="takeaways" id="takeaways"></div>
     </section>
 
+    <section id="channels">
+      <h2>The same catalogue, on three channels</h2>
+      <p class="note" style="margin-bottom:14px">Whatever state we reach, residents meet it somewhere. These three panels are
+        rendered live from <a href="services.json" target="_blank" rel="noopener">services.json</a> &mdash; the same file the
+        <a href="front-door.html">front-door prototype</a> reads. Pick a question and watch all three answer from one source.</p>
+      <div class="qpick" id="qpick" role="group" aria-label="Example question"></div>
+      <div class="chan" id="chan"></div>
+      <p class="chankey" id="chankey"></p>
+    </section>
+
   </div>
 </main>
 
@@ -305,6 +377,9 @@
 
   var D = null, S = [], LADDER = [], ESC = [], STAGES = {}, BANDS = [];
   var filterArea = '', hiOnly = false, selected = null;
+  var state = 'mvp';
+  function rung(x) { return x.stages[state]; }                       // this service's rung in the selected state
+  function recog(x) { return x.escalation.recognised[state]; }       // escalation: recognised in this state?
   var CAP = 8, expanded = {};   // keep the board scannable; each column can expand
 
   var $ = function (id) { return document.getElementById(id); };
@@ -324,8 +399,8 @@
   function renderHeadline() {
     var total = S.length;
     var tot = S.reduce(function (a, x) { return a + x.demand; }, 0);
-    var submit = LADDER.filter(function (x) { return x.stage === 4; });
-    var below = LADDER.filter(function (x) { return x.stage <= 5; });
+    var submit = LADDER.filter(function (x) { return rung(x) === 4; });
+    var below = LADDER.filter(function (x) { return rung(x) <= 5; });
     var belowDem = below.reduce(function (a, x) { return a + x.demand; }, 0);
 
     $('headline').textContent = D.meta.subject + ' runs ' + total + ' services. They are not at the same stage, and they never will be.';
@@ -333,9 +408,16 @@
       'That is why there is no single &ldquo;digital maturity&rdquo; score for a council, and why investment is a portfolio choice: ' +
       '<b>which services to move up, which rung, and in what order.</b>';
 
+    // the middle tile says whatever is most true of the selected state
+    var counts = {}; LADDER.forEach(function (x) { counts[rung(x)] = (counts[rung(x)] || 0) + 1; });
+    var mid;
+    if (state === 'mvp') mid = tile((counts[1] || 0), 'are merely <b>signposted</b> &mdash; findable and explained, and nothing more', '');
+    else if (state === 'mvp_plus') mid = tile(submit.length, 'sit at rung 4 &mdash; an online form that is <b>re-keyed by hand</b> at the back. The single biggest cluster.', '');
+    else mid = tile((counts[6] || 0) + (counts[7] || 0), 'reach <b>straight-through or proactive</b> &mdash; no officer re-keying anything', '');
+
     $('stats').innerHTML =
       tile(total, 'services modelled, across ' + new Set(S.map(function (x) { return x.area; })).size + ' service areas', 'accent') +
-      tile(submit.length, 'sit at rung 4 &mdash; an online form that is <b>re-keyed by hand</b> at the back. The single biggest cluster.', '') +
+      mid +
       tile(Math.round(belowDem / tot * 100) + '%', 'of annual contact volume is handled below straight-through', '') +
       tile(ESC.length, 'escalate by design &mdash; they should <b>never</b> be self-service', 'flag');
   }
@@ -346,7 +428,7 @@
   /* ---------------- ladder explainer ---------------- */
   function renderBands() {
     var counts = {};
-    LADDER.forEach(function (x) { counts[x.stage] = (counts[x.stage] || 0) + 1; });
+    LADDER.forEach(function (x) { counts[rung(x)] = (counts[rung(x)] || 0) + 1; });
     var html = BANDS.map(function (b) {
       var rungs = D.meta.stages.filter(function (st) { return st.band === b.id; }).map(function (st) {
         return '<div class="rung' + (BAND_PALE[b.id] ? ' pale' : '') + '"><span class="n">' + st.id + '</span>' +
@@ -379,7 +461,7 @@
     }).join('');
 
     $('board').innerHTML = D.meta.stages.map(function (st) {
-      var inCol = visLadder.filter(function (x) { return x.stage === st.id; })
+      var inCol = visLadder.filter(function (x) { return rung(x) === st.id; })
         .sort(function (a, b2) { return b2.demand - a.demand; });
       var open = !!expanded[st.id];
       var shown = open ? inCol : inCol.slice(0, CAP);
@@ -398,7 +480,7 @@
     }).join('');
 
     $('escGrid').innerHTML = visEsc.map(function (x) {
-      var r = x.escalation.recognised;
+      var r = recog(x);
       return '<button class="echip" data-svc="' + esc(x.name) + '" aria-expanded="false">' +
         '<span class="nm">' + esc(x.name) + '</span>' +
         '<span class="st ' + (r ? 'ok' : 'no') + '">' + (r ? '&#10003; Recognised instantly' : '&#9888; Not recognised') + '</span></button>';
@@ -437,17 +519,17 @@
         '<p class="meta">' + esc(x.area) + ' &middot; escalate by design &middot; ' + num(x.demand) + ' contacts a year</p>' +
         '<dl><dt>Route</dt><dd>' + esc(x.escalation.route) + '</dd>' +
         '<dt>Response</dt><dd>' + esc(x.escalation.response) + '</dd>' +
-        '<dt>Recognised?</dt><dd>' + (x.escalation.recognised
+        '<dt>Recognised?</dt><dd>' + (recog(x)
           ? '<b style="color:#24632a">&#10003; Yes</b> &mdash; the front door spots this and hands over with context.'
           : '<b style="color:#a8302f">&#9888; No</b> &mdash; the resident has to work out who to call. This is the gap worth closing.') + '</dd></dl>' +
         '<div class="next" style="background:#f4f4f2;border-left-color:#3d3d3a"><b>Why it is not on the ladder</b>' +
         'Moving this &ldquo;up&rdquo; to self-service would be the wrong outcome. The only improvement that counts is instant recognition and a warm hand-off.</div>' +
         '<button class="closeb" id="closeDetail">Close</button>';
     } else {
-      var st = STAGES[x.stage];
+      var st = STAGES[rung(x)];
       d.className = 'detail';
       d.innerHTML = '<h3>' + esc(x.name) + '</h3>' +
-        '<p class="meta">' + esc(x.area) + ' &middot; rung ' + x.stage + ', ' + esc(st.name) + ' &middot; band ' + st.band + '</p>' +
+        '<p class="meta">' + esc(x.area) + ' &middot; rung ' + rung(x) + ', ' + esc(st.name) + ' &middot; band ' + st.band + '</p>' +
         '<dl><dt>Annual contacts</dt><dd>' + num(x.demand) + (x.demand >= HI ? ' <span style="color:#16467f;font-weight:700">(high demand)</span>' : '') + '</dd>' +
         '<dt>What this rung means</dt><dd>' + esc(st.desc) + '</dd>' +
         '<dt>Last moved</dt><dd>' + esc(x.moved) + ' &middot; demand trend ' + esc(x.trend) + '</dd></dl>' +
@@ -467,7 +549,7 @@
   function renderBars() {
     var vis = visible().filter(function (x) { return x.track === 'ladder'; });
     var dem = {}, cnt = {};
-    vis.forEach(function (x) { dem[x.stage] = (dem[x.stage] || 0) + x.demand; cnt[x.stage] = (cnt[x.stage] || 0) + 1; });
+    vis.forEach(function (x) { dem[rung(x)] = (dem[rung(x)] || 0) + x.demand; cnt[rung(x)] = (cnt[rung(x)] || 0) + 1; });
     var max = Math.max.apply(null, D.meta.stages.map(function (st) { return dem[st.id] || 0; }).concat([1]));
     var peak = D.meta.stages.reduce(function (a, st) { return (dem[st.id] || 0) > (dem[a.id] || 0) ? st : a; }, D.meta.stages[0]);
 
@@ -488,7 +570,7 @@
     var grid = {};
     areas.forEach(function (a) { grid[a] = { A: 0, B: 0, C: 0, D: 0, E: 0 }; });
     vis.forEach(function (x) {
-      var key = x.track === 'escalate' ? 'E' : STAGES[x.stage].band;
+      var key = x.track === 'escalate' ? 'E' : STAGES[rung(x)].band;
       grid[x.area][key]++;
     });
     var all = [];
@@ -521,31 +603,176 @@
   function renderTable() {
     var vis = visible().slice().sort(function (a, b) {
       if (a.track !== b.track) return a.track === 'escalate' ? 1 : -1;
-      return (b.stage == null ? -1 : b.stage) - (a.stage == null ? -1 : a.stage) || b.demand - a.demand;
+      return (b.track === 'escalate' ? -1 : rung(b)) - (a.track === 'escalate' ? -1 : rung(a)) || b.demand - a.demand;
     });
     $('dataTable').querySelector('tbody').innerHTML = vis.map(function (x) {
-      var band = x.track === 'escalate' ? 'Escalate' : STAGES[x.stage].band + ' · ' + BANDS.filter(function (b) { return b.id === STAGES[x.stage].band; })[0].name;
-      var rung = x.track === 'escalate' ? '—' : x.stage + '. ' + STAGES[x.stage].name;
+      var band = x.track === 'escalate' ? 'Escalate' : STAGES[rung(x)].band + ' · ' + BANDS.filter(function (b) { return b.id === STAGES[rung(x)].band; })[0].name;
+      var rungLbl = x.track === 'escalate' ? '—' : rung(x) + '. ' + STAGES[rung(x)].name;
       var next = x.track === 'escalate'
-        ? 'Not on the ladder — ' + (x.escalation.recognised ? 'recognised instantly' : 'not recognised; close that gap') + '. Route: ' + x.escalation.route
+        ? 'Not on the ladder — ' + (recog(x) ? 'recognised instantly' : 'not recognised; close that gap') + '. Route: ' + x.escalation.route
         : x.next_step;
-      return '<tr><td>' + esc(x.name) + '</td><td>' + esc(x.area) + '</td><td>' + esc(band) + '</td><td>' + esc(rung) +
+      return '<tr><td>' + esc(x.name) + '</td><td>' + esc(x.area) + '</td><td>' + esc(band) + '</td><td>' + esc(rungLbl) +
         '</td><td class="num">' + num(x.demand) + '</td><td>' + esc(next) + '</td></tr>';
     }).join('');
   }
 
   /* ---------------- takeaways ---------------- */
   function renderTakeaways() {
-    var submit = LADDER.filter(function (x) { return x.stage === 4; }).length;
-    var notRec = ESC.filter(function (x) { return !x.escalation.recognised; }).length;
+    var submit = LADDER.filter(function (x) { return rung(x) === 4; }).length;
+    var notRec = ESC.filter(function (x) { return !recog(x); }).length;
     $('takeaways').innerHTML =
       tk('There is no single maturity score.', 'The estate is spread across every rung at once, and each service moves on its own timetable. A board-level "we are at stage 2" is not a fact about anything.') +
-      tk('A form that gets re-keyed is not a transaction.', submit + ' services sit at rung 4: digital at the front, manual at the back. They look done on a project plan and still cost officer time on every single case. Rung 4 → 6 is usually better value than rung 1 → 4.') +
+      tk('A form that gets re-keyed is not a transaction.', 'In the <b>MVP+</b> state ' + LADDER.filter(function (x) { return x.stages.mvp_plus === 4; }).length +
+        ' services sit at rung 4: digital at the front, manual at the back. That state looks like transformation on a project plan, ' +
+        'yet the share of demand handled below straight-through is <b>' + pctBelow('mvp_plus') + '% &mdash; barely different from MVP’s ' + pctBelow('mvp') + '%</b>. ' +
+        'Rung 4 → 6 is where officer effort actually falls.') +
       tk('Escalation is a design choice, not a low score.', ESC.length + ' services should never be self-service. Counting them as "immature" pushes you to automate exactly the things that need a person. The only target here is instant recognition — and ' + notRec + ' are not recognised today.', true) +
       tk('You can only draw this picture if you hold a catalogue.', 'Every number here comes from one structured file. Without it, nobody can say how many services exist, what stage each is at, or what moving one would take. <a href="front-door.html">That is the argument the front-door prototype makes</a>.');
   }
   function tk(t, s, warn) {
     return '<div class="tk' + (warn ? ' warn' : '') + '"><b>' + t + '</b><span>' + s + '</span></div>';
+  }
+
+  /* ---------------- state switcher ---------------- */
+  function renderStateSeg() {
+    $('stateSeg').innerHTML = D.meta.states.map(function (s) {
+      return '<button type="button" role="radio" data-state="' + s.id + '" aria-checked="' + (s.id === state) + '">' +
+        esc(s.name) + '</button>';
+    }).join('');
+    Array.prototype.forEach.call($('stateSeg').querySelectorAll('[data-state]'), function (b) {
+      b.addEventListener('click', function () {
+        state = b.getAttribute('data-state');
+        expanded = {};
+        $('detail').hidden = true;
+        renderStateSeg(); renderHeadline(); renderBands(); renderTakeaways(); renderAll(); renderStateCap();
+      });
+    });
+  }
+
+  function pctBelow(st) {
+    var tot = S.reduce(function (a, x) { return a + x.demand; }, 0);
+    var below = LADDER.filter(function (x) { return x.stages[st] <= 5; }).reduce(function (a, x) { return a + x.demand; }, 0);
+    return Math.round(below / tot * 100);
+  }
+
+  function renderStateCap() {
+    var i = D.meta.states.map(function (s) { return s.id; }).indexOf(state);
+    var s = D.meta.states[i], prev = i > 0 ? D.meta.states[i - 1] : null;
+    var html = '<h3>' + esc(s.name) + ' &mdash; ' + esc(s.short) + '</h3><p>' + esc(s.caption) + '</p>';
+
+    if (prev) {
+      var up = 0, down = 0;
+      LADDER.forEach(function (x) {
+        var a = x.stages[prev.id], b = x.stages[state];
+        if (b > a) up++; else if (b < a) down++;
+      });
+      var recNow = ESC.filter(function (x) { return x.escalation.recognised[state]; }).length;
+      var recPrev = ESC.filter(function (x) { return x.escalation.recognised[prev.id]; }).length;
+      var pNow = pctBelow(state), pPrev = pctBelow(prev.id), delta = pNow - pPrev;
+      html += '<div class="movement">' +
+        '<div class="up"><b>' + up + ' up' + (down ? ', ' + down + ' down' : '') + '</b>services move vs ' + esc(prev.name) + '</div>' +
+        '<div class="' + (delta <= -20 ? 'goodv' : 'warnv') + '"><b>' + pPrev + '% &rarr; ' + pNow + '%</b>' +
+          'of demand still handled below straight-through' + (Math.abs(delta) < 5 ? ' &mdash; barely moves' : '') + '</div>' +
+        '<div><b>' + recPrev + ' &rarr; ' + recNow + ' of ' + ESC.length + '</b>urgent services recognised instantly</div>' +
+        '</div>';
+    }
+    $('stateCap').innerHTML = html;
+  }
+
+  /* ---------------- the same catalogue on three channels ---------------- */
+  // Reads services.json — the same file the front-door prototype uses. The three
+  // panels differ only in presentation; the answer, the citation and the PERMISSION
+  // to answer all come from the catalogue entry.
+  var CAT = null, QIDX = 0;
+  var QUERIES = [
+    { q: 'when is my bin collected', id: 'bin-collection-day', note: 'needs one public detail' },
+    { q: 'how much is garden waste', id: 'garden-waste-subscription', note: 'same answer for everyone' },
+    { q: 'am I eligible for a disabled facilities grant', id: 'disabled-facilities-grant', note: 'must not be answered' }
+  ];
+  function catById(id) { return (CAT || []).filter(function (s) { return s.id === id; })[0]; }
+
+  function renderChannels() {
+    if (!CAT) return;
+    var sel = QUERIES[QIDX], svc = catById(sel.id);
+    if (!svc) return;
+
+    $('qpick').innerHTML = QUERIES.map(function (x, i) {
+      return '<button type="button" data-q="' + i + '" aria-pressed="' + (i === QIDX) + '">' +
+        esc(x.q) + '<small>' + esc(x.note) + '</small></button>';
+    }).join('');
+    Array.prototype.forEach.call($('qpick').querySelectorAll('[data-q]'), function (b) {
+      b.addEventListener('click', function () { QIDX = +b.getAttribute('data-q'); renderChannels(); });
+    });
+
+    var invariant = svc.answer_safe && svc.invariant_answer;
+    var param = !!svc.answer_needs;
+    var lookupKey = param ? Object.keys(svc.answer_lookup || {})[0] : null;
+    var rows = param ? (svc.answer_lookup[lookupKey].rows || []) : [];
+
+    /* -- 1. council website -- */
+    var web = '<div class="wq"><span>' + esc(sel.q) + '</span><span>Search</span></div>';
+    if (invariant) {
+      web += '<div class="wans"><b class="h">Answer</b>' + esc(svc.invariant_answer) +
+        '<div class="wsrc"><b>Source:</b> ' + esc(svc.source) + '</div></div>';
+    } else if (param) {
+      web += '<div class="wans" style="border-left-color:#1c5cab;background:#eaf1fb">' +
+        '<b class="h" style="color:#16467f">' + esc(svc.answer_needs.question) + '</b>' +
+        '<div style="font-size:.78rem;margin:4px 0 7px">' + esc(svc.answer_needs.hint) + '</div>' +
+        rows.map(function (r) { return '<div style="display:flex;justify-content:space-between;gap:10px;border-top:1px solid #cdddf0;padding:4px 0"><span>' + esc(r.label) + '</span><b>' + esc(r.value) + '</b></div>'; }).join('') +
+        '<div class="wsrc">Shown for <b>' + esc(lookupKey) + '</b> &middot; <b>Source:</b> ' + esc(svc.source) + '</div></div>';
+    } else {
+      web += '<div class="wans" style="border-left-color:#505a5f;background:#fafafa"><b class="h" style="color:#505a5f">No answer shown</b>' +
+        'This depends on your circumstances, so we signpost instead of guessing.</div>';
+    }
+    web += '<div class="wcard"><b>' + esc(svc.name) + '</b>' + esc(svc.one_line) +
+      '<span class="wcta">' + (svc.fulfilment === 'phone' ? 'Call' : svc.fulfilment === 'appointment' ? 'Book an appointment' : 'Open the service') + ' &rarr;</span></div>';
+
+    /* -- 2. whatsapp -- */
+    var wa = '<div class="wa"><div class="b out">' + esc(sel.q) + '</div>';
+    if (invariant) {
+      wa += '<div class="b in">' + esc(svc.invariant_answer) + '<span class="src"><b>Source:</b> ' + esc(svc.source) + '</span></div>';
+    } else if (param) {
+      wa += '<div class="b in">Happy to help &mdash; ' + esc(svc.answer_needs.question).toLowerCase() + '</div>' +
+        '<div class="b out">' + esc(lookupKey) + '</div>' +
+        '<div class="b in">' + rows.map(function (r) { return '&bull; <b>' + esc(r.label) + ':</b> ' + esc(r.value); }).join('<br>') +
+        '<span class="src"><b>Source:</b> ' + esc(svc.source) + '</span></div>';
+    } else {
+      wa += '<div class="b in">That one depends on your circumstances, so I can&rsquo;t give a blanket answer. Here&rsquo;s how to get it sorted properly:</div>' +
+        '<div class="qr">' + esc(svc.fulfilment === 'appointment' ? 'Book an assessment' : 'Open the service') + '</div>' +
+        '<div class="qr">Talk to a person</div>';
+    }
+    wa += '</div>';
+
+    /* -- 3. llm assistant -- */
+    var llm = '<div class="llm"><div class="u">' + esc(sel.q) + '</div>';
+    if (invariant) {
+      llm += '<div class="a">' + esc(svc.invariant_answer.replace(/\.$/, '')) + '. You can set it up online whenever you’re ready.</div>';
+    } else if (param) {
+      llm += '<div class="a">I can tell you exactly &mdash; I just need your postcode. For <b>' + esc(lookupKey) + '</b>, ' +
+        'it&rsquo;s ' + rows.map(function (r) { return esc(r.label.toLowerCase()) + ' ' + esc(r.value.replace(/, then fortnightly/, '')); }).join(', ') + '.</div>';
+    } else {
+      llm += '<div class="a refuse">I&rsquo;m not going to guess at this one. Whether you qualify depends on an occupational therapy ' +
+        'assessment and a means test, so the answer genuinely differs person to person. The right next step is to request an assessment.</div>';
+    }
+    llm += '<div class="ground"><b>Grounded in</b>catalogue entry <code>' + esc(svc.id) + '</code> &middot; ' +
+      '<code>answer_safe: ' + (svc.answer_safe ? 'true' : 'false') + '</code>' +
+      (invariant ? ' &rarr; the model was given the answer and the source to cite'
+                 : param ? ' &rarr; the model was given the lookup, not free rein'
+                         : ' &rarr; the model was told it may not answer, and why') + '</div></div>';
+
+    $('chan').innerHTML =
+      '<div class="cpanel"><h3>Council website</h3><div class="cbody">' + web + '</div>' +
+        '<p class="capi">Server-rendered from the catalogue. No API needed &mdash; it is the same JSON.</p></div>' +
+      '<div class="cpanel"><h3>WhatsApp</h3><div class="cbody" style="padding:0">' + wa + '</div>' +
+        '<p class="capi">Via the <b>WhatsApp Business API</b>: catalogue entry &rarr; message template, with quick replies for the routes.</p></div>' +
+      '<div class="cpanel"><h3>LLM assistant</h3><div class="cbody">' + llm + '</div>' +
+        '<p class="capi">Via a model API. The catalogue entry is passed in as context (a tool call or retrieval) &mdash; the model writes the sentence, it does not supply the fact.</p></div>';
+
+    $('chankey').innerHTML = invariant || param
+      ? '<b>One file, three renderings.</b> The wording differs; the answer and the citation do not, because all three read the same catalogue entry.'
+      : '<b>All three decline &mdash; and that is the point.</b> None of them decided to be careful. ' +
+        '<code>answer_safe: false</code> is a value a service owner set in the catalogue, so the refusal is the same on every channel and can be audited. ' +
+        'The model is not the source of truth; it is a renderer.';
   }
 
   /* ---------------- render-all + controls ---------------- */
@@ -563,6 +790,7 @@
     $('areaSel').innerHTML = '<option value="">All areas</option>' +
       areas.map(function (a) { return '<option value="' + esc(a) + '">' + esc(a) + '</option>'; }).join('');
 
+    renderStateSeg(); renderStateCap();
     renderHeadline(); renderBands(); renderTakeaways(); renderAll();
 
     $('areaSel').addEventListener('change', function () { filterArea = this.value; renderAll(); });
@@ -576,6 +804,11 @@
       this.textContent = on ? 'Show as board' : 'Show as table';
     });
   }
+
+  // the channel panels read the SAME services.json the front-door prototype uses
+  fetch('services.json').then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (c) { if (c) { CAT = c.services; renderChannels(); } })
+    .catch(function () { $('chankey').textContent = 'services.json could not be loaded, so the channel panels are unavailable.'; });
 
   fetch('portfolio.json').then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (data) { D = data; init(); })
