@@ -51,14 +51,6 @@
   .lede { font-size: 1.02rem; color: #383f43; max-width: 62ch; }
   .note { font-size: .85rem; color: #52514e; max-width: 70ch; }
 
-  /* ---- stat tiles ---- */
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 24px 0 0; }
-  .stat { background: #fff; border: 1px solid #e1e0d9; padding: 16px; }
-  .stat .v { font-size: 2rem; font-weight: 700; letter-spacing: -.02em; line-height: 1; }
-  .stat .k { font-size: .84rem; color: #52514e; margin-top: 7px; }
-  .stat.accent { border-left: 5px solid #1c5cab; }
-  .stat.flag { border-left: 5px solid #d03b3b; }
-
   /* ---- ladder explainer ---- */
   .bands { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
   .bandcard { background: #fff; border: 1px solid #e1e0d9; border-top: 5px solid var(--bc); padding: 14px; }
@@ -148,33 +140,6 @@
   .detail .next b { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: #16467f; margin-bottom: 3px; }
   .detail .closeb { background: transparent; border: 0; color: #1d70b8; text-decoration: underline; padding: 6px 0 0; font-size: .84rem; }
 
-  /* ---- bar chart ---- */
-  .bars { background: #fff; border: 1px solid #e1e0d9; padding: 18px 16px; }
-  .barrow { display: grid; grid-template-columns: 168px 1fr 78px; gap: 12px; align-items: center; padding: 5px 0; }
-  @media (max-width: 40em) { .barrow { grid-template-columns: 120px 1fr 62px; gap: 8px; font-size: .84rem; } }
-  .barrow .lb { font-size: .82rem; }
-  .barrow .lb small { display: block; color: #898781; font-size: .7rem; }
-  .track { background: #f4f4f2; height: 20px; position: relative; }
-  .track > i { display: block; height: 100%; background: #2a78d6; border-radius: 0 3px 3px 0; }
-  .barrow.hi .track > i { background: #1c5cab; }
-  .barrow .vl { text-align: right; font-size: .82rem; font-variant-numeric: tabular-nums; }
-  .axis { border-top: 1px solid #c3c2b7; margin-top: 8px; padding-top: 5px; font-size: .72rem; color: #898781;
-    display: grid; grid-template-columns: 168px 1fr 78px; gap: 12px; }
-  @media (max-width: 40em) { .axis { grid-template-columns: 120px 1fr 62px; gap: 8px; } }
-  .axis .sc { display: flex; justify-content: space-between; }
-
-  /* ---- heatmap ---- */
-  .hmwrap { overflow-x: auto; }
-  table.hm { border-collapse: collapse; width: 100%; min-width: 640px; background: #fff; }
-  table.hm th, table.hm td { border: 1px solid #e1e0d9; padding: 7px 9px; font-size: .82rem; text-align: center; }
-  table.hm th[scope="row"] { text-align: left; font-weight: 600; font-size: .8rem; white-space: nowrap; }
-  table.hm thead th { background: #f4f4f2; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
-  table.hm td { font-variant-numeric: tabular-nums; }
-  table.hm td.z { color: #b1b4b6; }
-  .legend { display: flex; align-items: center; gap: 8px; font-size: .76rem; color: #52514e; margin-top: 10px; flex-wrap: wrap; }
-  .legend .sw { display: flex; }
-  .legend .sw i { width: 26px; height: 13px; display: block; }
-
   /* ---- table view ---- */
   .tablewrap { overflow-x: auto; }
   table.data { border-collapse: collapse; width: 100%; min-width: 720px; background: #fff; font-size: .84rem; }
@@ -221,13 +186,6 @@
   .llm .refuse { border-left: 4px solid #d03b3b; background: #fef7f6; padding: 9px 11px; }
   .chankey { margin-top: 16px; border-left: 5px solid #0b0c0c; padding: 4px 0 4px 14px; font-size: .92rem; max-width: 82ch; }
 
-  /* ---- takeaways ---- */
-  .takeaways { display: grid; gap: 14px; }
-  .tk { background: #fff; border: 1px solid #e1e0d9; border-left: 5px solid #1c5cab; padding: 14px 16px; }
-  .tk.warn { border-left-color: #d03b3b; }
-  .tk b { display: block; margin-bottom: 3px; }
-  .tk span { font-size: .9rem; color: #383f43; }
-
   footer { border-top: 1px solid #d8d8d8; background: #fff; }
   footer .wrap { padding: 20px 16px; font-size: .8rem; color: #52514e; }
 
@@ -258,7 +216,6 @@
       <p class="eyebrow">The portfolio problem</p>
       <h1 id="headline">A borough runs a lot of services.</h1>
       <p class="lede" id="lede"></p>
-      <div class="stats" id="stats"></div>
     </section>
 
     <section>
@@ -317,28 +274,6 @@
       </div>
     </section>
 
-    <section>
-      <h2>Where the demand actually is</h2>
-      <p class="note" style="margin-bottom:16px">Annual contacts by rung. Maturity is not the same as importance &mdash;
-        a rung with few services can carry a lot of volume, and vice versa.</p>
-      <div class="bars" id="bars"></div>
-    </section>
-
-    <section>
-      <h2>Every area is mixed</h2>
-      <p class="note" style="margin-bottom:16px">Services per band, by service area. No directorate is uniformly mature,
-        so &ldquo;digitise Housing&rdquo; is not a plan &mdash; the unit of change is the service, not the department.</p>
-      <div class="hmwrap"><table class="hm" id="heat">
-        <caption class="vh">Count of services by service area and maturity band</caption>
-      </table></div>
-      <div class="legend" id="hmLegend"></div>
-    </section>
-
-    <section>
-      <h2>What this means</h2>
-      <div class="takeaways" id="takeaways"></div>
-    </section>
-
     <section id="channels">
       <h2>The same catalogue, on three channels</h2>
       <p class="note" style="margin-bottom:14px">Whatever state we reach, residents meet it somewhere. These three panels are
@@ -371,8 +306,6 @@
   // Ordinal ramp for the four bands (validated: monotone L, single hue, light end 2.11:1 on white).
   var BAND_COLOUR = { A: '#86b6ef', B: '#3987e5', C: '#1c5cab', D: '#0d366b' };
   var BAND_PALE = { A: true, B: false, C: false, D: false };   // which need dark text
-  // Sequential ramp for heatmap counts (validated). Zero is left uncoloured — zero should read as nothing.
-  var HEAT = ['#86b6ef', '#5598e7', '#2a78d6', '#1c5cab', '#0d366b'];
   var HI = 25000;
 
   var D = null, S = [], LADDER = [], ESC = [], STAGES = {}, BANDS = [];
@@ -396,33 +329,12 @@
   }
 
   /* ---------------- headline ---------------- */
+  // headline and lede do not vary by state — set once from init()
   function renderHeadline() {
-    var total = S.length;
-    var tot = S.reduce(function (a, x) { return a + x.demand; }, 0);
-    var submit = LADDER.filter(function (x) { return rung(x) === 4; });
-    var below = LADDER.filter(function (x) { return rung(x) <= 5; });
-    var belowDem = below.reduce(function (a, x) { return a + x.demand; }, 0);
-
-    $('headline').textContent = D.meta.subject + ' runs ' + total + ' services. They are not at the same stage, and they never will be.';
+    $('headline').textContent = D.meta.subject + ' runs ' + S.length + ' services. They are not at the same stage, and they never will be.';
     $('lede').innerHTML = 'At any given moment every service sits somewhere different on the ladder &mdash; and it moves. ' +
       'That is why there is no single &ldquo;digital maturity&rdquo; score for a council, and why investment is a portfolio choice: ' +
       '<b>which services to move up, which rung, and in what order.</b>';
-
-    // the middle tile says whatever is most true of the selected state
-    var counts = {}; LADDER.forEach(function (x) { counts[rung(x)] = (counts[rung(x)] || 0) + 1; });
-    var mid;
-    if (state === 'mvp') mid = tile((counts[1] || 0), 'are merely <b>signposted</b> &mdash; findable and explained, and nothing more', '');
-    else if (state === 'mvp_plus') mid = tile(submit.length, 'sit at rung 4 &mdash; an online form that is <b>re-keyed by hand</b> at the back. The single biggest cluster.', '');
-    else mid = tile((counts[6] || 0) + (counts[7] || 0), 'reach <b>straight-through or proactive</b> &mdash; no officer re-keying anything', '');
-
-    $('stats').innerHTML =
-      tile(total, 'services modelled, across ' + new Set(S.map(function (x) { return x.area; })).size + ' service areas', 'accent') +
-      mid +
-      tile(Math.round(belowDem / tot * 100) + '%', 'of annual contact volume is handled below straight-through', '') +
-      tile(ESC.length, 'escalate by design &mdash; they should <b>never</b> be self-service', 'flag');
-  }
-  function tile(v, k2, cls) {
-    return '<div class="stat ' + cls + '"><div class="v">' + esc(String(v)) + '</div><div class="k">' + k2 + '</div></div>';
   }
 
   /* ---------------- ladder explainer ---------------- */
@@ -545,60 +457,6 @@
     });
   }
 
-  /* ---------------- demand by rung ---------------- */
-  function renderBars() {
-    var vis = visible().filter(function (x) { return x.track === 'ladder'; });
-    var dem = {}, cnt = {};
-    vis.forEach(function (x) { dem[rung(x)] = (dem[rung(x)] || 0) + x.demand; cnt[rung(x)] = (cnt[rung(x)] || 0) + 1; });
-    var max = Math.max.apply(null, D.meta.stages.map(function (st) { return dem[st.id] || 0; }).concat([1]));
-    var peak = D.meta.stages.reduce(function (a, st) { return (dem[st.id] || 0) > (dem[a.id] || 0) ? st : a; }, D.meta.stages[0]);
-
-    $('bars').innerHTML = D.meta.stages.map(function (st) {
-      var v = dem[st.id] || 0, w = (v / max * 100);
-      return '<div class="barrow' + (st.id === peak.id ? ' hi' : '') + '">' +
-        '<span class="lb">' + st.id + '. ' + esc(st.name) + '<small>' + (cnt[st.id] || 0) + ' service' + ((cnt[st.id] || 0) === 1 ? '' : 's') + '</small></span>' +
-        '<span class="track"><i style="width:' + w.toFixed(1) + '%" title="' + num(v) + ' contacts a year"></i></span>' +
-        '<span class="vl">' + k(v) + '</span></div>';
-    }).join('') +
-      '<div class="axis"><span></span><span class="sc"><span>0</span><span>' + k(max) + ' contacts a year</span></span><span></span></div>';
-  }
-
-  /* ---------------- heatmap ---------------- */
-  function renderHeat() {
-    var vis = visible();
-    var areas = Array.from(new Set(S.map(function (x) { return x.area; }))).sort();
-    var grid = {};
-    areas.forEach(function (a) { grid[a] = { A: 0, B: 0, C: 0, D: 0, E: 0 }; });
-    vis.forEach(function (x) {
-      var key = x.track === 'escalate' ? 'E' : STAGES[rung(x)].band;
-      grid[x.area][key]++;
-    });
-    var all = [];
-    areas.forEach(function (a) { ['A','B','C','D'].forEach(function (b) { all.push(grid[a][b]); }); });
-    var mx = Math.max.apply(null, all.concat([1]));
-
-    var head = '<thead><tr><th scope="col">Service area</th>' +
-      BANDS.map(function (b) { return '<th scope="col">' + b.id + ' &middot; ' + esc(b.name) + '</th>'; }).join('') +
-      '<th scope="col">Escalate</th></tr></thead>';
-    var body = '<tbody>' + areas.map(function (a) {
-      var cells = BANDS.map(function (b) {
-        var v = grid[a][b.id];
-        if (!v) return '<td class="z">&mdash;</td>';
-        var idx = Math.min(HEAT.length - 1, Math.floor((v - 1) / mx * HEAT.length));
-        var dark = idx >= 2;
-        return '<td style="background:' + HEAT[idx] + ';color:' + (dark ? '#fff' : '#0b0c0c') + '">' + v + '</td>';
-      }).join('');
-      var ev = grid[a].E;
-      return '<tr><th scope="row">' + esc(a) + '</th>' + cells +
-        '<td style="background:' + (ev ? '#e6e6e2' : '#fff') + '">' + (ev || '<span class="z">&mdash;</span>') + '</td></tr>';
-    }).join('') + '</tbody>';
-    $('heat').innerHTML = head + body;
-
-    $('hmLegend').innerHTML = '<span>Fewer services</span><span class="sw">' +
-      HEAT.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('') +
-      '</span><span>More</span><span style="margin-left:10px">&mdash; counts are printed in every cell, so colour is never the only channel.</span>';
-  }
-
   /* ---------------- table view ---------------- */
   function renderTable() {
     var vis = visible().slice().sort(function (a, b) {
@@ -616,23 +474,6 @@
     }).join('');
   }
 
-  /* ---------------- takeaways ---------------- */
-  function renderTakeaways() {
-    var submit = LADDER.filter(function (x) { return rung(x) === 4; }).length;
-    var notRec = ESC.filter(function (x) { return !recog(x); }).length;
-    $('takeaways').innerHTML =
-      tk('There is no single maturity score.', 'The estate is spread across every rung at once, and each service moves on its own timetable. A board-level "we are at stage 2" is not a fact about anything.') +
-      tk('A form that gets re-keyed is not a transaction.', 'In the <b>MVP+</b> state ' + LADDER.filter(function (x) { return x.stages.mvp_plus === 4; }).length +
-        ' services sit at rung 4: digital at the front, manual at the back. That state looks like transformation on a project plan, ' +
-        'yet the share of demand handled below straight-through is <b>' + pctBelow('mvp_plus') + '% &mdash; barely different from MVP’s ' + pctBelow('mvp') + '%</b>. ' +
-        'Rung 4 → 6 is where officer effort actually falls.') +
-      tk('Escalation is a design choice, not a low score.', ESC.length + ' services should never be self-service. Counting them as "immature" pushes you to automate exactly the things that need a person. The only target here is instant recognition — and ' + notRec + ' are not recognised today.', true) +
-      tk('You can only draw this picture if you hold a catalogue.', 'Every number here comes from one structured file. Without it, nobody can say how many services exist, what stage each is at, or what moving one would take. <a href="front-door.html">That is the argument the front-door prototype makes</a>.');
-  }
-  function tk(t, s, warn) {
-    return '<div class="tk' + (warn ? ' warn' : '') + '"><b>' + t + '</b><span>' + s + '</span></div>';
-  }
-
   /* ---------------- state switcher ---------------- */
   function renderStateSeg() {
     $('stateSeg').innerHTML = D.meta.states.map(function (s) {
@@ -644,7 +485,7 @@
         state = b.getAttribute('data-state');
         expanded = {};
         $('detail').hidden = true;
-        renderStateSeg(); renderHeadline(); renderBands(); renderTakeaways(); renderAll(); renderStateCap();
+        renderStateSeg(); renderBands(); renderAll(); renderStateCap();
       });
     });
   }
@@ -776,7 +617,7 @@
   }
 
   /* ---------------- render-all + controls ---------------- */
-  function renderAll() { renderBoard(); renderBars(); renderHeat(); renderTable(); }
+  function renderAll() { renderBoard(); renderTable(); }
 
   function init() {
     $('disclaimerText').innerHTML = '<b>Fictional council, invented figures.</b> ' + esc(D.meta.disclaimer).replace('Meadowvale Borough Council is fictional. ', '');
@@ -791,7 +632,7 @@
       areas.map(function (a) { return '<option value="' + esc(a) + '">' + esc(a) + '</option>'; }).join('');
 
     renderStateSeg(); renderStateCap();
-    renderHeadline(); renderBands(); renderTakeaways(); renderAll();
+    renderHeadline(); renderBands(); renderAll();
 
     $('areaSel').addEventListener('change', function () { filterArea = this.value; renderAll(); });
     $('hiTgl').addEventListener('click', function () {
