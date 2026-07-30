@@ -1,7 +1,7 @@
 {
- "generated": "2026-07-29 09:21 UTC",
+ "generated": "2026-07-30 09:12 UTC",
  "totals": {
-  "roles": 126,
+  "roles": 129,
   "employers": 24,
   "sources": 7
  },
@@ -34,13 +34,6 @@
        "salary": ""
       },
       {
-       "title": "Head of Influencer Marketing",
-       "url": "https://careers.dazn.com/en/postings/4bb2654a-5035-4c9a-b7bc-8ef151c0cdcd",
-       "location": "UK - Leeds",
-       "employer": "DAZN",
-       "salary": ""
-      },
-      {
        "title": "Marketing Manager - Product",
        "url": "https://careers.dazn.com/en/postings/fcfa2e28-bc02-4e51-b62b-f701443849af",
        "location": "UK - Leeds",
@@ -51,13 +44,6 @@
        "title": "Legal Operations Executive (Future Opportunities)",
        "url": "https://careers.dazn.com/en/postings/d7a5e608-ffbe-4ad5-8402-77a15b5433c4",
        "location": "UK - London",
-       "employer": "DAZN",
-       "salary": ""
-      },
-      {
-       "title": "Junior Editor",
-       "url": "https://careers.dazn.com/en/postings/0f2532eb-b119-4287-929f-25ce66ffe003",
-       "location": "UK - Leeds",
        "employer": "DAZN",
        "salary": ""
       },
@@ -87,6 +73,13 @@
     {
      "name": "Disney / Disney+ EMEA",
      "jobs": [
+      {
+       "title": "Senior Manager, Performance Marketing influencers (Fixed Term Contract-until 1st September 2027)",
+       "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/London-United-Kingdom/Senior-Manager--Performance-Marketing-influencers--Fixed-Term-Contract-until-1st-September-2027-_10155573",
+       "location": "London, United Kingdom",
+       "employer": "Disney / Disney+ EMEA",
+       "salary": ""
+      },
       {
        "title": "Executive Assistant (4 years fixed-term)",
        "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/London-United-Kingdom/Executive-Assistant--4-years-fixed-term-_10156630",
@@ -167,8 +160,34 @@
      ]
     },
     {
+     "name": "Sky",
+     "jobs": [
+      {
+       "title": "Head of Group AI, Partnerships",
+       "url": "https://sky.wd3.myworkdayjobs.com/sky_careers/job/Osterley/Head-of-Group-AI--Partnerships_R0058137",
+       "location": "Osterley",
+       "employer": "Sky",
+       "salary": ""
+      }
+     ]
+    },
+    {
      "name": "Warner Bros. Discovery",
      "jobs": [
+      {
+       "title": "Global Weekend Senior Multiplatform Editor",
+       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-160-Old-Street/Global-Weekend-Senior-Multiplatform-Editor_R000107301",
+       "location": "London, 160 Old Street",
+       "employer": "Warner Bros. Discovery",
+       "salary": ""
+      },
+      {
+       "title": "Online Editor",
+       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London---4-6-Soho-Square/Online-Editor_R000106192",
+       "location": "London - 4-6 Soho Square",
+       "employer": "Warner Bros. Discovery",
+       "salary": ""
+      },
       {
        "title": "Photo Editor",
        "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-160-Old-Street/Photo-Editor_R000107196",
@@ -212,20 +231,6 @@
        "salary": ""
       },
       {
-       "title": "Post Producer",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London---4-6-Soho-Square/Post-Producer_R000106193",
-       "location": "London - 4-6 Soho Square",
-       "employer": "Warner Bros. Discovery",
-       "salary": ""
-      },
-      {
-       "title": "Online Editor",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London---4-6-Soho-Square/Online-Editor_R000106192",
-       "location": "London - 4-6 Soho Square",
-       "employer": "Warner Bros. Discovery",
-       "salary": ""
-      },
-      {
        "title": "Senior Analyst, Business Development, CNNIC",
        "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-160-Old-Street/Senior-Analyst--Business-Development--CNNIC_R000106090-1",
        "location": "London, 160 Old Street",
@@ -233,10 +238,6 @@
        "salary": ""
       }
      ]
-    },
-    {
-     "name": "Sky",
-     "jobs": []
     }
    ]
   },
@@ -512,13 +513,6 @@
        "salary": ""
       },
       {
-       "title": "Advertising Sales Manager - The Week",
-       "url": "https://apply.workable.com/futureplc/j/40D624356F",
-       "location": "London",
-       "employer": "Future plc",
-       "salary": ""
-      },
-      {
        "title": "Event Marketing Manager, Decanter",
        "url": "https://apply.workable.com/futureplc/j/0879920AC9",
        "location": "London",
@@ -552,13 +546,6 @@
       {
        "title": "Senior Ip Commissioning Editor Zaffre Fiction",
        "url": "https://opportunities.creativeaccess.org.uk/job/senior-ip-commissioning-editor-zaffre-fiction-44601",
-       "location": "",
-       "employer": "Creative Access",
-       "salary": ""
-      },
-      {
-       "title": "Higher Education Sales Representative Field Based",
-       "url": "https://opportunities.creativeaccess.org.uk/job/higher-education-sales-representative-field-based-44913",
        "location": "",
        "employer": "Creative Access",
        "salary": ""
@@ -632,6 +619,27 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Producer Distribution",
+       "url": "https://opportunities.creativeaccess.org.uk/job/producer-distribution-45712",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Editor",
+       "url": "https://opportunities.creativeaccess.org.uk/job/editor-45733",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "International Sales Assistant",
+       "url": "https://opportunities.creativeaccess.org.uk/job/international-sales-assistant-45744",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
@@ -639,10 +647,38 @@
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
       {
+       "title": "Research and Account Executive",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73688,Research_and_Account_Executive_Glance_Ltd.html",
+       "location": "London",
+       "employer": "Glance Ltd",
+       "salary": "£30k+"
+      },
+      {
+       "title": "Senior Content Manager",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73682,Senior_Content_Manager_BBC_Studios.html",
+       "location": "London",
+       "employer": "BBC Studios",
+       "salary": ""
+      },
+      {
+       "title": "Performance Marketing Specialist (UK)",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73681,Performance_Marketing_Specialist_UK_QVC.html",
+       "location": "Chiswick, London",
+       "employer": "QVC",
+       "salary": ""
+      },
+      {
        "title": "Creative Producer",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/73724,_Creative_Producer_Little_Dot_Studios.html",
        "location": "London / Hybrid",
        "employer": "Little Dot Studios",
+       "salary": ""
+      },
+      {
+       "title": "Market Planning & Operations Manager (EMEA - Sales Ops)",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73680,Market_Planning_Operations_Manager_EMEA_Sales_Ops_Netflix.html",
+       "location": "London",
+       "employer": "Netflix",
        "salary": ""
       },
       {
@@ -723,13 +759,6 @@
        "salary": ""
       },
       {
-       "title": "Head of Operations, BBC iPlayer",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73712,Head_of_Operations_BBC_iPlayer_BBC.html",
-       "location": "London",
-       "employer": "Grapevine Jobs (UK media — indies + broadcasters)",
-       "salary": ""
-      },
-      {
        "title": "Production Assistant, International Formats",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/73711,Production_Assistant_International_Formats_Sony_Pictures_Entertainment.html",
        "location": "London / Hybrid",
@@ -763,41 +792,6 @@
        "location": "London",
        "employer": "Gravity Media",
        "salary": ""
-      },
-      {
-       "title": "Research and Account Executive",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73688,Research_and_Account_Executive_Glance_Ltd.html",
-       "location": "London",
-       "employer": "Glance Ltd",
-       "salary": "£30k+"
-      },
-      {
-       "title": "Distribution Account Manager",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73648,Distribution_Account_Manager_Ericsson.html",
-       "location": "London",
-       "employer": "Ericsson",
-       "salary": ""
-      },
-      {
-       "title": "Senior Content Manager",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73682,Senior_Content_Manager_BBC_Studios.html",
-       "location": "London",
-       "employer": "BBC Studios",
-       "salary": ""
-      },
-      {
-       "title": "Performance Marketing Specialist (UK)",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73681,Performance_Marketing_Specialist_UK_QVC.html",
-       "location": "Chiswick, London",
-       "employer": "QVC",
-       "salary": ""
-      },
-      {
-       "title": "Market Planning & Operations Manager (EMEA - Sales Ops)",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73680,Market_Planning_Operations_Manager_EMEA_Sales_Ops_Netflix.html",
-       "location": "London",
-       "employer": "Netflix",
-       "salary": ""
       }
      ]
     },
@@ -805,11 +799,11 @@
      "name": "Guardian Jobs — Media",
      "jobs": [
       {
-       "title": "Senior Acquisition Marketing Officer (Legacies)",
-       "url": "https://jobs.theguardian.com/job/10158342/senior-acquisition-marketing-officer-legacies-/",
-       "location": "Central London, London Bridge (hybrid, 1 day/week in office)",
-       "employer": "THE BROOKE",
-       "salary": "£41,500 per annum"
+       "title": "Editorial Manager (French)",
+       "url": "https://jobs.theguardian.com/job/10145950/editorial-manager-french-/",
+       "location": "London office, hybrid (minimum 3 days/week)",
+       "employer": "THAMES & HUDSON",
+       "salary": "£38,000 per annum"
       },
       {
        "title": "Head of Leadership Capability",
@@ -854,6 +848,13 @@
        "salary": "Grade 6, £44,110 (pro-rata)"
       },
       {
+       "title": "Senior Acquisition Marketing Officer (Legacies)",
+       "url": "https://jobs.theguardian.com/job/10158342/senior-acquisition-marketing-officer-legacies-/",
+       "location": "Central London, London Bridge (hybrid, 1 day/week in office)",
+       "employer": "THE BROOKE",
+       "salary": "£41,500 per annum"
+      },
+      {
        "title": "Middle East & Central Asia Editor",
        "url": "https://jobs.theguardian.com/job/10157622/middle-east-and-central-asia-editor/",
        "location": "Oxford OX1 1XX, UK (hybrid – 3 days in office minimum)",
@@ -872,6 +873,34 @@
     {
      "name": "ProductionBase (film & TV)",
      "jobs": [
+      {
+       "title": "Deputy Head of Video",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-head-of-video-manchester-07.26.0248770",
+       "location": "Manchester",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Head of Podcasts",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-podcasts-london-07.26.0248767",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Associate News Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/associate-news-editor-london-07.26.0248766",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Head of Stage",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-stage-northampton-07.26.0248763",
+       "location": "Northampton",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
       {
        "title": "Senior Video Editor",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-video-editor-london-07.26.0248760",
@@ -1009,13 +1038,6 @@
        "title": "Senior Technical Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-technical-producer-leamington-spa-07.26.0248697",
        "location": "Leamington Spa HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Social Video Producer (Money & Lifestyle)",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-video-producer-money-lifestyle-london-07.26.0248688",
-       "location": "London HYBRID",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       }
