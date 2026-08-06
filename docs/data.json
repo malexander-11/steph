@@ -1,7 +1,7 @@
 {
- "generated": "2026-08-05 09:18 UTC",
+ "generated": "2026-08-06 09:31 UTC",
  "totals": {
-  "roles": 139,
+  "roles": 144,
   "employers": 24,
   "sources": 7
  },
@@ -130,13 +130,6 @@
        "salary": ""
       },
       {
-       "title": "Coordinator, DTC Content Operations, EMEA - 6 Month FTC",
-       "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/London-United-Kingdom/Coordinator--DTC-Content-Operations--EMEA---6-Month-FTC_10147157",
-       "location": "London, United Kingdom",
-       "employer": "Disney / Disney+ EMEA",
-       "salary": ""
-      },
-      {
        "title": "Motion Editor (All Levels) - ILM London",
        "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/London-United-Kingdom/Motion-Editor--All-Levels-----ILM-London_10147257",
        "location": "London, United Kingdom",
@@ -159,13 +152,6 @@
        "title": "Director, Group AI, Partnerships & Engagement",
        "url": "https://sky.wd3.myworkdayjobs.com/sky_careers/job/Osterley/Director--Group-AI--Partnerships---Engagement_R0058149",
        "location": "Osterley",
-       "employer": "Sky",
-       "salary": ""
-      },
-      {
-       "title": "Head of AI Innovation and Planning",
-       "url": "https://sky.wd3.myworkdayjobs.com/sky_careers/job/Osterley/Head-of-AI-Innovation-and-Planning_R0058266",
-       "location": "3 Locations",
        "employer": "Sky",
        "salary": ""
       }
@@ -335,8 +321,8 @@
      "name": "Netflix UK",
      "jobs": [
       {
-       "title": "Senior Manager, Creative, UK and Pan-EMEA",
-       "url": "https://explore.jobs.netflix.net/careers/job/790315818311",
+       "title": "Sr. Sales Partner, UK",
+       "url": "https://explore.jobs.netflix.net/careers/job/790317668028",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
@@ -482,6 +468,13 @@
       {
        "title": "Senior Talent Manager – Creator / Digital First",
        "url": "https://insanitygroup.recruitee.com/o/senior-talent-manager-creator-digital-first-1",
+       "location": "London",
+       "employer": "Insanity Group",
+       "salary": ""
+      },
+      {
+       "title": "Talent Coordinator",
+       "url": "https://insanitygroup.recruitee.com/o/talent-coordinator-4",
        "location": "London",
        "employer": "Insanity Group",
        "salary": ""
@@ -663,12 +656,75 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Creative Facilitator",
+       "url": "https://opportunities.creativeaccess.org.uk/job/creative-facilitator-45896",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Marketing And Social Media Manager",
+       "url": "https://opportunities.creativeaccess.org.uk/job/marketing-and-social-media-manager-45907",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Marketing And Advertising Executive Ftc",
+       "url": "https://opportunities.creativeaccess.org.uk/job/marketing-and-advertising-executive-ftc-45919",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
     {
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
+      {
+       "title": "Producer, BBC StoryWorks",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73757,Producer_BBC_StoryWorks_BBC_Studios.html",
+       "location": "London",
+       "employer": "Studios",
+       "salary": ""
+      },
+      {
+       "title": "Performance Marketing Specialist (UK)",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73681,Performance_Marketing_Specialist_UK_QVC.html",
+       "location": "Chiswick, London",
+       "employer": "QVC",
+       "salary": ""
+      },
+      {
+       "title": "Research and Account Executive",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73688,Research_and_Account_Executive_Glance_Ltd.html",
+       "location": "London",
+       "employer": "Glance Ltd",
+       "salary": "£30k+"
+      },
+      {
+       "title": "Director of Localisation – C5274",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73742,Director_of_Localisation_C5274_Searchlight_Executive.html",
+       "location": "London - Central",
+       "employer": "Searchlight Executive",
+       "salary": ""
+      },
+      {
+       "title": "Coordinator/Analyst, Sales Planning & Operations - EMEA",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73744,Coordinator_Analyst_Sales_Planning_Operations_EMEA_Sony_Pictures_Entertainment.html",
+       "location": "London / Hybrid",
+       "employer": "Sony Pictures Entertainment",
+       "salary": ""
+      },
+      {
+       "title": "Head of Data Product",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73743,Head_of_Data_Product_Channel_4.html",
+       "location": "London",
+       "employer": "Channel 4",
+       "salary": ""
+      },
       {
        "title": "Head of YouTube - C5275",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73667,Head_of_YouTube_C5275_Searchlight_Executive.html",
@@ -740,38 +796,10 @@
        "salary": ""
       },
       {
-       "title": "Production Assistant, International Formats",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73711,Production_Assistant_International_Formats_Sony_Pictures_Entertainment.html",
-       "location": "London / Hybrid",
-       "employer": "Sony Pictures Entertainment",
-       "salary": ""
-      },
-      {
        "title": "Coordinator, DTC Content Operations, EMEA",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/73631,Coordinator_DTC_Content_Operations_EMEA_Walt_Disney.html",
        "location": "London",
        "employer": "Walt Disney",
-       "salary": ""
-      },
-      {
-       "title": "Research and Account Executive",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73688,Research_and_Account_Executive_Glance_Ltd.html",
-       "location": "London",
-       "employer": "Glance Ltd",
-       "salary": "£30k+"
-      },
-      {
-       "title": "Performance Marketing Specialist (UK)",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73681,Performance_Marketing_Specialist_UK_QVC.html",
-       "location": "Chiswick, London",
-       "employer": "QVC",
-       "salary": ""
-      },
-      {
-       "title": "Market Planning & Operations Manager (EMEA - Sales Ops)",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73680,Market_Planning_Operations_Manager_EMEA_Sales_Ops_Netflix.html",
-       "location": "London",
-       "employer": "Netflix",
        "salary": ""
       }
      ]
@@ -787,6 +815,20 @@
        "salary": "£41,500 per annum"
       },
       {
+       "title": "Senior Media and PR Manager, Fundraising and Brand",
+       "url": "https://jobs.theguardian.com/job/10163641/senior-media-and-pr-manager-fundraising-and-brand/",
+       "location": "London, UK (hybrid - up to 3 days per week from home)",
+       "employer": "BREAST CANCER NOW",
+       "salary": "£47,000 - £52,000 per annum"
+      },
+      {
+       "title": "Video Producer",
+       "url": "https://jobs.theguardian.com/job/10167272/video-producer/",
+       "location": "Westminster",
+       "employer": "HOUSE OF COMMONS",
+       "salary": "£37834 - £41998 per annum + Permanent"
+      },
+      {
        "title": "Communications Manager",
        "url": "https://jobs.theguardian.com/job/10160834/communications-manager/",
        "location": "Westminster",
@@ -799,33 +841,103 @@
        "location": "UK-wide, remote or hybrid (Gateshead office)",
        "employer": "SING UP",
        "salary": "£30,000 - £32,000 per annum (full time equivalent)"
-      },
-      {
-       "title": "Senior Media and PR Manager, Fundraising and Brand",
-       "url": "https://jobs.theguardian.com/job/10163641/senior-media-and-pr-manager-fundraising-and-brand/",
-       "location": "London, UK (hybrid - up to 3 days per week from home)",
-       "employer": "BREAST CANCER NOW",
-       "salary": "£47,000 - £52,000 per annum"
-      },
-      {
-       "title": "Email & SMS Marketing Senior Executive",
-       "url": "https://jobs.theguardian.com/job/10163631/email-and-sms-marketing-senior-executive/",
-       "location": "Stratford",
-       "employer": "CANCER RESEARCH UK",
-       "salary": "£36,000 - £40,000 per annum + pension"
-      },
-      {
-       "title": "Commercial Marketing Assistant",
-       "url": "https://jobs.theguardian.com/job/10163630/commercial-marketing-assistant/",
-       "location": "London",
-       "employer": "LAW SOCIETY",
-       "salary": "Up to £28,090 per annum + 3% flex fund after 3 months + Bens"
       }
      ]
     },
     {
      "name": "ProductionBase (film & TV)",
      "jobs": [
+      {
+       "title": "Animatic Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/animatic-editor-bristol-08.26.0248879",
+       "location": "Bristol",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Online Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/online-producer-bristol-08.26.0248878",
+       "location": "Bristol HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Casting Researcher",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/casting-researcher-bristol-or-remote-08.26.0248877",
+       "location": "Bristol or Remote REMOTE",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Social Video Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-video-producer-london-08.26.0248876",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Assistant Producer - Breakfast",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/assistant-producer--breakfast-london-08.26.0248873",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Senior Podcast Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-podcast-producer-london-08.26.0248872",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Senior Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-producer-london-08.26.0248871",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Executive Producer - Manchester",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/executive-producer--manchester-manchester-08.26.0248869",
+       "location": "Manchester HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Executive Producer - Manchester or Birmingham",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/executive-producer--manchester-or-birmingham-manchester-or-birmingham-08.26.0248868",
+       "location": "Manchester or Birmingham HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-manchester-or-london-08.26.0248867",
+       "location": "Manchester or London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Deputy Head of Sound",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-head-of-sound-chichester-08.26.0248866",
+       "location": "Chichester",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Development Administrator",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/development-administrator-london-08.26.0248865",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Content Creative",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/content-creative-london-08.26.0248862",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
       {
        "title": "Animation Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/animation-producer-london-08.26.0248858",
@@ -844,13 +956,6 @@
        "title": "Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/producer-remote-08.26.0248855",
        "location": "Remote REMOTE",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Deputy Head of Sound",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-head-of-sound-london-08.26.0248850",
-       "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -1040,76 +1145,6 @@
        "title": "Digital Marketing Manager",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/digital-marketing-manager-london-07.26.0248802",
        "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Junior Creative Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/junior-creative-producer-london-07.26.0248800",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Content Creator (Entry-level)",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/content-creator-entry-level-croydon-07.26.0248799",
-       "location": "Croydon",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Video Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-croydon-07.26.0248798",
-       "location": "Croydon HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Social Media Content Creator & Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-media-content-creator-editor-london-07.26.0248795",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Creative Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-producer-london-07.26.0248793",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Video Editor (Social First)",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-social-first-london-07.26.0248792",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Social Content Creator (TikTok/Instagram)",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-content-creator-tiktok-instagram-remote-working-07.26.0248789",
-       "location": "Remote Working REMOTE",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Edit Creative",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/edit-creative-london-07.26.0248786",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Video Content Creator",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-content-creator-london-07.26.0248785",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Creative Content Producer & Videographer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-content-producer-videographer-london-07.26.0248781",
-       "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       }
