@@ -1,7 +1,7 @@
 {
- "generated": "2026-08-27 17:46 UTC",
+ "generated": "2026-08-28 18:54 UTC",
  "totals": {
-  "roles": 127,
+  "roles": 131,
   "employers": 24,
   "sources": 7
  },
@@ -135,13 +135,6 @@
        "salary": ""
       },
       {
-       "title": "Localisation Post Producer",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London---4-6-Soho-Square/Localisation-Post-Producer_R000107231",
-       "location": "London - 4-6 Soho Square",
-       "employer": "Warner Bros. Discovery",
-       "salary": ""
-      },
-      {
        "title": "Sales Assistant, Ad Sales",
        "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-160-Old-Street/Sales-Assistant--Ad-Sales_R000107298-1",
        "location": "London, 160 Old Street",
@@ -240,18 +233,6 @@
      ]
     },
     {
-     "name": "Netflix UK",
-     "jobs": [
-      {
-       "title": "Ads Product Marketing Manager (EMEA)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790318033224",
-       "location": "London,United Kingdom",
-       "employer": "Netflix UK",
-       "salary": ""
-      }
-     ]
-    },
-    {
      "name": "Prime Video (Amazon)",
      "jobs": [
       {
@@ -262,6 +243,10 @@
        "salary": ""
       }
      ]
+    },
+    {
+     "name": "Netflix UK",
+     "jobs": []
     }
    ]
   },
@@ -372,6 +357,13 @@
     {
      "name": "Future plc",
      "jobs": [
+      {
+       "title": "Head of Digital, Decanter - 12 Month FTC",
+       "url": "https://apply.workable.com/futureplc/j/B2DC2C8249",
+       "location": "London",
+       "employer": "Future plc",
+       "salary": ""
+      },
       {
        "title": "Sales & Retention Assistant, Magazine Subscriptions",
        "url": "https://apply.workable.com/futureplc/j/FD46839751",
@@ -514,12 +506,26 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Publicity Manager Adult Trade",
+       "url": "https://opportunities.creativeaccess.org.uk/job/publicity-manager-adult-trade-46549",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
     {
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
+      {
+       "title": "Podcast Producer",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73788,Podcast_Producer_The_Times_The_Sunday_Times.html",
+       "location": "London",
+       "employer": "The Times The Sunday Times",
+       "salary": ""
+      },
       {
        "title": "Reporter/Text Editor (Newsperson)",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73862,Reporter_Text_Editor_Newsperson_Associated_Press.html",
@@ -528,11 +534,25 @@
        "salary": ""
       },
       {
+       "title": "Content Manager, NT at Home",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73880,Content_Manager_NT_at_Home_National_Theatre.html",
+       "location": "London",
+       "employer": "National Theatre",
+       "salary": ""
+      },
+      {
        "title": "Digital Producer (South)",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/73861,Digital_Producer_South_Science_Museum_Group.html",
        "location": "London",
        "employer": "Science Museum Group",
        "salary": ""
+      },
+      {
+       "title": "Research and Account Executive",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73688,Research_and_Account_Executive_Glance_Ltd.html",
+       "location": "London",
+       "employer": "Glance Ltd",
+       "salary": "£30k+"
       },
       {
        "title": "Marketing Coordinator, BBC Proms Publications",
@@ -584,13 +604,6 @@
        "salary": ""
       },
       {
-       "title": "Sales Manager - Out of Home",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73821,Sales_Manager_Out_of_Home_BBC_Studios.html",
-       "location": "London",
-       "employer": "BBC Studios",
-       "salary": ""
-      },
-      {
        "title": "Event Marketing Director - TV Licensing",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73794,Event_Marketing_Director_TV_Licensing_Paramount.html",
        "location": "London Maternity Cover",
@@ -619,25 +632,18 @@
        "salary": ""
       },
       {
+       "title": "Localisation Post Producer",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73789,Localisation_Post_Producer_Warner_Bros_Discovery.html",
+       "location": "London",
+       "employer": "Warner Bros Discovery",
+       "salary": ""
+      },
+      {
        "title": "Performance Marketing Specialist (UK)",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/73681,Performance_Marketing_Specialist_UK_QVC.html",
        "location": "Chiswick, London",
        "employer": "QVC",
        "salary": ""
-      },
-      {
-       "title": "Podcast Producer",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73788,Podcast_Producer_The_Times_The_Sunday_Times.html",
-       "location": "London",
-       "employer": "The Times The Sunday Times",
-       "salary": ""
-      },
-      {
-       "title": "Research and Account Executive",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73688,Research_and_Account_Executive_Glance_Ltd.html",
-       "location": "London",
-       "employer": "Glance Ltd",
-       "salary": "£30k+"
       }
      ]
     },
@@ -645,17 +651,24 @@
      "name": "Guardian Jobs — Media",
      "jobs": [
       {
-       "title": "Book Editor (Freelance)",
-       "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
-       "location": "Remote",
-       "employer": "Reedsy",
-       "salary": ""
-      },
-      {
        "title": "Group Head of IT",
        "url": "https://jobs.theguardian.com/job/10177938/group-head-of-it/",
        "location": "King's Cross",
        "employer": "THAMES & HUDSON",
+       "salary": ""
+      },
+      {
+       "title": "Digital Marketing and Platforms Manager",
+       "url": "https://jobs.theguardian.com/job/10183236/digital-marketing-and-platforms-manager/",
+       "location": "Head Office, Salford Quays, M50 3XZ.",
+       "employer": "USDAW",
+       "salary": "£54,499 - £61,913 pa (after probation)"
+      },
+      {
+       "title": "Book Editor (Freelance)",
+       "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
+       "location": "Remote",
+       "employer": "Reedsy",
        "salary": ""
       },
       {
@@ -706,19 +719,47 @@
        "location": "Remote, UK and Europe",
        "employer": "MCI UK Limited",
        "salary": "Up to £80,000 pro-rated for 25-30 hours per week"
-      },
-      {
-       "title": "Fundraising and Communications Manager",
-       "url": "https://jobs.theguardian.com/job/10175444/fundraising-and-communications-manager/",
-       "location": "Perth, Scotland. Hybrid role combining home-working with time at our office & travel for meetings",
-       "employer": "WORKER SUPPORT CENTRE",
-       "salary": "£42,000 - £48,000 per annum depending on experience"
       }
      ]
     },
     {
      "name": "ProductionBase (film & TV)",
      "jobs": [
+      {
+       "title": "Digital Content Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/digital-content-producer-london-08.26.0249137",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Editor Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-producer-london-08.26.0249135",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-producer-london-08.26.0249134",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Ad Creative Video Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/ad-creative-video-editor-remote-uk-08.26.0249133",
+       "location": "Remote (UK) REMOTE",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Junior Digital Video Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/junior-digital-video-editor-london-08.26.0249131",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
       {
        "title": "Head of Costume Production",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-costume-production-london-08.26.0249126",
@@ -1010,20 +1051,6 @@
        "title": "Video Content Producer (Contractor)",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/video-content-producer-contractor-cambridge-08.26.0249052",
        "location": "Cambridge HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Senior Assistant Producer (Live)",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-live-stockley-park-london-08.26.0249047",
-       "location": "Stockley Park, London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Make-Up Artist (Talent Pool)",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/make-up-artist-talent-pool-manchester-08.26.0249044",
-       "location": "Manchester",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       }
