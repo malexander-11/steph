@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-28 18:54 UTC",
+ "generated": "2026-08-31 14:15 UTC",
  "seen_keys": [
   "https://apply.workable.com/futureplc/j/07CAC04A62",
   "https://apply.workable.com/futureplc/j/0879920AC9",
@@ -689,13 +689,6 @@
      "salary": ""
     },
     {
-     "title": "Senior Specialist, English Media Transcription (Theatrical & Episodic Content)",
-     "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London---4-6-Soho-Square/Senior-Specialist--English-Transcription_R000106116",
-     "location": "London - 4-6 Soho Square",
-     "employer": "Warner Bros. Discovery",
-     "salary": ""
-    },
-    {
      "title": "Photo Editor",
      "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-160-Old-Street/Photo-Editor_R000107196",
      "location": "London, 160 Old Street",
@@ -965,6 +958,27 @@
   "aggregators": {
    "Grapevine Jobs (UK media — indies + broadcasters)": [
     {
+     "title": "Paid Social Executive",
+     "url": "https://www.grapevinejobs.co.uk/mediajobs/73808,Paid_Social_Executive_BBC_Studios.html",
+     "location": "London",
+     "employer": "BBC Studios",
+     "salary": ""
+    },
+    {
+     "title": "Content Manager, NT at Home",
+     "url": "https://www.grapevinejobs.co.uk/mediajobs/73880,Content_Manager_NT_at_Home_National_Theatre.html",
+     "location": "London",
+     "employer": "National Theatre",
+     "salary": ""
+    },
+    {
+     "title": "Performance Marketing Specialist (UK)",
+     "url": "https://www.grapevinejobs.co.uk/mediajobs/73681,Performance_Marketing_Specialist_UK_QVC.html",
+     "location": "Chiswick, London",
+     "employer": "QVC",
+     "salary": ""
+    },
+    {
      "title": "Podcast Producer",
      "url": "https://www.grapevinejobs.co.uk/mediajobs/73788,Podcast_Producer_The_Times_The_Sunday_Times.html",
      "location": "London",
@@ -976,13 +990,6 @@
      "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73862,Reporter_Text_Editor_Newsperson_Associated_Press.html",
      "location": "London",
      "employer": "Associated Press",
-     "salary": ""
-    },
-    {
-     "title": "Content Manager, NT at Home",
-     "url": "https://www.grapevinejobs.co.uk/mediajobs/73880,Content_Manager_NT_at_Home_National_Theatre.html",
-     "location": "London",
-     "employer": "National Theatre",
      "salary": ""
     },
     {
@@ -998,13 +1005,6 @@
      "location": "London",
      "employer": "Glance Ltd",
      "salary": "£30k+"
-    },
-    {
-     "title": "Marketing Coordinator, BBC Proms Publications",
-     "url": "https://www.grapevinejobs.co.uk/mediajobs/73843,Marketing_Coordinator_BBC_Proms_Publications_BBC.html",
-     "location": "London",
-     "employer": "Grapevine Jobs (UK media — indies + broadcasters)",
-     "salary": ""
     },
     {
      "title": "Social Media Executive",
@@ -1061,42 +1061,14 @@
      "location": "London",
      "employer": "GB News",
      "salary": ""
-    },
-    {
-     "title": "Video Producer (Podcasts)",
-     "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73767,Video_Producer_Podcasts_The_Guardian.html",
-     "location": "London",
-     "employer": "The Guardian",
-     "salary": ""
-    },
-    {
-     "title": "Paid Social Executive",
-     "url": "https://www.grapevinejobs.co.uk/mediajobs/73808,Paid_Social_Executive_BBC_Studios.html",
-     "location": "London",
-     "employer": "BBC Studios",
-     "salary": ""
-    },
-    {
-     "title": "Localisation Post Producer",
-     "url": "https://www.grapevinejobs.co.uk/mediajobs/73789,Localisation_Post_Producer_Warner_Bros_Discovery.html",
-     "location": "London",
-     "employer": "Warner Bros Discovery",
-     "salary": ""
-    },
-    {
-     "title": "Performance Marketing Specialist (UK)",
-     "url": "https://www.grapevinejobs.co.uk/mediajobs/73681,Performance_Marketing_Specialist_UK_QVC.html",
-     "location": "Chiswick, London",
-     "employer": "QVC",
-     "salary": ""
     }
    ],
    "Guardian Jobs — Media": [
     {
-     "title": "Group Head of IT",
-     "url": "https://jobs.theguardian.com/job/10177938/group-head-of-it/",
-     "location": "King's Cross",
-     "employer": "THAMES & HUDSON",
+     "title": "Book Editor (Freelance)",
+     "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
+     "location": "Remote",
+     "employer": "Reedsy",
      "salary": ""
     },
     {
@@ -1107,10 +1079,10 @@
      "salary": "£54,499 - £61,913 pa (after probation)"
     },
     {
-     "title": "Book Editor (Freelance)",
-     "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
-     "location": "Remote",
-     "employer": "Reedsy",
+     "title": "Group Head of IT",
+     "url": "https://jobs.theguardian.com/job/10177938/group-head-of-it/",
+     "location": "King's Cross",
+     "employer": "THAMES & HUDSON",
      "salary": ""
     },
     {
@@ -1161,6 +1133,13 @@
      "location": "Remote, UK and Europe",
      "employer": "MCI UK Limited",
      "salary": "Up to £80,000 pro-rated for 25-30 hours per week"
+    },
+    {
+     "title": "Fundraising and Communications Manager",
+     "url": "https://jobs.theguardian.com/job/10175444/fundraising-and-communications-manager/",
+     "location": "Perth, Scotland. Hybrid role combining home-working with time at our office & travel for meetings",
+     "employer": "WORKER SUPPORT CENTRE",
+     "salary": "£42,000 - £48,000 per annum depending on experience"
     }
    ],
    "ProductionBase (film & TV)": [
@@ -1202,13 +1181,6 @@
     {
      "title": "Head of Costume Production",
      "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-costume-production-london-08.26.0249126",
-     "location": "London",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "Producer-Digital (maternity cover)",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/producer-digital-maternity-cover-london-08.26.0249123",
      "location": "London",
      "employer": "ProductionBase (film & TV)",
      "salary": ""
@@ -1272,20 +1244,6 @@
     {
      "title": "Content Specialist",
      "url": "https://www.productionbase.co.uk/film-tv-jobs/content-specialist-london-08.26.0249110",
-     "location": "London",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "Head of Video",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-video-london-08.26.0249105",
-     "location": "London",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "Creative Producer and Project Manager",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-producer-and-project-manager-london-08.26.0249104",
      "location": "London",
      "employer": "ProductionBase (film & TV)",
      "salary": ""
@@ -1492,6 +1450,27 @@
      "location": "Cambridge HYBRID",
      "employer": "ProductionBase (film & TV)",
      "salary": ""
+    },
+    {
+     "title": "Make-Up Artist (Talent Pool)",
+     "url": "https://www.productionbase.co.uk/film-tv-jobs/make-up-artist-talent-pool-manchester-08.26.0249044",
+     "location": "Manchester",
+     "employer": "ProductionBase (film & TV)",
+     "salary": ""
+    },
+    {
+     "title": "Team Producer (Promos)",
+     "url": "https://www.productionbase.co.uk/film-tv-jobs/team-producer-promos-white-city-london-08.26.0249042",
+     "location": "White City, London",
+     "employer": "ProductionBase (film & TV)",
+     "salary": ""
+    },
+    {
+     "title": "Multimedia Producer",
+     "url": "https://www.productionbase.co.uk/film-tv-jobs/multimedia-producer-london-08.26.0249040",
+     "location": "London HYBRID",
+     "employer": "ProductionBase (film & TV)",
+     "salary": ""
     }
    ],
    "Creative Access": [
@@ -1540,20 +1519,6 @@
     {
      "title": "Creative Practice Access Support",
      "url": "https://opportunities.creativeaccess.org.uk/job/creative-practice-access-support-46017",
-     "location": "",
-     "employer": "Creative Access",
-     "salary": ""
-    },
-    {
-     "title": "Dk International Sales Marketing Material Assistant",
-     "url": "https://opportunities.creativeaccess.org.uk/job/dk-international-sales-marketing-material-assistant-46177",
-     "location": "",
-     "employer": "Creative Access",
-     "salary": ""
-    },
-    {
-     "title": "Canelo Desk Editor",
-     "url": "https://opportunities.creativeaccess.org.uk/job/canelo-desk-editor-46178",
      "location": "",
      "employer": "Creative Access",
      "salary": ""
