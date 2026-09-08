@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-07 12:52 UTC",
+ "generated": "2026-09-08 11:34 UTC",
  "totals": {
   "roles": 125,
   "employers": 24,
@@ -66,6 +66,20 @@
     {
      "name": "Disney / Disney+ EMEA",
      "jobs": [
+      {
+       "title": "Senior Manager, Entertainment New Build",
+       "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/London-United-Kingdom/Senior-Manager--Entertainment-New-Build_10158342",
+       "location": "London, United Kingdom",
+       "employer": "Disney / Disney+ EMEA",
+       "salary": ""
+      },
+      {
+       "title": "Digital Accounts Executive",
+       "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/London-United-Kingdom/Digital-Accounts-Executive_10158996",
+       "location": "London, United Kingdom",
+       "employer": "Disney / Disney+ EMEA",
+       "salary": ""
+      },
       {
        "title": "Manager, Influencer Marketing",
        "url": "https://disney.wd5.myworkdayjobs.com/disneycareer/job/London-United-Kingdom/Manager--Influencer-Marketing_10158131",
@@ -277,15 +291,15 @@
      "name": "NBCUniversal",
      "jobs": [
       {
-       "title": "Content Solutions Specialist",
-       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000147553141",
-       "location": "London, GB",
+       "title": "Associate Producer",
+       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000148202399",
+       "location": "Brentford, GB",
        "employer": "NBCUniversal",
        "salary": ""
       },
       {
-       "title": "PA to MD & Marketing Director (FTC)",
-       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000147244649",
+       "title": "Content Solutions Specialist",
+       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000147553141",
        "location": "London, GB",
        "employer": "NBCUniversal",
        "salary": ""
@@ -495,13 +509,6 @@
        "salary": ""
       },
       {
-       "title": "Editorial Project Manager",
-       "url": "https://opportunities.creativeaccess.org.uk/job/editorial-project-manager-46401",
-       "location": "",
-       "employer": "Creative Access",
-       "salary": ""
-      },
-      {
        "title": "Online Editor",
        "url": "https://opportunities.creativeaccess.org.uk/job/online-editor-46409",
        "location": "",
@@ -563,6 +570,13 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Marketing Executive",
+       "url": "https://opportunities.creativeaccess.org.uk/job/marketing-executive-46930",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
@@ -612,13 +626,6 @@
        "salary": ""
       },
       {
-       "title": "Broadcast Licensing Executive",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73832,Broadcast_Licensing_Executive_Ofcom.html",
-       "location": "London",
-       "employer": "Ofcom",
-       "salary": ""
-      },
-      {
        "title": "Content Supply-Chain Lead",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73831,Content_Supply_Chain_Lead_Little_Dot_Studios.html",
        "location": "London",
@@ -637,6 +644,13 @@
     {
      "name": "Guardian Jobs — Media",
      "jobs": [
+      {
+       "title": "Book Editor (Freelance)",
+       "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
+       "location": "Remote",
+       "employer": "Reedsy",
+       "salary": ""
+      },
       {
        "title": "Managing Editor - EuroTimes & ESCRS Today",
        "url": "https://jobs.theguardian.com/job/10175441/managing-editor-eurotimes-and-escrs-today/",
@@ -657,13 +671,6 @@
        "location": "Head Office, Salford Quays, M50 3XZ.",
        "employer": "USDAW",
        "salary": "£54,499 - £61,913 pa (after probation)"
-      },
-      {
-       "title": "Book Editor (Freelance)",
-       "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
-       "location": "Remote",
-       "employer": "Reedsy",
-       "salary": ""
       },
       {
        "title": "Head of Commercial",
@@ -716,6 +723,48 @@
        "title": "Creative Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-producer-shoreditch-london-09.26.0249157",
        "location": "Shoreditch, London. HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/producer-london-09.26.0249218",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Freelance Editor / Colourist - Fashion Campaign Film",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/freelance-editor--colourist--fashion-campaign-film-fully-remote-09.26.0249216",
+       "location": "Fully Remote",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Branded Video Production Coordinator",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/branded-video-production-coordinator-london-09.26.0249215",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Chief Sub Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/chief-sub-editor-london-09.26.0249213",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Media Researcher",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/media-researcher-london-09.26.0249212",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "YouTube Editor (IRL Content)",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/youtube-editor-irl-content-north-somerset-09.26.0249211",
+       "location": "North Somerset HYBRID",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -860,13 +909,6 @@
        "salary": ""
       },
       {
-       "title": "Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/producer-manchester-09.26.0249162",
-       "location": "Manchester",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
        "title": "Senior Cinema Distribution Manager",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-cinema-distribution-manager-se1-9px-09.26.0249160",
        "location": "SE1 9PX HYBRID",
@@ -968,48 +1010,6 @@
        "title": "Video Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/video-producer-london-08.26.0249134",
        "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Ad Creative Video Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/ad-creative-video-editor-remote-uk-08.26.0249133",
-       "location": "Remote (UK) REMOTE",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Junior Digital Video Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/junior-digital-video-editor-london-08.26.0249131",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Head of Production, Maternity Cover",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-production-maternity-cover-london-08.26.0249121",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Junior Content Creator & Video Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/junior-content-creator-video-editor-portsmouth-08.26.0249115",
-       "location": "Portsmouth",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Video & Multimedia Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-multimedia-editor-portsmouth-08.26.0249114",
-       "location": "Portsmouth",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Video Production Executive",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-production-executive-remote-uk-08.26.0249113",
-       "location": "Remote (UK) REMOTE",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       }
