@@ -1,7 +1,7 @@
 {
- "generated": "2026-09-10 11:38 UTC",
+ "generated": "2026-09-11 11:39 UTC",
  "totals": {
-  "roles": 119,
+  "roles": 115,
   "employers": 24,
   "sources": 7
  },
@@ -262,18 +262,6 @@
      ]
     },
     {
-     "name": "Netflix UK",
-     "jobs": [
-      {
-       "title": "Creative Assistant, IP Scouting, EMEA (12 Month FTC)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790318351149",
-       "location": "London,United Kingdom",
-       "employer": "Netflix UK",
-       "salary": ""
-      }
-     ]
-    },
-    {
      "name": "Prime Video (Amazon)",
      "jobs": [
       {
@@ -284,6 +272,10 @@
        "salary": ""
       }
      ]
+    },
+    {
+     "name": "Netflix UK",
+     "jobs": []
     }
    ]
   },
@@ -423,6 +415,13 @@
      "name": "Future plc",
      "jobs": [
       {
+       "title": "Social Media Editor, Cycling",
+       "url": "https://apply.workable.com/futureplc/j/9C2BE7093B",
+       "location": "Winnersh",
+       "employer": "Future plc",
+       "salary": ""
+      },
+      {
        "title": "Brand Marketing Manager, Games",
        "url": "https://apply.workable.com/futureplc/j/36C320DE66",
        "location": "Bath",
@@ -446,13 +445,6 @@
       {
        "title": "Producer, Video Game Shows",
        "url": "https://apply.workable.com/futureplc/j/23E5F69403",
-       "location": "Bath",
-       "employer": "Future plc",
-       "salary": ""
-      },
-      {
-       "title": "Email Audience Development Manager",
-       "url": "https://apply.workable.com/futureplc/j/4C8BE39C40",
        "location": "Bath",
        "employer": "Future plc",
        "salary": ""
@@ -613,12 +605,26 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Creative Access Masterclass Va Rising Voices Private View",
+       "url": "https://opportunities.creativeaccess.org.uk/job/creative-access-masterclass-va-rising-voices-private-view-47101",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
     {
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
+      {
+       "title": "Post Producer - Maternity Cover October - June",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73918,Post_Producer_Maternity_Cover_October_June_Lucky_Cat_Post_Production.html",
+       "location": "Soho, London",
+       "employer": "Lucky Cat Post Production",
+       "salary": "£30k+"
+      },
       {
        "title": "Creative Assistant, IP Scouting, EMEA",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/73923,Creative_Assistant_IP_Scouting_EMEA_Netflix.html",
@@ -634,24 +640,10 @@
        "salary": ""
       },
       {
-       "title": "Post Producer - Maternity Cover October - June",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73918,Post_Producer_Maternity_Cover_October_June_Lucky_Cat_Post_Production.html",
-       "location": "Soho, London",
-       "employer": "Lucky Cat Post Production",
-       "salary": "£30k+"
-      },
-      {
        "title": "Assistant Editor – Late Show Live",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/73792,Assistant_Editor_Late_Show_Live_GB_News.html",
        "location": "London",
        "employer": "GB News",
-       "salary": ""
-      },
-      {
-       "title": "Content Manager, NT at Home",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73880,Content_Manager_NT_at_Home_National_Theatre.html",
-       "location": "London",
-       "employer": "National Theatre",
        "salary": ""
       },
       {
@@ -666,13 +658,6 @@
     {
      "name": "Guardian Jobs — Media",
      "jobs": [
-      {
-       "title": "Book Editor (Freelance)",
-       "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
-       "location": "Remote",
-       "employer": "Reedsy",
-       "salary": ""
-      },
       {
        "title": "Managing Editor - EuroTimes & ESCRS Today",
        "url": "https://jobs.theguardian.com/job/10175441/managing-editor-eurotimes-and-escrs-today/",
@@ -693,6 +678,13 @@
        "location": "Head Office, Salford Quays, M50 3XZ.",
        "employer": "USDAW",
        "salary": "£54,499 - £61,913 pa (after probation)"
+      },
+      {
+       "title": "Book Editor (Freelance)",
+       "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
+       "location": "Remote",
+       "employer": "Reedsy",
+       "salary": ""
       },
       {
        "title": "Head of Commercial",
@@ -731,6 +723,20 @@
        "title": "Creative Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-producer-shoreditch-london-09.26.0249157",
        "location": "Shoreditch, London. HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Assistant Animatic Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/assistant-animatic-editor-bristol-09.26.0249282",
+       "location": "Bristol",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Executive Assistant - Football",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant--football-london-09.26.0249281",
+       "location": "London HYBRID",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -896,13 +902,6 @@
        "salary": ""
       },
       {
-       "title": "Freelance Editor / Colourist - Fashion Campaign Film",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/freelance-editor--colourist--fashion-campaign-film-fully-remote-09.26.0249216",
-       "location": "Fully Remote",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
        "title": "Branded Video Production Coordinator",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/branded-video-production-coordinator-london-09.26.0249215",
        "location": "London",
@@ -938,36 +937,8 @@
        "salary": ""
       },
       {
-       "title": "Senior Content Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-content-producer-leeds-09.26.0249205",
-       "location": "Leeds",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
        "title": "Senior Digital Development Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-digital-development-producer-london-09.26.0249203",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Researcher",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/researcher-brighton-09.26.0249198",
-       "location": "Brighton",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Creative Assistant",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-assistant-london-09.26.0249196",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Senior Creative Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-creative-producer-london-09.26.0249195",
        "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
