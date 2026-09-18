@@ -1,7 +1,7 @@
 {
- "generated": "2026-09-17 11:57 UTC",
+ "generated": "2026-09-18 11:35 UTC",
  "totals": {
-  "roles": 130,
+  "roles": 139,
   "employers": 24,
   "sources": 7
  },
@@ -71,6 +71,13 @@
       {
        "title": "Head of Group Corporate Communications",
        "url": "https://careers.dazn.com/en/postings/4a0a2e7d-96a5-443f-8cf8-caad7c714676",
+       "location": "UK - London",
+       "employer": "DAZN",
+       "salary": ""
+      },
+      {
+       "title": "Influencer Marketing Manager",
+       "url": "https://careers.dazn.com/en/postings/b5136a42-9c63-4282-af4f-3b79811c5853",
        "location": "UK - London",
        "employer": "DAZN",
        "salary": ""
@@ -245,6 +252,13 @@
        "salary": ""
       },
       {
+       "title": "Editorial Assistant, Emmerdale - Perm",
+       "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1515",
+       "location": "Leeds, West Yorkshire, United Kingdom",
+       "employer": "ITV",
+       "salary": ""
+      },
+      {
        "title": "2nd Costume Assistant, Emmerdale - Talent Pool for Freelance Opportunities",
        "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1509",
        "location": "Leeds, West Yorkshire, United Kingdom",
@@ -264,13 +278,6 @@
        "location": "Greater Manchester, United Kingdom",
        "employer": "ITV",
        "salary": ""
-      },
-      {
-       "title": "Brand Programme Planning & Delivery Lead",
-       "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1469",
-       "location": "United Kingdom",
-       "employer": "ITV",
-       "salary": ""
       }
      ]
     },
@@ -278,15 +285,15 @@
      "name": "Netflix UK",
      "jobs": [
       {
-       "title": "Director, F&S Partnerships EMEA",
-       "url": "https://explore.jobs.netflix.net/careers/job/790318484737",
+       "title": "Marketing Manager - UK Film",
+       "url": "https://explore.jobs.netflix.net/careers/job/790318169445",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
       },
       {
-       "title": "Title Marketing Manager",
-       "url": "https://explore.jobs.netflix.net/careers/job/790318169445",
+       "title": "Director, F&S Partnerships EMEA",
+       "url": "https://explore.jobs.netflix.net/careers/job/790318484737",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
@@ -311,6 +318,18 @@
    "name": "international_sales",
    "sites": [
     {
+     "name": "Cineflix",
+     "jobs": [
+      {
+       "title": "Head Of Development",
+       "url": "https://cineflix.com/careers/head-of-development/",
+       "location": "",
+       "employer": "Cineflix",
+       "salary": ""
+      }
+     ]
+    },
+    {
      "name": "Getty Images",
      "jobs": [
       {
@@ -332,6 +351,20 @@
     {
      "name": "NBCUniversal",
      "jobs": [
+      {
+       "title": "Executive Search Coordinator",
+       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000150337755",
+       "location": "London, GB",
+       "employer": "NBCUniversal",
+       "salary": ""
+      },
+      {
+       "title": "Marketing Director",
+       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000150167855",
+       "location": "London, GB",
+       "employer": "NBCUniversal",
+       "salary": ""
+      },
       {
        "title": "Senior Marketing Manager",
        "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000149901309",
@@ -361,10 +394,6 @@
        "salary": ""
       }
      ]
-    },
-    {
-     "name": "Cineflix",
-     "jobs": []
     },
     {
      "name": "Sony Pictures Television",
@@ -443,6 +472,27 @@
      "name": "Future plc",
      "jobs": [
       {
+       "title": "Influencer & Creator Partnerships Manager",
+       "url": "https://apply.workable.com/futureplc/j/C3EF7CDF35",
+       "location": "London",
+       "employer": "Future plc",
+       "salary": ""
+      },
+      {
+       "title": "Senior Growth Marketing Manager",
+       "url": "https://apply.workable.com/futureplc/j/829CB9D5BD",
+       "location": "London",
+       "employer": "Future plc",
+       "salary": ""
+      },
+      {
+       "title": "Head of Subscription Analytics",
+       "url": "https://apply.workable.com/futureplc/j/23CEFF1F33",
+       "location": "London",
+       "employer": "Future plc",
+       "salary": ""
+      },
+      {
        "title": "Social Media Editor, Cycling",
        "url": "https://apply.workable.com/futureplc/j/9C2BE7093B",
        "location": "Winnersh",
@@ -452,13 +502,6 @@
       {
        "title": "Brand Marketing Manager, Games",
        "url": "https://apply.workable.com/futureplc/j/36C320DE66",
-       "location": "Bath",
-       "employer": "Future plc",
-       "salary": ""
-      },
-      {
-       "title": "How to Watch, Junior Editor (TV)",
-       "url": "https://apply.workable.com/futureplc/j/0F876D50B2",
        "location": "Bath",
        "employer": "Future plc",
        "salary": ""
@@ -612,12 +655,47 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Marketing Assistant",
+       "url": "https://opportunities.creativeaccess.org.uk/job/marketing-assistant-47375",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
     {
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
+      {
+       "title": "Editor - UEFA",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73958,Editor_UEFA_Whisper.html",
+       "location": "Kew, London",
+       "employer": "Whisper",
+       "salary": ""
+      },
+      {
+       "title": "Editorial Assistant, Emmerdale",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73957,Editorial_Assistant_Emmerdale_ITV.html",
+       "location": "Leeds",
+       "employer": "ITV",
+       "salary": ""
+      },
+      {
+       "title": "Branded Video Production Coordinator",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73956,Branded_Video_Production_Coordinator_Bauer_Media_Group.html",
+       "location": "London",
+       "employer": "Bauer Media Group",
+       "salary": ""
+      },
+      {
+       "title": "Live Junior Producer/PM",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73944,Live_Junior_Producer_PM_Groovy_Gecko_Ltd.html",
+       "location": "London",
+       "employer": "Groovy Gecko Ltd",
+       "salary": ""
+      },
       {
        "title": "Senior Sales Manager, Film & TV - A5292",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73955,Senior_Sales_Manager_Film_TV_A5292_Searchlight_Executive.html",
@@ -626,17 +704,17 @@
        "salary": ""
       },
       {
+       "title": "Creative Assistant, IP Scouting, EMEA",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73923,Creative_Assistant_IP_Scouting_EMEA_Netflix.html",
+       "location": "London",
+       "employer": "Netflix",
+       "salary": ""
+      },
+      {
        "title": "Junior Video Editor - A5289",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/73951,Junior_Video_Editor_A5289_Searchlight_Recruitment.html",
        "location": "London - Central",
        "employer": "Searchlight Recruitment",
-       "salary": ""
-      },
-      {
-       "title": "Live Junior Producer/PM",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73944,Live_Junior_Producer_PM_Groovy_Gecko_Ltd.html",
-       "location": "London",
-       "employer": "Groovy Gecko Ltd",
        "salary": ""
       },
       {
@@ -659,13 +737,6 @@
        "location": "London",
        "employer": "GB News",
        "salary": ""
-      },
-      {
-       "title": "Post Producer - Maternity Cover October - June",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73918,Post_Producer_Maternity_Cover_October_June_Lucky_Cat_Post_Production.html",
-       "location": "Soho, London",
-       "employer": "Lucky Cat Post Production",
-       "salary": "£30k+"
       },
       {
        "title": "Platform Content Creator",
@@ -701,33 +772,12 @@
        "location": "London",
        "employer": "Glance Ltd",
        "salary": "£30k+"
-      },
-      {
-       "title": "Creative Assistant, IP Scouting, EMEA",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73923,Creative_Assistant_IP_Scouting_EMEA_Netflix.html",
-       "location": "London",
-       "employer": "Netflix",
-       "salary": ""
-      },
-      {
-       "title": "Digital Content Lead, BBC Studios Audio",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73922,Digital_Content_Lead_BBC_Studios_Audio_BBC_Studios.html",
-       "location": "London",
-       "employer": "Grapevine Jobs (UK media — indies + broadcasters)",
-       "salary": ""
       }
      ]
     },
     {
      "name": "Guardian Jobs — Media",
      "jobs": [
-      {
-       "title": "Managing Editor - EuroTimes & ESCRS Today",
-       "url": "https://jobs.theguardian.com/job/10175441/managing-editor-eurotimes-and-escrs-today/",
-       "location": "Remote, UK and Europe",
-       "employer": "MCI UK Limited",
-       "salary": "Up to £80,000 pro-rated for 25-30 hours per week"
-      },
       {
        "title": "Book Editor (Freelance)",
        "url": "https://jobs.theguardian.com/job/10183263/book-editor-freelance-/",
@@ -748,6 +798,13 @@
        "location": "London (Central), London (Greater)",
        "employer": "LIPTON MEDIA",
        "salary": "£45,000-£55,000 + Bonus + Excellent Benefits"
+      },
+      {
+       "title": "Managing Editor - EuroTimes & ESCRS Today",
+       "url": "https://jobs.theguardian.com/job/10175441/managing-editor-eurotimes-and-escrs-today/",
+       "location": "Remote, UK and Europe",
+       "employer": "MCI UK Limited",
+       "salary": "Up to £80,000 pro-rated for 25-30 hours per week"
       },
       {
        "title": "Senior Events Sales Manager",
@@ -783,12 +840,47 @@
        "location": "London",
        "employer": "LIPTON MEDIA",
        "salary": "£48,000-£60,000 + Bonus + Excellent Benefits"
+      },
+      {
+       "title": "Conference Producer",
+       "url": "https://jobs.theguardian.com/job/10185700/conference-producer-/",
+       "location": "London",
+       "employer": "LIPTON MEDIA",
+       "salary": "£40,000-£45,000 + Bonus + Excellent Benefits"
       }
      ]
     },
     {
      "name": "ProductionBase (film & TV)",
      "jobs": [
+      {
+       "title": "Video Content Executive",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-content-executive-london-09.26.0249356",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Content Manager",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/content-manager-london-09.26.0249355",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Head of Production, Scripted",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-production-scripted-london-09.26.0249354",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Executive Producer, Live Content",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/executive-producer-live-content-london-09.26.0249352",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
       {
        "title": "Video Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/video-producer-london-09.26.0249349",
@@ -923,23 +1015,9 @@
        "salary": ""
       },
       {
-       "title": "Digital Content Lead",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/digital-content-lead-london-09.26.0249308",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
        "title": "Deputy Content Editor",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-content-editor-glasgow-09.26.0249306",
        "location": "Glasgow",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Researcher/Location Scout - Community Photography Campaign",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/researcher-location-scout--community-photography-campaign-manchester-09.26.0249302",
-       "location": "Manchester",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -1031,20 +1109,6 @@
        "title": "Short-Form Editor",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/short-form-editor-remote-09.26.0249271",
        "location": "Remote REMOTE",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Digital Video and Photography Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/digital-video-and-photography-editor-redditch-09.26.0249264",
-       "location": "Redditch HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Integrated Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/integrated-producer-london-09.26.0249263",
-       "location": "London HYBRID",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       }
