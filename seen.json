@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21 12:10 UTC",
+ "generated": "2026-10-22 12:23 UTC",
  "seen_keys": [
   "https://apply.workable.com/futureplc/j/01D4EDFCEA",
   "https://apply.workable.com/futureplc/j/072F48D9C2",
@@ -385,6 +385,7 @@
   "https://opportunities.creativeaccess.org.uk/job/publicity-manager-senior-publicity-manager-45916",
   "https://opportunities.creativeaccess.org.uk/job/publicity-marketing-trainee-45321",
   "https://opportunities.creativeaccess.org.uk/job/publishing-executive-45632",
+  "https://opportunities.creativeaccess.org.uk/job/publishing-sales-executive-47744",
   "https://opportunities.creativeaccess.org.uk/job/sales-administrator-47582",
   "https://opportunities.creativeaccess.org.uk/job/sales-assistant-46022",
   "https://opportunities.creativeaccess.org.uk/job/sales-director-hodder-stoughton-45847",
@@ -668,6 +669,7 @@
   "https://www.productionbase.co.uk/film-tv-jobs/creative-london-09.26.0249484",
   "https://www.productionbase.co.uk/film-tv-jobs/creative-manager-london--hybrid-09.26.0249507",
   "https://www.productionbase.co.uk/film-tv-jobs/creative-media-producer-oxford-08.26.0248968",
+  "https://www.productionbase.co.uk/film-tv-jobs/creative-media-production-assistant-coventry-10.26.0249835",
   "https://www.productionbase.co.uk/film-tv-jobs/creative-operations-manager-london-remote-working-07.26.0248619",
   "https://www.productionbase.co.uk/film-tv-jobs/creative-operations-supervisor-london-07.26.0248476",
   "https://www.productionbase.co.uk/film-tv-jobs/creative-producer-and-project-manager-london-08.26.0249104",
@@ -764,6 +766,7 @@
   "https://www.productionbase.co.uk/film-tv-jobs/event-delivery-producer-london-10.26.0249786",
   "https://www.productionbase.co.uk/film-tv-jobs/events-producer-london-10.26.0249565",
   "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant--football-london-09.26.0249281",
+  "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant-football-chiswick-london-10.26.0249838",
   "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant-london--remote-07.26.0248525",
   "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant-london-07.26.0248631",
   "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant-london-08.26.0248824",
@@ -993,6 +996,7 @@
   "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-live-sport-stockley-park-london-09.26.0249149",
   "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-live-sport-stockley-park-london-09.26.0249368",
   "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-live-stockley-park-london-08.26.0249047",
+  "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-live-stockley-park-london-10.26.0249837",
   "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-london-07.26.0248517",
   "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-london-08.26.0248953",
   "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-social-osterley-west-london-09.26.0249359",
@@ -1134,6 +1138,7 @@
   "https://www.productionbase.co.uk/film-tv-jobs/vfx-editor-london-07.26.0248636",
   "https://www.productionbase.co.uk/film-tv-jobs/vfx-editor-london-08.26.0248856",
   "https://www.productionbase.co.uk/film-tv-jobs/vfx-line-producer-london-07.26.0248712",
+  "https://www.productionbase.co.uk/film-tv-jobs/vfx-producer-london-10.26.0249834",
   "https://www.productionbase.co.uk/film-tv-jobs/video-content-creator-london-07.26.0248785",
   "https://www.productionbase.co.uk/film-tv-jobs/video-content-creator-london-10.26.0249561",
   "https://www.productionbase.co.uk/film-tv-jobs/video-content-editor-and-production-assistant-basingstoke-10.26.0249806",
@@ -1332,13 +1337,6 @@
      "salary": ""
     },
     {
-     "title": "Talent Acquisition Sourcing Specialist",
-     "url": "https://careers.dazn.com/en/postings/321a5b1e-58e0-4dc7-8fc0-b0118075394b",
-     "location": "UK - London",
-     "employer": "DAZN",
-     "salary": ""
-    },
-    {
      "title": "Executive Assistant",
      "url": "https://careers.dazn.com/en/postings/b2cfecdb-78c7-4376-a215-75abbcd314ee",
      "location": "UK - London",
@@ -1503,13 +1501,6 @@
      "title": "Content Editor",
      "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1561",
      "location": "Belfast, County Antrim, United Kingdom",
-     "employer": "ITV",
-     "salary": ""
-    },
-    {
-     "title": "Marketing Delivery Manager (12 months FTC)",
-     "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1337",
-     "location": "London, United Kingdom",
      "employer": "ITV",
      "salary": ""
     }
@@ -1704,6 +1695,13 @@
      "salary": ""
     },
     {
+     "title": "Head of Picture Production",
+     "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74047,Head_of_Picture_Production_Molinare_TV_Film_Ltd.html",
+     "location": "London",
+     "employer": "Molinare TV Film Ltd",
+     "salary": ""
+    },
+    {
      "title": "Junior Producer",
      "url": "https://www.grapevinejobs.co.uk/mediajobs/74055,Junior_Producer_Little_Dot_Studios.html",
      "location": "London",
@@ -1743,13 +1741,6 @@
      "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74033,VP_Commissioning_Editor_Drama_Paramount.html",
      "location": "London",
      "employer": "Paramount",
-     "salary": ""
-    },
-    {
-     "title": "Head of Picture Production",
-     "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74047,Head_of_Picture_Production_Molinare_TV_Film_Ltd.html",
-     "location": "London",
-     "employer": "Molinare TV Film Ltd",
      "salary": ""
     },
     {
@@ -1825,6 +1816,34 @@
    ],
    "Guardian Jobs — Media": [],
    "ProductionBase (film & TV)": [
+    {
+     "title": "Executive Assistant, Football",
+     "url": "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant-football-chiswick-london-10.26.0249838",
+     "location": "Chiswick, London HYBRID",
+     "employer": "ProductionBase (film & TV)",
+     "salary": ""
+    },
+    {
+     "title": "Senior Assistant Producer (Live)",
+     "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-live-stockley-park-london-10.26.0249837",
+     "location": "Stockley Park, London",
+     "employer": "ProductionBase (film & TV)",
+     "salary": ""
+    },
+    {
+     "title": "Creative Media Production Assistant",
+     "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-media-production-assistant-coventry-10.26.0249835",
+     "location": "Coventry",
+     "employer": "ProductionBase (film & TV)",
+     "salary": ""
+    },
+    {
+     "title": "VFX Producer",
+     "url": "https://www.productionbase.co.uk/film-tv-jobs/vfx-producer-london-10.26.0249834",
+     "location": "London",
+     "employer": "ProductionBase (film & TV)",
+     "salary": ""
+    },
     {
      "title": "Executive Assistant",
      "url": "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant-london-10.26.0249831",
@@ -1945,13 +1964,6 @@
      "salary": ""
     },
     {
-     "title": "Audio Producer",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/audio-producer-bristol-10.26.0249781",
-     "location": "Bristol HYBRID",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
      "title": "Video Editor, Digital",
      "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-digital-glasgow-10.26.0249780",
      "location": "Glasgow",
@@ -1980,57 +1992,8 @@
      "salary": ""
     },
     {
-     "title": "Planning Producer",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/planning-producer-london-10.26.0249771",
-     "location": "London",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
      "title": "Development Assistant Producer",
      "url": "https://www.productionbase.co.uk/film-tv-jobs/development-assistant-producer-london-10.26.0249770",
-     "location": "London",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "Creative Assistant",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-assistant-remote-uk-10.26.0249766",
-     "location": "Remote (UK) REMOTE",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "Digital Producer",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/digital-producer-london-10.26.0249762",
-     "location": "London HYBRID",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "Content Creator",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/content-creator-london-10.26.0249761",
-     "location": "London HYBRID",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "TikTok LIVE Producer (Freelance)",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/tiktok-live-producer-freelance-manchester-10.26.0249758",
-     "location": "Manchester",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "Social Media - Video Content Creator",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/social-media--video-content-creator-london-10.26.0249756",
-     "location": "London",
-     "employer": "ProductionBase (film & TV)",
-     "salary": ""
-    },
-    {
-     "title": "Founder Content Creator (Shoot + Edit)",
-     "url": "https://www.productionbase.co.uk/film-tv-jobs/founder-content-creator-shoot-edit-london-10.26.0249755",
      "location": "London",
      "employer": "ProductionBase (film & TV)",
      "salary": ""
@@ -2075,13 +2038,6 @@
     {
      "title": "Area Sales Manager Ireland 12 Month Ftc Remotefield Based",
      "url": "https://opportunities.creativeaccess.org.uk/job/area-sales-manager-ireland-12-month-ftc-remotefield-based-47602",
-     "location": "",
-     "employer": "Creative Access",
-     "salary": ""
-    },
-    {
-     "title": "Canelo Editor Partnerships Manager",
-     "url": "https://opportunities.creativeaccess.org.uk/job/canelo-editor-partnerships-manager-47605",
      "location": "",
      "employer": "Creative Access",
      "salary": ""
@@ -2173,6 +2129,13 @@
     {
      "title": "Editor 12 Month Ftc",
      "url": "https://opportunities.creativeaccess.org.uk/job/editor-12-month-ftc-47719",
+     "location": "",
+     "employer": "Creative Access",
+     "salary": ""
+    },
+    {
+     "title": "Publishing Sales Executive",
+     "url": "https://opportunities.creativeaccess.org.uk/job/publishing-sales-executive-47744",
      "location": "",
      "employer": "Creative Access",
      "salary": ""
