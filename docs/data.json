@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-28 13:19 UTC",
+ "generated": "2026-10-29 13:29 UTC",
  "totals": {
-  "roles": 122,
+  "roles": 125,
   "employers": 24,
   "sources": 7
  },
@@ -100,15 +100,15 @@
      "name": "Warner Bros. Discovery",
      "jobs": [
       {
-       "title": "Senior Creative Design Manager",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Leavesden-South-Way/Senior-Design-Manager--Global-Experiences_R000109003",
+       "title": "Ecommerce Content and Launch Manager - Twelve Month FTC",
+       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Leavesden-South-Way/Ecommerce-Content-and-Launch-Manager_R000109077",
        "location": "Leavesden South Way",
        "employer": "Warner Bros. Discovery",
        "salary": ""
       },
       {
-       "title": "Ecommerce Content and Launch Manager - Twelve Month FTC",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Leavesden-South-Way/Ecommerce-Content-and-Launch-Manager_R000109077",
+       "title": "Senior Creative Design Manager",
+       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Leavesden-South-Way/Senior-Design-Manager--Global-Experiences_R000109003",
        "location": "Leavesden South Way",
        "employer": "Warner Bros. Discovery",
        "salary": ""
@@ -156,6 +156,13 @@
       {
        "title": "Bidding Producer",
        "url": "https://framestore.recruitee.com/o/bidding-producer-3",
+       "location": "London",
+       "employer": "Framestore",
+       "salary": ""
+      },
+      {
+       "title": "Social Media Editor / Creator",
+       "url": "https://framestore.recruitee.com/o/social-media-editor-creator",
        "location": "London",
        "employer": "Framestore",
        "salary": ""
@@ -222,15 +229,15 @@
        "salary": ""
       },
       {
-       "title": "Market Planning & Operations Manager (EMEA - Sales Operations)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790318500566",
+       "title": "Manager, Partnerships Packaging & Solutions, EMEA",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319128577",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
       },
       {
-       "title": "Manager, Partnerships Packaging & Solutions, EMEA",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319128577",
+       "title": "Manager, Marketing Partnerships - UK (FTC)",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319203470",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
@@ -368,13 +375,6 @@
        "title": "PPC Executive",
        "url": "https://apply.workable.com/futureplc/j/5CD268D12C",
        "location": "Cardiff",
-       "employer": "Future plc",
-       "salary": ""
-      },
-      {
-       "title": "Partnerships Business Director - 12 Month FTC",
-       "url": "https://apply.workable.com/futureplc/j/393598A57B",
-       "location": "London",
        "employer": "Future plc",
        "salary": ""
       },
@@ -522,13 +522,6 @@
        "salary": ""
       },
       {
-       "title": "Marketing Executive Subscriptions Brand",
-       "url": "https://opportunities.creativeaccess.org.uk/job/marketing-executive-subscriptions-brand-47637",
-       "location": "",
-       "employer": "Creative Access",
-       "salary": ""
-      },
-      {
        "title": "Social Media Content Creation Trainee",
        "url": "https://opportunities.creativeaccess.org.uk/job/social-media-content-creation-trainee-47639",
        "location": "",
@@ -632,10 +625,38 @@
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
       {
+       "title": "Development Manager: YouTube Development Programmes",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74077,Development_Manager_YouTube_Development_Programmes_National_Film_Television_School.html",
+       "location": "Cardiff",
+       "employer": "National Film Television School",
+       "salary": "£30k+"
+      },
+      {
+       "title": "Creative Development Producer",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74076,Creative_Development_Producer_Little_Dot_Studios.html",
+       "location": "London",
+       "employer": "Little Dot Studios",
+       "salary": ""
+      },
+      {
        "title": "Editorial Assistant",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/74075,Editorial_Assistant_Gravity_Media.html",
        "location": "London",
        "employer": "Gravity Media",
+       "salary": ""
+      },
+      {
+       "title": "Interim Director of Arts Planning and Producing",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74036,Interim_Director_of_Arts_Planning_and_Producing_Southbank_Centre.html",
+       "location": "London - Central",
+       "employer": "Southbank Centre",
+       "salary": "£80k+"
+      },
+      {
+       "title": "Junior Video Editor - A5289",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/73951,Junior_Video_Editor_A5289_Searchlight_Recruitment.html",
+       "location": "London - Central",
+       "employer": "Searchlight Recruitment",
        "salary": ""
       },
       {
@@ -735,20 +756,6 @@
        "location": "London",
        "employer": "Fox Entertainment",
        "salary": ""
-      },
-      {
-       "title": "Interim Director of Arts Planning and Producing",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74036,Interim_Director_of_Arts_Planning_and_Producing_Southbank_Centre.html",
-       "location": "London - Central",
-       "employer": "Southbank Centre",
-       "salary": "£80k+"
-      },
-      {
-       "title": "Junior Video Editor - A5289",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/73951,Junior_Video_Editor_A5289_Searchlight_Recruitment.html",
-       "location": "London - Central",
-       "employer": "Searchlight Recruitment",
-       "salary": ""
       }
      ]
     },
@@ -759,6 +766,69 @@
        "title": "Audio Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/audio-producer-islington-london-10.26.0249890",
        "location": "Islington, London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Researchers",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/researchers-bristol-10.26.0249920",
+       "location": "Bristol HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Horticultural Researchers",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/horticultural-researchers-bristol-10.26.0249917",
+       "location": "Bristol HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Horticultural Assistant Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/horticultural-assistant-producer-bristol-10.26.0249916",
+       "location": "Bristol HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Digital Content Co-ordinator",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/digital-content-co-ordinator-london-10.26.0249914",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Lead Producer - MENA & APAC",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/lead-producer--mena-apac-al-malqa-riyadh-10.26.0249909",
+       "location": "Al Malqa, Riyadh HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Head of Production",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-production-london-10.26.0249907",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-producer-london-10.26.0249902",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-remote-10.26.0249900",
+       "location": "Remote REMOTE",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Podcast Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/podcast-producer-remote-10.26.0249899",
+       "location": "Remote REMOTE",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -910,13 +980,6 @@
        "salary": ""
       },
       {
-       "title": "Video Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-producer-london-10.26.0249860",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
        "title": "Story Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/story-producer-france-10.26.0249859",
        "location": "France",
@@ -924,8 +987,8 @@
        "salary": ""
       },
       {
-       "title": "Lead Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/lead-producer-london-10.26.0249858",
+       "title": "Lead Producer - Europe",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/lead-producer--europe-london-10.26.0249858",
        "location": "London HYBRID",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
@@ -941,48 +1004,6 @@
        "title": "Assistant Producer (AP)",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/assistant-producer-ap-london-and-on-location-abroad-10.26.0249851",
        "location": "London and on location abroad",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Executive Assistant, Football",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/executive-assistant-football-chiswick-london-10.26.0249838",
-       "location": "Chiswick, London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Senior Assistant Producer (Live)",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-live-stockley-park-london-10.26.0249837",
-       "location": "Stockley Park, London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Creative Media Production Assistant",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-media-production-assistant-coventry-10.26.0249835",
-       "location": "Coventry",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "VFX Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/vfx-producer-london-10.26.0249834",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Head of Wardrobe and Wigs",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-wardrobe-and-wigs-rehearsals-in-london-uk-wide-touring-production-10.26.0249814",
-       "location": "Rehearsals in London & UK wide touring production",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Deputy Head of Wardrobe and Wigs",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-head-of-wardrobe-and-wigs-rehearsals-in-london-uk-wide-touring-production-10.26.0249813",
-       "location": "Rehearsals in London & UK wide touring production",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       }
