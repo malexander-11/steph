@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-04 14:47 UTC",
+ "generated": "2026-11-05 14:51 UTC",
  "totals": {
-  "roles": 114,
+  "roles": 112,
   "employers": 24,
   "sources": 7
  },
@@ -62,6 +62,13 @@
        "salary": ""
       },
       {
+       "title": "Talent Acquisition Partner",
+       "url": "https://careers.dazn.com/en/postings/192518dd-f567-46fa-ab00-a42d4d988c8f",
+       "location": "UK - London",
+       "employer": "DAZN",
+       "salary": ""
+      },
+      {
        "title": "Head of Host Broadcast",
        "url": "https://careers.dazn.com/en/postings/216ca96f-121e-48e7-924c-e7e00689c5ee",
        "location": "UK - London",
@@ -117,13 +124,6 @@
        "title": "Business Development Manager - FTC",
        "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-67-74-Saffron-Hill-1st-Floor/Filmbankmedia---Business-Development-Manager---FTC_R000109417",
        "location": "London 67-74 Saffron Hill, 1st Floor",
-       "employer": "Warner Bros. Discovery",
-       "salary": ""
-      },
-      {
-       "title": "Producer, Digital Features",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-160-Old-Street/Producer_R000107064",
-       "location": "London, 160 Old Street",
        "employer": "Warner Bros. Discovery",
        "salary": ""
       }
@@ -229,15 +229,15 @@
        "salary": ""
       },
       {
-       "title": "Sales Solutions Specialist (EMEA - Emerging Business)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319339401",
+       "title": "Manager, Publicity - Brand Slate & Live UK",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319082269",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
       },
       {
-       "title": "Manager, Marketing Partnerships - UK (FTC)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319203470",
+       "title": "Manager, Partnerships Packaging & Solutions, EMEA",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319128577",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
@@ -380,13 +380,6 @@
        "salary": ""
       },
       {
-       "title": "Content Creator, ROOMS",
-       "url": "https://apply.workable.com/futureplc/j/C5B00F6B0B",
-       "location": "London",
-       "employer": "Future plc",
-       "salary": ""
-      },
-      {
        "title": "Digital Producer, MoneyWeek",
        "url": "https://apply.workable.com/futureplc/j/C2E986660D",
        "location": "London",
@@ -495,13 +488,6 @@
        "salary": ""
       },
       {
-       "title": "Creative Learning Trainee",
-       "url": "https://opportunities.creativeaccess.org.uk/job/creative-learning-trainee-47817",
-       "location": "",
-       "employer": "Creative Access",
-       "salary": ""
-      },
-      {
        "title": "Commissioning Editor",
        "url": "https://opportunities.creativeaccess.org.uk/job/commissioning-editor-47822",
        "location": "",
@@ -586,6 +572,13 @@
        "salary": ""
       },
       {
+       "title": "Senior Commissioning Editor",
+       "url": "https://opportunities.creativeaccess.org.uk/job/senior-commissioning-editor-48098",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
        "title": "Discover Creative Careers And Oh Yeah Music Centre Industry Mixer 21 November",
        "url": "https://opportunities.creativeaccess.org.uk/job/discover-creative-careers-and-oh-yeah-music-centre-industry-mixer-21-november-48109",
        "location": "",
@@ -597,6 +590,20 @@
     {
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
+      {
+       "title": "Events Producer",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74081,Events_Producer_OKRE.html",
+       "location": "London - Central",
+       "employer": "OKRE",
+       "salary": "£40k+"
+      },
+      {
+       "title": "Editorial Assistant",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74075,Editorial_Assistant_Gravity_Media.html",
+       "location": "London",
+       "employer": "Gravity Media",
+       "salary": ""
+      },
       {
        "title": "Head of Picture Production",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74047,Head_of_Picture_Production_Molinare_TV_Film_Ltd.html",
@@ -612,25 +619,11 @@
        "salary": ""
       },
       {
-       "title": "Interim Director of Arts Planning and Producing",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74036,Interim_Director_of_Arts_Planning_and_Producing_Southbank_Centre.html",
-       "location": "London - Central",
-       "employer": "Southbank Centre",
-       "salary": "£80k+"
-      },
-      {
        "title": "Filmbankmedia - Business Development Manager - FTC",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74045,Filmbankmedia_Business_Development_Manager_FTC_Warner_Bros_Discovery.html",
        "location": "London / Hybrid",
        "employer": "Warner Bros Discovery",
        "salary": ""
-      },
-      {
-       "title": "Events Producer",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/74081,Events_Producer_OKRE.html",
-       "location": "London - Central",
-       "employer": "OKRE",
-       "salary": "£40k+"
       },
       {
        "title": "Group Head of AI in Production",
@@ -647,6 +640,13 @@
        "salary": ""
       },
       {
+       "title": "Interim Director of Arts Planning and Producing",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74036,Interim_Director_of_Arts_Planning_and_Producing_Southbank_Centre.html",
+       "location": "London - Central",
+       "employer": "Southbank Centre",
+       "salary": "£80k+"
+      },
+      {
        "title": "Content Sales Assistant - EMEA",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/74039,Content_Sales_Assistant_EMEA_Fox_Entertainment.html",
        "location": "London",
@@ -659,20 +659,6 @@
        "location": "Cardiff",
        "employer": "National Film Television School",
        "salary": "£30k+"
-      },
-      {
-       "title": "Creative Development Producer",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/74076,Creative_Development_Producer_Little_Dot_Studios.html",
-       "location": "London",
-       "employer": "Little Dot Studios",
-       "salary": ""
-      },
-      {
-       "title": "Editorial Assistant",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/74075,Editorial_Assistant_Gravity_Media.html",
-       "location": "London",
-       "employer": "Gravity Media",
-       "salary": ""
       }
      ]
     },
@@ -687,9 +673,100 @@
        "salary": ""
       },
       {
+       "title": "Social Video Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-video-producer-london-11.26.0250026",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Production Assistant - Drama",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/production-assistant--drama-london-11.26.0250022",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Videographer and Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/videographer-and-editor-london-11.26.0250019",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Series Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/series-producer-liverpool-11.26.0250018",
+       "location": "Liverpool",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Creative Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-producer-london-11.26.0250016",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Multimedia Content Coordinator",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/multimedia-content-coordinator-leeds-11.26.0250014",
+       "location": "Leeds",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Freelance Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/freelance-producer-remote-11.26.0250013",
+       "location": "Remote REMOTE",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Videographer (Social Media Content Producer)",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/videographer-social-media-content-producer-london-11.26.0250009",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Senior Content Producer (Video, Photo and Design)",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-content-producer-video-photo-and-design-london-or-sheffield-11.26.0250008",
+       "location": "London or Sheffield",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Junior DFX Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/junior-dfx-producer-london-11.26.0250006",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Media Buyer / Creative Strategist",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/media-buyer--creative-strategist-manchester-or-leeds-buenos-areis-krakow-or-kyiv-11.26.0250004",
+       "location": "Manchester or Leeds, Buenos Areis. Krakow or Kyiv REMOTE",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Senior Multimedia Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-multimedia-producer-london-11.26.0250003",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
        "title": "News Editor",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/news-editor-london-11.26.0249999",
        "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Videographer & Content Creator",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/videographer-content-creator-london-w1w-8se-11.26.0249998",
+       "location": "London, W1W 8SE",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -711,13 +788,6 @@
        "title": "Deputy Head of Wigs, Hair and Makeup",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-head-of-wigs-hair-and-makeup-touring-11.26.0249989",
        "location": "Touring",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Social Video Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-video-producer-london-11.26.0249988",
-       "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -792,22 +862,8 @@
        "salary": ""
       },
       {
-       "title": "Creative Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-producer-london-11.26.0249977",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
        "title": "Assistant Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/assistant-producer-london-11.26.0249976",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Senior Assistant Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-assistant-producer-london-11.26.0249975",
        "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
@@ -858,76 +914,6 @@
        "title": "Executive Creative Director",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/executive-creative-director-london-11.26.0249952",
        "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Head of Video",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-video-westminster-10.26.0249951",
-       "location": "Westminster",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Deputy Head of Video",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-head-of-video-westminster-10.26.0249950",
-       "location": "Westminster",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Social Content Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-content-producer-london-10.26.0249946",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Lead Commercial Video Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/lead-commercial-video-producer-london-10.26.0249944",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "TikTok LIVE Producer (Freelance)",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/tiktok-live-producer-freelance-manchester-10.26.0249942",
-       "location": "Manchester",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Development Manager",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/development-manager-buxton-10.26.0249938",
-       "location": "Buxton",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Photo Assigning Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/photo-assigning-editor-london-10.26.0249937",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Video Editor and Studio Assistant",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-and-studio-assistant-manchester-10.26.0249936",
-       "location": "Manchester HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Freelance Filmmaker / Shooter-Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/freelance-filmmaker--shooter-editor-united-kingdom-10.26.0249927",
-       "location": "United Kingdom HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Digital Content Assistant",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/digital-content-assistant-nottingham-10.26.0249926",
-       "location": "Nottingham",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       }
