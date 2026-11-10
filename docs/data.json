@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-09 16:44 UTC",
+ "generated": "2026-11-10 15:07 UTC",
  "totals": {
-  "roles": 102,
+  "roles": 106,
   "employers": 24,
   "sources": 7
  },
@@ -78,6 +78,18 @@
      ]
     },
     {
+     "name": "Sky",
+     "jobs": [
+      {
+       "title": "Director of Proposition & Product, Sky Business",
+       "url": "https://sky.wd3.myworkdayjobs.com/sky_careers/job/Osterley/Director-of-Proposition---Product--Sky-Business_R0060873",
+       "location": "Osterley",
+       "employer": "Sky",
+       "salary": ""
+      }
+     ]
+    },
+    {
      "name": "Warner Bros. Discovery",
      "jobs": [
       {
@@ -105,10 +117,6 @@
     },
     {
      "name": "Disney / Disney+ EMEA",
-     "jobs": []
-    },
-    {
-     "name": "Sky",
      "jobs": []
     }
    ]
@@ -171,20 +179,22 @@
    "name": "acquisitions",
    "sites": [
     {
-     "name": "ITV",
-     "jobs": [
-      {
-       "title": "Lifted Entertainment Work Experience Programme 2027",
-       "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1613",
-       "location": "United Kingdom",
-       "employer": "ITV",
-       "salary": ""
-      }
-     ]
-    },
-    {
      "name": "Netflix UK",
      "jobs": [
+      {
+       "title": "Sales Solutions Specialist (EMEA - Emerging Business)",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319339401",
+       "location": "London,United Kingdom",
+       "employer": "Netflix UK",
+       "salary": ""
+      },
+      {
+       "title": "Market Planning & Operations Manager (EMEA - Sales Operations)",
+       "url": "https://explore.jobs.netflix.net/careers/job/790318500566",
+       "location": "London,United Kingdom",
+       "employer": "Netflix UK",
+       "salary": ""
+      },
       {
        "title": "Manager, Marketing Partnerships - UK (FTC)",
        "url": "https://explore.jobs.netflix.net/careers/job/790319203470",
@@ -205,29 +215,12 @@
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
-      },
-      {
-       "title": "Manager, Partnerships Packaging & Solutions, EMEA",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319128577",
-       "location": "London,United Kingdom",
-       "employer": "Netflix UK",
-       "salary": ""
-      },
-      {
-       "title": "Sales Solutions Specialist (EMEA - Emerging Business)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319339401",
-       "location": "London,United Kingdom",
-       "employer": "Netflix UK",
-       "salary": ""
-      },
-      {
-       "title": "Market Planning & Operations Manager (EMEA - Sales Operations)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790318500566",
-       "location": "London,United Kingdom",
-       "employer": "Netflix UK",
-       "salary": ""
       }
      ]
+    },
+    {
+     "name": "ITV",
+     "jobs": []
     },
     {
      "name": "Prime Video (Amazon)",
@@ -270,18 +263,6 @@
      ]
     },
     {
-     "name": "NBCUniversal",
-     "jobs": [
-      {
-       "title": "Retail Development Director - EMEA",
-       "url": "https://jobs.smartrecruiters.com/NBCUniversal3/744000141237809",
-       "location": "London, GB",
-       "employer": "NBCUniversal",
-       "salary": ""
-      }
-     ]
-    },
-    {
      "name": "Sony Pictures Television",
      "jobs": [
       {
@@ -299,6 +280,10 @@
        "salary": ""
       }
      ]
+    },
+    {
+     "name": "NBCUniversal",
+     "jobs": []
     }
    ]
   },
@@ -351,6 +336,13 @@
      "name": "Future plc",
      "jobs": [
       {
+       "title": "Associate Creative Director, Branded Content - Women's Lifestyle",
+       "url": "https://apply.workable.com/futureplc/j/F0FD7DB55F",
+       "location": "London",
+       "employer": "Future plc",
+       "salary": ""
+      },
+      {
        "title": "Content Executive",
        "url": "https://apply.workable.com/futureplc/j/550138764D",
        "location": "Cardiff",
@@ -402,13 +394,6 @@
       {
        "title": "Partnerships Manager, Decanter",
        "url": "https://apply.workable.com/futureplc/j/FD5A8AB506",
-       "location": "London",
-       "employer": "Future plc",
-       "salary": ""
-      },
-      {
-       "title": "Head of Digital, Decanter - 12 Month FTC",
-       "url": "https://apply.workable.com/futureplc/j/B2DC2C8249",
        "location": "London",
        "employer": "Future plc",
        "salary": ""
@@ -508,6 +493,13 @@
        "salary": ""
       },
       {
+       "title": "Discover Webinar Social Media Digital Content",
+       "url": "https://opportunities.creativeaccess.org.uk/job/discover-webinar-social-media-digital-content-47940",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
        "title": "Editor",
        "url": "https://opportunities.creativeaccess.org.uk/job/editor-47949",
        "location": "",
@@ -576,12 +568,75 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Communications Manager",
+       "url": "https://opportunities.creativeaccess.org.uk/job/communications-manager-48212",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Development Editor",
+       "url": "https://opportunities.creativeaccess.org.uk/job/development-editor-48264",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Emerging Creative",
+       "url": "https://opportunities.creativeaccess.org.uk/job/emerging-creative-48279",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Junior Web Content Designer",
+       "url": "https://opportunities.creativeaccess.org.uk/job/junior-web-content-designer-48283",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Creative Producer",
+       "url": "https://opportunities.creativeaccess.org.uk/job/creative-producer-48284",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
     {
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
+      {
+       "title": "Director of People",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74101,Director_of_People_Whisper.html",
+       "location": "Kew, London",
+       "employer": "Whisper",
+       "salary": ""
+      },
+      {
+       "title": "Senior Editor, Markets Magazine",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74100,Senior_Editor_Markets_Magazine_Bloomberg.html",
+       "location": "London",
+       "employer": "Bloomberg",
+       "salary": ""
+      },
+      {
+       "title": "Group Head of AI in Production",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74066,Group_Head_of_AI_in_Production_Fremantle.html",
+       "location": "London",
+       "employer": "Fremantle",
+       "salary": ""
+      },
+      {
+       "title": "Events Producer",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74081,Events_Producer_OKRE.html",
+       "location": "London - Central",
+       "employer": "OKRE",
+       "salary": "£40k+"
+      },
       {
        "title": "Market Planning & Ops Manager (EMEA - Sales Operations)",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74098,Market_Planning_Ops_Manager_EMEA_Sales_Operations_Netflix.html",
@@ -611,13 +666,6 @@
        "salary": ""
       },
       {
-       "title": "Interim Director of Arts Planning and Producing",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74036,Interim_Director_of_Arts_Planning_and_Producing_Southbank_Centre.html",
-       "location": "London - Central",
-       "employer": "Southbank Centre",
-       "salary": "£80k+"
-      },
-      {
        "title": "Content Sales Assistant - EMEA",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/74039,Content_Sales_Assistant_EMEA_Fox_Entertainment.html",
        "location": "London",
@@ -639,31 +687,10 @@
        "salary": ""
       },
       {
-       "title": "Senior Editor, Markets Magazine",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74051,Senior_Editor_Markets_Magazine_Bloomberg.html",
-       "location": "London",
-       "employer": "Bloomberg",
-       "salary": ""
-      },
-      {
        "title": "Filmbankmedia - Business Development Manager - FTC",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74045,Filmbankmedia_Business_Development_Manager_FTC_Warner_Bros_Discovery.html",
        "location": "London / Hybrid",
        "employer": "Warner Bros Discovery",
-       "salary": ""
-      },
-      {
-       "title": "Events Producer",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/74081,Events_Producer_OKRE.html",
-       "location": "London - Central",
-       "employer": "OKRE",
-       "salary": "£40k+"
-      },
-      {
-       "title": "Group Head of AI in Production",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74066,Group_Head_of_AI_in_Production_Fremantle.html",
-       "location": "London",
-       "employer": "Fremantle",
        "salary": ""
       }
      ]
@@ -672,9 +699,51 @@
      "name": "ProductionBase (film & TV)",
      "jobs": [
       {
-       "title": "Audio Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/audio-producer-islington-london-10.26.0249890",
-       "location": "Islington, London HYBRID",
+       "title": "Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/producer-london-11.26.0250099",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Breaking News Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/breaking-news-editor-london-11.26.0250095",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Midweight Creative",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/midweight-creative-london-11.26.0250094",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Senior Social Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-social-editor-manchester-11.26.0250093",
+       "location": "Manchester",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "News Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/news-editor-manchester-11.26.0250092",
+       "location": "Manchester",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Deputy Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-editor-manchester-11.26.0250091",
+       "location": "Manchester",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Junior Creative",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/junior-creative-london-11.26.0250089",
+       "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -717,13 +786,6 @@
        "title": "Videographer and Editor",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/videographer-and-editor-london-11.26.0250076",
        "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/producer-london-11.26.0250070",
-       "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -808,41 +870,6 @@
        "title": "Social Video Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/social-video-producer-london-11.26.0250026",
        "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Production Assistant - Drama",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/production-assistant--drama-london-11.26.0250022",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Series Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/series-producer-liverpool-11.26.0250018",
-       "location": "Liverpool",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Creative Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/creative-producer-london-11.26.0250016",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Multimedia Content Coordinator",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/multimedia-content-coordinator-leeds-11.26.0250014",
-       "location": "Leeds",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Freelance Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/freelance-producer-remote-11.26.0250013",
-       "location": "Remote REMOTE",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       }
