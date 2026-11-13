@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-12 15:29 UTC",
+ "generated": "2026-11-13 14:47 UTC",
  "totals": {
-  "roles": 110,
+  "roles": 111,
   "employers": 24,
   "sources": 7
  },
@@ -93,13 +93,6 @@
        "salary": ""
       },
       {
-       "title": "Senior Creative Design Manager",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Leavesden-South-Way/Senior-Design-Manager--Global-Experiences_R000109003",
-       "location": "Leavesden South Way",
-       "employer": "Warner Bros. Discovery",
-       "salary": ""
-      },
-      {
        "title": "Business Development Manager - FTC",
        "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-67-74-Saffron-Hill-1st-Floor/Filmbankmedia---Business-Development-Manager---FTC_R000109417",
        "location": "London 67-74 Saffron Hill, 1st Floor",
@@ -139,13 +132,6 @@
     {
      "name": "Framestore",
      "jobs": [
-      {
-       "title": "Bidding Producer",
-       "url": "https://framestore.recruitee.com/o/bidding-producer-3",
-       "location": "London",
-       "employer": "Framestore",
-       "salary": ""
-      },
       {
        "title": "Social Media Editor / Creator",
        "url": "https://framestore.recruitee.com/o/social-media-editor-creator",
@@ -215,15 +201,15 @@
        "salary": ""
       },
       {
-       "title": "Recruiting Researcher, Executive Engagement, EMEA ( 12 months Maternity cover)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319065455",
+       "title": "Manager, Publicity - Brand Slate & Live UK",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319082269",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
       },
       {
-       "title": "Manager, Publicity - Brand Slate & Live UK",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319082269",
+       "title": "Sales Solutions Specialist (EMEA - Emerging Business)",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319339401",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
@@ -343,6 +329,13 @@
     {
      "name": "Future plc",
      "jobs": [
+      {
+       "title": "Content Creator, ROOMS",
+       "url": "https://apply.workable.com/futureplc/j/C5B00F6B0B",
+       "location": "London",
+       "employer": "Future plc",
+       "salary": ""
+      },
       {
        "title": "Associate Director, Branded Content - Women's Lifestyle",
        "url": "https://apply.workable.com/futureplc/j/F0FD7DB55F",
@@ -604,6 +597,13 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Marketing Manager General 12 Month Ftc",
+       "url": "https://opportunities.creativeaccess.org.uk/job/marketing-manager-general-12-month-ftc-48484",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
@@ -611,11 +611,32 @@
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
       {
+       "title": "Senior Post Production Manager – Scripted",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74093,Senior_Post_Production_Manager_Scripted_Molinare_TV_Film_Ltd.html",
+       "location": "London",
+       "employer": "Molinare TV Film Ltd",
+       "salary": ""
+      },
+      {
+       "title": "Producer",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74109,Producer_WING_London.html",
+       "location": "London",
+       "employer": "WING London",
+       "salary": ""
+      },
+      {
        "title": "Head of Media Rights (12-months-FTC)",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74107,_Head_of_Media_Rights_12_months_FTC_Penguin_Random_House_UK.html",
        "location": "London SW11 / Hybrid",
        "employer": "Penguin Random House UK",
        "salary": "£60k+"
+      },
+      {
+       "title": "Events Producer",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74081,Events_Producer_OKRE.html",
+       "location": "London - Central",
+       "employer": "OKRE",
+       "salary": "£40k+"
       },
       {
        "title": "Producer (Sunday Morning with Adam Boulton)",
@@ -660,13 +681,6 @@
        "salary": ""
       },
       {
-       "title": "Events Producer",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/74081,Events_Producer_OKRE.html",
-       "location": "London - Central",
-       "employer": "OKRE",
-       "salary": "£40k+"
-      },
-      {
        "title": "Market Planning & Ops Manager (EMEA - Sales Operations)",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74098,Market_Planning_Ops_Manager_EMEA_Sales_Operations_Netflix.html",
        "location": "London",
@@ -681,13 +695,6 @@
        "salary": "£40k+"
       },
       {
-       "title": "Senior Post Production Manager – Scripted",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74093,Senior_Post_Production_Manager_Scripted_Molinare_TV_Film_Ltd.html",
-       "location": "London",
-       "employer": "Molinare TV Film Ltd",
-       "salary": ""
-      },
-      {
        "title": "Content Sales Assistant - EMEA",
        "url": "https://www.grapevinejobs.co.uk/mediajobs/74039,Content_Sales_Assistant_EMEA_Fox_Entertainment.html",
        "location": "London",
@@ -699,6 +706,27 @@
     {
      "name": "ProductionBase (film & TV)",
      "jobs": [
+      {
+       "title": "Video Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-london-11.26.0250139",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-producer-london-11.26.0250138",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Line Producer- Drama Documentary",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/line-producer-drama-documentary-bristol-11.26.0250137",
+       "location": "Bristol",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
       {
        "title": "Senior Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-producer-london-11.26.0250129",
@@ -759,13 +787,6 @@
        "title": "Digital Content Co-ordinator",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/digital-content-co-ordinator-london-11.26.0250114",
        "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Deputy Head of Wigs, Hair and Makeup",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/deputy-head-of-wigs-hair-and-makeup-uk-touring-11.26.0250111",
-       "location": "UK Touring",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -868,13 +889,6 @@
        "salary": ""
       },
       {
-       "title": "Video Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-london-11.26.0250078",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
        "title": "Videographer and Editor",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/videographer-and-editor-london-11.26.0250076",
        "location": "London HYBRID",
@@ -891,13 +905,6 @@
       {
        "title": "Graphics Assistant Producer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/graphics-assistant-producer-london-11.26.0250061",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "VFX Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/vfx-producer-london-11.26.0250055",
        "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
