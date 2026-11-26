@@ -1,8 +1,8 @@
 {
- "generated": "2026-11-25 17:29 UTC",
+ "generated": "2026-11-26 17:12 UTC",
  "totals": {
-  "roles": 114,
-  "employers": 21,
+  "roles": 117,
+  "employers": 22,
   "sources": 7
  },
  "categories": [
@@ -69,6 +69,29 @@
        "salary": ""
       }
      ]
+    },
+    {
+     "name": "Warner Bros. Discovery",
+     "jobs": [
+      {
+       "title": "Ecommerce Content and Launch Manager - Twelve Month FTC",
+       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Leavesden-South-Way/Ecommerce-Content-and-Launch-Manager_R000109077",
+       "location": "Leavesden South Way",
+       "employer": "Warner Bros. Discovery",
+       "salary": ""
+      },
+      {
+       "title": "Business Development Manager - FTC",
+       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-67-74-Saffron-Hill-1st-Floor/Filmbankmedia---Business-Development-Manager---FTC_R000109417",
+       "location": "London 67-74 Saffron Hill, 1st Floor",
+       "employer": "Warner Bros. Discovery",
+       "salary": ""
+      }
+     ]
+    },
+    {
+     "name": "Disney / Disney+ EMEA",
+     "jobs": []
     }
    ]
   },
@@ -114,6 +137,13 @@
     {
      "name": "ITV",
      "jobs": [
+      {
+       "title": "Marketing Manager (Viewer Consideration)",
+       "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1584",
+       "location": "United Kingdom",
+       "employer": "ITV",
+       "salary": ""
+      },
       {
        "title": "Head of Publicity: Influencer and Streaming",
        "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1682",
@@ -162,13 +192,6 @@
        "salary": ""
       },
       {
-       "title": "Manager, Partnerships Packaging & Solutions, EMEA",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319128577",
-       "location": "London,United Kingdom",
-       "employer": "Netflix UK",
-       "salary": ""
-      },
-      {
        "title": "Manager, Marketing Partnerships - UK (FTC)",
        "url": "https://explore.jobs.netflix.net/careers/job/790319203470",
        "location": "London,United Kingdom",
@@ -176,8 +199,22 @@
        "salary": ""
       },
       {
-       "title": "Sales Solutions Specialist (EMEA - Emerging Business)",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319339401",
+       "title": "Executive Coach - EMEA",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319453248",
+       "location": "London,United Kingdom",
+       "employer": "Netflix UK",
+       "salary": ""
+      },
+      {
+       "title": "Manager, Marketing - UK Series/ Unscripted",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319599178",
+       "location": "London,United Kingdom",
+       "employer": "Netflix UK",
+       "salary": ""
+      },
+      {
+       "title": "Brand Strategy, Manager, Netflix Ads Marketing EMEA",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319624073",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
@@ -228,25 +265,6 @@
        "url": "https://jobs.lever.co/gettyimages/a0c337a8-44d4-44b0-b75f-71fcb4dfd9a3",
        "location": "London",
        "employer": "Getty Images",
-       "salary": ""
-      }
-     ]
-    },
-    {
-     "name": "Sony Pictures Television",
-     "jobs": [
-      {
-       "title": "Coordinator, Global Talent Acquisition - EMEA & APAC",
-       "url": "https://spe.wd1.myworkdayjobs.com/SonyPicturesEntertainment/job/London-United-Kingdom/Coordinator--Global-Talent-Acquisition---EMEA---APAC_JR115064",
-       "location": "London, United Kingdom",
-       "employer": "Sony Pictures Television",
-       "salary": ""
-      },
-      {
-       "title": "Content Pipeline & Acquisition Executive",
-       "url": "https://spe.wd1.myworkdayjobs.com/SonyPicturesEntertainment/job/London-United-Kingdom/Content-Pipeline---Acquisition-Executive_JR115066",
-       "location": "London, United Kingdom",
-       "employer": "Sony Pictures Television",
        "salary": ""
       }
      ]
@@ -546,6 +564,20 @@
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
       {
+       "title": "Executive Creative Production Lead",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74140,Executive_Creative_Production_Lead_Channel_4.html",
+       "location": "London, Leads or Manchester",
+       "employer": "Channel 4",
+       "salary": ""
+      },
+      {
+       "title": "Junior Talent Consultant",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74123,Junior_Talent_Consultant_The_Crewing_Company.html",
+       "location": "Holborn, London",
+       "employer": "The Crewing Company",
+       "salary": "£30k+"
+      },
+      {
        "title": "Technical Producer",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74137,Technical_Producer_BBC.html",
        "location": "London",
@@ -564,6 +596,13 @@
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74100,Senior_Editor_Markets_Magazine_Bloomberg.html",
        "location": "London",
        "employer": "Bloomberg",
+       "salary": ""
+      },
+      {
+       "title": "Recruiting Researcher, Executive Engagement, EMEA",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74121,Recruiting_Researcher_Executive_Engagement_EMEA_Netflix.html",
+       "location": "London",
+       "employer": "Netflix",
        "salary": ""
       },
       {
@@ -609,13 +648,6 @@
        "salary": "£40k+"
       },
       {
-       "title": "Business Development Manager - FTC",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74079,Business_Development_Manager_FTC_Warner_Bros_Discovery.html",
-       "location": "London",
-       "employer": "Warner Bros Discovery",
-       "salary": ""
-      },
-      {
        "title": "Freelance – Show Executive Producer (Games Awards)",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74130,Freelance_Show_Executive_Producer_Games_Awards_BAFTA.html",
        "location": "London",
@@ -637,13 +669,6 @@
        "salary": ""
       },
       {
-       "title": "Brand Design Director",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74126,Brand_Design_Director_Channel_4.html",
-       "location": "London",
-       "employer": "Channel 4",
-       "salary": ""
-      },
-      {
        "title": "Senior Sales Manager, Film & TV - A5292",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73955,Senior_Sales_Manager_Film_TV_A5292_Searchlight_Executive.html",
        "location": "London - Central",
@@ -656,26 +681,54 @@
        "location": "London / Hybrid",
        "employer": "Warner Bros Discovery",
        "salary": ""
-      },
-      {
-       "title": "Junior Talent Consultant",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/74123,Junior_Talent_Consultant_The_Crewing_Company.html",
-       "location": "Holborn, London",
-       "employer": "The Crewing Company",
-       "salary": "£30k+"
-      },
-      {
-       "title": "Recruiting Researcher, Executive Engagement, EMEA",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74121,Recruiting_Researcher_Executive_Engagement_EMEA_Netflix.html",
-       "location": "London",
-       "employer": "Netflix",
-       "salary": ""
       }
      ]
     },
     {
      "name": "ProductionBase (film & TV)",
      "jobs": [
+      {
+       "title": "Location Researcher",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/location-researcher-glasgow-and-on-location-11.26.0250321",
+       "location": "Glasgow and on location",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Researcher Training Programme",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/researcher-training-programme-london-11.26.0250320",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Researcher",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/researcher-glasgow-11.26.0250319",
+       "location": "Glasgow",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "YouTube Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/youtube-producer-remote-11.26.0250317",
+       "location": "Remote REMOTE",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Content (Graphic) Designer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/content-graphic-designer-london-11.26.0250316",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-london-11.26.0250313",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
       {
        "title": "Recipe video shooter-editor (London, freelance)",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/recipe-video-shooter-editor-london-freelance-london-11.26.0250306",
@@ -871,47 +924,19 @@
        "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
-      },
-      {
-       "title": "Associate Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/associate-producer-london-11.26.0250238",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Senior Creative Videographer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/senior-creative-videographer-london-11.26.0250237",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Guest Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/guest-producer-london-11.26.0250236",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Short Form Content Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/short-form-content-editor-london-11.26.0250235",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Editorial Director",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/editorial-director-london-11.26.0250233",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
       }
      ]
     },
     {
      "name": "Screen Alliance Wales",
      "jobs": [
+      {
+       "title": "Assistant Producer",
+       "url": "https://www.screenalliancewales.com/vacancies/assistant-producer/",
+       "location": "",
+       "employer": "Screen Alliance Wales",
+       "salary": ""
+      },
       {
        "title": "Ap Self Shooting Pool Bbc Studios Drama Productions",
        "url": "https://www.screenalliancewales.com/vacancies/ap-self-shooting-pool-bbc-studios-drama-productions/",
@@ -1056,8 +1081,7 @@
  ],
  "errors": [
   "Sky: HTTPError: 429 Client Error: Too Many Requests for url: https://sky.wd3.myworkdayjobs.com/wday/cxs/sky/sky_careers/jobs",
-  "Disney / Disney+ EMEA: HTTPError: 429 Client Error: Too Many Requests for url: https://disney.wd5.myworkdayjobs.com/wday/cxs/disney/disneycareer/jobs",
-  "Warner Bros. Discovery: HTTPError: 429 Client Error: Too Many Requests for url: https://warnerbros.wd5.myworkdayjobs.com/wday/cxs/warnerbros/global/jobs",
-  "Banijay UK (Endemol Shine): HTTPError: 429 Client Error: Too Many Requests for url: https://endemolshine.wd3.myworkdayjobs.com/wday/cxs/endemolshine/EndemolShine_UK_Jobs/jobs"
+  "Banijay UK (Endemol Shine): HTTPError: 429 Client Error: Too Many Requests for url: https://endemolshine.wd3.myworkdayjobs.com/wday/cxs/endemolshine/EndemolShine_UK_Jobs/jobs",
+  "Sony Pictures Television: HTTPError: 429 Client Error: Too Many Requests for url: https://spe.wd1.myworkdayjobs.com/wday/cxs/spe/SonyPicturesEntertainment/jobs"
  ]
 }
