@@ -1,8 +1,8 @@
 {
- "generated": "2026-11-26 17:12 UTC",
+ "generated": "2026-11-27 16:53 UTC",
  "totals": {
-  "roles": 117,
-  "employers": 22,
+  "roles": 118,
+  "employers": 20,
   "sources": 7
  },
  "categories": [
@@ -69,29 +69,6 @@
        "salary": ""
       }
      ]
-    },
-    {
-     "name": "Warner Bros. Discovery",
-     "jobs": [
-      {
-       "title": "Ecommerce Content and Launch Manager - Twelve Month FTC",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/Leavesden-South-Way/Ecommerce-Content-and-Launch-Manager_R000109077",
-       "location": "Leavesden South Way",
-       "employer": "Warner Bros. Discovery",
-       "salary": ""
-      },
-      {
-       "title": "Business Development Manager - FTC",
-       "url": "https://warnerbros.wd5.myworkdayjobs.com/global/job/London-67-74-Saffron-Hill-1st-Floor/Filmbankmedia---Business-Development-Manager---FTC_R000109417",
-       "location": "London 67-74 Saffron Hill, 1st Floor",
-       "employer": "Warner Bros. Discovery",
-       "salary": ""
-      }
-     ]
-    },
-    {
-     "name": "Disney / Disney+ EMEA",
-     "jobs": []
     }
    ]
   },
@@ -137,6 +114,20 @@
     {
      "name": "ITV",
      "jobs": [
+      {
+       "title": "Business Development Executive",
+       "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1634",
+       "location": "Fareham, Hampshire, United Kingdom",
+       "employer": "ITV",
+       "salary": ""
+      },
+      {
+       "title": "Content Services Media Operator",
+       "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1667",
+       "location": "Leeds, West Yorkshire, United Kingdom",
+       "employer": "ITV",
+       "salary": ""
+      },
       {
        "title": "Marketing Manager (Viewer Consideration)",
        "url": "https://fa-euup-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/1584",
@@ -185,6 +176,20 @@
      "name": "Netflix UK",
      "jobs": [
       {
+       "title": "Sales Solutions Specialist (EMEA - Emerging Business)",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319339401",
+       "location": "London,United Kingdom",
+       "employer": "Netflix UK",
+       "salary": ""
+      },
+      {
+       "title": "Executive Coach - EMEA",
+       "url": "https://explore.jobs.netflix.net/careers/job/790319453248",
+       "location": "London,United Kingdom",
+       "employer": "Netflix UK",
+       "salary": ""
+      },
+      {
        "title": "Manager, Publicity - Brand Slate & Live UK",
        "url": "https://explore.jobs.netflix.net/careers/job/790319082269",
        "location": "London,United Kingdom",
@@ -199,22 +204,8 @@
        "salary": ""
       },
       {
-       "title": "Executive Coach - EMEA",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319453248",
-       "location": "London,United Kingdom",
-       "employer": "Netflix UK",
-       "salary": ""
-      },
-      {
        "title": "Manager, Marketing - UK Series/ Unscripted",
        "url": "https://explore.jobs.netflix.net/careers/job/790319599178",
-       "location": "London,United Kingdom",
-       "employer": "Netflix UK",
-       "salary": ""
-      },
-      {
-       "title": "Brand Strategy, Manager, Netflix Ads Marketing EMEA",
-       "url": "https://explore.jobs.netflix.net/careers/job/790319624073",
        "location": "London,United Kingdom",
        "employer": "Netflix UK",
        "salary": ""
@@ -223,15 +214,7 @@
     },
     {
      "name": "Prime Video (Amazon)",
-     "jobs": [
-      {
-       "title": "Head of Expansion, Prime Video Channels",
-       "url": "https://www.amazon.jobs/en-gb/jobs/10612562/head-of-expansion-prime-video-channels",
-       "location": "London",
-       "employer": "Prime Video (Amazon)",
-       "salary": ""
-      }
-     ]
+     "jobs": []
     }
    ]
   },
@@ -367,13 +350,6 @@
        "salary": ""
       },
       {
-       "title": "Editorial Assistant, Homes & Gardens",
-       "url": "https://apply.workable.com/futureplc/j/479601D39E",
-       "location": "London",
-       "employer": "Future plc",
-       "salary": ""
-      },
-      {
        "title": "Marketing Manager, 12 months FTC",
        "url": "https://apply.workable.com/futureplc/j/A88F2D0E0F",
        "location": "London",
@@ -435,20 +411,6 @@
       {
        "title": "Communications Manager",
        "url": "https://opportunities.creativeaccess.org.uk/job/communications-manager-48212",
-       "location": "",
-       "employer": "Creative Access",
-       "salary": ""
-      },
-      {
-       "title": "Emerging Creative",
-       "url": "https://opportunities.creativeaccess.org.uk/job/emerging-creative-48279",
-       "location": "",
-       "employer": "Creative Access",
-       "salary": ""
-      },
-      {
-       "title": "Marketing Manager General 12 Month Ftc",
-       "url": "https://opportunities.creativeaccess.org.uk/job/marketing-manager-general-12-month-ftc-48484",
        "location": "",
        "employer": "Creative Access",
        "salary": ""
@@ -557,12 +519,47 @@
        "location": "",
        "employer": "Creative Access",
        "salary": ""
+      },
+      {
+       "title": "Tender Opportunity Creative Industry Case Study Films",
+       "url": "https://opportunities.creativeaccess.org.uk/job/tender-opportunity-creative-industry-case-study-films-48941",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Editorial Assistant",
+       "url": "https://opportunities.creativeaccess.org.uk/job/editorial-assistant-48972",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
+      },
+      {
+       "title": "Communications Assistant",
+       "url": "https://opportunities.creativeaccess.org.uk/job/communications-assistant-48985",
+       "location": "",
+       "employer": "Creative Access",
+       "salary": ""
       }
      ]
     },
     {
      "name": "Grapevine Jobs (UK media — indies + broadcasters)",
      "jobs": [
+      {
+       "title": "Junior Talent Consultant",
+       "url": "https://www.grapevinejobs.co.uk/mediajobs/74123,Junior_Talent_Consultant_The_Crewing_Company.html",
+       "location": "Holborn, London",
+       "employer": "The Crewing Company",
+       "salary": "£30k+"
+      },
+      {
+       "title": "Content Pipeline & Acquisition Executive",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74127,Content_Pipeline_Acquisition_Executive_Sony_Pictures_Entertainment.html",
+       "location": "London / Hybrid",
+       "employer": "Sony Pictures Entertainment",
+       "salary": ""
+      },
       {
        "title": "Executive Creative Production Lead",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74140,Executive_Creative_Production_Lead_Channel_4.html",
@@ -571,11 +568,25 @@
        "salary": ""
       },
       {
-       "title": "Junior Talent Consultant",
-       "url": "https://www.grapevinejobs.co.uk/mediajobs/74123,Junior_Talent_Consultant_The_Crewing_Company.html",
-       "location": "Holborn, London",
-       "employer": "The Crewing Company",
-       "salary": "£30k+"
+       "title": "Senior Sales Manager, Film & TV - A5292",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73955,Senior_Sales_Manager_Film_TV_A5292_Searchlight_Executive.html",
+       "location": "London - Central",
+       "employer": "Searchlight Executive",
+       "salary": ""
+      },
+      {
+       "title": "Senior Editor, Markets Magazine",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74051,Senior_Editor_Markets_Magazine_Bloomberg.html",
+       "location": "London",
+       "employer": "Bloomberg",
+       "salary": ""
+      },
+      {
+       "title": "Filmbankmedia - Business Development Manager - FTC",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74045,Filmbankmedia_Business_Development_Manager_FTC_Warner_Bros_Discovery.html",
+       "location": "London / Hybrid",
+       "employer": "Warner Bros Discovery",
+       "salary": ""
       },
       {
        "title": "Technical Producer",
@@ -589,13 +600,6 @@
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74066,Group_Head_of_AI_in_Production_Fremantle.html",
        "location": "London",
        "employer": "Fremantle",
-       "salary": ""
-      },
-      {
-       "title": "Senior Editor, Markets Magazine",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74100,Senior_Editor_Markets_Magazine_Bloomberg.html",
-       "location": "London",
-       "employer": "Bloomberg",
        "salary": ""
       },
       {
@@ -648,6 +652,13 @@
        "salary": "£40k+"
       },
       {
+       "title": "Business Development Manager - FTC",
+       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74079,Business_Development_Manager_FTC_Warner_Bros_Discovery.html",
+       "location": "London",
+       "employer": "Warner Bros Discovery",
+       "salary": ""
+      },
+      {
        "title": "Freelance – Show Executive Producer (Games Awards)",
        "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74130,Freelance_Show_Executive_Producer_Games_Awards_BAFTA.html",
        "location": "London",
@@ -660,33 +671,61 @@
        "location": "London",
        "employer": "WING London",
        "salary": ""
-      },
-      {
-       "title": "Content Pipeline & Acquisition Executive",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74127,Content_Pipeline_Acquisition_Executive_Sony_Pictures_Entertainment.html",
-       "location": "London / Hybrid",
-       "employer": "Sony Pictures Entertainment",
-       "salary": ""
-      },
-      {
-       "title": "Senior Sales Manager, Film & TV - A5292",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/73955,Senior_Sales_Manager_Film_TV_A5292_Searchlight_Executive.html",
-       "location": "London - Central",
-       "employer": "Searchlight Executive",
-       "salary": ""
-      },
-      {
-       "title": "Filmbankmedia - Business Development Manager - FTC",
-       "url": "https://www.grapevinejobs.co.uk/executive_mediajobs/74045,Filmbankmedia_Business_Development_Manager_FTC_Warner_Bros_Discovery.html",
-       "location": "London / Hybrid",
-       "employer": "Warner Bros Discovery",
-       "salary": ""
       }
      ]
     },
     {
      "name": "ProductionBase (film & TV)",
      "jobs": [
+      {
+       "title": "Duty Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/duty-editor-london-11.26.0250335",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-london-11.26.0250331",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Video Producer",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-producer-london-11.26.0250329",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Social Media Editor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-media-editor-london-11.26.0250327",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Social Content Creator / Sheditor",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-content-creator--sheditor-london-11.26.0250326",
+       "location": "London",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Head of On-Screen Talent - Mat cover",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/head-of-on-screen-talent--mat-cover-london-11.26.0250323",
+       "location": "London HYBRID",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
+      {
+       "title": "Production Coordinator - Talent Pool",
+       "url": "https://www.productionbase.co.uk/film-tv-jobs/production-coordinator--talent-pool-glasgow-based-11.26.0250322",
+       "location": "Glasgow based",
+       "employer": "ProductionBase (film & TV)",
+       "salary": ""
+      },
       {
        "title": "Location Researcher",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/location-researcher-glasgow-and-on-location-11.26.0250321",
@@ -719,13 +758,6 @@
        "title": "Content (Graphic) Designer",
        "url": "https://www.productionbase.co.uk/film-tv-jobs/content-graphic-designer-london-11.26.0250316",
        "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Video Editor",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/video-editor-london-11.26.0250313",
-       "location": "London",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
       },
@@ -889,41 +921,6 @@
        "location": "Manchester",
        "employer": "ProductionBase (film & TV)",
        "salary": ""
-      },
-      {
-       "title": "Social Video Producer",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-video-producer-london-11.26.0250254",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Assistant Producer - Sport",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/assistant-producer--sport-cardiff-11.26.0250250",
-       "location": "Cardiff HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Communications Coordinator",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/communications-coordinator-bristol-and-on-location-11.26.0250248",
-       "location": "Bristol and on location",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Content & Social Media Manager",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/content-social-media-manager-london-11.26.0250243",
-       "location": "London HYBRID",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
-      },
-      {
-       "title": "Social Content Creator",
-       "url": "https://www.productionbase.co.uk/film-tv-jobs/social-content-creator-london-11.26.0250242",
-       "location": "London",
-       "employer": "ProductionBase (film & TV)",
-       "salary": ""
       }
      ]
     },
@@ -1081,6 +1078,8 @@
  ],
  "errors": [
   "Sky: HTTPError: 429 Client Error: Too Many Requests for url: https://sky.wd3.myworkdayjobs.com/wday/cxs/sky/sky_careers/jobs",
+  "Disney / Disney+ EMEA: HTTPError: 429 Client Error: Too Many Requests for url: https://disney.wd5.myworkdayjobs.com/wday/cxs/disney/disneycareer/jobs",
+  "Warner Bros. Discovery: HTTPError: 429 Client Error: Too Many Requests for url: https://warnerbros.wd5.myworkdayjobs.com/wday/cxs/warnerbros/global/jobs",
   "Banijay UK (Endemol Shine): HTTPError: 429 Client Error: Too Many Requests for url: https://endemolshine.wd3.myworkdayjobs.com/wday/cxs/endemolshine/EndemolShine_UK_Jobs/jobs",
   "Sony Pictures Television: HTTPError: 429 Client Error: Too Many Requests for url: https://spe.wd1.myworkdayjobs.com/wday/cxs/spe/SonyPicturesEntertainment/jobs"
  ]
